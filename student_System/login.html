@@ -1,0 +1,31 @@
+<!--必须在服务器打开页面 http://localhost/studentSystem/login.html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆页面</title>
+</head>
+<body>
+    <?php
+        session_start();
+    ?>
+    <h2 align="center">学生管理系统</h2>
+    <!--如果点击登陆，表单数据会被发送到login.php-->
+    <form action="login.php" method="post">
+        <table align="center">
+            <tr>
+                <td>账号：</td>
+                <td><input type="text" name="usern" /></td>
+            </tr>
+            <tr>
+                <td>密码：</td>
+                <td><input type="password" name="passw" /></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="登陆" /></td>
+                <td><a href="setPassword.html"><input type="button" value="忘记密码" name="set"/></a> </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
