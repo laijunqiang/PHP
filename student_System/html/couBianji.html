@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>课程信息编辑</title>
+</head>
+<body>
+<?php
+session_start();
+?>
+<h2 align="center">课程信息编辑</h2>
+<form action="../php/couBianji.php" method="post">
+    <table align="center" border="1" >
+        <tr>
+            <td>ID：</td>
+            <td><input type="text" name="id" /></td>
+        </tr>
+        <tr>
+            <td>课程号(number)：</td>
+            <td><input type="text" name="number" /></td>
+        </tr>
+        <tr>
+            <td>课程名(name)：</td>
+            <td><input type="text" name="name" /></td>
+        </tr>
+        <tr>
+            <td>学分(credit)：</td>
+            <td><input type="text" name="credit" /></td>
+        </tr>
+        <tr>
+            <td>开课时间(time)：</td>
+            <td><input type="text" name="time" /></td>
+        </tr>
+        <tr>
+            <td align="center" colspan="2"><input type="submit" value="修改" /></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
