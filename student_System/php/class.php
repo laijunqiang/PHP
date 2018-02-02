@@ -53,12 +53,9 @@
             $query="update t_student set delete_time=now() where id='$id'";
             $this->result=$this->mysqli->query($query);
         }
-        public function stuName($name){
-            $query="select id,number,name,sex,age,create_time,update_time from t_student where name like '%$name%' and delete_time=0";
-            $this->result=$this->mysqli->query($query);
-        }
-        public function stuNumber($number){
-            $query="select id,number,name,sex,age,create_time,update_time from t_student where number like '%$number%' and delete_time=0";
+//        不区分大小写，like
+        public function stuChaxun($chaxun){
+            $query="select id,number,name,sex,age,create_time,update_time from t_student where (number like '%$chaxun%'or name like '%$chaxun%') and delete_time=0";
             $this->result=$this->mysqli->query($query);
         }
 
@@ -75,15 +72,10 @@
             $query="update t_course set delete_time=now() where id='$id'";
             $this->result=$this->mysqli->query($query);
         }
-        public function couName($name){
-            $query="select id,number,name,credit,time,create_time,update_time from t_course where name like '%$name%' and delete_time=0";
+        public function couChaxun($chaxun){
+            $query="select id,number,name,credit,time,create_time,update_time from t_course where (number like '%$chaxun%' or name like '%$chaxun%') and delete_time=0";
             $this->result=$this->mysqli->query($query);
         }
-        public function couNumber($number){
-            $query="select id,number,name,credit,time,create_time,update_time from t_course where number like '%$number%' and delete_time=0";
-            $this->result=$this->mysqli->query($query);
-        }
-
 
 //        管理成绩信息
         public function scoLuru($student_id,$course_id,$score){
@@ -93,7 +85,7 @@
 
 //        查询学生学习成绩
         public function  select($number){
-            $query="select t_student.number,t_student.`name`,t_course.`name`,t_score.score from t_student,t_course,t_score where t_student.number like '%$number%' and t_student.id=t_score.student_id and t_course.id=t_score.course_id;";
+            $query="select t_student.number,t_student.`name`,t_course.`name`,t_score.score from t_student,t_course,t_score where t_student.number like '%$number%' and t_student.id=t_score.student_id and t_course.id=t_score.course_id and t_student.delete_time=0 and t_course.delete_time=0;";
             $this->result=$this->mysqli->query($query);
         }
     }

@@ -12,8 +12,7 @@ session_start();
 <h3 align="center"><a href="../html/couLuru.html" >录入</a></h3>
 <div align="center">
     <form action="couSelect.php" method="post">
-        <input type="text" name="number" /><button type="submit" >课程号查询</button>
-        <input type="text" name="name" /><button type="submit" >课程名查询</button>
+        <input type="text" name="chaxun" /><button type="submit" >查询</button>
     </form>
 </div>
 <table border="1" align="center">
@@ -33,7 +32,18 @@ session_start();
     $result=$mysqli->query($query);
     while(list($id,$number,$name,$credit,$time,$create_time,$update_time)=$result->fetch_row())
     {
-        echo " >删除</a></td>
+        echo "<tr>
+                <td>$id</td>
+                <td>$number</td>
+                <td>$name</td>
+                <td>$credit</td>
+                <td>$time</td>
+                <td>$create_time</td>
+                <td>$update_time</td>
+                <td>
+                <a href=\"../html/couBianji.html?id=$id\" >编辑</a>
+                <a href=\"couDele.php?id=$id\" >删除</a>
+                </td>
             </tr>";
     }
     ?>

@@ -1,0 +1,121 @@
+/*
+Navicat MySQL Data Transfer
+
+Source Server         : localhost
+Source Server Version : 50553
+Source Host           : localhost:3306
+Source Database       : db_student_system
+
+Target Server Type    : MYSQL
+Target Server Version : 50553
+File Encoding         : 65001
+
+Date: 2018-02-02 15:54:36
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for t_admin
+-- ----------------------------
+DROP TABLE IF EXISTS `t_admin`;
+CREATE TABLE `t_admin` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键',
+  `name` char(20) NOT NULL COMMENT '超级管理员账号',
+  `password` char(30) NOT NULL COMMENT '超级管理员密码',
+  `create_time` char(20) NOT NULL DEFAULT '0' COMMENT '创建记录时间',
+  `update_time` char(20) NOT NULL DEFAULT '0' COMMENT '修改记录时间',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='超级管理员';
+
+-- ----------------------------
+-- Records of t_admin
+-- ----------------------------
+INSERT INTO `t_admin` VALUES ('1', '张老师', '1234', '2018-01-29 16:30:38', '2018-02-02 14:33:45');
+INSERT INTO `t_admin` VALUES ('2', '李老师', 'admin', '2018-01-29 16:30:38', '2018-02-01 16:22:19');
+INSERT INTO `t_admin` VALUES ('3', '林老师', '123456', '2018-01-29 16:30:38', '2018-02-01 16:43:46');
+
+-- ----------------------------
+-- Table structure for t_course
+-- ----------------------------
+DROP TABLE IF EXISTS `t_course`;
+CREATE TABLE `t_course` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键',
+  `number` char(20) NOT NULL COMMENT '课程号',
+  `name` char(20) NOT NULL COMMENT '课程名',
+  `credit` float(4,0) NOT NULL COMMENT '学分',
+  `time` char(20) NOT NULL COMMENT '开课时间点',
+  `create_time` char(20) NOT NULL DEFAULT '0' COMMENT '创建记录时间',
+  `update_time` char(20) NOT NULL DEFAULT '0' COMMENT '修改记录时间',
+  `delete_time` char(20) NOT NULL DEFAULT '0' COMMENT '删除记录时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='课程';
+
+-- ----------------------------
+-- Records of t_course
+-- ----------------------------
+INSERT INTO `t_course` VALUES ('1', 'A001', 'python', '3', '2019-3-4', '2018-01-29 16:51:18', '2018-01-31 17:24:27', '0');
+INSERT INTO `t_course` VALUES ('2', 'A002', 'java', '2', '2019-3-2', '2018-01-29 16:51:18', '0', '0');
+INSERT INTO `t_course` VALUES ('3', 'A003', 'c++', '2', '2019-3-1', '2018-01-29 16:51:18', '0', '0');
+INSERT INTO `t_course` VALUES ('4', 'A004', 'c', '2', '2019-3-4', '2018-01-31 17:09:40', '0', '2018-02-02 15:33:20');
+INSERT INTO `t_course` VALUES ('5', 'A005', 'PHP', '2', '2019-3-10', '2018-01-31 18:29:12', '2018-01-31 18:31:19', '2018-01-31 18:36:49');
+INSERT INTO `t_course` VALUES ('6', 'A009', 'DB', '2', '2019-3-10', '2018-02-01 10:22:46', '2018-02-01 10:23:13', '2018-02-01 10:23:21');
+INSERT INTO `t_course` VALUES ('7', 'A005', 'PHP', '2', '2019-3-4', '2018-02-02 15:27:45', '2018-02-02 15:31:02', '0');
+
+-- ----------------------------
+-- Table structure for t_score
+-- ----------------------------
+DROP TABLE IF EXISTS `t_score`;
+CREATE TABLE `t_score` (
+  `student_id` int(11) NOT NULL COMMENT '学生ID',
+  `course_id` int(11) NOT NULL COMMENT '课程ID',
+  `score` float NOT NULL COMMENT '成绩',
+  `create_time` char(20) NOT NULL DEFAULT '0' COMMENT '创建记录时间',
+  `update_time` char(20) NOT NULL DEFAULT '0' COMMENT '修改记录时间',
+  `delete_time` char(20) NOT NULL DEFAULT '0' COMMENT '删除记录时间',
+  PRIMARY KEY (`student_id`,`course_id`),
+  KEY `course_id` (`course_id`),
+  CONSTRAINT `t_score_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `t_student` (`id`),
+  CONSTRAINT `t_score_ibfk_2` FOREIGN KEY (`course_id`) REFERENCES `t_course` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='成绩';
+
+-- ----------------------------
+-- Records of t_score
+-- ----------------------------
+INSERT INTO `t_score` VALUES ('1', '1', '85.5', '2018-01-29 17:04:36', '0', '0');
+INSERT INTO `t_score` VALUES ('1', '2', '80.5', '2018-02-02 15:53:34', '0', '0');
+INSERT INTO `t_score` VALUES ('2', '1', '90.5', '2018-01-29 17:04:36', '0', '0');
+INSERT INTO `t_score` VALUES ('3', '1', '90.5', '2018-02-01 11:15:50', '0', '0');
+INSERT INTO `t_score` VALUES ('3', '3', '95', '2018-01-29 17:04:36', '0', '0');
+INSERT INTO `t_score` VALUES ('8', '1', '59', '2018-02-01 11:16:30', '0', '0');
+
+-- ----------------------------
+-- Table structure for t_student
+-- ----------------------------
+DROP TABLE IF EXISTS `t_student`;
+CREATE TABLE `t_student` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键',
+  `number` char(20) NOT NULL COMMENT '学号',
+  `name` char(20) NOT NULL COMMENT '姓名',
+  `sex` tinyint(4) NOT NULL COMMENT '性别,0表示女,1表示男',
+  `age` char(10) NOT NULL COMMENT '出生年月',
+  `create_time` char(20) NOT NULL DEFAULT '0' COMMENT '创建记录时间',
+  `update_time` char(20) NOT NULL DEFAULT '0' COMMENT '修改记录时间',
+  `delete_time` char(20) NOT NULL DEFAULT '0' COMMENT '删除记录时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COMMENT='学生';
+
+-- ----------------------------
+-- Records of t_student
+-- ----------------------------
+INSERT INTO `t_student` VALUES ('1', '1514080901201', '张三', '1', '1995-01-01', '2018-01-29 16:46:47', '0', '0');
+INSERT INTO `t_student` VALUES ('2', '1514080901202', '李四', '0', '1995-01-02', '2018-01-29 16:46:47', '0', '0');
+INSERT INTO `t_student` VALUES ('3', '1514080901216', '纠结1', '0', '1995-12-30', '2018-01-29 16:46:47', '2018-01-31 15:27:42', '0');
+INSERT INTO `t_student` VALUES ('8', '1514080901218', '纠结2', '0', '1995-12-30', '2018-01-31 15:18:29', '2018-01-31 15:26:24', '2018-01-31 15:23:53');
+INSERT INTO `t_student` VALUES ('9', '1514080901219', '纠结3', '1', '1995-12-30', '2018-01-31 15:24:24', '0', '0');
+INSERT INTO `t_student` VALUES ('10', '1514080901220', '纠结4', '1', '1995-12-30', '2018-01-31 15:25:12', '0', '2018-02-01 14:36:55');
+INSERT INTO `t_student` VALUES ('11', '1514080901221', '纠结5', '1', '1995-12-30', '2018-02-02 14:37:57', '0', '0');
+INSERT INTO `t_student` VALUES ('12', '1514080901222', '纠结6', '1', '1995-12-30', '2018-02-02 14:40:27', '2018-02-02 14:47:44', '2018-02-02 14:50:41');
+INSERT INTO `t_student` VALUES ('13', '1514080901223', '纠结7', '0', '1995-12-30', '2018-02-02 14:42:03', '0', '2018-02-02 14:50:37');
+INSERT INTO `t_student` VALUES ('14', '1514080901224', '纠结8', '0', '1995-12-30', '2018-02-02 14:43:36', '0', '2018-02-02 14:50:44');

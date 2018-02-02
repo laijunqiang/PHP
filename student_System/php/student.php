@@ -12,8 +12,7 @@ session_start();
 <h3 align="center"><a href="../html/stuLuru.html" >录入</a></h3>
 <div align="center">
     <form action="stuSelect.php" method="post">
-        <input type="text" name="number" /><button type="submit" >学号查询</button>
-        <input type="text" name="name" /><button type="submit" >姓名查询</button>
+        <input type="text" name="chaxun" /><button type="submit" >查询</button>
     </form>
 </div>
 <table border="1" align="center">
@@ -42,7 +41,10 @@ session_start();
                 <td>$age</td>
                 <td>$create_time</td>
                 <td>$update_time</td>
-                
+                <td>
+                <a href=\"../html/stuBianji.html\" >编辑</a>
+                <a href=\"stuDele.php?id=$id\" >删除</a>
+                </td>
             </tr>";
     }
     ?>

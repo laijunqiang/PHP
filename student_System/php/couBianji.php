@@ -19,7 +19,7 @@ $time=$_POST["time"];
 
 //  判断输入不能为空，否则不跳转
 if ($id==null||$number==null||$name==null||$credit==null||$time==null){
-    echo "<script>alert('输入不能为空');window.location.href='couBianji.html'</script>";
+    echo "<script>alert('输入不能为空');window.location.href='../html/couBianji.html'</script>";
 }else{
     $admin->couBianji($id,$number,$name,$credit,$time);
     if ($admin->result!=false){
