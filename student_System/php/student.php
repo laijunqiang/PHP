@@ -9,6 +9,14 @@
 session_start();
 ?>
 <h2 align="center">学生信息管理</h2>
+<form enctype="multipart/form-data" action="upload.php" method="post">
+    <table align="center">
+        <tr>
+            <td><input type="file" name="myfile"></td>
+            <td><input type="submit" value="上传文件" /></td>
+        </tr>
+    </table>
+</form>
 <h3 align="center"><a href="../html/stuLuru.html" >录入</a></h3>
 <div align="center">
     <form action="stuSelect.php" method="post">
