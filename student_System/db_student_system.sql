@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-02-03 00:00:02
+Date: 2018-03-07 17:19:16
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -145,3 +145,40 @@ INSERT INTO `t_student` VALUES ('37', '1514080901233', '纠结17', '0', '35072',
 INSERT INTO `t_student` VALUES ('38', '1514080901234', '纠结18', '0', '35073', '2018-02-02 23:58:57', '0', '2018-02-02 23:59:11');
 INSERT INTO `t_student` VALUES ('39', '1514080901235', '纠结19', '0', '35074', '2018-02-02 23:58:57', '0', '2018-02-02 23:59:14');
 INSERT INTO `t_student` VALUES ('40', '1514080901236', '纠结20', '0', '35075', '2018-02-02 23:58:57', '0', '2018-02-02 23:59:06');
+
+-- ----------------------------
+-- Table structure for t_teacher
+-- ----------------------------
+DROP TABLE IF EXISTS `t_teacher`;
+CREATE TABLE `t_teacher` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键',
+  `number` char(20) NOT NULL COMMENT '任课老师编号',
+  `password` char(30) NOT NULL COMMENT '任课老师密码',
+  `name` char(20) NOT NULL COMMENT '任课老师名字',
+  `create_time` char(20) NOT NULL COMMENT '创建记录时间',
+  `update_time` char(20) NOT NULL COMMENT '修改记录时间',
+  `delete_time` char(20) NOT NULL COMMENT '删除记录时间',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='任课老师';
+
+-- ----------------------------
+-- Records of t_teacher
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for t_teacher_course
+-- ----------------------------
+DROP TABLE IF EXISTS `t_teacher_course`;
+CREATE TABLE `t_teacher_course` (
+  `teacher_id` int(11) NOT NULL COMMENT '任课老师ID',
+  `course_id` int(11) NOT NULL COMMENT '课程ID',
+  `create_time` char(20) NOT NULL COMMENT '创建记录时间',
+  `update_time` char(20) NOT NULL COMMENT '修改记录时间',
+  `delete_time` char(20) NOT NULL COMMENT '删除记录时间',
+  PRIMARY KEY (`teacher_id`,`course_id`),
+  KEY `course_id` (`course_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='任课老师与课程';
+
+-- ----------------------------
+-- Records of t_teacher_course
+-- ----------------------------
