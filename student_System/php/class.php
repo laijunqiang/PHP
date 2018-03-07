@@ -55,7 +55,7 @@
         }
 //        不区分大小写，like
         public function stuChaxun($chaxun){
-            $query="select id,number,name,sex,age,create_time,update_time from t_student where (number like '%$chaxun%'or name like '%$chaxun%') and delete_time=0";
+            $query="select id,number,name,sex,age,create_time,update_time from t_student where (number like '%$chaxun%'or name like '%$chaxun%') and delete_time='0'";
             $this->result=$this->mysqli->query($query);
         }
 
@@ -73,7 +73,7 @@
             $this->result=$this->mysqli->query($query);
         }
         public function couChaxun($chaxun){
-            $query="select id,number,name,credit,time,create_time,update_time from t_course where (number like '%$chaxun%' or name like '%$chaxun%') and delete_time=0";
+            $query="select id,number,name,credit,time,create_time,update_time from t_course where (number like '%$chaxun%' or name like '%$chaxun%') and delete_time='0'";
             $this->result=$this->mysqli->query($query);
         }
 
@@ -85,7 +85,25 @@
 
 //        查询学生学习成绩
         public function  select($number){
-            $query="select t_student.number,t_student.`name`,t_course.`name`,t_score.score from t_student,t_course,t_score where t_student.number like '%$number%' and t_student.id=t_score.student_id and t_course.id=t_score.course_id and t_student.delete_time=0 and t_course.delete_time=0;";
+            $query="select t_student.number,t_student.`name`,t_course.`name`,t_score.score from t_student,t_course,t_score where t_student.number like '%$number%' and t_student.id=t_score.student_id and t_course.id=t_score.course_id and t_student.delete_time=0 and t_course.delete_time='0'";
+            $this->result=$this->mysqli->query($query);
+        }
+
+//        管理任课老师信息
+        public function teaSelect($id){
+            $query="select number,password,name from t_teacher where delete_time='0' and id='$id'";
+            $this->result=$this->mysqli->query($query);
+        }
+        public function teaLuru($number,$password,$name){
+            $query="insert into t_teacher(number,password,name,create_time) values('$number','$password','$name',now())";
+            $this->result=$this->mysqli->query($query);
+        }
+        public function teaBianji($id,$number,$name,$sex,$age){
+            $query="update t_teacher set number='$number',name='$name',sex='$sex',age='$age',update_time=now() where id='$id'";
+            $this->result=$this->mysqli->query($query);
+        }
+        public function teaDele($id){
+            $query="update t_teacher set delete_time=now() where id='$id'";
             $this->result=$this->mysqli->query($query);
         }
     }

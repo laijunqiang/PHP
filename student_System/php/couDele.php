@@ -15,9 +15,8 @@ $id=$_GET["id"];
 
 $admin->couDele($id);
 if ($admin->result!=false){
-//        echo "删除成功";
-    header("location:course.php");
+    echo "<script>alert('删除成功');window.location.href='course.php'</script>";
 }else {
-    echo "删除失败";
+    echo "<script>alert('删除失败，请重新删除');window.location.href='course.php'</script>";
 }
 

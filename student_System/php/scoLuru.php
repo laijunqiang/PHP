@@ -21,10 +21,9 @@ if ($student_id==null||$course_id==null||$score==null){
 }else{
     $admin->scoLuru($student_id,$course_id,$score);
     if ($admin->result!=false){
-//        echo "录入成功";
-        header("location:score.php");
+        echo "<script>alert('录入成功');window.location.href='score.php'</script>";
     }else {
-        echo "录入失败";
+        echo "<script>alert('录入失败，请重新录入');window.location.href='../html/scoLuru.html'</script>";
     }
 }
 

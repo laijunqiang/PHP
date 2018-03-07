@@ -15,9 +15,8 @@ $id=$_GET["id"];
 
 $admin->stuDele($id);
     if ($admin->result!=false){
-//        echo "删除成功";
-        header("location:student.php");
+        echo "<script>alert('删除成功');window.location.href='student.php'</script>";
     }else {
-        echo "删除失败";
+        echo "<script>alert('删除失败，请重新删除');window.location.href='student.php'</script>";
     }
 

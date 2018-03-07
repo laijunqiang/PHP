@@ -22,10 +22,9 @@ if ($number==null||$name==null||$credit==null||$time==null){
 }else{
     $admin->couLuru($number,$name,$credit,$time);
     if ($admin->result!=false){
-//        echo "录入成功";
-        header("location:course.php");
+        echo "<script>alert('录入成功');window.location.href='course.php'</script>";
     }else {
-        echo "录入失败";
+        echo "<script>alert('录入失败，请重新录入');window.location.href='../html/couLuru.html'</script>";
     }
 }
 

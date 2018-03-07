@@ -31,5 +31,8 @@
     <div align="center">
         <a href="score.php" ><h1>成绩信息管理</h1></a>
     </div>
+    <div align="center">
+        <a href="teacher.php" ><h1>任课老师信息管理</h1></a>
+    </div>
 </body>
 </html>

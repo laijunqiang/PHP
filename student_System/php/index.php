@@ -15,9 +15,12 @@
     if ($name==null||$password==null)
         echo "<script>alert('账号密码不能为空，请重新输入');window.location.href='../html/index.html'</script>";
 //  先查看输入的账号，再根据输入的账号去数据库查密码，最后验证密码是否和mysql里面的密码相匹配
+    $password=md5($password);
     $mysqli=new mysqli("localhost","root","root","db_student_system");
     $query="select id from t_admin where name='$name' and password='$password'";
 //  $mysqli_query()返回一个对象，即使查询为空
+/*针对成功的 SELECT、SHOW、DESCRIBE 或 EXPLAIN 查询，将返回一个 mysqli_result 对象。
+针对其他成功的查询，将返回 TRUE。如果失败，则返回 FALSE。*/
     $result=$mysqli->query($query);
   /*  mysql_num_rows()或者$result->num_rows
     返回结果集中行的数目。此命令仅对 SELECT 语句有效。

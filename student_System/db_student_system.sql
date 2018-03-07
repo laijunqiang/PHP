@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-03-07 17:19:16
+Date: 2018-03-07 21:06:59
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -22,7 +22,7 @@ DROP TABLE IF EXISTS `t_admin`;
 CREATE TABLE `t_admin` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键',
   `name` char(20) NOT NULL COMMENT '超级管理员账号',
-  `password` char(30) NOT NULL COMMENT '超级管理员密码',
+  `password` char(40) NOT NULL COMMENT '超级管理员密码',
   `create_time` char(20) NOT NULL DEFAULT '0' COMMENT '创建记录时间',
   `update_time` char(20) NOT NULL DEFAULT '0' COMMENT '修改记录时间',
   PRIMARY KEY (`id`),
@@ -32,9 +32,9 @@ CREATE TABLE `t_admin` (
 -- ----------------------------
 -- Records of t_admin
 -- ----------------------------
-INSERT INTO `t_admin` VALUES ('1', '张老师', '1234', '2018-01-29 16:30:38', '2018-02-02 14:33:45');
-INSERT INTO `t_admin` VALUES ('2', '李老师', 'admin', '2018-01-29 16:30:38', '2018-02-01 16:22:19');
-INSERT INTO `t_admin` VALUES ('3', '林老师', '123456', '2018-01-29 16:30:38', '2018-02-01 16:43:46');
+INSERT INTO `t_admin` VALUES ('1', '张老师', '202cb962ac59075b964b07152d234b70', '2018-01-29 16:30:38', '2018-03-07 18:55:24');
+INSERT INTO `t_admin` VALUES ('2', '李老师', 'c20ad4d76fe97759aa27a0c99bff6710', '2018-01-29 16:30:38', '2018-03-07 18:26:37');
+INSERT INTO `t_admin` VALUES ('3', '林老师', '81dc9bdb52d04dc20036dbd8313ed055', '2018-01-29 16:30:38', '2018-03-07 18:22:57');
 
 -- ----------------------------
 -- Table structure for t_course
@@ -124,14 +124,14 @@ INSERT INTO `t_student` VALUES ('16', '1514080901225', '纠结9', '0', '35064', 
 INSERT INTO `t_student` VALUES ('17', '1514080901226', '纠结10', '0', '35065', '2018-02-02 23:57:33', '0', '0');
 INSERT INTO `t_student` VALUES ('18', '1514080901227', '纠结11', '0', '35066', '2018-02-02 23:57:33', '0', '0');
 INSERT INTO `t_student` VALUES ('19', '1514080901228', '纠结12', '0', '35067', '2018-02-02 23:57:33', '0', '0');
-INSERT INTO `t_student` VALUES ('20', '1514080901229', '纠结13', '0', '35068', '2018-02-02 23:57:33', '0', '0');
-INSERT INTO `t_student` VALUES ('21', '1514080901230', '纠结14', '1', '35069', '2018-02-02 23:57:33', '0', '0');
+INSERT INTO `t_student` VALUES ('20', '1514080901229', '纠结13', '0', '35068', '2018-02-02 23:57:33', '0', '2018-03-07 19:09:19');
+INSERT INTO `t_student` VALUES ('21', '1514080901230', '纠结14', '1', '35069', '2018-02-02 23:57:33', '0', '2018-03-07 19:09:22');
 INSERT INTO `t_student` VALUES ('22', '1514080901231', '纠结15', '0', '35070', '2018-02-02 23:57:33', '0', '0');
-INSERT INTO `t_student` VALUES ('23', '1514080901232', '纠结16', '0', '35071', '2018-02-02 23:57:33', '0', '0');
-INSERT INTO `t_student` VALUES ('24', '1514080901233', '纠结17', '0', '35072', '2018-02-02 23:57:33', '0', '0');
-INSERT INTO `t_student` VALUES ('25', '1514080901234', '纠结18', '0', '35073', '2018-02-02 23:57:33', '0', '0');
+INSERT INTO `t_student` VALUES ('23', '1514080901232', '纠结16', '0', '35071', '2018-02-02 23:57:33', '0', '2018-03-07 19:09:45');
+INSERT INTO `t_student` VALUES ('24', '1514080901233', '纠结17', '0', '35072', '2018-02-02 23:57:33', '0', '2018-03-07 19:09:42');
+INSERT INTO `t_student` VALUES ('25', '1514080901234', '纠结18', '0', '35073', '2018-02-02 23:57:33', '0', '2018-03-07 19:09:38');
 INSERT INTO `t_student` VALUES ('26', '1514080901235', '纠结19', '0', '35074', '2018-02-02 23:57:34', '0', '0');
-INSERT INTO `t_student` VALUES ('27', '1514080901236', '纠结20', '0', '35075', '2018-02-02 23:57:34', '0', '0');
+INSERT INTO `t_student` VALUES ('27', '1514080901236', '纠结20', '0', '35075', '2018-02-02 23:57:34', '0', '2018-03-07 19:09:34');
 INSERT INTO `t_student` VALUES ('28', '1514080901224', '纠结8', '0', '35063', '2018-02-02 23:58:56', '0', '0');
 INSERT INTO `t_student` VALUES ('29', '1514080901225', '纠结9', '0', '35064', '2018-02-02 23:58:56', '0', '0');
 INSERT INTO `t_student` VALUES ('30', '1514080901226', '纠结10', '0', '35065', '2018-02-02 23:58:56', '0', '0');
@@ -139,7 +139,7 @@ INSERT INTO `t_student` VALUES ('31', '1514080901227', '纠结11', '0', '35066',
 INSERT INTO `t_student` VALUES ('32', '1514080901228', '纠结12', '0', '35067', '2018-02-02 23:58:56', '0', '0');
 INSERT INTO `t_student` VALUES ('33', '1514080901229', '纠结13', '0', '35068', '2018-02-02 23:58:57', '0', '0');
 INSERT INTO `t_student` VALUES ('34', '1514080901230', '纠结14', '1', '35069', '2018-02-02 23:58:57', '0', '0');
-INSERT INTO `t_student` VALUES ('35', '1514080901231', '纠结15', '0', '35070', '2018-02-02 23:58:57', '0', '0');
+INSERT INTO `t_student` VALUES ('35', '1514080901231', '纠结15', '0', '35070', '2018-02-02 23:58:57', '0', '2018-03-07 20:41:10');
 INSERT INTO `t_student` VALUES ('36', '1514080901232', '纠结16', '0', '35071', '2018-02-02 23:58:57', '0', '2018-02-02 23:59:18');
 INSERT INTO `t_student` VALUES ('37', '1514080901233', '纠结17', '0', '35072', '2018-02-02 23:58:57', '0', '2018-02-02 23:59:22');
 INSERT INTO `t_student` VALUES ('38', '1514080901234', '纠结18', '0', '35073', '2018-02-02 23:58:57', '0', '2018-02-02 23:59:11');
@@ -153,17 +153,20 @@ DROP TABLE IF EXISTS `t_teacher`;
 CREATE TABLE `t_teacher` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键',
   `number` char(20) NOT NULL COMMENT '任课老师编号',
-  `password` char(30) NOT NULL COMMENT '任课老师密码',
+  `password` char(40) NOT NULL COMMENT '任课老师密码',
   `name` char(20) NOT NULL COMMENT '任课老师名字',
-  `create_time` char(20) NOT NULL COMMENT '创建记录时间',
-  `update_time` char(20) NOT NULL COMMENT '修改记录时间',
-  `delete_time` char(20) NOT NULL COMMENT '删除记录时间',
+  `create_time` char(20) NOT NULL DEFAULT '0' COMMENT '创建记录时间',
+  `update_time` char(20) NOT NULL DEFAULT '0' COMMENT '修改记录时间',
+  `delete_time` char(20) NOT NULL DEFAULT '0' COMMENT '删除记录时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='任课老师';
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='任课老师';
 
 -- ----------------------------
 -- Records of t_teacher
 -- ----------------------------
+INSERT INTO `t_teacher` VALUES ('1', 'A001', '81dc9bdb52d04dc20036dbd8313ed055', '纠结', '2018-03-07 19:14:11', '0', '0');
+INSERT INTO `t_teacher` VALUES ('2', 'A002', '81dc9bdb52d04dc20036dbd8313ed055', '纠结2', '2018-03-07 19:14:34', '0', '0');
+INSERT INTO `t_teacher` VALUES ('3', 'A003', '81dc9bdb52d04dc20036dbd8313ed055', '纠结3', '2018-03-07 20:06:20', '0', '0');
 
 -- ----------------------------
 -- Table structure for t_teacher_course
@@ -172,13 +175,17 @@ DROP TABLE IF EXISTS `t_teacher_course`;
 CREATE TABLE `t_teacher_course` (
   `teacher_id` int(11) NOT NULL COMMENT '任课老师ID',
   `course_id` int(11) NOT NULL COMMENT '课程ID',
-  `create_time` char(20) NOT NULL COMMENT '创建记录时间',
-  `update_time` char(20) NOT NULL COMMENT '修改记录时间',
-  `delete_time` char(20) NOT NULL COMMENT '删除记录时间',
+  `create_time` char(20) NOT NULL DEFAULT '0' COMMENT '创建记录时间',
+  `update_time` char(20) NOT NULL DEFAULT '0' COMMENT '修改记录时间',
+  `delete_time` char(20) NOT NULL DEFAULT '0' COMMENT '删除记录时间',
   PRIMARY KEY (`teacher_id`,`course_id`),
-  KEY `course_id` (`course_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='任课老师与课程';
+  KEY `course_id` (`course_id`),
+  CONSTRAINT `t_teacher_course_ibfk_1` FOREIGN KEY (`teacher_id`) REFERENCES `t_student` (`id`),
+  CONSTRAINT `t_teacher_course_ibfk_2` FOREIGN KEY (`course_id`) REFERENCES `t_course` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='任课老师与课程';
 
 -- ----------------------------
 -- Records of t_teacher_course
 -- ----------------------------
+INSERT INTO `t_teacher_course` VALUES ('1', '1', '2018-03-07 19:18:23', '0', '0');
+INSERT INTO `t_teacher_course` VALUES ('2', '2', '2018-03-07 19:18:23', '0', '0');

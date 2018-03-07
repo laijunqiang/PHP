@@ -15,13 +15,17 @@
     $assertpassword=$_POST['assertpassword'];
     if ($name==null||$oldPassword==null||$newPassword==null||$assertpassword==null)
         echo "<script>alert('输入不能为空');window.location.href='../html/setPassword.html'</script>";
+    if ($newPassword!=$assertpassword)
+        echo "<script>alert('新密码不相同，请重新输入');window.location.href='../html/setPassword.html'</script>";
     include "class.php";
     $admin=new admin();
+    $oldPassword=md5($oldPassword);
     $query="select id from t_admin where name='$name' and password='$oldPassword'";
     $result=$admin->query($query);
     if ($result->num_rows<1){
         echo "<script>alert('账号密码错误，请重新输入');window.location.href='../html/setPassword.html'</script>";
     }else {
+        $newPassword=md5($newPassword);
         $admin->setPassword($name,$newPassword);
         echo "<script>alert('修改成功');window.location.href='../html/index.html'</script>";
     }
