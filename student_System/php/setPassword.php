@@ -9,7 +9,7 @@
     session_start();
     header("content-type:text/html;charset=utf-8");
 //  $_POST 变量用于收集来自 method="post"的表单中的值
-    $name=$_POST["username"];
+    $name=trim($_POST["username"]);
     $oldPassword=$_POST["oldpassword"];
     $newPassword=$_POST["newpassword"];
     $assertpassword=$_POST['assertpassword'];

@@ -23,12 +23,12 @@ session_start();
 
     //  判断输入不能为空，否则不跳转
     if ($number==null){
-        echo "<script>alert('输入不能为空');window.location.href='../html/main.html'</script>";
+        echo "<script>alert('输入不能为空');window.location.href='main.php'</script>";
     }else {
         $admin->select($number);
         $result = $admin->result;
         if ($result->num_rows<1){
-            echo "<script>alert('查询为空');window.location.href='../html/main.html'</script>";
+            echo "<script>alert('查询为空');window.location.href='main.php'</script>";
         }
         while (list($number, $stuname, $couname, $score) = $result->fetch_row()) {
             echo "<tr>

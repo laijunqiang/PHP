@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(!isset($_SESSION['name'])){
+    echo "<script>alert('您正查看的此页已过期,请重新登录');window.location.href='../html/index.html'</script>";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,10 +11,8 @@
     <title>学生信息</title>
 </head>
 <body>
-<?php
-session_start();
-?>
 <h2 align="center">学生信息管理</h2>
+<!--multipart/form-data:不对字符编码。 在使用包含文件上传控件的表单时，必须使用该值。-->
 <form enctype="multipart/form-data" action="upload.php" method="post">
     <table align="center">
         <tr>

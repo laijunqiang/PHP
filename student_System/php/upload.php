@@ -7,6 +7,8 @@ $mysqli=new mysqli("localhost","root","root","db_student_system");
 
 //判断是否选择了要上传的表格
     if (empty($_POST['myfile'])) {
+        /*history.go() 方法可加载历史列表中的某个具体的页面。
+        该参数可以是数字，使用的是要访问的 URL 在 History 的 URL 列表中的相对位置。（-1上一个页面，1前进一个页面)。*/
         echo "<script>alert(您未选择表格);history.go(-1);</script>";
     }
 
@@ -26,17 +28,18 @@ $mysqli=new mysqli("localhost","root","root","db_student_system");
     }
 
 //判断表格是否上传成功
+//is_uploaded_file() 函数判断指定的文件是否是通过 HTTP POST 上传的。如果 file 所给出的文件是通过 HTTP POST 上传的则返回 TRUE。
     if (is_uploaded_file($_FILES['myfile']['tmp_name'])) {
         require_once 'PHPExcel.php';
         require_once 'PHPExcel/IOFactory.php';
         require_once 'PHPExcel/Reader/Excel5.php';
         //以上三步加载phpExcel的类
-
+//      2003以前的excel读取实例化excel5类，2003以后需要实例化excel2007类
         $objReader = PHPExcel_IOFactory::createReader('Excel5');//use excel2007 for 2007 format
         //接收存在缓存中的excel表格
         $filename = $_FILES['myfile']['tmp_name'];
-        $objPHPExcel = $objReader->load($filename); //$filename可以是上传的表格，或者是指定的表格
-        $sheet = $objPHPExcel->getSheet(0);
+        $objPHPExcel = $objReader->load($filename); //$filename可以是上传的表格，或者是指定的表格。把EXCEL转化为对象
+        $sheet = $objPHPExcel->getSheet(0);//取得excel工作sheet;取文件中的第一个表
         $highestRow = $sheet->getHighestRow(); // 取得总行数
         // $highestColumn = $sheet->getHighestColumn(); // 取得总列数
 

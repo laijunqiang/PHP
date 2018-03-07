@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(!isset($_SESSION['name'])){
+    echo "<script>alert('您正查看的此页已过期,请重新登录');window.location.href='../html/index.html'</script>";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,9 +11,6 @@
     <title>成绩信息</title>
 </head>
 <body>
-<?php
-session_start();
-?>
 <h2 align="center">学生成绩管理</h2>
 <h3 align="center"><a href="../html/scoLuru.html" >录入</a></h3>
 <table border="1" align="center">
