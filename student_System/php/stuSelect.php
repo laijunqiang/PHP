@@ -18,6 +18,11 @@ session_start();
     if ($chaxun==null){
         echo "<script>alert('输入不能为空');window.location.href='student.php'</script>";
     }
+    $admin->stuChaxun($chaxun);
+    $result = $admin->result;
+    if ($result->num_rows<1){
+        echo "<script>alert('查询为空，请重新查询');window.location.href='student.php'</script>";
+    }else{
 ?>
 <table border="1" align="center">
     <tr>
@@ -29,9 +34,7 @@ session_start();
         <td>create_time</td>
         <td>update_time</td>
     </tr>
-<?php
-    $admin->stuChaxun($chaxun);
-    $result = $admin->result;
+    <?php
     while (list($id, $number, $name, $sex, $age, $create_time, $update_time) = $result->fetch_row()) {
         echo "<tr>
             <td>$id</td>
@@ -42,6 +45,7 @@ session_start();
             <td>$create_time</td>
             <td>$update_time</td>
         </tr>";
+    }
     }
 ?>
 </table>

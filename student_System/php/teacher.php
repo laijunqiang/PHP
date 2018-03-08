@@ -39,7 +39,7 @@ if(!isset($_SESSION['name'])){
                 <td>$update_time</td>
                 <td>
                 <a href=\"teaBianji.php?id=$id\" >编辑</a>
-                <a href=\"stuDele.php?id=$id\" >删除</a>
+                <a href=\"teaDele.php?id=$id\" >删除</a>
                 </td>
             </tr>";
     }

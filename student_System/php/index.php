@@ -15,7 +15,7 @@
     if ($name==null||$password==null)
         echo "<script>alert('账号密码不能为空，请重新输入');window.location.href='../html/index.html'</script>";
 //  先查看输入的账号，再根据输入的账号去数据库查密码，最后验证密码是否和mysql里面的密码相匹配
-    $password=md5($password);
+    $password=md5($password); //md5只是做了一个摘抄，只取了数据得一部分。是没有办法解密得，因为他不是对数据进行加密，
     $mysqli=new mysqli("localhost","root","root","db_student_system");
     $query="select id from t_admin where name='$name' and password='$password'";
 //  $mysqli_query()返回一个对象，即使查询为空

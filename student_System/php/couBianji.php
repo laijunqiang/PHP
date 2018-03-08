@@ -1,32 +1,50 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Administrator
- * Date: 2018/1/31
- * Time: 17:15
- */
 include "class.php";
-//  session每次用之前都要启用！
-session_start();
 header("content-type:text/html;charset=utf-8");
+$id=$_GET["id"];
 $admin=new admin();
-//  $_POST 变量用于收集来自 method="post"的表单中的值
-$id=$_POST["id"];
-$number=$_POST["number"];
-$name=$_POST["name"];
-$credit=$_POST["credit"];
-$time=$_POST["time"];
-
-//  判断输入不能为空，否则不跳转
-if ($id==null||$number==null||$name==null||$credit==null||$time==null){
-    echo "<script>alert('输入不能为空');window.location.href='../html/couBianji.html'</script>";
-}else{
-    $admin->couBianji($id,$number,$name,$credit,$time);
-    if ($admin->result!=false){
-//        echo "修改成功";
-        header("location:course.php");
-    }else {
-        echo "修改失败";
-    }
+$admin->couSelect($id);
+while(list($number,$name,$credit,$time)=$admin->result->fetch_row()){
+    $num=$number;
+    $nam=$name;
+    $cre=$credit;
+    $tim=$time;
 }
-
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>课程信息编辑</title>
+</head>
+<body>
+<h2 align="center">课程信息编辑</h2>
+<form action="couBianji2.php" method="post">
+    <table align="center" border="1" >
+        <tr>
+            <td>ID：</td>
+            <td><input type="text" name="id" <?php echo "value='$id'"?> readonly="readonly"/></td>
+        </tr>
+        <tr>
+            <td>课程号(number)：</td>
+            <td><input type="text" name="number" <?php echo "value='$num'"?>/></td>
+        </tr>
+        <tr>
+            <td>课程名(name)：</td>
+            <td><input type="text" name="name" <?php echo "value='$nam'"?>/></td>
+        </tr>
+        <tr>
+            <td>学分(credit)：</td>
+            <td><input type="text" name="credit" <?php echo "value='$cre'"?>/></td>
+        </tr>
+        <tr>
+            <td>开课时间点(time)：</td>
+            <td><input type="text" name="time" <?php echo "value='$tim'"?>/></td>
+        </tr>
+        <tr>
+            <td align="center" colspan="2"><input type="submit" value="修改" /></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

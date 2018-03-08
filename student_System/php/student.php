@@ -54,7 +54,7 @@ if(!isset($_SESSION['name'])){
                 <td>$create_time</td>
                 <td>$update_time</td>
                 <td>
-                <a href=\"../html/stuBianji.html\" >编辑</a>
+                <a href=\"stuBianji.php?id=$id\" >编辑</a>
                 <a href=\"stuDele.php?id=$id\" >删除</a>
                 </td>
             </tr>";

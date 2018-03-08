@@ -41,6 +41,10 @@
             $this->result=$this->mysqli->query($query);
         }
 //        管理学生信息
+        public function stuSelect($id){
+            $query="select number,name,sex,age from t_student where delete_time='0' and id='$id'";
+            $this->result=$this->mysqli->query($query);
+        }
         public function stuLuru($number,$name,$sex,$age){
             $query="insert into t_student(number,name,sex,age,create_time) values('$number','$name','$sex','$age',now())";
             $this->result=$this->mysqli->query($query);
@@ -60,6 +64,10 @@
         }
 
 //        管理课程信息
+        public function couSelect($id){
+            $query="select number,name,credit,time from t_course where delete_time='0' and id='$id'";
+            $this->result=$this->mysqli->query($query);
+        }
         public function couLuru($number,$name,$credit,$time){
             $query="insert into t_course(number,name,credit,time,create_time) values('$number','$name','$credit','$time',now())";
             $this->result=$this->mysqli->query($query);
@@ -98,8 +106,8 @@
             $query="insert into t_teacher(number,password,name,create_time) values('$number','$password','$name',now())";
             $this->result=$this->mysqli->query($query);
         }
-        public function teaBianji($id,$number,$name,$sex,$age){
-            $query="update t_teacher set number='$number',name='$name',sex='$sex',age='$age',update_time=now() where id='$id'";
+        public function teaBianji($id,$number,$password,$name){
+            $query="update t_teacher set number='$number',password='$password',name='$name',update_time=now() where id='$id'";
             $this->result=$this->mysqli->query($query);
         }
         public function teaDele($id){

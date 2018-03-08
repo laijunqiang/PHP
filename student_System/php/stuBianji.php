@@ -1,34 +1,50 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Administrator
- * Date: 2018/1/31
- * Time: 10:09
- */
 include "class.php";
-//  session每次用之前都要启用！
-session_start();
 header("content-type:text/html;charset=utf-8");
+$id=$_GET["id"];
 $admin=new admin();
-//  $_POST 变量用于收集来自 method="post"的表单中的值
-$id=$_POST["id"];
-$number=$_POST["number"];
-$name=$_POST["name"];
-$sex=$_POST["sex"];
-$age=$_POST["age"];
-
-//  判断输入不能为空，否则不跳转
-if ($id==null||$number==null||$name==null||$sex==null||$age==null){
-    echo "<script>alert('输入不能为空');window.location.href='../html/stuBianji.html'</script>";
-}else{
-    $admin->stuBianji($id,$number,$name,$sex,$age);
-    /*针对成功的 SELECT、SHOW、DESCRIBE 或 EXPLAIN 查询，将返回一个 mysqli_result 对象。
-    针对其他成功的查询，将返回 TRUE。如果失败，则返回 FALSE。*/
-    if ($admin->result!=false){
-//        echo "修改成功";
-        header("location:student.php");
-    }else {
-        echo "修改失败";
-    }
+$admin->stuSelect($id);
+while(list($number,$name,$sex,$age)=$admin->result->fetch_row()){
+    $num=$number;
+    $nam=$name;
+    $se=$sex;
+    $ag=$age;
 }
-
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学生信息编辑</title>
+</head>
+<body>
+<h2 align="center">学生信息编辑</h2>
+<form action="stuBianji2.php" method="post">
+    <table align="center" border="1" >
+        <tr>
+            <td>ID：</td>
+            <td><input type="text" name="id" <?php echo "value='$id'"?> readonly="readonly"/></td>
+        </tr>
+        <tr>
+            <td>学号(number)：</td>
+            <td><input type="text" name="number" <?php echo "value='$num'"?>/></td>
+        </tr>
+        <tr>
+            <td>姓名(name)：</td>
+            <td><input type="text" name="name" <?php echo "value='$nam'"?>/></td>
+        </tr>
+        <tr>
+            <td>性别(sex,0表示女,1表示男)：</td>
+            <td><input type="text" name="sex" <?php echo "value='$se'"?>/></td>
+        </tr>
+        <tr>
+            <td>年龄(age)：</td>
+            <td><input type="text" name="age" <?php echo "value='$ag'"?>/></td>
+        </tr>
+        <tr>
+            <td align="center" colspan="2"><input type="submit" value="修改" /></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

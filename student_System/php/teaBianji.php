@@ -18,7 +18,7 @@
 </head>
 <body>
 <h2 align="center">任课老师信息编辑</h2>
-<form action="../php/teaBianji.php" method="post">
+<form action="teaBianji2.php" method="post">
     <table align="center" border="1" >
         <tr>
             <td>ID：</td>
