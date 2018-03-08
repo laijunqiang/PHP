@@ -33,13 +33,21 @@
             $this->result=$this->mysqli->query($sql);
             return $this->result;
         }
+
         //修改密码
-        public function setPassword($name,$password)
+        public function setPassword1($name,$password)
         {
             $this->password=$password;
             $query="update t_admin set password='$password',update_time=now() where name='$name'";
             $this->result=$this->mysqli->query($query);
         }
+        public function setPassword2($name,$password)
+        {
+            $this->password=$password;
+            $query="update t_teacher set password='$password',update_time=now() where number='$name'";
+            $this->result=$this->mysqli->query($query);
+        }
+
 //        管理学生信息
         public function stuSelect($id){
             $query="select number,name,sex,age from t_student where delete_time='0' and id='$id'";

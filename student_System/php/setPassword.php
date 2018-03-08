@@ -20,13 +20,18 @@
     include "class.php";
     $admin=new admin();
     $oldPassword=md5($oldPassword);
-    $query="select id from t_admin where name='$name' and password='$oldPassword'";
-    $result=$admin->query($query);
-    if ($result->num_rows<1){
+    $newPassword=md5($newPassword);
+    $query1="select * from t_admin where name='$name' and password='$oldPassword'";
+    $query2="select * from t_teacher where number='$name' and password='$oldPassword'";
+    $result1=$admin->query($query1);
+    $result2=$admin->query($query2);
+    if ($result1->num_rows<1 && $result2->num_rows<1){
         echo "<script>alert('账号密码错误，请重新输入');window.location.href='../html/setPassword.html'</script>";
-    }else {
-        $newPassword=md5($newPassword);
-        $admin->setPassword($name,$newPassword);
+    }elseif ($result1->num_rows!=0) {
+        $admin->setPassword1($name,$newPassword);
+        echo "<script>alert('修改成功');window.location.href='../html/index.html'</script>";
+    }else{
+        $admin->setPassword2($name,$newPassword);
         echo "<script>alert('修改成功');window.location.href='../html/index.html'</script>";
     }
 //  恢复查询内存
