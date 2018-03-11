@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-03-08 22:15:05
+Date: 2018-03-11 16:16:12
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -91,6 +91,8 @@ INSERT INTO `t_score` VALUES ('3', '1', '90.5', '2018-02-01 11:15:50', '0', '0')
 INSERT INTO `t_score` VALUES ('3', '3', '95', '2018-01-29 17:04:36', '0', '0');
 INSERT INTO `t_score` VALUES ('8', '1', '59', '2018-02-01 11:16:30', '0', '0');
 INSERT INTO `t_score` VALUES ('15', '1', '90.5', '2018-03-08 22:12:51', '0', '0');
+INSERT INTO `t_score` VALUES ('16', '1', '50', '2018-03-11 16:14:14', '0', '0');
+INSERT INTO `t_score` VALUES ('19', '2', '100', '2018-03-11 16:14:49', '0', '0');
 
 -- ----------------------------
 -- Table structure for t_student

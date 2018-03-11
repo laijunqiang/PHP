@@ -33,6 +33,7 @@
         $_SESSION['name']=$name;
         header("location:main.php");
     }else{
+        $_SESSION['name']=$name;
         echo "<script>window.location.href='teacher_course.php?name=$name'</script>";
     }
 
