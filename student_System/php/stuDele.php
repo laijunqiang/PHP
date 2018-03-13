@@ -11,7 +11,7 @@ session_start();
 header("content-type:text/html;charset=utf-8");
 $admin=new admin();
 //  $_POST 变量用于收集来自 method="post"的表单中的值
-$id=$_GET["id"];
+$id=$_GET['id'];
 
 $admin->stuDele($id);
     if ($admin->result!=false){

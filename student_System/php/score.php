@@ -24,7 +24,7 @@ if(!isset($_SESSION['name'])){
     <?php
     $mysqli=new mysqli("localhost","root","root","db_student_system");
     !mysqli_connect_error() or die("连接失败！");
-    $query="select student_id,course_id,score,create_time,update_time from t_score where delete_time=0";
+    $query="select student_id,course_id,score,create_time,update_time from t_score where delete_time='0'order by student_id desc";
     $result=$mysqli->query($query);
     while(list($student_id,$course_id,$score,$create_time,$update_time)=$result->fetch_row())
     {

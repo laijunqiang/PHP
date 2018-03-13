@@ -26,7 +26,7 @@ if(!isset($_SESSION['name'])){
     <?php
     $mysqli=new mysqli("localhost","root","root","db_student_system");
     !mysqli_connect_error() or die("连接失败！");
-    $query="select id,number,password,name,create_time,update_time from t_teacher where delete_time='0'";
+    $query="select id,number,password,name,create_time,update_time from t_teacher where delete_time='0'order by id desc";
     $result=$mysqli->query($query);
     while(list($id,$number,$password,$name,$create_time,$update_time)=$result->fetch_row())
     {
@@ -39,7 +39,7 @@ if(!isset($_SESSION['name'])){
                 <td>$update_time</td>
                 <td>
                 <a href=\"teaBianji.php?id=$id\" >编辑</a>
-                <a href=\"teaDele.php?id=$id\" >删除</a>
+                <a href=teaDele.php?id=$id onclick=\"if (confirm('确实要删除数据吗？')) return true; else return false;\">删除 </a>
                 </td>
             </tr>";
     }

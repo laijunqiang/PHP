@@ -31,7 +31,7 @@ if(!isset($_SESSION['name'])){
     </tr>
     <?php
     $mysqli=new mysqli("localhost","root","root","db_student_system");
-    $query="select id,number,name,credit,time,create_time,update_time from t_course where delete_time=0";
+    $query="select id,number,name,credit,time,create_time,update_time from t_course where delete_time='0'order by id desc ";
     $result=$mysqli->query($query);
     while(list($id,$number,$name,$credit,$time,$create_time,$update_time)=$result->fetch_row())
     {
@@ -45,7 +45,7 @@ if(!isset($_SESSION['name'])){
                 <td>$update_time</td>
                 <td>
                 <a href=\"couBianji.php?id=$id\" >编辑</a>
-                <a href=\"couDele.php?id=$id\" >删除</a>
+                <a href=couDele.php?id=$id onclick=\"if (confirm('确实要删除数据吗？')) return true; else return false;\">删除 </a>
                 </td>
             </tr>";
     }
