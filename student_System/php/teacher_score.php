@@ -27,7 +27,7 @@ $id1=$_GET['id'];
     <?php
     $mysqli=new mysqli("localhost","root","root","db_student_system");
     !mysqli_connect_error() or die("连接失败！");
-    $query="select t_student.id,t_student.name,t_course.id,t_course.name,t_score.score from t_student,t_course,t_score where t_student.id=t_score.student_id and t_course.id=t_score.course_id and t_student.delete_time='0' and t_course.delete_time='0' and t_score.course_id='$id1'";
+    $query="select t_student.id,t_student.name,t_course.id,t_course.name,t_score.score from t_student,t_course,t_score where t_student.id=t_score.student_id and t_course.id=t_score.course_id and t_student.delete_time='0' and t_course.delete_time='0' and t_score.course_id='$id1'order by t_score.create_time desc";
     $result=$mysqli->query($query);
     while(list($student_id,$student_name,$course_id,$course,$score)=$result->fetch_row())
     {
