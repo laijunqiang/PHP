@@ -12,15 +12,16 @@
         <table align="center">
             <tr>
                 <td>账号：</td>
-                <td><input type="text" name="usern" /></td>
+                <!--placeholder 属性提供可描述输入字段预期值的提示信息（hint）。
+                该提示会在输入字段为空时显示，并会在字段获得焦点时消失。-->
+                <td><input type="text" name="usern" placeholder="请输入您的账号"  /></td>
             </tr>
             <tr>
                 <td>密码：</td>
-                <td><input type="password" name="passw" /></td>
+                <td><input type="password" name="passw" placeholder="请输入您的密码" /></td>
             </tr>
-            <tr>
-                <td><input type="submit" value="登陆" /></td>
-                <td><a href="setPassword.html"><input type="button" value="忘记密码" name="set"/></a> </td>
+            <tr align="center">
+                <td colspan="2"><input type="submit" value="登陆" style="width:100%;"/></td>
             </tr>
         </table>
     </form>

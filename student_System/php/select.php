@@ -24,7 +24,9 @@ session_start();
     //  判断输入不能为空，否则不跳转
     if ($number==null){
         echo "<script>alert('输入不能为空');window.location.href='main.php'</script>";
-    }else {
+    }elseif (strlen($number)>13){
+        echo "<script>alert('所要查询的学号不能超过13位，请重新输入');window.location.href='main.php'</script>";
+    } else {
         $admin->select($number);
         $result = $admin->result;
         if ($result->num_rows<1){

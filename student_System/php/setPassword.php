@@ -13,10 +13,10 @@
     $oldPassword=$_POST["oldpassword"];
     $newPassword=$_POST["newpassword"];
     $assertpassword=$_POST['assertpassword'];
-    if ($name==null||$oldPassword==null||$newPassword==null||$assertpassword==null)
-        echo "<script>alert('输入不能为空');window.location.href='../html/setPassword.html'</script>";
+    if ($oldPassword==null||$newPassword==null||$assertpassword==null)
+        echo "<script>alert('输入不能为空');window.location.href='setPassw.php'</script>";
     if ($newPassword!=$assertpassword)
-        echo "<script>alert('新密码不相同，请重新输入');window.location.href='../html/setPassword.html'</script>";
+        echo "<script>alert('新密码不相同，请重新输入');window.location.href='setPassw.php'</script>";
     include "class.php";
     $admin=new admin();
     $oldPassword=md5($oldPassword);
@@ -26,13 +26,13 @@
     $result1=$admin->query($query1);
     $result2=$admin->query($query2);
     if ($result1->num_rows<1 && $result2->num_rows<1){
-        echo "<script>alert('账号密码错误，请重新输入');window.location.href='../html/setPassword.html'</script>";
+        echo "<script>alert('账号密码错误，请重新输入');window.location.href='setPassw.php'</script>";
     }elseif ($result1->num_rows!=0) {
         $admin->setPassword1($name,$newPassword);
-        echo "<script>alert('修改成功');window.location.href='../html/index.html'</script>";
+        echo "<script>alert('修改成功');window.location.href='main.php'</script>";
     }else{
         $admin->setPassword2($name,$newPassword);
-        echo "<script>alert('修改成功');window.location.href='../html/index.html'</script>";
+        echo "<script>alert('修改成功');window.location.href='main.php'</script>";
     }
 //  恢复查询内存
     $result->free();
