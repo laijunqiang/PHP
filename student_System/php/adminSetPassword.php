@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['name'])){
-    echo "<script>alert('您正查看的此页已过期,请重新登录');window.location.href='../html/index.html'</script>";
+    echo "<script>alert('您正查看的此页已过期,请重新登录');window.location.href='../index.html'</script>";
 }
 $name=$_SESSION['name'];
 ?>
@@ -13,23 +13,23 @@ $name=$_SESSION['name'];
 </head>
 <body>
     <h2 align="center">学生管理系统</h2>
-    <form action="setPassword.php" method="post" >
+    <form action="adminPassword.php" method="post" >
         <table align="center">
             <tr>
                 <td>用户名：</td>
-                <td><input type="text" name="username" <?php echo "value='$name'"?> readonly="readonly"/></td>
+                <td><input type="text" name="userName" <?php echo "value='$name'"?> readonly="readonly"/></td>
             </tr>
             <tr>
                 <td>旧密码：</td>
-                <td><input type="password" name="oldpassword" placeholder="请输入您的旧密码"/></td>
+                <td><input type="password" name="oldPassword" placeholder="请输入您的旧密码"/></td>
             </tr>
             <tr>
                 <td>新密码：</td>
-                <td><input type="password" name="newpassword"  placeholder="请输入您的新密码"//></td>
+                <td><input type="password" name="newPassword"  placeholder="请输入您的新密码"//></td>
             </tr>
             <tr>
                 <td>确认新密码：</td>
-                <td><input type="password" name="assertpassword" placeholder="请重新输入您的新密码" /></td>
+                <td><input type="password" name="assertPassword" placeholder="请重新输入您的新密码" /></td>
             </tr>
             <tr align="center">
                 <td><input type="submit"  value="修改密码"></td>

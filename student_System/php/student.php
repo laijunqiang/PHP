@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['name'])){
-    echo "<script>alert('您正查看的此页已过期,请重新登录');window.location.href='../html/index.html'</script>";
+    echo "<script>alert('您正查看的此页已过期,请重新登录');window.location.href='../index.html'</script>";
 }
 ?>
 <!DOCTYPE html>
@@ -23,7 +23,7 @@ if(!isset($_SESSION['name'])){
     </table>
 </form>
 <h3 align="center">
-    <a href="../html/stuLuru.html" >录入</a>
+    <a href="../html/studentInput.html" >录入</a>
 </h3>
 <div align="center">
     <form action="stuSelect.php" method="post">
@@ -42,10 +42,10 @@ if(!isset($_SESSION['name'])){
         <td>管理</td>
     </tr>
     <?php
-    $mysqli=new mysqli("localhost","root","root","db_student_system");
-    !mysqli_connect_error() or die("连接失败！");
-    $query="select id,number,name,sex,age,create_time,update_time from t_student where delete_time='0' order by id desc ";
-    $result=$mysqli->query($query);
+    include "class.php";
+    $sql=new Sql();
+    $sql->studentSelect();
+    $result=$sql->result;
     while(list($id,$number,$name,$sex,$age,$create_time,$update_time)=$result->fetch_row())
     {
         echo "<tr>

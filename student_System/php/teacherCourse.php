@@ -7,7 +7,7 @@
  */
 session_start();
 if(!isset($_SESSION['name'])){
-    echo "<script>alert('您正查看的此页已过期,请重新登录');window.location.href='../html/index.html'</script>";
+    echo "<script>alert('您正查看的此页已过期,请重新登录');window.location.href='../index.html'</script>";
 }
 ?>
 <!DOCTYPE html>
@@ -23,7 +23,7 @@ if(!isset($_SESSION['name'])){
     $query="select t_course.id,t_course.number,t_course.name,t_course.credit,t_course.time,t_teacher.name from t_course,t_teacher,t_teacher_course where t_teacher.id=t_teacher_course.teacher_id and t_course.id=t_teacher_course.course_id and t_teacher.delete_time='0' and t_course.delete_time='0' and t_teacher.number='$number1'";
     $result=$mysqli->query($query);
     if ($result->num_rows<1){
-        echo "<script>alert('没有该教师教导的课程');window.location.href='../html/index.html'</script>";
+        echo "<script>alert('没有该教师教导的课程');window.location.href='../index.html'</script>";
     }else {
         echo "<h2 align=\"center\">教导课程信息管理</h2>
                     <table border=\"1\" align=\"center\">

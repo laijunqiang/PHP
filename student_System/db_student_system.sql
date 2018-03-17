@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-03-17 12:36:26
+Date: 2018-03-17 17:51:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -32,7 +32,7 @@ CREATE TABLE `t_admin` (
 -- ----------------------------
 -- Records of t_admin
 -- ----------------------------
-INSERT INTO `t_admin` VALUES ('1', '张老师', '202cb962ac59075b964b07152d234b70', '2018-01-29 16:30:38', '2018-03-08 19:50:44');
+INSERT INTO `t_admin` VALUES ('1', '张老师', '202cb962ac59075b964b07152d234b70', '2018-01-29 16:30:38', '2018-03-17 16:01:02');
 INSERT INTO `t_admin` VALUES ('2', '李老师', 'c20ad4d76fe97759aa27a0c99bff6710', '2018-01-29 16:30:38', '2018-03-07 18:26:37');
 INSERT INTO `t_admin` VALUES ('3', '林老师', '81dc9bdb52d04dc20036dbd8313ed055', '2018-01-29 16:30:38', '2018-03-07 18:22:57');
 
@@ -91,7 +91,7 @@ INSERT INTO `t_score` VALUES ('3', '3', '95', '2018-01-29 17:04:36');
 INSERT INTO `t_score` VALUES ('8', '1', '59', '2018-02-01 11:16:30');
 INSERT INTO `t_score` VALUES ('15', '1', '90.5', '2018-03-08 22:12:51');
 INSERT INTO `t_score` VALUES ('16', '1', '50', '2018-03-11 16:14:14');
-INSERT INTO `t_score` VALUES ('19', '2', '100', '2018-03-11 16:14:49');
+INSERT INTO `t_score` VALUES ('19', '2', '1', '2018-03-11 16:14:49');
 
 -- ----------------------------
 -- Table structure for t_student
@@ -99,7 +99,7 @@ INSERT INTO `t_score` VALUES ('19', '2', '100', '2018-03-11 16:14:49');
 DROP TABLE IF EXISTS `t_student`;
 CREATE TABLE `t_student` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键',
-  `number` char(20) NOT NULL COMMENT '学号',
+  `number` char(18) NOT NULL COMMENT '学号',
   `name` char(20) NOT NULL COMMENT '姓名',
   `sex` tinyint(4) NOT NULL COMMENT '性别,0表示女,1表示男',
   `age` char(10) NOT NULL COMMENT '出生年月',
@@ -179,3 +179,9 @@ CREATE TABLE `t_teacher_course` (
 -- ----------------------------
 INSERT INTO `t_teacher_course` VALUES ('1', '1', '2018-03-16 22:10:19', '0', '0', '0');
 INSERT INTO `t_teacher_course` VALUES ('1', '2', '2018-03-16 22:10:32', '0', '0', '0');
+
+-- ----------------------------
+-- View structure for v_score
+-- ----------------------------
+DROP VIEW IF EXISTS `v_score`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_score` AS select `t_student`.`number` AS `number`,`t_student`.`name` AS `name`,`t_course`.`name` AS `course`,`t_score`.`score` AS `score` from ((`t_student` join `t_course`) join `t_score`) where ((`t_student`.`id` = `t_score`.`student_id`) and (`t_course`.`id` = `t_score`.`course_id`)) ;

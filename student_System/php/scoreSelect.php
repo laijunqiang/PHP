@@ -8,6 +8,7 @@
 <?php
 session_start();
 ?>
+<h2 align="center">学生学习成绩信息</h2>
 <table border="1" align="center">
     <tr>
         <td>学生学号</td>
@@ -17,31 +18,35 @@ session_start();
     </tr>
     <?php
     include "class.php";
-    $admin=new admin();
+    $sql=new Sql();
     //  $_POST 变量用于收集来自 method="post"的表单中的值
     $number=$_POST["number"];
 
     //  判断输入不能为空，否则不跳转
     if ($number==null){
         echo "<script>alert('输入不能为空');window.location.href='main.php'</script>";
-    }elseif (strlen($number)>13){
-        echo "<script>alert('所要查询的学号不能超过13位，请重新输入');window.location.href='main.php'</script>";
+    }elseif (strlen($number)>18){
+        echo "<script>alert('所要查询的学号不能超过18位，请重新输入');window.location.href='main.php'</script>";
     } else {
-        $admin->select($number);
-        $result = $admin->result;
+        $sql->select($number);
+        $result = $sql->result;
         if ($result->num_rows<1){
             echo "<script>alert('查询为空');window.location.href='main.php'</script>";
         }
-        while (list($number, $stuname, $couname, $score) = $result->fetch_row()) {
+        while (list($number, $name, $course, $score) = $result->fetch_row()) {
             echo "<tr>
                <td>$number</td>
-               <td>$stuname</td>
-               <td>$couname</td>
+               <td>$name</td>
+               <td>$course</td>
                <td>$score</td>
                </tr>";
         }
     }
     ?>
 </table>
+<br />
+<div align="center">
+    <a href="main.php"><input type="button" value="返回主功能页面"/></a>
+</div>
 </body>
 </html>
