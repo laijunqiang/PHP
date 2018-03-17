@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-03-16 22:28:36
+Date: 2018-03-17 12:36:26
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -108,7 +108,7 @@ CREATE TABLE `t_student` (
   `delete_time` char(20) NOT NULL DEFAULT '0' COMMENT '删除记录时间',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态，0表示未删除，1表示已删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8 COMMENT='学生';
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 COMMENT='学生';
 
 -- ----------------------------
 -- Records of t_student
@@ -146,15 +146,16 @@ CREATE TABLE `t_teacher` (
   `create_time` char(20) NOT NULL DEFAULT '0' COMMENT '创建记录时间',
   `update_time` char(20) NOT NULL DEFAULT '0' COMMENT '修改记录时间',
   `delete_time` char(20) NOT NULL DEFAULT '0' COMMENT '删除记录时间',
+  `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态，0表示未删除，1表示已删除',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='任课老师';
 
 -- ----------------------------
 -- Records of t_teacher
 -- ----------------------------
-INSERT INTO `t_teacher` VALUES ('1', 'A001', '81dc9bdb52d04dc20036dbd8313ed055', '纠结', '2018-03-07 19:14:11', '2018-03-08 19:51:12', '0');
-INSERT INTO `t_teacher` VALUES ('2', 'A002', '81dc9bdb52d04dc20036dbd8313ed055', '纠结2', '2018-03-07 19:14:34', '2018-03-07 23:26:54', '2018-03-07 23:30:23');
-INSERT INTO `t_teacher` VALUES ('3', 'A003', '81dc9bdb52d04dc20036dbd8313ed055', '纠结3', '2018-03-07 20:06:20', '0', '0');
+INSERT INTO `t_teacher` VALUES ('1', 'A001', '81dc9bdb52d04dc20036dbd8313ed055', '纠结', '2018-03-07 19:14:11', '2018-03-08 19:51:12', '0', '0');
+INSERT INTO `t_teacher` VALUES ('2', 'A002', '81dc9bdb52d04dc20036dbd8313ed055', '纠结2', '2018-03-07 19:14:34', '2018-03-07 23:26:54', '0', '0');
+INSERT INTO `t_teacher` VALUES ('3', 'A003', '81dc9bdb52d04dc20036dbd8313ed055', '纠结3', '2018-03-07 20:06:20', '0', '0', '0');
 
 -- ----------------------------
 -- Table structure for t_teacher_course
@@ -166,6 +167,7 @@ CREATE TABLE `t_teacher_course` (
   `create_time` char(20) NOT NULL DEFAULT '0' COMMENT '创建记录时间',
   `update_time` char(20) NOT NULL DEFAULT '0' COMMENT '修改记录时间',
   `delete_time` char(20) NOT NULL DEFAULT '0' COMMENT '修改记录时间',
+  `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态，0表示未删除，1表示已删除',
   PRIMARY KEY (`teacher_id`,`course_id`),
   UNIQUE KEY `course_id` (`course_id`) USING BTREE,
   CONSTRAINT `t_teacher_course_ibfk_1` FOREIGN KEY (`teacher_id`) REFERENCES `t_teacher` (`id`),
@@ -175,5 +177,5 @@ CREATE TABLE `t_teacher_course` (
 -- ----------------------------
 -- Records of t_teacher_course
 -- ----------------------------
-INSERT INTO `t_teacher_course` VALUES ('1', '1', '2018-03-16 22:10:19', '0', '0');
-INSERT INTO `t_teacher_course` VALUES ('1', '2', '2018-03-16 22:10:32', '0', '0');
+INSERT INTO `t_teacher_course` VALUES ('1', '1', '2018-03-16 22:10:19', '0', '0', '0');
+INSERT INTO `t_teacher_course` VALUES ('1', '2', '2018-03-16 22:10:32', '0', '0', '0');
