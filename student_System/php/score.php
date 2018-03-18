@@ -12,31 +12,37 @@ if(!isset($_SESSION['name'])){
 </head>
 <body>
 <h2 align="center">学生成绩管理</h2>
-<h3 align="center"><a href="../html/scoLuru.html" >录入</a></h3>
+<h3 align="center"><a href="../html/scoreInput.html" >录入</a></h3>
 <table border="1" align="center">
     <tr>
-        <td>student_id</td>
-        <td>course_id</td>
-        <td>score</td>
-        <td>create_time</td>
-        <td>update_time</td>
+        <td>学号</td>
+        <td>姓名</td>
+        <td>课程号</td>
+        <td>课程名</td>
+        <td>成绩</td>
+        <td>创建时间</td>
     </tr>
     <?php
-    $mysqli=new mysqli("localhost","root","root","db_student_system");
-    !mysqli_connect_error() or die("连接失败！");
-    $query="select student_id,course_id,score,create_time,update_time from t_score where delete_time='0'order by create_time desc";
-    $result=$mysqli->query($query);
-    while(list($student_id,$course_id,$score,$create_time,$update_time)=$result->fetch_row())
+    include "class.php";
+    $sql=new Sql();
+    $sql->scoreSelect();
+    $result=$sql->result;
+    while(list($studentNumber,$studentName,$courseNumber,$courseName,$score,$create_time)=$result->fetch_row())
     {
         echo "<tr>
-                <td>$student_id</td>
-                <td>$course_id</td>
+                <td>$studentNumber</td>
+                <td>$studentName</td>
+                <td>$courseNumber</td>
+                <td>$courseName</td>
                 <td>$score</td>
                 <td>$create_time</td>
-                <td>$update_time</td>
             </tr>";
     }
     ?>
 </table>
+<br />
+<div align="center">
+    <a href="main.php"><input type="button" value="返回主功能页面"/></a>
+</div>
 </body>
 </html>

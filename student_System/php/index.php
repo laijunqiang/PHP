@@ -33,7 +33,7 @@
     要取得被 INSERT，UPDATE 或者 DELETE 查询所影响到的行的数目，用mysql_affected_rows()。*/
     if ($adminResult->num_rows<1 && $teacherResult->num_rows<1){
         echo "<script>alert('账号密码错误，请重新输入');window.location.href='../index.html'</script>";
-    }elseif ($adminResult->num_rows!=0){
+    }elseif ($adminResult->num_rows==1){
         $_SESSION['name']=$name;
         header("location:main.php");
     }else{

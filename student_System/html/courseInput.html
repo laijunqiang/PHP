@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>课程信息录入</title>
+</head>
+<body>
+<h2 align="center">课程信息录入</h2>
+<form action="../php/courseInput.php" method="post">
+    <table align="center">
+        <tr>
+            <td>课程号：</td>
+            <td><input type="text" name="number" placeholder="请输入需要录入的课程号"/></td>
+        </tr>
+        <tr>
+            <td>课程名：</td>
+            <td><input type="text" name="name" placeholder="请输入需要录入的课程名"/></td>
+        </tr>
+        <tr>
+            <td>学分：</td>
+            <td>
+                <select name="credit">
+                    <option value="">请选择</option>
+                    <option value="1.0">1.0</option>
+                    <option value="1.5">1.5</option>
+                    <option value="2.0">2.0</option>
+                    <option value="2.5">2.5</option>
+                    <option value="3.0">3.0</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>开课时间：</td>
+            <td><input type="datetime-local" name="time"/></td>
+        </tr>
+        <tr>
+            <td align="center" colspan="2"><input type="submit" value="录入" /><a href="/php/course.php"><input type="button" value="返回"/></a></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

@@ -12,22 +12,22 @@ if(!isset($_SESSION['name'])){
 </head>
 <body>
 <h2 align="center">任课老师信息管理</h2>
-<h3 align="center"><a href="../html/teaLuru.html" >录入</a></h3>
+<h3 align="center"><a href="../html/teacherInput.html" >录入</a></h3>
 <table border="1" align="center">
     <tr>
-        <td>id</td>
-        <td>number</td>
-        <td>password</td>
-        <td>name</td>
-        <td>create_time</td>
-        <td>update_time</td>
+        <td>ID</td>
+        <td>账号</td>
+        <td>密码</td>
+        <td>姓名</td>
+        <td>创建时间</td>
+        <td>更改时间</td>
         <td>管理</td>
     </tr>
     <?php
-    $mysqli=new mysqli("localhost","root","root","db_student_system");
-    !mysqli_connect_error() or die("连接失败！");
-    $query="select id,number,password,name,create_time,update_time from t_teacher where delete_time='0'order by id desc";
-    $result=$mysqli->query($query);
+    include "class.php";
+    $sql=new Sql();
+    $sql->teacherSelect();
+    $result=$sql->result;
     while(list($id,$number,$password,$name,$create_time,$update_time)=$result->fetch_row())
     {
         echo "<tr>
@@ -38,12 +38,16 @@ if(!isset($_SESSION['name'])){
                 <td>$create_time</td>
                 <td>$update_time</td>
                 <td>
-                <a href=\"teaBianji.php?id=$id\" >编辑</a>
-                <a href=teaDele.php?id=$id onclick=\"if (confirm('确实要删除数据吗？')) return true; else return false;\">删除 </a>
+                <a href=\"teacherEditPage.php?id=$id\" >编辑</a>
+                <a href=teacherDelete.php?id=$id onclick=\"if (confirm('确实要删除数据吗？')) return true; else return false;\">删除 </a>
                 </td>
             </tr>";
     }
     ?>
 </table>
+<br />
+<div align="center">
+    <a href="main.php"><input type="button" value="返回主功能页面"/></a>
+</div>
 </body>
 </html>

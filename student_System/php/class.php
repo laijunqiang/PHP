@@ -61,8 +61,16 @@
         }
 
 //        管理学生信息
+        public  function studentSelectId($name){
+            $query="select id from t_student where name='$name' and status=0";
+            $this->result=$this->mysqli->query($query);
+        }
         public function studentSelect(){
             $query="select id,number,name,sex,age,create_time,update_time from t_student where status=0 order by id desc ";
+            $this->result=$this->mysqli->query($query);
+        }
+        public function studentId($id){
+            $query="select number,name,sex,age from t_student where status=0 and id='$id'";
             $this->result=$this->mysqli->query($query);
         }
         public function studentInput($number,$name,$sex,$age){
@@ -74,18 +82,43 @@
             $this->result=$this->mysqli->query($query);
         }
         public function studentDelete($id){
-            $query="update t_student set delete_time=now() where id='$id'";
+            $query="update t_student set delete_time=now(),status=1 where id='$id'";
             $this->result=$this->mysqli->query($query);
         }
 //        不区分大小写，like
-        public function studentQuery($chaxun){
-            $query="select id,number,name,sex,age,create_time,update_time from t_student where (number like '%$chaxun%'or name like '%$chaxun%') and delete_time='0'";
+        public function studentQuery($query){
+            $query="select id,number,name,sex,age,create_time,update_time from t_student where (number like '%$query%'or name like '%$query%') and status=0";
             $this->result=$this->mysqli->query($query);
         }
+        //学生性别转换，1表示男，0表示女
+        public function sexChange($sex){
+            if ($sex==1){
+                return $sex='男';
+            }else{
+                return $sex='女';
+            }
+        }
+        //年龄转换，当前年份-出生年份
+        public function ageChange($age)
+        {
+            $age = substr($age, 0, 4);
+            $date = date('Y');
+            $age = $date - $age;
+            return $age;
+        }
+
 
 //        管理课程信息
-        public function courseSelect($id){
-            $query="select number,name,credit,time from t_course where delete_time='0' and id='$id'";
+        public  function courseSelectId($name){
+            $query="select id from t_course where name='$name' and status=0";
+            $this->result=$this->mysqli->query($query);
+        }
+        public function courseSelect(){
+            $query="select id,number,name,credit,time,create_time,update_time from t_course where status=0 order by id desc";
+            $this->result=$this->mysqli->query($query);
+        }
+        public function courseId($id){
+            $query="select number,name,credit,time from t_course where status=0 and id='$id'";
             $this->result=$this->mysqli->query($query);
         }
         public function courseInput($number,$name,$credit,$time){
@@ -97,15 +130,19 @@
             $this->result=$this->mysqli->query($query);
         }
         public function courseDelete($id){
-            $query="update t_course set delete_time=now() where id='$id'";
+            $query="update t_course set delete_time=now(),status=1 where id='$id'";
             $this->result=$this->mysqli->query($query);
         }
-        public function courseQuery($chaxun){
-            $query="select id,number,name,credit,time,create_time,update_time from t_course where (number like '%$chaxun%' or name like '%$chaxun%') and delete_time='0'";
+        public function courseQuery($query){
+            $query="select id,number,name,credit,time,create_time,update_time from t_course where (number like '%$query%' or name like '%$query%') and status=0";
             $this->result=$this->mysqli->query($query);
         }
 
 //        管理成绩信息
+        public function scoreSelect(){
+            $query="select * from v_score_second";
+            $this->result=$this->mysqli->query($query);
+        }
         public function scoreInput($student_id,$course_id,$score){
             $query="insert into t_score(student_id,course_id,score,create_time) values('$student_id','$course_id','$score',now())";
             $this->result=$this->mysqli->query($query);
@@ -118,8 +155,12 @@
         }
 
 //        管理任课老师信息
-        public function teacherSelect($id){
-            $query="select number,password,name from t_teacher where delete_time='0' and id='$id'";
+        public function teacherSelect(){
+            $query="select id,number,password,name,create_time,update_time from t_teacher where status=0 order by id desc ";
+            $this->result=$this->mysqli->query($query);
+        }
+        public function teacherID($id){
+            $query="select number,password,name from t_teacher where status=0 and id='$id'";
             $this->result=$this->mysqli->query($query);
         }
         public function teacherInput($number,$password,$name){
@@ -131,7 +172,11 @@
             $this->result=$this->mysqli->query($query);
         }
         public function teacherDelete($id){
-            $query="update t_teacher set delete_time=now() where id='$id'";
+            $query="update t_teacher set delete_time=now(),status=1 where id='$id'";
+            $this->result=$this->mysqli->query($query);
+        }
+        public function teacherCourse($number){
+            $query="select * from v_teacher_course where 任课老师账号='$number'";
             $this->result=$this->mysqli->query($query);
         }
     }

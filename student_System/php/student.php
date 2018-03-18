@@ -26,8 +26,8 @@ if(!isset($_SESSION['name'])){
     <a href="../html/studentInput.html" >录入</a>
 </h3>
 <div align="center">
-    <form action="stuSelect.php" method="post">
-        <input type="text" name="chaxun" size="25" placeholder="请输入您要查询的学号或姓名"/><button type="submit" >查询</button>
+    <form action="studentQuery.php" method="post">
+        <input type="text" name="query" size="25" placeholder="请输入您要查询的学号或姓名"/><button type="submit" >查询</button>
     </form>
 </div>
 <table border="1" align="center">
@@ -48,6 +48,8 @@ if(!isset($_SESSION['name'])){
     $result=$sql->result;
     while(list($id,$number,$name,$sex,$age,$create_time,$update_time)=$result->fetch_row())
     {
+        $sex=$sql->sexChange($sex);
+        $age=$sql->ageChange($age);
         echo "<tr>
                 <td>$id</td>
                 <td>$number</td>
@@ -57,8 +59,8 @@ if(!isset($_SESSION['name'])){
                 <td>$create_time</td>
                 <td>$update_time</td>
                 <td>
-                <a href='stuBianji.php?id=$id' >编辑</a>
-                <a href=stuDele.php?id=$id onclick=\"if (confirm('确实要删除数据吗？')) return true; else return false;\">删除 </a>
+                <a href='studentEditPage.php?id=$id' >编辑</a>
+                <a href=studentDelete.php?id=$id onclick=\"if (confirm('确实要删除数据吗？')) return true; else return false;\">删除 </a>
                 </td>
             </tr>";
     }
