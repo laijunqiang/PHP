@@ -17,7 +17,7 @@ $number=$_SESSION['name'];
     <table align="center">
         <tr>
             <td>账号：</td>
-            <td><input type="text" name="userName" <?php echo "value='$number'"?> readonly="readonly"/></td>
+            <td><input type="text" name="number" <?php echo "value='$number'"?> readonly="readonly"/></td>
         </tr>
         <tr>
             <td>旧密码：</td>

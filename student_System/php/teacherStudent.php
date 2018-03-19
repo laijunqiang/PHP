@@ -14,21 +14,23 @@ if(!isset($_SESSION['name'])){
 <h2 align="center">选课学生信息</h2>
 <table border="1" align="center">
     <tr>
-        <td>id</td>
-        <td>number</td>
-        <td>name</td>
-        <td>sex</td>
-        <td>age</td>
-        <td>course</td>
+        <td>学生ID</td>
+        <td>学号</td>
+        <td>姓名</td>
+        <td>性别</td>
+        <td>年龄</td>
+        <td>课程</td>
     </tr>
     <?php
-    $id1=$_GET['id'];
-    $mysqli=new mysqli("localhost","root","root","db_student_system");
-    !mysqli_connect_error() or die("连接失败！");
-    $query="select t_student.id,t_student.number,t_student.name,t_student.sex,t_student.age,t_course.name from t_student,t_course,t_score where t_student.id=t_score.student_id and t_course.id=t_score.course_id and t_student.delete_time='0' and t_course.delete_time='0' and t_score.course_id='$id1'";
-    $result=$mysqli->query($query);
+    $name=$_GET['name'];
+    include "class.php";
+    $sql=new Sql();
+    $sql->studentCourse($name);
+    $result=$sql->result;
     while(list($id,$number,$name,$sex,$age,$course)=$result->fetch_row())
     {
+        $sex=$sql->sexChange($sex);
+        $age=$sql->ageChange($age);
         echo "<tr>
                 <td>$id</td>
                 <td>$number</td>
@@ -40,5 +42,9 @@ if(!isset($_SESSION['name'])){
     }
     ?>
 </table>
+<br />
+<div align="center">
+    <a href="teacherCourse.php"><input type="button" value="返回"/></a>
+</div>
 </body>
 </html>

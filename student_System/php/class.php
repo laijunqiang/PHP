@@ -16,7 +16,7 @@
     $query="insert into t_score(student_id,course_id,score,create_time) values(1,1,85.5,now()),(2,1,90.5,now()),(3,3,95,now())";
     $result=$mysqli->query($query);*/
 
-
+date_default_timezone_set("PRC");
 //  admin类
     class Sql
     {
@@ -177,6 +177,29 @@
         }
         public function teacherCourse($number){
             $query="select * from v_teacher_course where 任课老师账号='$number'";
+            $this->result=$this->mysqli->query($query);
+        }
+        public function studentCourse($name){
+            $query="select * from v_student where 课程='$name'";
+            $this->result=$this->mysqli->query($query);
+        }
+        public function studentScore($name){
+            $query="select * from v_score_second where 课程名='$name'";
+            $this->result=$this->mysqli->query($query);
+        }
+
+        //学号算法
+        public function number($sex,$age){
+        //date('Y') +性别+出生年月+5位随机数
+        /*  mt_rand(1, 99999) 随机取个1~99999之间的数
+            str_pad(param1, param2, param3, param4）
+            param1是要改变的值，param2是要想定param1位数，param3是如果param1位数不够param2位要补充的数，param4是在左边补还是右边补还是左右两侧*/
+            $number = date('Y') .$sex.$age. str_pad(mt_rand(1, 99999), 5, '0', STR_PAD_LEFT);
+            return $number;
+        }
+        //剩下课程
+        public function teacherSeleteCourse(){
+            $query="select name from v_remaining_course";
             $this->result=$this->mysqli->query($query);
         }
     }

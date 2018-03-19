@@ -16,14 +16,15 @@ $course=trim($_POST["course"]);
 $score=trim($_POST["score"]);
 //精确到小数点后一位
 $score=sprintf( "%.1f ",$score);
-var_dump($score);echo "<br>";
 
 //  判断输入不能为空，否则不跳转
 if ($student==null||$course==null||$score==null){
     echo "<script>alert('输入不能为空，请重新输入');window.location.href='../html/scoreInput.html'</script>";
 }elseif (strlen($student)>20||strlen($course)>20){
     echo "<script>alert('姓名或课程不能超过20位，请重新输入');window.location.href='../html/scoreInput.html'</script>";
-} else{
+} elseif($score>100||$score<0){
+    echo "<script>alert('成绩输入错误，请重新输入');window.location.href='../html/scoreInput.html'</script>";
+}else{
     //分别查出对应学生表和课程表的ID
     $sql->studentSelectId($student);
     $result=$sql->result;

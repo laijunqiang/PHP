@@ -6,16 +6,6 @@
 </head>
 <body>
 <h2 align="center">任课老师信息录入</h2>
-<script type="text/javascript">
-    var demoInput = document.getElementById("demo_input");
-    function hideShowPsw(){
-        if (demoInput.type == "password") {
-            demoInput.type = "text";
-        }else {
-            demoInput.type = "password";
-        }
-    }
-</script>
 <form action="../php/teacherInput.php" method="post">
     <table align="center">
         <tr>
@@ -25,7 +15,6 @@
         <tr>
             <td>密码：</td>
             <td>
-                <input type="button" onclick="hideShowPsw()">
                 <input type="password" id="demo_input" name="password" placeholder="请输入需要录入的密码"/>
             </td>
         </tr>

@@ -6,6 +6,27 @@
     <title>登陆页面</title>
 </head>
 <body>
+<style type="text/css">
+    img{
+        width: 30px;
+        height: 25px;
+        margin: 10px;
+    }
+</style>
+<script type="text/javascript">
+
+    function hideShowPsw(){
+        var input = document.getElementById("input");
+        var img = document.getElementById("img");
+        if (input.type == "password") {
+            input.type = "text";
+            demo_img.src = "../img/invisible.png";
+        }else {
+            input.type = "password";
+            demo_img.src = "../img/visible.png";
+        }
+    }
+</script>
     <h2 align="center">学生管理系统</h2>
     <!--如果点击登陆，表单数据会被发送到login.php-->
     <form action="/php/index.php" method="post">
@@ -14,11 +35,12 @@
                 <td>账号：</td>
                 <!--placeholder 属性提供可描述输入字段预期值的提示信息（hint）。
                 该提示会在输入字段为空时显示，并会在字段获得焦点时消失。-->
-                <td><input type="text" name="usern" placeholder="请输入您的账号"  /></td>
+                <td><input type="text" name="name" placeholder="请输入您的账号"  /></td>
             </tr>
             <tr>
                 <td>密码：</td>
-                <td><input type="password" name="passw" placeholder="请输入您的密码" /></td>
+                <td><input type="password" id="input" name="password" placeholder="请输入您的密码" /></td>
+                <td><img id="img" onclick="hideShowPsw()" src="../image/visible.png">  </td>
             </tr>
             <tr align="center">
                 <td colspan="2"><input type="submit" value="登陆" style="width:100%;"/></td>

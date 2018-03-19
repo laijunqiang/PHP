@@ -15,15 +15,6 @@ $name=trim($_POST["name"]);
 $sex=$_POST["sex"];
 $age=$_POST["age"];
 $age=str_replace('-','',$age);
-//学号算法
-function number($sex,$age){
-    //date('Y') +性别+出生年月+5位随机数
-/*    mt_rand(1, 99999) 随机取个1~99999之间的数
-    str_pad(param1, param2, param3, param4）
-    param1是要改变的值，param2是要想定param1位数，param3是如果param1位数不够param2位要补充的数，param4是在左边补还是右边补还是左右两侧*/
-    $number = date('Y') .$sex.$age. str_pad(mt_rand(1, 99999), 5, '0', STR_PAD_LEFT);
-    return $number;
-}
 
 //  判断输入不能为空，否则不跳转
 if ($name==null||$sex==null||$age==null){
@@ -31,7 +22,7 @@ if ($name==null||$sex==null||$age==null){
 }elseif (strlen($name)>20) {
     echo "<script>alert('姓名不能超过20位，请重新输入');window.location.href='../html/studentInput.html'</script>";
 }else{
-    $number=number($sex,$age);
+    $number=$sql->number($sex,$age);
     $sql->studentInput($number,$name,$sex,$age);
     //针对成功的 SELECT、SHOW、DESCRIBE 或 EXPLAIN 查询，将返回一个 mysqli_result 对象。
     //针对其他成功的查询，将返回 TRUE。如果失败，则返回 FALSE。

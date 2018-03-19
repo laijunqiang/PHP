@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-03-19 00:08:58
+Date: 2018-03-19 22:28:02
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -32,7 +32,7 @@ CREATE TABLE `t_admin` (
 -- ----------------------------
 -- Records of t_admin
 -- ----------------------------
-INSERT INTO `t_admin` VALUES ('1', '张老师', '202cb962ac59075b964b07152d234b70', '2018-01-29 16:30:38', '2018-03-17 16:01:02');
+INSERT INTO `t_admin` VALUES ('1', '张老师', '202cb962ac59075b964b07152d234b70', '2018-01-29 16:30:38', '2018-03-19 09:18:20');
 INSERT INTO `t_admin` VALUES ('2', '李老师', 'c20ad4d76fe97759aa27a0c99bff6710', '2018-01-29 16:30:38', '2018-03-07 18:26:37');
 INSERT INTO `t_admin` VALUES ('3', '林老师', '81dc9bdb52d04dc20036dbd8313ed055', '2018-01-29 16:30:38', '2018-03-07 18:22:57');
 
@@ -62,7 +62,7 @@ INSERT INTO `t_course` VALUES ('3', 'A003', 'c++', '2', '2019-3-1', '2018-01-29 
 INSERT INTO `t_course` VALUES ('4', 'A004', 'c', '2', '2019-3-4', '2018-01-31 17:09:40', '', '', '0');
 INSERT INTO `t_course` VALUES ('6', 'A006', 'DB', '2', '2019-3-10', '2018-02-01 10:22:46', '2018-02-01 10:23:13', '', '0');
 INSERT INTO `t_course` VALUES ('7', 'A007', 'PHP', '2', '2019-3-4', '2018-02-02 15:27:45', '2018-02-02 15:31:02', '', '0');
-INSERT INTO `t_course` VALUES ('8', 'A008', 'java web', '3', '2018-12-05T08:08', '2018-03-18 14:56:58', '2018-03-18 16:17:44', '2018-03-18 16:21:11', '1');
+INSERT INTO `t_course` VALUES ('8', 'A008', 'java web', '3', '2018-12-05T08:08', '2018-03-18 14:56:58', '2018-03-18 16:17:44', '2018-03-18 16:21:11', '0');
 
 -- ----------------------------
 -- Table structure for t_score
@@ -92,7 +92,8 @@ INSERT INTO `t_score` VALUES ('8', '1', '59', '2018-02-01 11:16:30');
 INSERT INTO `t_score` VALUES ('15', '1', '90.5', '2018-03-08 22:12:51');
 INSERT INTO `t_score` VALUES ('16', '1', '50', '2018-03-11 16:14:14');
 INSERT INTO `t_score` VALUES ('19', '2', '100', '2018-03-11 16:14:49');
-INSERT INTO `t_score` VALUES ('36', '7', '95.5', '2018-03-18 20:50:54');
+INSERT INTO `t_score` VALUES ('36', '1', '91.5', '2018-03-19 11:02:05');
+INSERT INTO `t_score` VALUES ('36', '2', '100', '2018-03-19 11:04:10');
 
 -- ----------------------------
 -- Table structure for t_student
@@ -142,7 +143,7 @@ CREATE TABLE `t_teacher` (
 -- ----------------------------
 -- Records of t_teacher
 -- ----------------------------
-INSERT INTO `t_teacher` VALUES ('1', '001', '81dc9bdb52d04dc20036dbd8313ed055', '曾志', '2018-03-07 19:14:11', '2018-03-08 19:51:12', '', '0');
+INSERT INTO `t_teacher` VALUES ('1', '001', '81dc9bdb52d04dc20036dbd8313ed055', '曾志', '2018-03-07 19:14:11', '2018-03-19 09:26:24', '', '0');
 INSERT INTO `t_teacher` VALUES ('2', '002', '81dc9bdb52d04dc20036dbd8313ed055', '刘雨', '2018-03-07 19:14:34', '2018-03-07 23:26:54', '', '0');
 INSERT INTO `t_teacher` VALUES ('3', '003', '81dc9bdb52d04dc20036dbd8313ed055', '王华', '2018-03-07 20:06:20', '', '', '0');
 INSERT INTO `t_teacher` VALUES ('4', '004', '81dc9bdb52d04dc20036dbd8313ed055', '杨雄', '2018-03-18 22:08:09', '2018-03-18 22:29:50', '', '0');
@@ -172,6 +173,12 @@ INSERT INTO `t_teacher_course` VALUES ('1', '2', '2018-03-16 22:10:32', '', '', 
 INSERT INTO `t_teacher_course` VALUES ('2', '7', '2018-03-16 22:10:32', '', '', '0');
 
 -- ----------------------------
+-- View structure for v_remaining_course
+-- ----------------------------
+DROP VIEW IF EXISTS `v_remaining_course`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_remaining_course` AS select `t_course`.`id` AS `id`,`t_course`.`number` AS `number`,`t_course`.`name` AS `name`,`t_course`.`credit` AS `credit`,`t_course`.`time` AS `time`,`t_course`.`create_time` AS `create_time`,`t_course`.`update_time` AS `update_time` from `t_course` where ((`t_course`.`status` = 0) and (not(`t_course`.`id` in (select `t_teacher_course`.`course_id` from `t_teacher_course`)))) ;
+
+-- ----------------------------
 -- View structure for v_score
 -- ----------------------------
 DROP VIEW IF EXISTS `v_score`;
@@ -182,6 +189,12 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- ----------------------------
 DROP VIEW IF EXISTS `v_score_second`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_score_second` AS select `t_student`.`number` AS `学号`,`t_student`.`name` AS `姓名`,`t_course`.`number` AS `课程号`,`t_course`.`name` AS `课程名`,`t_score`.`score` AS `成绩`,`t_score`.`create_time` AS `create_time` from ((`t_course` join `t_score`) join `t_student`) where ((`t_course`.`id` = `t_score`.`course_id`) and (`t_student`.`id` = `t_score`.`student_id`) and (`t_course`.`status` = 0) and (`t_student`.`status` = 0)) order by `t_score`.`create_time` desc ;
+
+-- ----------------------------
+-- View structure for v_student
+-- ----------------------------
+DROP VIEW IF EXISTS `v_student`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_student` AS select `t_student`.`id` AS `学生ID`,`t_student`.`number` AS `学号`,`t_student`.`name` AS `姓名`,`t_student`.`sex` AS `性别`,`t_student`.`age` AS `年龄`,`t_course`.`name` AS `课程` from ((`t_student` join `t_course`) join `t_score`) where ((`t_student`.`id` = `t_score`.`student_id`) and (`t_course`.`id` = `t_score`.`course_id`) and (`t_student`.`status` = 0) and (`t_course`.`status` = 0)) order by `t_student`.`id` ;
 
 -- ----------------------------
 -- View structure for v_teacher_course

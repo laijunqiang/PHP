@@ -18,6 +18,15 @@ $number=$_SESSION['name'];
     <title>教导课程信息</title>
 </head>
 <body>
+<?php
+    include "class.php";
+    $sql=new Sql();
+    $sql->teacherCourse($number);
+    $result=$sql->result;
+    if ($result->num_rows<1){
+        echo "<script>alert('没有该教师教导的课程，请选择一门教导');window.location.href='teacherSeleteCourse.php'</script>";
+    }
+    ?>
 <h2 align="center">教导课程信息管理</h2>
 <h4 align="center">欢迎<?php echo $number;?>!</h4>
 <table align="center">
@@ -26,14 +35,7 @@ $number=$_SESSION['name'];
         <?php echo "<td><a href='logout.php?name=$number'><input type='button' value='退出登陆'/></a></td>"?>
     </tr>
 </table>
-    <?php
-    include "class.php";
-    $sql=new Sql();
-    $sql->teacherCourse($number);
-    $result=$sql->result;
-    if ($result->num_rows<1){
-        echo "<script>alert('没有该教师教导的课程');window.location.href='../index.html'</script>";
-    }else {
+<?php
         echo "<table border=\"1\" align=\"center\">
                     <tr>
                         <td align='center'>课程ID</td>
@@ -55,12 +57,11 @@ $number=$_SESSION['name'];
                 <td align='center'>$teacherNumber</td>
                 <td align='center'>$teacherName</td>
                 <td>
-                <a href=\"teacher_student.php?id=$id\" >查看学生</a>
-                <a href=\"teacher_score.php?id=$id\" >查看成绩</a>
+                <a href=\"teacherStudent.php?name=$name\" >查看学生</a>
+                <a href=\"teacherScore.php?name=$name\" >查看成绩</a>
                 </td>
             </tr>";
         }
-    }
     ?>
 </table>
 </body>
