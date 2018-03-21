@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-03-19 22:28:02
+Date: 2018-03-21 18:11:16
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -171,6 +171,7 @@ CREATE TABLE `t_teacher_course` (
 INSERT INTO `t_teacher_course` VALUES ('1', '1', '2018-03-16 22:10:19', '', '', '0');
 INSERT INTO `t_teacher_course` VALUES ('1', '2', '2018-03-16 22:10:32', '', '', '0');
 INSERT INTO `t_teacher_course` VALUES ('2', '7', '2018-03-16 22:10:32', '', '', '0');
+INSERT INTO `t_teacher_course` VALUES ('4', '8', '2018-03-20 00:02:51', null, null, '0');
 
 -- ----------------------------
 -- View structure for v_remaining_course

@@ -4,6 +4,13 @@ if(!isset($_SESSION['name'])){
     echo "<script>alert('您正查看的此页已过期,请重新登录');window.location.href='../index.html'</script>";
 }
 $name=$_GET['name'];
+include "class.php";
+$sql=new Sql();
+$sql->studentScore($name);
+$result=$sql->result;
+if ($result->num_rows <1) {
+    echo "<script>alert('查询为空，没有学生选修');window.location.href='teacherCourse.php'</script>";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,10 +32,6 @@ $name=$_GET['name'];
         <td>成绩</td>
     </tr>
     <?php
-    include "class.php";
-    $sql=new Sql();
-    $sql->studentScore($name);
-    $result=$sql->result;
     while(list($studentNumber,$studentName,$courseNumber,$courseName,$score)=$result->fetch_row())
     {
         echo "<tr>

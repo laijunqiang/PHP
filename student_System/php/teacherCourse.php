@@ -31,6 +31,9 @@ $number=$_SESSION['name'];
 <h4 align="center">欢迎<?php echo $number;?>!</h4>
 <table align="center">
     <tr>
+        <td align="center" colspan="2"><a href="teacherSeleteCourse.php"><input type="button" value="选课"/></a></td>
+    </tr>
+    <tr>
         <td><a href="teacherSetPassword.php"><input type="button" value="修改密码"/></a></td>
         <?php echo "<td><a href='logout.php?name=$number'><input type='button' value='退出登陆'/></a></td>"?>
     </tr>

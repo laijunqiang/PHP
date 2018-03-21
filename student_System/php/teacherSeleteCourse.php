@@ -3,7 +3,7 @@ session_start();
 if(!isset($_SESSION['name'])){
     echo "<script>alert('您正查看的此页已过期,请重新登录');window.location.href='../index.html'</script>";
 }
-$name=$_SESSION['name'];
+$number=$_SESSION['name'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,8 +13,8 @@ $name=$_SESSION['name'];
 </head>
 <body>
 <h2 align="center">任课老师选课</h2>
-<h4 align="center">欢迎<?php echo $_SESSION['name'];?>!</h4>
-<form action="../php/courseInput.php" method="post">
+<h4 align="center">欢迎<?php echo $number;?>!</h4>
+<form action="teacherInputCourse.php" method="post">
     <table align="center">
         <tr>
             <td>剩余课程：</td>
@@ -27,16 +27,19 @@ $name=$_SESSION['name'];
                     $sql->teacherSeleteCourse();
                     $result=$sql->result;
                     var_dump($result);
-                    while(list($name)=$result->fetch_row())
+                    while(list($id,$name)=$result->fetch_row())
                     {
-                        echo "<option value='$name'>$name</option>";
+                        echo "<option value='$id'>$name</option>";
                     }
                     ?>
                 </select>
             </td>
         </tr>
         <tr>
-            <td align="center" colspan="2"><input type="submit" value="选课" /><a href="/php/course.php"><input type="button" value="返回"/></a></td>
+            <td align="center" colspan="2">
+                <input type="submit" value="选课" />
+                <?php echo "<a href='logout.php?name=$number'><input type='button' value='退出登陆'/></a>"?>
+            </td>
         </tr>
     </table>
 </form>

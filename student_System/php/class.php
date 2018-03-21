@@ -45,6 +45,11 @@ date_default_timezone_set("PRC");
             $query="select * from t_teacher where number='$name' and password='$password' and status=0";
             $this->result=$this->query($query);
         }
+        public function logout($name)
+        {
+            $query="select * from t_admin where name='$name'";
+            $this->result=$this->query($query);
+        }
 
         //修改管理员与任课老师密码
         public function adminSetPassword($name,$password)
@@ -199,7 +204,12 @@ date_default_timezone_set("PRC");
         }
         //剩下课程
         public function teacherSeleteCourse(){
-            $query="select name from v_remaining_course";
+            $query="select id,name from v_remaining_course";
+            $this->result=$this->mysqli->query($query);
+        }
+
+        public function teacherInputCourse($teacher,$course){
+            $query="insert into t_teacher_course(teacher_id,course_id,create_time) values('$teacher','$course',now())";
             $this->result=$this->mysqli->query($query);
         }
     }

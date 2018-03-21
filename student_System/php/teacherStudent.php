@@ -3,6 +3,14 @@ session_start();
 if(!isset($_SESSION['name'])){
     echo "<script>alert('您正查看的此页已过期,请重新登录');window.location.href='../index.html'</script>";
 }
+$name=$_GET['name'];
+include "class.php";
+$sql=new Sql();
+$sql->studentCourse($name);
+$result=$sql->result;
+if ($result->num_rows <1) {
+    echo "<script>alert('查询为空，没有学生选修');window.location.href='teacherCourse.php'</script>";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,11 +30,6 @@ if(!isset($_SESSION['name'])){
         <td>课程</td>
     </tr>
     <?php
-    $name=$_GET['name'];
-    include "class.php";
-    $sql=new Sql();
-    $sql->studentCourse($name);
-    $result=$sql->result;
     while(list($id,$number,$name,$sex,$age,$course)=$result->fetch_row())
     {
         $sex=$sql->sexChange($sex);
