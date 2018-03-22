@@ -9,7 +9,7 @@ $id=$_POST['id'];
 $course=$_POST["course"];
 $student=$_POST["student"];
 $score=trim($_POST["score"]);
-//精确到小数点后一位
+//精确到小数点后一位  50.会自动补全
 $score=sprintf( "%.1f ",$score);
 
 //  判断输入不能为空，否则不跳转
@@ -40,7 +40,7 @@ if ($student==null||$score==null){
 
     $sql->scoreInput($student,$id,$score);
     if ($sql->result!=false){
-        echo "<script>alert('录入成功');window.location.href='teacherScore.php??name=$course&&id=$id'</script>";
+        echo "<script>alert('录入成功');window.location.href='teacherScore.php?name=$course&&id=$id'</script>";
     }else {
         echo "<script>alert('录入失败，请重新录入');window.location.href='teacherInputPage.php?name=$course&&id=$id'</script>";
     }
