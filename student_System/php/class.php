@@ -15,8 +15,8 @@
     $result=$mysqli->query($query);
     $query="insert into t_score(student_id,course_id,score,create_time) values(1,1,85.5,now()),(2,1,90.5,now()),(3,3,95,now())";
     $result=$mysqli->query($query);*/
-
-date_default_timezone_set("PRC");
+    //设置时区
+    date_default_timezone_set("PRC");
 //  admin类
     class Sql
     {
@@ -207,7 +207,11 @@ date_default_timezone_set("PRC");
             $query="select id,name from v_remaining_course";
             $this->result=$this->mysqli->query($query);
         }
-
+        //剩下学生
+        public function teacherSeleteStudent($id){
+            $query="select id,name FROM t_student where id not in (select student_id FROM t_score where course_id='$id')";
+            $this->result=$this->mysqli->query($query);
+        }
         public function teacherInputCourse($teacher,$course){
             $query="insert into t_teacher_course(teacher_id,course_id,create_time) values('$teacher','$course',now())";
             $this->result=$this->mysqli->query($query);

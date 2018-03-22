@@ -38,7 +38,14 @@ $number=$_SESSION['name'];
         <tr>
             <td align="center" colspan="2">
                 <input type="submit" value="选课" />
-                <?php echo "<a href='logout.php?name=$number'><input type='button' value='退出登陆'/></a>"?>
+                <?php
+                $sql->teacherCourse($number);
+                $result=$sql->result;
+                if ($result->num_rows<1) {
+                    echo "<a href='logout.php?name=$number'><input type='button' value='退出登陆'/></a>";
+                }else
+                    echo "<a href='teacherCourse.php'><input type='button' value='返回'/></a>";
+                ?>
             </td>
         </tr>
     </table>

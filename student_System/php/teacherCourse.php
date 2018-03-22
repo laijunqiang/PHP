@@ -61,7 +61,7 @@ $number=$_SESSION['name'];
                 <td align='center'>$teacherName</td>
                 <td>
                 <a href=\"teacherStudent.php?name=$name\" >查看学生</a>
-                <a href=\"teacherScore.php?name=$name\" >查看成绩</a>
+                <a href=\"teacherScore.php?name=$name&id=$id\" >查看成绩</a>
                 </td>
             </tr>";
         }
