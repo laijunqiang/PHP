@@ -733,7 +733,7 @@ class PHPExcel_Cell
         $rangeStart = self::coordinateFromString($rangeA);
         $rangeEnd    = self::coordinateFromString($rangeB);
 
-        // Translate column into index
+        // Translate column into Index
         $rangeStart[0]    = self::columnIndexFromString($rangeStart[0]);
         $rangeEnd[0]    = self::columnIndexFromString($rangeEnd[0]);
 
@@ -782,10 +782,10 @@ class PHPExcel_Cell
     }
 
     /**
-     *    Column index from string
+     *    Column Index from string
      *
      *    @param    string $pString
-     *    @return    int Column index (base 1 !!!)
+     *    @return    int Column Index (base 1 !!!)
      */
     public static function columnIndexFromString($pString = 'A')
     {
@@ -821,13 +821,13 @@ class PHPExcel_Cell
                 return $_indexCache[$pString];
             }
         }
-        throw new PHPExcel_Exception("Column string index can not be " . ((isset($pString{0})) ? "longer than 3 characters" : "empty"));
+        throw new PHPExcel_Exception("Column string Index can not be " . ((isset($pString{0})) ? "longer than 3 characters" : "empty"));
     }
 
     /**
      *    String from columnindex
      *
-     *    @param    int $pColumnIndex Column index (base 0 !!!)
+     *    @param    int $pColumnIndex Column Index (base 0 !!!)
      *    @return    string
      */
     public static function stringFromColumnIndex($pColumnIndex = 0)
@@ -981,7 +981,7 @@ class PHPExcel_Cell
     }
 
     /**
-     * Get index to cellXf
+     * Get Index to cellXf
      *
      * @return int
      */
@@ -991,7 +991,7 @@ class PHPExcel_Cell
     }
 
     /**
-     * Set index to cellXf
+     * Set Index to cellXf
      *
      * @param int $pValue
      * @return PHPExcel_Cell

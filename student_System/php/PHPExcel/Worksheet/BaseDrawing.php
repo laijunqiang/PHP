@@ -35,7 +35,7 @@ class PHPExcel_Worksheet_BaseDrawing implements PHPExcel_IComparable
     private static $imageCounter = 0;
 
     /**
-     * Image index
+     * Image Index
      *
      * @var int
      */
@@ -136,13 +136,13 @@ class PHPExcel_Worksheet_BaseDrawing implements PHPExcel_IComparable
         $this->rotation           = 0;
         $this->shadow             = new PHPExcel_Worksheet_Drawing_Shadow();
 
-        // Set image index
+        // Set image Index
         self::$imageCounter++;
         $this->imageIndex             = self::$imageCounter;
     }
 
     /**
-     * Get image index
+     * Get image Index
      *
      * @return int
      */

@@ -28,7 +28,7 @@
 class PHPExcel_Worksheet_ColumnCellIterator extends PHPExcel_Worksheet_CellIterator implements Iterator
 {
     /**
-     * Column index
+     * Column Index
      *
      * @var string
      */

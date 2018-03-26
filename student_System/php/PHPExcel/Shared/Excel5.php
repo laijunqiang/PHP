@@ -75,7 +75,7 @@ class PHPExcel_Shared_Excel5
      * use the default value. If the row is hidden we use a value of zero.
      *
      * @param PHPExcel_Worksheet $sheet The sheet
-     * @param integer $row The row index (1-based)
+     * @param integer $row The row Index (1-based)
      * @return integer The width in pixels
      */
     public static function sizeRow($sheet, $row = 1)

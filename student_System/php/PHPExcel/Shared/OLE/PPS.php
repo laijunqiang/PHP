@@ -30,7 +30,7 @@
 class PHPExcel_Shared_OLE_PPS
 {
     /**
-    * The PPS index
+    * The PPS Index
     * @var integer
     */
     public $No;
@@ -48,19 +48,19 @@ class PHPExcel_Shared_OLE_PPS
     public $Type;
 
     /**
-    * The index of the previous PPS
+    * The Index of the previous PPS
     * @var integer
     */
     public $PrevPps;
 
     /**
-    * The index of the next PPS
+    * The Index of the next PPS
     * @var integer
     */
     public $NextPps;
 
     /**
-    * The index of it's first child if this is a Dir or Root PPS
+    * The Index of it's first child if this is a Dir or Root PPS
     * @var integer
     */
     public $DirPps;
@@ -111,12 +111,12 @@ class PHPExcel_Shared_OLE_PPS
     * The constructor
     *
     * @access public
-    * @param integer $No   The PPS index
+    * @param integer $No   The PPS Index
     * @param string  $name The PPS name
     * @param integer $type The PPS type. Dir, Root or File
-    * @param integer $prev The index of the previous PPS
-    * @param integer $next The index of the next PPS
-    * @param integer $dir  The index of it's first child if this is a Dir or Root PPS
+    * @param integer $prev The Index of the previous PPS
+    * @param integer $next The Index of the next PPS
+    * @param integer $dir  The Index of it's first child if this is a Dir or Root PPS
     * @param integer $time_1st A timestamp
     * @param integer $time_2nd A timestamp
     * @param string  $data  The (usually binary) source data of the PPS
@@ -192,13 +192,13 @@ class PHPExcel_Shared_OLE_PPS
     }
 
     /**
-    * Updates index and pointers to previous, next and children PPS's for this
+    * Updates Index and pointers to previous, next and children PPS's for this
     * PPS. I don't think it'll work with Dir PPS's.
     *
     * @access public
     * @param array &$raList Reference to the array of PPS's for the whole OLE
     *                          container
-    * @return integer          The index for this PPS
+    * @return integer          The Index for this PPS
     */
     public static function _savePpsSetPnt(&$raList, $to_save, $depth = 0)
     {

@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['name'])){
-    echo "<script>alert('您正查看的此页已过期,请重新登录');window.location.href='../index.html'</script>";
+    echo "<script>alert('您正查看的此页已过期,请重新登录');window.location.href='../Index.html'</script>";
 }
 ?>
 <!DOCTYPE html>

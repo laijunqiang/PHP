@@ -155,7 +155,7 @@ class PHPExcel_Worksheet_MemoryDrawing extends PHPExcel_Worksheet_BaseDrawing im
     }
 
     /**
-     * Get indexed filename (using image index)
+     * Get indexed filename (using image Index)
      *
      * @return string
      */

@@ -28,7 +28,7 @@
 class PHPExcel_Worksheet_ColumnDimension extends PHPExcel_Worksheet_Dimension
 {
     /**
-     * Column index
+     * Column Index
      *
      * @var int
      */
@@ -53,7 +53,7 @@ class PHPExcel_Worksheet_ColumnDimension extends PHPExcel_Worksheet_Dimension
     /**
      * Create a new PHPExcel_Worksheet_ColumnDimension
      *
-     * @param string $pIndex Character column index
+     * @param string $pIndex Character column Index
      */
     public function __construct($pIndex = 'A')
     {

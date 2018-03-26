@@ -16,9 +16,9 @@
 
 //    var_dump($_POST); 浏览器对POST缓存
     if ($name==null||$password==null) {
-        echo "<script>alert('账号密码不能为空，请重新输入');window.location.href='../index.html';</script>";
+        echo "<script>alert('账号密码不能为空，请重新输入');window.location.href='../Index.html';</script>";
     }elseif (strlen($name)>20){
-    echo "<script>alert('账号不能超过20位，请重新输入');window.location.href='../index.html';</script>";
+    echo "<script>alert('账号不能超过20位，请重新输入');window.location.href='../Index.html';</script>";
     }else {
 //  先查看输入的账号，再根据输入的账号去数据库查密码，最后验证密码是否和mysql里面的密码相匹配
         $password = md5($password); //md5只是做了一个摘抄，只取了数据得一部分。是没有办法解密得，因为他不是对数据进行加密，
@@ -35,7 +35,7 @@
           返回结果集中行的数目。此命令仅对 SELECT 语句有效。
           要取得被 INSERT，UPDATE 或者 DELETE 查询所影响到的行的数目，用mysql_affected_rows()。*/
         if ($adminResult->num_rows < 1 && $teacherResult->num_rows < 1) {
-            echo "<script>alert('账号密码错误，请重新输入');window.location.href='../index.html'</script>";
+            echo "<script>alert('账号密码错误，请重新输入');window.location.href='../Index.html'</script>";
         } elseif ($adminResult->num_rows == 1) {
             $_SESSION['name'] = $name;
             header("location:main.php");

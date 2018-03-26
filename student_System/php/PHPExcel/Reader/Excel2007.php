@@ -918,7 +918,7 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
 
                                         // Style information?
                                         if ($c["s"] && !$this->readDataOnly) {
-                                            // no style index means 0, it seems
+                                            // no style Index means 0, it seems
                                             $cell->setXfIndex(isset($styles[intval($c["s"])]) ?
                                                 intval($c["s"]) : 0);
                                         }
@@ -1684,10 +1684,10 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
                     }
 
                     if ((!$this->readDataOnly) || (!empty($this->loadSheetsOnly))) {
-                        // active sheet index
-                        $activeTab = intval($xmlWorkbook->bookViews->workbookView["activeTab"]); // refers to old sheet index
+                        // active sheet Index
+                        $activeTab = intval($xmlWorkbook->bookViews->workbookView["activeTab"]); // refers to old sheet Index
 
-                        // keep active sheet index if sheet is still loaded, else first sheet is set as the active
+                        // keep active sheet Index if sheet is still loaded, else first sheet is set as the active
                         if (isset($mapSheetId[$activeTab]) && $mapSheetId[$activeTab] !== null) {
                             $excel->setActiveSheetIndex($mapSheetId[$activeTab]);
                         } else {

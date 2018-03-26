@@ -223,7 +223,7 @@ class PHPExcel_Shared_Drawing
         //    Use end-line padding? Only when needed
         $usePadding = ($body_size>($header_size*3)+4);
 
-        //    Using a for-loop with index-calculation instaid of str_split to avoid large memory consumption
+        //    Using a for-loop with Index-calculation instaid of str_split to avoid large memory consumption
         //    Calculate the next DWORD-position in the body
         for ($i = 0; $i < $body_size; $i += 3) {
             //    Calculate line-ending and padding

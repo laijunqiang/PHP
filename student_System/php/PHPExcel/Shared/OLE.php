@@ -333,7 +333,7 @@ class PHPExcel_Shared_OLE
     * starting with the given PPS (not necessarily root)
     *
     * @access public
-    * @param integer $index The index of the PPS from which we are checking
+    * @param integer $index The Index of the PPS from which we are checking
     * @return boolean Whether the PPS tree for the given PPS is complete
     */
     public function _ppsTreeComplete($index)
@@ -350,10 +350,10 @@ class PHPExcel_Shared_OLE
 
     /**
     * Checks whether a PPS is a File PPS or not.
-    * If there is no PPS for the index given, it will return false.
+    * If there is no PPS for the Index given, it will return false.
     *
     * @access public
-    * @param integer $index The index for the PPS
+    * @param integer $index The Index for the PPS
     * @return bool true if it's a File PPS, false otherwise
     */
     public function isFile($index)
@@ -366,10 +366,10 @@ class PHPExcel_Shared_OLE
 
     /**
     * Checks whether a PPS is a Root PPS or not.
-    * If there is no PPS for the index given, it will return false.
+    * If there is no PPS for the Index given, it will return false.
     *
     * @access public
-    * @param integer $index The index for the PPS.
+    * @param integer $index The Index for the PPS.
     * @return bool true if it's a Root PPS, false otherwise
     */
     public function isRoot($index)
@@ -393,10 +393,10 @@ class PHPExcel_Shared_OLE
 
     /**
     * Gets data from a PPS
-    * If there is no PPS for the index given, it will return an empty string.
+    * If there is no PPS for the Index given, it will return an empty string.
     *
     * @access public
-    * @param integer $index    The index for the PPS
+    * @param integer $index    The Index for the PPS
     * @param integer $position The position from which to start reading
     *                          (relative to the PPS)
     * @param integer $length   The amount of bytes to read (at most)
@@ -417,10 +417,10 @@ class PHPExcel_Shared_OLE
 
     /**
     * Gets the data length from a PPS
-    * If there is no PPS for the index given, it will return 0.
+    * If there is no PPS for the Index given, it will return 0.
     *
     * @access public
-    * @param integer $index    The index for the PPS
+    * @param integer $index    The Index for the PPS
     * @return integer The amount of bytes in data the PPS has
     */
     public function getDataLength($index)

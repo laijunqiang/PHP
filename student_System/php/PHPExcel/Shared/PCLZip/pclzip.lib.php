@@ -582,7 +582,7 @@ class PclZip
     //         mtime : Last known modification date of the file (UNIX timestamp)
     //         comment : Comment associated with the file
     //         folder : true | false
-    //         index : index of the file in the archive
+    //         Index : Index of the file in the archive
     //         status : status of the action (depending of the action) :
     //                            Values are :
     //                                ok : OK !
@@ -784,12 +784,12 @@ class PclZip
     // Description :
     //     This method supports two synopsis. The first one is historical.
     //     This method is doing a partial extract of the archive.
-    //     The extracted files or folders are identified by their index in the
+    //     The extracted files or folders are identified by their Index in the
     //     archive (from 0 to n).
-    //     Note that if the index identify a folder, only the folder entry is
+    //     Note that if the Index identify a folder, only the folder entry is
     //     extracted, not all the files included in the archive.
     // Parameters :
-    //     $p_index : A single index (integer) or a string of indexes of files to
+    //     $p_index : A single Index (integer) or a string of indexes of files to
     //                            extract. The form of the string is "0,4-6,8-12" with only numbers
     //                            and '-' for range or ',' to separate ranges. No spaces or ';'
     //                            are allowed.
@@ -1529,7 +1529,7 @@ class PclZip
                     $i++;
                     break;
 
-                // ----- Look for options that request an array of index
+                // ----- Look for options that request an array of Index
                 case PCLZIP_OPT_BY_INDEX:
                     // ----- Check the number of parameters
                     if (($i+1) >= $p_size) {
@@ -1560,8 +1560,8 @@ class PclZip
                         return PclZip::errorCode();
                     }
 
-                    // ----- Reduce the index list
-                    // each index item in the list must be a couple with a start and
+                    // ----- Reduce the Index list
+                    // each Index item in the list must be a couple with a start and
                     // an end value : [0,3], [5-5], [8-10], ...
                     // ----- Check the format of each item
                     $v_sort_flag=false;
@@ -1585,7 +1585,7 @@ class PclZip
                             $v_result_list[$p_options_list[$i]][$j]['end'] = $v_item_list[1];
                         } else {
                             // ----- Error log
-                            PclZip::privErrorLog(PCLZIP_ERR_INVALID_OPTION_VALUE, "Too many values in index range for option '".PclZipUtilOptionText($p_options_list[$i])."'");
+                            PclZip::privErrorLog(PCLZIP_ERR_INVALID_OPTION_VALUE, "Too many values in Index range for option '".PclZipUtilOptionText($p_options_list[$i])."'");
 
                             // ----- Return
                             return PclZip::errorCode();
@@ -1598,7 +1598,7 @@ class PclZip
 
                             // ----- TBC : An automatic sort should be writen ...
                             // ----- Error log
-                            PclZip::privErrorLog(PCLZIP_ERR_INVALID_OPTION_VALUE, "Invalid order of index range for option '".PclZipUtilOptionText($p_options_list[$i])."'");
+                            PclZip::privErrorLog(PCLZIP_ERR_INVALID_OPTION_VALUE, "Invalid order of Index range for option '".PclZipUtilOptionText($p_options_list[$i])."'");
 
                             // ----- Return
                             return PclZip::errorCode();
@@ -2406,7 +2406,7 @@ class PclZip
         $p_header['stored_filename'] = $p_filedescr['stored_filename'];
         $p_header['extra'] = '';
         $p_header['status'] = 'ok';
-        $p_header['index'] = -1;
+        $p_header['Index'] = -1;
 
         // ----- Look for regular file
         if ($p_filedescr['type']=='file') {
@@ -2964,7 +2964,7 @@ class PclZip
                 $this->privSwapBackMagicQuotes();
                 return $v_result;
             }
-            $v_header['index'] = $i;
+            $v_header['Index'] = $i;
 
             // ----- Get the only interesting attributes
             $this->privConvertHeader2FileInfo($v_header, $p_list[$i]);
@@ -3015,7 +3015,7 @@ class PclZip
         $p_info['mtime'] = $p_header['mtime'];
         $p_info['comment'] = $p_header['comment'];
         $p_info['folder'] = (($p_header['external']&0x00000010)==0x00000010);
-        $p_info['index'] = $p_header['index'];
+        $p_info['Index'] = $p_header['Index'];
         $p_info['status'] = $p_header['status'];
         $p_info['crc'] = $p_header['crc'];
 
@@ -3027,7 +3027,7 @@ class PclZip
     // --------------------------------------------------------------------------------
     // Function : privExtractByRule()
     // Description :
-    //     Extract a file or directory depending of rules (by index, by name, ...)
+    //     Extract a file or directory depending of rules (by Index, by name, ...)
     // Parameters :
     //     $p_file_list : An array where will be placed the properties of each
     //                                    extracted file
@@ -3112,8 +3112,8 @@ class PclZip
                 return $v_result;
             }
 
-            // ----- Store the index
-            $v_header['index'] = $i;
+            // ----- Store the Index
+            $v_header['Index'] = $i;
 
             // ----- Store the file position
             $v_pos_entry = ftell($this->zip_fd);
@@ -3142,8 +3142,8 @@ class PclZip
                     $v_extract = true;
                 }
             } elseif ((isset($p_options[PCLZIP_OPT_BY_INDEX])) && ($p_options[PCLZIP_OPT_BY_INDEX] != 0)) {
-                // ----- Look for extract by index rule
-                // ----- Look if the index is in the list
+                // ----- Look for extract by Index rule
+                // ----- Look if the Index is in the list
                 for ($j=$j_start; ($j<sizeof($p_options[PCLZIP_OPT_BY_INDEX])) && (!$v_extract); $j++) {
                     if (($i>=$p_options[PCLZIP_OPT_BY_INDEX][$j]['start']) && ($i<=$p_options[PCLZIP_OPT_BY_INDEX][$j]['end'])) {
                             $v_extract = true;
@@ -4311,8 +4311,8 @@ class PclZip
             }
 
 
-            // ----- Store the index
-            $v_header_list[$v_nb_extracted]['index'] = $i;
+            // ----- Store the Index
+            $v_header_list[$v_nb_extracted]['Index'] = $i;
 
             // ----- Look for the specific extract rules
             $v_found = false;
@@ -4340,8 +4340,8 @@ class PclZip
                         $v_found = true;
                 }
             } elseif ((isset($p_options[PCLZIP_OPT_BY_INDEX])) && ($p_options[PCLZIP_OPT_BY_INDEX] != 0)) {
-                // ----- Look for extract by index rule
-                // ----- Look if the index is in the list
+                // ----- Look for extract by Index rule
+                // ----- Look if the Index is in the list
                 for ($j=$j_start; ($j<sizeof($p_options[PCLZIP_OPT_BY_INDEX])) && (!$v_found); $j++) {
                     if (($i>=$p_options[PCLZIP_OPT_BY_INDEX][$j]['start']) && ($i<=$p_options[PCLZIP_OPT_BY_INDEX][$j]['end'])) {
                         $v_found = true;

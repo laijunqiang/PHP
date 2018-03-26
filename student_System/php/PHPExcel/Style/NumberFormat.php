@@ -347,7 +347,7 @@ class PHPExcel_Style_NumberFormat extends PHPExcel_Style_Supervisor implements P
     }
 
     /**
-     * Get built-in format code index
+     * Get built-in format code Index
      *
      * @param    string        $formatCode
      * @return    int|boolean

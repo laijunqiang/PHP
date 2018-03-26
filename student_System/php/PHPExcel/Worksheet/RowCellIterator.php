@@ -28,7 +28,7 @@
 class PHPExcel_Worksheet_RowCellIterator extends PHPExcel_Worksheet_CellIterator implements Iterator
 {
     /**
-     * Row index
+     * Row Index
      *
      * @var int
      */
@@ -58,7 +58,7 @@ class PHPExcel_Worksheet_RowCellIterator extends PHPExcel_Worksheet_CellIterator
      */
     public function __construct(PHPExcel_Worksheet $subject = null, $rowIndex = 1, $startColumn = 'A', $endColumn = null)
     {
-        // Set subject and row index
+        // Set subject and row Index
         $this->subject = $subject;
         $this->rowIndex = $rowIndex;
         $this->resetEnd($endColumn);

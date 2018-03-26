@@ -28,7 +28,7 @@
 class PHPExcel_Worksheet_RowDimension extends PHPExcel_Worksheet_Dimension
 {
     /**
-     * Row index
+     * Row Index
      *
      * @var int
      */
@@ -53,7 +53,7 @@ class PHPExcel_Worksheet_RowDimension extends PHPExcel_Worksheet_Dimension
     /**
      * Create a new PHPExcel_Worksheet_RowDimension
      *
-     * @param int $pIndex Numeric row index
+     * @param int $pIndex Numeric row Index
      */
     public function __construct($pIndex = 0)
     {

@@ -56,7 +56,7 @@ class PHPExcel_Shared_Escher_DgContainer_SpgrContainer_SpContainer
     private $spFlag;
 
     /**
-     * Shape index (usually group shape has index 0, and the rest: 1,2,3...)
+     * Shape Index (usually group shape has Index 0, and the rest: 1,2,3...)
      *
      * @var boolean
      */
@@ -192,7 +192,7 @@ class PHPExcel_Shared_Escher_DgContainer_SpgrContainer_SpContainer
     }
 
     /**
-     * Set the shape index
+     * Set the shape Index
      *
      * @param int $value
      */
@@ -202,7 +202,7 @@ class PHPExcel_Shared_Escher_DgContainer_SpgrContainer_SpContainer
     }
 
     /**
-     * Get the shape index
+     * Get the shape Index
      *
      * @return int
      */

@@ -160,10 +160,10 @@ class PHPExcel_Shared_JAMA_Matrix
      *    getMatrix
      *
      *    Get a submatrix
-     *    @param int $i0 Initial row index
-     *    @param int $iF Final row index
-     *    @param int $j0 Initial column index
-     *    @param int $jF Final column index
+     *    @param int $i0 Initial row Index
+     *    @param int $iF Final row Index
+     *    @param int $j0 Initial column Index
+     *    @param int $jF Final column Index
      *    @return Matrix Submatrix
      */
     public function getMatrix()
@@ -377,9 +377,9 @@ class PHPExcel_Shared_JAMA_Matrix
     /**
      *    getMatrixByRow
      *
-     *    Get a submatrix by row index/range
-     *    @param int $i0 Initial row index
-     *    @param int $iF Final row index
+     *    Get a submatrix by row Index/range
+     *    @param int $i0 Initial row Index
+     *    @param int $iF Final row Index
      *    @return Matrix Submatrix
      */
     public function getMatrixByRow($i0 = null, $iF = null)
@@ -398,9 +398,9 @@ class PHPExcel_Shared_JAMA_Matrix
     /**
      *    getMatrixByCol
      *
-     *    Get a submatrix by column index/range
-     *    @param int $i0 Initial column index
-     *    @param int $iF Final column index
+     *    Get a submatrix by column Index/range
+     *    @param int $i0 Initial column Index
+     *    @param int $iF Final column Index
      *    @return Matrix Submatrix
      */
     public function getMatrixByCol($j0 = null, $jF = null)

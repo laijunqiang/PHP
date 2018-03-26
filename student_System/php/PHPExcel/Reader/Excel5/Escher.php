@@ -567,25 +567,25 @@ class PHPExcel_Reader_Excel5_Escher
         // move stream pointer to next record
         $this->pos += 8 + $length;
 
-        // offset: 2; size: 2; upper-left corner column index (0-based)
+        // offset: 2; size: 2; upper-left corner column Index (0-based)
         $c1 = PHPExcel_Reader_Excel5::getInt2d($recordData, 2);
 
         // offset: 4; size: 2; upper-left corner horizontal offset in 1/1024 of column width
         $startOffsetX = PHPExcel_Reader_Excel5::getInt2d($recordData, 4);
 
-        // offset: 6; size: 2; upper-left corner row index (0-based)
+        // offset: 6; size: 2; upper-left corner row Index (0-based)
         $r1 = PHPExcel_Reader_Excel5::getInt2d($recordData, 6);
 
         // offset: 8; size: 2; upper-left corner vertical offset in 1/256 of row height
         $startOffsetY = PHPExcel_Reader_Excel5::getInt2d($recordData, 8);
 
-        // offset: 10; size: 2; bottom-right corner column index (0-based)
+        // offset: 10; size: 2; bottom-right corner column Index (0-based)
         $c2 = PHPExcel_Reader_Excel5::getInt2d($recordData, 10);
 
         // offset: 12; size: 2; bottom-right corner horizontal offset in 1/1024 of column width
         $endOffsetX = PHPExcel_Reader_Excel5::getInt2d($recordData, 12);
 
-        // offset: 14; size: 2; bottom-right corner row index (0-based)
+        // offset: 14; size: 2; bottom-right corner row Index (0-based)
         $r2 = PHPExcel_Reader_Excel5::getInt2d($recordData, 14);
 
         // offset: 16; size: 2; bottom-right corner vertical offset in 1/256 of row height

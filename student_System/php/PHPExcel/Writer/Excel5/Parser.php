@@ -66,7 +66,7 @@ class PHPExcel_Writer_Excel5_Parser
     const REGEX_SHEET_TITLE_QUOTED = '(([^\*\:\/\\\\\?\[\]\\\'])+|(\\\'\\\')+)+';
 
     /**
-     * The index of the character we are currently looking at
+     * The Index of the character we are currently looking at
      * @var integer
      */
     public $currentCharacter;
@@ -798,7 +798,7 @@ class PHPExcel_Writer_Excel5_Parser
      *
      * @access    private
      * @param    string    $ext_ref    The name of the external reference
-     * @return    string                The reference index in packed() format
+     * @return    string                The reference Index in packed() format
      */
     private function packExtRef($ext_ref)
     {
@@ -837,13 +837,13 @@ class PHPExcel_Writer_Excel5_Parser
     }
 
     /**
-     * Look up the REF index that corresponds to an external sheet name
+     * Look up the REF Index that corresponds to an external sheet name
      * (or range). If it doesn't exist yet add it to the workbook's references
      * array. It assumes all sheet names given must exist.
      *
      * @access private
      * @param string $ext_ref The name of the external reference
-     * @return mixed The reference index in packed() format on success
+     * @return mixed The reference Index in packed() format on success
      */
     private function getRefIndex($ext_ref)
     {
@@ -897,13 +897,13 @@ class PHPExcel_Writer_Excel5_Parser
     }
 
     /**
-     * Look up the index that corresponds to an external sheet name. The hash of
+     * Look up the Index that corresponds to an external sheet name. The hash of
      * sheet names is updated by the addworksheet() method of the
      * PHPExcel_Writer_Excel5_Workbook class.
      *
      * @access    private
      * @param    string    $sheet_name        Sheet name
-     * @return    integer                    The sheet index, -1 if the sheet was not found
+     * @return    integer                    The sheet Index, -1 if the sheet was not found
      */
     private function getSheetIndex($sheet_name)
     {
@@ -922,7 +922,7 @@ class PHPExcel_Writer_Excel5_Parser
      * @access public
      * @see PHPExcel_Writer_Excel5_Workbook::addWorksheet()
      * @param string  $name  The name of the worksheet being added
-     * @param integer $index The index of the worksheet being added
+     * @param integer $index The Index of the worksheet being added
      */
     public function setExtSheet($name, $index)
     {
@@ -973,7 +973,7 @@ class PHPExcel_Writer_Excel5_Parser
         $row1     = $match[2];
         $row2_rel = empty($match[3]) ? 1 : 0;
         $row2     = $match[4];
-        // Convert 1-index to zero-index
+        // Convert 1-Index to zero-Index
         --$row1;
         --$row2;
         // Trick poor inocent Excel
@@ -1024,7 +1024,7 @@ class PHPExcel_Writer_Excel5_Parser
             --$expn;
         }
 
-        // Convert 1-index to zero-index
+        // Convert 1-Index to zero-Index
         --$row;
         --$col;
 

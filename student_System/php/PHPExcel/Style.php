@@ -227,7 +227,7 @@ class PHPExcel_Style extends PHPExcel_Style_Supervisor implements PHPExcel_IComp
                 $rangeStart = PHPExcel_Cell::coordinateFromString($rangeA);
                 $rangeEnd   = PHPExcel_Cell::coordinateFromString($rangeB);
 
-                // Translate column into index
+                // Translate column into Index
                 $rangeStart[0]    = PHPExcel_Cell::columnIndexFromString($rangeStart[0]) - 1;
                 $rangeEnd[0]    = PHPExcel_Cell::columnIndexFromString($rangeEnd[0]) - 1;
 
@@ -276,11 +276,11 @@ class PHPExcel_Style extends PHPExcel_Style_Supervisor implements PHPExcel_IComp
 
                     // loop through up to 3 x 3 = 9 regions
                     for ($x = 1; $x <= $xMax; ++$x) {
-                        // start column index for region
+                        // start column Index for region
                         $colStart = ($x == 3) ?
                             PHPExcel_Cell::stringFromColumnIndex($rangeEnd[0])
                                 : PHPExcel_Cell::stringFromColumnIndex($rangeStart[0] + $x - 1);
-                        // end column index for region
+                        // end column Index for region
                         $colEnd = ($x == 1) ?
                             PHPExcel_Cell::stringFromColumnIndex($rangeStart[0])
                                 : PHPExcel_Cell::stringFromColumnIndex($rangeEnd[0] - $xMax + $x);
@@ -305,11 +305,11 @@ class PHPExcel_Style extends PHPExcel_Style_Supervisor implements PHPExcel_IComp
                                 $edges[] = 'bottom';
                             }
 
-                            // start row index for region
+                            // start row Index for region
                             $rowStart = ($y == 3) ?
                                 $rangeEnd[1] : $rangeStart[1] + $y - 1;
 
-                            // end row index for region
+                            // end row Index for region
                             $rowEnd = ($y == 1) ?
                                 $rangeStart[1] : $rangeEnd[1] - $yMax + $y;
 
@@ -409,7 +409,7 @@ class PHPExcel_Style extends PHPExcel_Style_Supervisor implements PHPExcel_IComp
                     }
                 }
 
-                // Loop through columns, rows, or cells again and update the XF index
+                // Loop through columns, rows, or cells again and update the XF Index
                 switch ($selectionType) {
                     case 'COLUMN':
                         for ($col = $rangeStart[0]; $col <= $rangeEnd[0]; ++$col) {
@@ -623,7 +623,7 @@ class PHPExcel_Style extends PHPExcel_Style_Supervisor implements PHPExcel_IComp
     }
 
     /**
-     * Get own index in style collection
+     * Get own Index in style collection
      *
      * @return int
      */
@@ -633,7 +633,7 @@ class PHPExcel_Style extends PHPExcel_Style_Supervisor implements PHPExcel_IComp
     }
 
     /**
-     * Set own index in style collection
+     * Set own Index in style collection
      *
      * @param int $pValue
      */

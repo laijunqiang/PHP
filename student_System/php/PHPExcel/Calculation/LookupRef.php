@@ -587,7 +587,7 @@ class PHPExcel_Calculation_LookupRef
     /**
      * INDEX
      *
-     * Uses an index to choose a value from a reference or array
+     * Uses an Index to choose a value from a reference or array
      *
      * Excel Function:
      *        =INDEX(range_array, row_num, [column_num])

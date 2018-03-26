@@ -2854,7 +2854,7 @@ class PHPExcel_Calculation
 
 
     /**
-     * Read the dimensions of a matrix, and re-index it with straight numeric keys starting from row 0, column 0
+     * Read the dimensions of a matrix, and re-Index it with straight numeric keys starting from row 0, column 0
      *
      * @param    mixed        &$matrix        matrix operand
      * @return    array        An array comprising the number of rows, and number of columns
@@ -3162,8 +3162,8 @@ class PHPExcel_Calculation
         //    The guts of the lexical parser
         //    Loop through the formula extracting each operator and operand in turn
         while (true) {
-//echo 'Assessing Expression '.substr($formula, $index), PHP_EOL;
-            $opCharacter = $formula{$index};    //    Get the first character of the value at the current index position
+//echo 'Assessing Expression '.substr($formula, $Index), PHP_EOL;
+            $opCharacter = $formula{$index};    //    Get the first character of the value at the current Index position
 //echo 'Initial character of expression block is '.$opCharacter, PHP_EOL;
             if ((isset(self::$comparisonOperators[$opCharacter])) && (strlen($formula) > $index) && (isset(self::$comparisonOperators[$formula{$index+1}]))) {
                 $opCharacter .= $formula{++$index};

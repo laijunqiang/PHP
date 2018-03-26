@@ -44,7 +44,7 @@ class PHPExcel_Reader_SYLK extends PHPExcel_Reader_Abstract implements PHPExcel_
     private $inputEncoding = 'ANSI';
 
     /**
-     * Sheet index to read
+     * Sheet Index to read
      *
      * @var int
      */
@@ -455,7 +455,7 @@ class PHPExcel_Reader_SYLK extends PHPExcel_Reader_Abstract implements PHPExcel_
     }
 
     /**
-     * Get sheet index
+     * Get sheet Index
      *
      * @return int
      */
@@ -465,9 +465,9 @@ class PHPExcel_Reader_SYLK extends PHPExcel_Reader_Abstract implements PHPExcel_
     }
 
     /**
-     * Set sheet index
+     * Set sheet Index
      *
-     * @param    int        $pValue        Sheet index
+     * @param    int        $pValue        Sheet Index
      * @return PHPExcel_Reader_SYLK
      */
     public function setSheetIndex($pValue = 0)

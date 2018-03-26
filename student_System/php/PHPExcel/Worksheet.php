@@ -563,7 +563,7 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
         if (is_null($iChartIndex)) {
             $this->chartCollection[] = $pChart;
         } else {
-            // Insert the chart at the requested index
+            // Insert the chart at the requested Index
             array_splice($this->chartCollection, $iChartIndex, 0, array($pChart));
         }
 
@@ -581,9 +581,9 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
     }
 
     /**
-     * Get a chart by its index position
+     * Get a chart by its Index position
      *
-     * @param string $index Chart index position
+     * @param string $index Chart Index position
      * @return false|PHPExcel_Chart
      * @throws PHPExcel_Exception
      */
@@ -1301,7 +1301,7 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
     /**
      * Get row dimension at a specific row
      *
-     * @param int $pRow Numeric index of the row
+     * @param int $pRow Numeric Index of the row
      * @return PHPExcel_Worksheet_RowDimension
      */
     public function getRowDimension($pRow = 1, $create = true)
@@ -1324,7 +1324,7 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
     /**
      * Get column dimension at a specific column
      *
-     * @param string $pColumn String index of the column
+     * @param string $pColumn String Index of the column
      * @return PHPExcel_Worksheet_ColumnDimension
      */
     public function getColumnDimension($pColumn = 'A', $create = true)

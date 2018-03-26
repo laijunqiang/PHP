@@ -76,7 +76,7 @@ class PHPExcel_Writer_Excel5_Xf
     private $fontIndex;
 
     /**
-     * An index (2 bytes) to a FORMAT record (number format).
+     * An Index (2 bytes) to a FORMAT record (number format).
      * @var integer
      */
     private $numberFormatIndex;
@@ -268,7 +268,7 @@ class PHPExcel_Writer_Excel5_Xf
      * Sets the cell's bottom border color
      *
      * @access public
-     * @param int $colorIndex Color index
+     * @param int $colorIndex Color Index
      */
     public function setBottomColor($colorIndex)
     {
@@ -279,7 +279,7 @@ class PHPExcel_Writer_Excel5_Xf
      * Sets the cell's top border color
      *
      * @access public
-     * @param int $colorIndex Color index
+     * @param int $colorIndex Color Index
      */
     public function setTopColor($colorIndex)
     {
@@ -290,7 +290,7 @@ class PHPExcel_Writer_Excel5_Xf
      * Sets the cell's left border color
      *
      * @access public
-     * @param int $colorIndex Color index
+     * @param int $colorIndex Color Index
      */
     public function setLeftColor($colorIndex)
     {
@@ -301,7 +301,7 @@ class PHPExcel_Writer_Excel5_Xf
      * Sets the cell's right border color
      *
      * @access public
-     * @param int $colorIndex Color index
+     * @param int $colorIndex Color Index
      */
     public function setRightColor($colorIndex)
     {
@@ -312,7 +312,7 @@ class PHPExcel_Writer_Excel5_Xf
      * Sets the cell's diagonal border color
      *
      * @access public
-     * @param int $colorIndex Color index
+     * @param int $colorIndex Color Index
      */
     public function setDiagColor($colorIndex)
     {
@@ -324,7 +324,7 @@ class PHPExcel_Writer_Excel5_Xf
      * Sets the cell's foreground color
      *
      * @access public
-     * @param int $colorIndex Color index
+     * @param int $colorIndex Color Index
      */
     public function setFgColor($colorIndex)
     {
@@ -335,7 +335,7 @@ class PHPExcel_Writer_Excel5_Xf
      * Sets the cell's background color
      *
      * @access public
-     * @param int $colorIndex Color index
+     * @param int $colorIndex Color Index
      */
     public function setBgColor($colorIndex)
     {
@@ -343,7 +343,7 @@ class PHPExcel_Writer_Excel5_Xf
     }
 
     /**
-     * Sets the index to the number format record
+     * Sets the Index to the number format record
      * It can be date, time, currency, etc...
      *
      * @access public
@@ -355,9 +355,9 @@ class PHPExcel_Writer_Excel5_Xf
     }
 
     /**
-     * Set the font index.
+     * Set the font Index.
      *
-     * @param int $value Font index, note that value 4 does not exist
+     * @param int $value Font Index, note that value 4 does not exist
      */
     public function setFontIndex($value)
     {

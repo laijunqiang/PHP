@@ -28,7 +28,7 @@
 class PHPExcel_Writer_Excel5_Font
 {
     /**
-     * Color index
+     * Color Index
      *
      * @var int
      */
@@ -53,7 +53,7 @@ class PHPExcel_Writer_Excel5_Font
     }
 
     /**
-     * Set the color index
+     * Set the color Index
      *
      * @param int $colorIndex
      */

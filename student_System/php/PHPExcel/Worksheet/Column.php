@@ -35,7 +35,7 @@ class PHPExcel_Worksheet_Column
     private $parent;
 
     /**
-     * Column index
+     * Column Index
      *
      * @var string
      */
@@ -49,7 +49,7 @@ class PHPExcel_Worksheet_Column
      */
     public function __construct(PHPExcel_Worksheet $parent = null, $columnIndex = 'A')
     {
-        // Set parent and column index
+        // Set parent and column Index
         $this->parent         = $parent;
         $this->columnIndex = $columnIndex;
     }
@@ -63,7 +63,7 @@ class PHPExcel_Worksheet_Column
     }
 
     /**
-     * Get column index
+     * Get column Index
      *
      * @return string
      */

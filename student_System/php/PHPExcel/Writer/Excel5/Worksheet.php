@@ -185,7 +185,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
     private $escher;
 
     /**
-     * Array of font hashes associated to FONT records index
+     * Array of font hashes associated to FONT records Index
      *
      * @var array
      */
@@ -316,7 +316,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
             // $firstcol first column on the range
             // $lastcol  last column on the range
             // $width    width to set
-            // $xfIndex  The optional cell style Xf index to apply to the columns
+            // $xfIndex  The optional cell style Xf Index to apply to the columns
             // $hidden   The optional hidden atribute
             // $level    The optional outline level
             $this->columnInfo[] = array($i, $i, $width, $xfIndex, $hidden, $level);
@@ -637,8 +637,8 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
     /**
      * Write a LABELSST record or a LABEL record. Which one depends on BIFF version
      *
-     * @param int $row Row index (0-based)
-     * @param int $col Column index (0-based)
+     * @param int $row Row Index (0-based)
+     * @param int $col Column Index (0-based)
      * @param string $str The string
      * @param int $xfIndex Index to XF record
      */
@@ -650,10 +650,10 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
     /**
      * Write a LABELSST record or a LABEL record. Which one depends on BIFF version
      * It differs from writeString by the writing of rich text strings.
-     * @param int $row Row index (0-based)
-     * @param int $col Column index (0-based)
+     * @param int $row Row Index (0-based)
+     * @param int $col Column Index (0-based)
      * @param string $str The string
-     * @param mixed   $xfIndex The XF format index for the cell
+     * @param mixed   $xfIndex The XF format Index for the cell
      * @param array $arrcRun Index to Font record and characters beginning
      */
     private function writeRichTextString($row, $col, $str, $xfIndex, $arrcRun)
@@ -685,7 +685,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
      * @param integer $row    Zero indexed row
      * @param integer $col    Zero indexed column
      * @param string  $str    The string to write
-     * @param mixed   $xfIndex The XF format index for the cell
+     * @param mixed   $xfIndex The XF format Index for the cell
      * @return integer
      */
     private function writeLabel($row, $col, $str, $xfIndex)
@@ -721,7 +721,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
      * @param integer $row    Zero indexed row
      * @param integer $col    Zero indexed column
      * @param string  $str    The string to write
-     * @param mixed   $xfIndex The XF format index for the cell
+     * @param mixed   $xfIndex The XF format Index for the cell
      * @return integer
      */
     private function writeLabelSst($row, $col, $str, $xfIndex)
@@ -786,7 +786,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
      *
      * @param integer $row    Zero indexed row
      * @param integer $col    Zero indexed column
-     * @param mixed   $xfIndex The XF format index
+     * @param mixed   $xfIndex The XF format Index
      */
     public function writeBlank($row, $col, $xfIndex)
     {
@@ -802,8 +802,8 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
     /**
      * Write a boolean or an error type to the specified row and column (zero indexed)
      *
-     * @param int $row Row index (0-based)
-     * @param int $col Column index (0-based)
+     * @param int $row Row Index (0-based)
+     * @param int $col Column Index (0-based)
      * @param int $value
      * @param boolean $isError Error or Boolean?
      * @param int $xfIndex
@@ -831,7 +831,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
      * @param integer $row     Zero indexed row
      * @param integer $col     Zero indexed column
      * @param string  $formula The formula text string
-     * @param mixed   $xfIndex  The XF format index
+     * @param mixed   $xfIndex  The XF format Index
      * @param mixed   $calculatedValue  Calculated value
      * @return integer
      */
@@ -1184,7 +1184,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
      * @param integer $row    The row to set
      * @param integer $height Height we are giving to the row.
      *                        Use null to set XF without setting height
-     * @param integer $xfIndex  The optional cell style Xf index to apply to the columns
+     * @param integer $xfIndex  The optional cell style Xf Index to apply to the columns
      * @param bool    $hidden The optional hidden attribute
      * @param integer $level  The optional outline level for row, in range [0,7]
      */
@@ -1293,7 +1293,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
         $data    = pack("vvv", $grbit, $rwTop, $colLeft);
 
         // FIXME !!!
-        $rgbHdr       = 0x0040; // Row/column heading and gridline color index
+        $rgbHdr       = 0x0040; // Row/column heading and gridline color Index
         $zoom_factor_page_break = ($fPageBreakPreview ? $this->phpSheet->getSheetView()->getZoomScale() : 0x0000);
         $zoom_factor_normal =  $this->phpSheet->getSheetView()->getZoomScaleNormal();
 
@@ -1414,12 +1414,12 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
         }
 
         list($colFirst, $rwFirst) = PHPExcel_Cell::coordinateFromString($first);
-        $colFirst = PHPExcel_Cell::columnIndexFromString($colFirst) - 1; // base 0 column index
-        --$rwFirst; // base 0 row index
+        $colFirst = PHPExcel_Cell::columnIndexFromString($colFirst) - 1; // base 0 column Index
+        --$rwFirst; // base 0 row Index
 
         list($colLast, $rwLast) = PHPExcel_Cell::coordinateFromString($last);
-        $colLast = PHPExcel_Cell::columnIndexFromString($colLast) - 1; // base 0 column index
-        --$rwLast; // base 0 row index
+        $colLast = PHPExcel_Cell::columnIndexFromString($colLast) - 1; // base 0 column Index
+        --$rwLast; // base 0 row Index
 
         // make sure we are not out of bounds
         $colFirst = min($colFirst, 255);
@@ -1528,7 +1528,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
             0x00000000, // unused
             0x00000000, // unused
             0x00000014, // size of record data
-            $this->colors[$this->phpSheet->getTabColor()->getRGB()], // color index
+            $this->colors[$this->phpSheet->getTabColor()->getRGB()], // color Index
             0x0000        // unused
         );
 
@@ -1655,9 +1655,9 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
 
     /**
      * Writes the Excel BIFF EXTERNSHEET record. These references are used by
-     * formulas. A formula references a sheet name via an index. Since we store a
-     * reference to all of the external worksheets the EXTERNSHEET index is the same
-     * as the worksheet index.
+     * formulas. A formula references a sheet name via an Index. Since we store a
+     * reference to all of the external worksheets the EXTERNSHEET Index is the same
+     * as the worksheet Index.
      *
      * @param string $sheetname The name of a external worksheet
      */
@@ -2717,7 +2717,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
                             0x0015, // 0x0015 = ftCmo
                             0x0012, // length of ftCmo data
                             0x0014, // object type, 0x0014 = filter
-                            $i, // object id number, Excel seems to use 1-based index, local for the sheet
+                            $i, // object id number, Excel seems to use 1-based Index, local for the sheet
                             0x2101, // option flags, 0x2001 is what OpenOffice.org uses
                             0, // reserved
                             0, // reserved
@@ -2738,7 +2738,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
                             0x0015, // 0x0015 = ftCmo
                             0x0012, // length of ftCmo data
                             0x0008, // object type, 0x0008 = picture
-                            $i, // object id number, Excel seems to use 1-based index, local for the sheet
+                            $i, // object id number, Excel seems to use 1-based Index, local for the sheet
                             0x6011, // option flags, 0x6011 is what OpenOffice.org uses
                             0, // reserved
                             0, // reserved
@@ -3237,7 +3237,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
             }
             // Not used (3)
             $dataBlockFont .= pack('vC', 0x0000, 0x00);
-            // Font color index
+            // Font color Index
             switch ($conditional->getStyle()->getFont()->getColor()->getRGB()) {
                 case '000000':
                     $colorIdx = 0x08;

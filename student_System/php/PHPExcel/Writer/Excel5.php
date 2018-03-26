@@ -56,7 +56,7 @@ class PHPExcel_Writer_Excel5 extends PHPExcel_Writer_Abstract implements PHPExce
     private $strTable = array();
 
     /**
-     * Color cache. Mapping between RGB value and color index.
+     * Color cache. Mapping between RGB value and color Index.
      *
      * @var array
      */
@@ -236,13 +236,13 @@ class PHPExcel_Writer_Excel5 extends PHPExcel_Writer_Abstract implements PHPExce
      */
     private function buildWorksheetEschers()
     {
-        // 1-based index to BstoreContainer
+        // 1-based Index to BstoreContainer
         $blipIndex = 0;
         $lastReducedSpId = 0;
         $lastSpId = 0;
 
         foreach ($this->phpExcel->getAllsheets() as $sheet) {
-            // sheet index
+            // sheet Index
             $sheetIndex = $sheet->getParent()->getIndex($sheet);
 
             $escher = null;
@@ -259,7 +259,7 @@ class PHPExcel_Writer_Excel5 extends PHPExcel_Writer_Abstract implements PHPExce
             // dgContainer
             $dgContainer = new PHPExcel_Shared_Escher_DgContainer();
 
-            // set the drawing index (we use sheet index + 1)
+            // set the drawing Index (we use sheet Index + 1)
             $dgId = $sheet->getParent()->getIndex($sheet) + 1;
             $dgContainer->setDgId($dgId);
             $escher->setDgContainer($dgContainer);
@@ -292,7 +292,7 @@ class PHPExcel_Writer_Excel5 extends PHPExcel_Writer_Abstract implements PHPExce
                 // set the shape flag
                 $spContainer->setSpFlag(0x02);
 
-                // set the shape index (we combine 1-based sheet index and $countShapes to create unique shape index)
+                // set the shape Index (we combine 1-based sheet Index and $countShapes to create unique shape Index)
                 $reducedSpId = $countShapes[$sheetIndex];
                 $spId = $reducedSpId
                     | ($sheet->getParent()->getIndex($sheet) + 1) << 10;
@@ -304,7 +304,7 @@ class PHPExcel_Writer_Excel5 extends PHPExcel_Writer_Abstract implements PHPExce
                 // keep track of last spId
                 $lastSpId = $spId;
 
-                // set the BLIP index
+                // set the BLIP Index
                 $spContainer->setOPT(0x4104, $blipIndex);
 
                 // set coordinates and offsets, client anchor
@@ -350,7 +350,7 @@ class PHPExcel_Writer_Excel5 extends PHPExcel_Writer_Abstract implements PHPExce
                     // set the shape flag
                     $spContainer->setSpFlag(0x01);
 
-                    // set the shape index (we combine 1-based sheet index and $countShapes to create unique shape index)
+                    // set the shape Index (we combine 1-based sheet Index and $countShapes to create unique shape Index)
                     $reducedSpId = $countShapes[$sheetIndex];
                     $spId = $reducedSpId
                         | ($sheet->getParent()->getIndex($sheet) + 1) << 10;
@@ -387,7 +387,7 @@ class PHPExcel_Writer_Excel5 extends PHPExcel_Writer_Abstract implements PHPExce
             // identifier clusters, used for workbook Escher object
             $this->IDCLs[$dgId] = $lastReducedSpId;
 
-            // set last shape index
+            // set last shape Index
             $dgContainer->setLastSpId($lastSpId);
 
             // set the Escher object

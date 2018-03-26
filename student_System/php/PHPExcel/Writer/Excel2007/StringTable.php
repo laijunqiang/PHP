@@ -48,7 +48,7 @@ class PHPExcel_Writer_Excel2007_StringTable extends PHPExcel_Writer_Excel2007_Wr
                 $aStringTable = $pExistingTable;
             }
 
-            // Fill index array
+            // Fill Index array
             $aFlippedStringTable = $this->flipStringTable($aStringTable);
 
             // Loop through cells
@@ -289,7 +289,7 @@ class PHPExcel_Writer_Excel2007_StringTable extends PHPExcel_Writer_Excel2007_Wr
     }
 
     /**
-     * Flip string table (for index searching)
+     * Flip string table (for Index searching)
      *
      * @param     array    $stringTable    Stringtable
      * @return     array

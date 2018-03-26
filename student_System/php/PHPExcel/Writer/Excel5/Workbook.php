@@ -114,7 +114,7 @@ class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
     private $fontWriters = array();
 
     /**
-     * Added fonts. Maps from font's hash => index in workbook
+     * Added fonts. Maps from font's hash => Index in workbook
      *
      * @var array
      */
@@ -128,7 +128,7 @@ class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
     private $numberFormats = array();
 
     /**
-     * Added number formats. Maps from numberFormat's hash => index in workbook
+     * Added number formats. Maps from numberFormat's hash => Index in workbook
      *
      * @var array
      */
@@ -248,7 +248,7 @@ class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
         // Add the font if not already added
         $fontIndex = $this->addFont($style->getFont());
 
-        // Assign the font index to the xf record
+        // Assign the font Index to the xf record
         $xfWriter->setFontIndex($fontIndex);
 
         // Background colors, best to treat these after the font so black will come after white in custom palette
@@ -275,7 +275,7 @@ class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
             $numberFormatIndex = (int) $style->getNumberFormat()->getBuiltInFormatCode();
         }
 
-        // Assign the number format index to xf record
+        // Assign the number format Index to xf record
         $xfWriter->setNumberFormatIndex($numberFormatIndex);
 
         $this->xfWriters[] = $xfWriter;
@@ -312,7 +312,7 @@ class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
      * Alter color palette adding a custom color
      *
      * @param string $rgb E.g. 'FF00AA'
-     * @return int Color index
+     * @return int Color Index
      */
     private function addColor($rgb)
     {
@@ -568,7 +568,7 @@ class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
                 $print_colmax = PHPExcel_Cell::columnIndexFromString($printArea[1][0]) - 1;
 
                 $this->writeNameShort(
-                    $i, // sheet index
+                    $i, // sheet Index
                     0x06, // NAME type
                     $print_rowmin,
                     $print_rowmax,
@@ -593,7 +593,7 @@ class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
                 $rowmax = $repeat[1] - 1;
 
                 $this->writeNameLong(
-                    $i, // sheet index
+                    $i, // sheet Index
                     0x07, // NAME type
                     $rowmin,
                     $rowmax,
@@ -624,7 +624,7 @@ class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
                 }
 
                 $this->writeNameShort(
-                    $i, // sheet index
+                    $i, // sheet Index
                     0x07, // NAME type
                     $rowmin,
                     $rowmax,
@@ -791,7 +791,7 @@ class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
      *
      * @param    string        $name            The name in UTF-8
      * @param    string        $formulaData    The binary formula data
-     * @param    string        $sheetIndex        1-based sheet index the defined name applies to. 0 = global
+     * @param    string        $sheetIndex        1-based sheet Index the defined name applies to. 0 = global
      * @param    boolean        $isBuiltIn        Built-in name?
      * @return    string    Complete binary record data
      */
@@ -825,7 +825,7 @@ class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
      * Write a short NAME record
      *
      * @param    string         $name
-     * @param    string         $sheetIndex        1-based sheet index the defined name applies to. 0 = global
+     * @param    string         $sheetIndex        1-based sheet Index the defined name applies to. 0 = global
      * @param    integer[][]  $rangeBounds    range boundaries
      * @param    boolean      $isHidden
      * @return    string    Complete binary record data
@@ -998,7 +998,7 @@ class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
      * Writes Excel FORMAT record for non "built-in" numerical formats.
      *
      * @param string  $format Custom format string
-     * @param integer $ifmt   Format index code
+     * @param integer $ifmt   Format Index code
      */
     private function writeNumberFormat($format, $ifmt)
     {
@@ -1078,7 +1078,7 @@ class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
      * Store the NAME record in the short format that is used for storing the print
      * area, repeat rows only and repeat columns only.
      *
-     * @param integer $index  Sheet index
+     * @param integer $index  Sheet Index
      * @param integer $type   Built-in name type
      * @param integer $rowmin Start row
      * @param integer $rowmax End row
@@ -1094,7 +1094,7 @@ class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
         $chKey  = 0x00;         // Keyboard shortcut
         $cch    = 0x01;         // Length of text name
         $cce    = 0x0015;       // Length of text definition
-        $ixals  = $index + 1;   // Sheet index
+        $ixals  = $index + 1;   // Sheet Index
         $itab   = $ixals;       // Equal to ixals
         $cchCustMenu    = 0x00;         // Length of cust menu text
         $cchDescription = 0x00;         // Length of description text
@@ -1142,7 +1142,7 @@ class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
      * writeNameShort() but we use a separate method to keep the code clean.
      * Code abstraction for reuse can be carried too far, and I should know. ;-)
      *
-     * @param integer $index Sheet index
+     * @param integer $index Sheet Index
      * @param integer $type  Built-in name type
      * @param integer $rowmin Start row
      * @param integer $rowmax End row
@@ -1157,7 +1157,7 @@ class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
         $chKey           = 0x00;         // Keyboard shortcut
         $cch             = 0x01;         // Length of text name
         $cce             = 0x002e;       // Length of text definition
-        $ixals           = $index + 1;   // Sheet index
+        $ixals           = $index + 1;   // Sheet Index
         $itab            = $ixals;       // Equal to ixals
         $cchCustMenu     = 0x00;         // Length of cust menu text
         $cchDescription  = 0x00;         // Length of description text

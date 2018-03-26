@@ -304,7 +304,7 @@ class PHPExcel_Worksheet_AutoFilter_Column
     /**
      * Get a specified AutoFilter Column Rule
      *
-     * @param    integer    $pIndex        Rule index in the ruleset array
+     * @param    integer    $pIndex        Rule Index in the ruleset array
      * @return    PHPExcel_Worksheet_AutoFilter_Column_Rule
      */
     public function getRule($pIndex)
@@ -346,7 +346,7 @@ class PHPExcel_Worksheet_AutoFilter_Column
      * Delete a specified AutoFilter Column Rule
      *    If the number of rules is reduced to 1, then we reset And/Or logic to Or
      *
-     * @param    integer    $pIndex        Rule index in the ruleset array
+     * @param    integer    $pIndex        Rule Index in the ruleset array
      * @return    PHPExcel_Worksheet_AutoFilter_Column
      */
     public function deleteRule($pIndex)

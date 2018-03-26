@@ -420,7 +420,7 @@ class EigenvalueDecomposition
             }
         }
 
-        // Outer loop over eigenvalue index
+        // Outer loop over eigenvalue Index
         $iter = 0;
         while ($n >= $low) {
             // Look for single small sub-diagonal element

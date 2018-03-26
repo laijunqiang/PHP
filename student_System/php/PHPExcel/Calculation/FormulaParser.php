@@ -215,7 +215,7 @@ class PHPExcel_Calculation_FormulaParser
                 continue;
             }
 
-            // bracked strings (R1C1 range index or linked workbook name)
+            // bracked strings (R1C1 range Index or linked workbook name)
             // no embeds (changed to "()" by Excel)
             // end does not mark a token
             if ($inRange) {

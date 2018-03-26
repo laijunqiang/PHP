@@ -35,7 +35,7 @@ class PHPExcel_Writer_HTML extends PHPExcel_Writer_Abstract implements PHPExcel_
     protected $phpExcel;
 
     /**
-     * Sheet index to write
+     * Sheet Index to write
      *
      * @var int
      */
@@ -231,7 +231,7 @@ class PHPExcel_Writer_HTML extends PHPExcel_Writer_Abstract implements PHPExcel_
     /**
      * Map border style
      *
-     * @param    int        $borderStyle        Sheet index
+     * @param    int        $borderStyle        Sheet Index
      * @return    string
      */
     private function mapBorderStyle($borderStyle)
@@ -272,7 +272,7 @@ class PHPExcel_Writer_HTML extends PHPExcel_Writer_Abstract implements PHPExcel_
     }
 
     /**
-     * Get sheet index
+     * Get sheet Index
      *
      * @return int
      */
@@ -282,9 +282,9 @@ class PHPExcel_Writer_HTML extends PHPExcel_Writer_Abstract implements PHPExcel_
     }
 
     /**
-     * Set sheet index
+     * Set sheet Index
      *
-     * @param    int        $pValue        Sheet index
+     * @param    int        $pValue        Sheet Index
      * @return PHPExcel_Writer_HTML
      */
     public function setSheetIndex($pValue = 0)
@@ -294,7 +294,7 @@ class PHPExcel_Writer_HTML extends PHPExcel_Writer_Abstract implements PHPExcel_
     }
 
     /**
-     * Get sheet index
+     * Get sheet Index
      *
      * @return boolean
      */
@@ -304,7 +304,7 @@ class PHPExcel_Writer_HTML extends PHPExcel_Writer_Abstract implements PHPExcel_
     }
 
     /**
-     * Set sheet index
+     * Set sheet Index
      *
      * @param    boolean        $pValue        Flag indicating whether the sheet navigation block should be generated or not
      * @return PHPExcel_Writer_HTML
@@ -650,7 +650,7 @@ class PHPExcel_Writer_HTML extends PHPExcel_Writer_Abstract implements PHPExcel_
                     }
 
                     $html .= '<div style="position: relative;">';
-                    $html .= '<img style="position: absolute; z-index: 1; left: ' .
+                    $html .= '<img style="position: absolute; z-Index: 1; left: ' .
                         $drawing->getOffsetX() . 'px; top: ' . $drawing->getOffsetY() . 'px; width: ' .
                         $drawing->getWidth() . 'px; height: ' . $drawing->getHeight() . 'px;" src="' .
                         $imageData . '" border="0" />';
@@ -712,7 +712,7 @@ class PHPExcel_Writer_HTML extends PHPExcel_Writer_Abstract implements PHPExcel_
                         $imageData = 'data:'.$imageDetails['mime'].';base64,' . $base64;
 
                         $html .= '<div style="position: relative;">';
-                        $html .= '<img style="position: absolute; z-index: 1; left: ' . $chartCoordinates['xOffset'] . 'px; top: ' . $chartCoordinates['yOffset'] . 'px; width: ' . $imageDetails[0] . 'px; height: ' . $imageDetails[1] . 'px;" src="' . $imageData . '" border="0" />' . PHP_EOL;
+                        $html .= '<img style="position: absolute; z-Index: 1; left: ' . $chartCoordinates['xOffset'] . 'px; top: ' . $chartCoordinates['yOffset'] . 'px; width: ' . $imageDetails[0] . 'px; height: ' . $imageDetails[1] . 'px;" src="' . $imageData . '" border="0" />' . PHP_EOL;
                         $html .= '</div>';
 
                         unlink($chartFileName);
@@ -1145,7 +1145,7 @@ class PHPExcel_Writer_HTML extends PHPExcel_Writer_Abstract implements PHPExcel_
             // Construct HTML
             $html = '';
 
-            // Sheet index
+            // Sheet Index
             $sheetIndex = $pSheet->getParent()->getIndex($pSheet);
 
             // DomPDF and breaks

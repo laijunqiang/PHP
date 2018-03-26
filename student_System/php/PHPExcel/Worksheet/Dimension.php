@@ -58,7 +58,7 @@ abstract class PHPExcel_Worksheet_Dimension
     /**
      * Create a new PHPExcel_Worksheet_Dimension
      *
-     * @param int $pIndex Numeric row index
+     * @param int $pIndex Numeric row Index
      */
     public function __construct($initialValue = null)
     {
@@ -140,7 +140,7 @@ abstract class PHPExcel_Worksheet_Dimension
     }
 
     /**
-     * Get index to cellXf
+     * Get Index to cellXf
      *
      * @return int
      */
@@ -150,7 +150,7 @@ abstract class PHPExcel_Worksheet_Dimension
     }
 
     /**
-     * Set index to cellXf
+     * Set Index to cellXf
      *
      * @param int $pValue
      * @return PHPExcel_Worksheet_Dimension

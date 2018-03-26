@@ -137,7 +137,7 @@ class PHPExcel_HashTable
     }
 
     /**
-     * Get index for hash code
+     * Get Index for hash code
      *
      * @param    string    $pHashCode
      * @return    int    Index
@@ -148,7 +148,7 @@ class PHPExcel_HashTable
     }
 
     /**
-     * Get by index
+     * Get by Index
      *
      * @param    int    $pIndex
      * @return    PHPExcel_IComparable

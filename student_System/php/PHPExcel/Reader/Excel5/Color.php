@@ -15,7 +15,7 @@ class PHPExcel_Reader_Excel5_Color
             // special built-in color
             return PHPExcel_Reader_Excel5_Color_BuiltIn::lookup($color);
         } elseif (isset($palette) && isset($palette[$color - 8])) {
-            // palette color, color index 0x08 maps to pallete index 0
+            // palette color, color Index 0x08 maps to pallete Index 0
             return $palette[$color - 8];
         } else {
             // default color table

@@ -57,7 +57,7 @@ class PHPExcel_Worksheet_Drawing extends PHPExcel_Worksheet_BaseDrawing implemen
     }
 
     /**
-     * Get indexed filename (using image index)
+     * Get indexed filename (using image Index)
      *
      * @return string
      */

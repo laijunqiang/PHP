@@ -35,7 +35,7 @@ class PHPExcel_Worksheet_Row
     private $parent;
 
     /**
-     * Row index
+     * Row Index
      *
      * @var int
      */
@@ -49,7 +49,7 @@ class PHPExcel_Worksheet_Row
      */
     public function __construct(PHPExcel_Worksheet $parent = null, $rowIndex = 1)
     {
-        // Set parent and row index
+        // Set parent and row Index
         $this->parent   = $parent;
         $this->rowIndex = $rowIndex;
     }
@@ -63,7 +63,7 @@ class PHPExcel_Worksheet_Row
     }
 
     /**
-     * Get row index
+     * Get row Index
      *
      * @return int
      */

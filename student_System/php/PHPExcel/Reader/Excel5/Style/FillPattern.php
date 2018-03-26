@@ -25,7 +25,7 @@ class PHPExcel_Reader_Excel5_Style_FillPattern
     );
 
     /**
-     * Get fill pattern from index
+     * Get fill pattern from Index
      * OpenOffice documentation: 2.5.12
      *
      * @param int $index

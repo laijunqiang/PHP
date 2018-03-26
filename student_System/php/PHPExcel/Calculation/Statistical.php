@@ -180,7 +180,7 @@ class PHPExcel_Calculation_Statistical
         $delta = 0.0;
         while ($m <= MAX_ITERATIONS && abs($delta-1.0) > PRECISION) {
             $m2 = 2 * $m;
-            // even index for d
+            // even Index for d
             $d = $m * ($q - $m) * $x / ( ($p_minus + $m2) * ($p + $m2));
             $h = 1.0 + $d * $h;
             if (abs($h) < XMININ) {
@@ -192,7 +192,7 @@ class PHPExcel_Calculation_Statistical
                 $c = XMININ;
             }
             $frac *= $h * $c;
-            // odd index for d
+            // odd Index for d
             $d = -($p + $m) * ($sum_pq + $m) * $x / (($p + $m2) * ($p_plus + $m2));
             $h = 1.0 + $d * $h;
             if (abs($h) < XMININ) {

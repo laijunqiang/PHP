@@ -28,7 +28,7 @@
 class PHPExcel_Shared_Escher_DggContainer
 {
     /**
-     * Maximum shape index of all shapes in all drawings increased by one
+     * Maximum shape Index of all shapes in all drawings increased by one
      *
      * @var int
      */
@@ -70,7 +70,7 @@ class PHPExcel_Shared_Escher_DggContainer
     private $IDCLs = array();
 
     /**
-     * Get maximum shape index of all shapes in all drawings (plus one)
+     * Get maximum shape Index of all shapes in all drawings (plus one)
      *
      * @return int
      */
@@ -80,7 +80,7 @@ class PHPExcel_Shared_Escher_DggContainer
     }
 
     /**
-     * Set maximum shape index of all shapes in all drawings (plus one)
+     * Set maximum shape Index of all shapes in all drawings (plus one)
      *
      * @param int
      */

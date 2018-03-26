@@ -589,8 +589,8 @@ class PHPExcel_Worksheet_PageSetup
      *    Get print area
      *
      * @param    int        $index    Identifier for a specific print area range if several ranges have been set
-     *                            Default behaviour, or a index value of 0, will return all ranges as a comma-separated string
-     *                            Otherwise, the specific range identified by the value of $index will be returned
+     *                            Default behaviour, or a Index value of 0, will return all ranges as a comma-separated string
+     *                            Otherwise, the specific range identified by the value of $Index will be returned
      *                            Print areas are numbered from 1
      * @throws    PHPExcel_Exception
      * @return    string
@@ -611,8 +611,8 @@ class PHPExcel_Worksheet_PageSetup
      * Is print area set?
      *
      * @param    int        $index    Identifier for a specific print area range if several ranges have been set
-     *                            Default behaviour, or an index value of 0, will identify whether any print range is set
-     *                            Otherwise, existence of the range identified by the value of $index will be returned
+     *                            Default behaviour, or an Index value of 0, will identify whether any print range is set
+     *                            Otherwise, existence of the range identified by the value of $Index will be returned
      *                            Print areas are numbered from 1
      * @return    boolean
      */
@@ -629,8 +629,8 @@ class PHPExcel_Worksheet_PageSetup
      * Clear a print area
      *
      * @param    int        $index    Identifier for a specific print area range if several ranges have been set
-     *                            Default behaviour, or an index value of 0, will clear all print ranges that are set
-     *                            Otherwise, the range identified by the value of $index will be removed from the series
+     *                            Default behaviour, or an Index value of 0, will clear all print ranges that are set
+     *                            Otherwise, the range identified by the value of $Index will be removed from the series
      *                            Print areas are numbered from 1
      * @return    PHPExcel_Worksheet_PageSetup
      */
@@ -654,18 +654,18 @@ class PHPExcel_Worksheet_PageSetup
      *
      * @param    string    $value
      * @param    int        $index    Identifier for a specific print area range allowing several ranges to be set
-     *                            When the method is "O"verwrite, then a positive integer index will overwrite that indexed
-     *                                entry in the print areas list; a negative index value will identify which entry to
+     *                            When the method is "O"verwrite, then a positive integer Index will overwrite that indexed
+     *                                entry in the print areas list; a negative Index value will identify which entry to
      *                                overwrite working bacward through the print area to the list, with the last entry as -1.
-     *                                Specifying an index value of 0, will overwrite <b>all</b> existing print ranges.
-     *                            When the method is "I"nsert, then a positive index will insert after that indexed entry in
-     *                                the print areas list, while a negative index will insert before the indexed entry.
-     *                                Specifying an index value of 0, will always append the new print range at the end of the
+     *                                Specifying an Index value of 0, will overwrite <b>all</b> existing print ranges.
+     *                            When the method is "I"nsert, then a positive Index will insert after that indexed entry in
+     *                                the print areas list, while a negative Index will insert before the indexed entry.
+     *                                Specifying an Index value of 0, will always append the new print range at the end of the
      *                                list.
      *                            Print areas are numbered from 1
      * @param    string    $method    Determines the method used when setting multiple print areas
      *                            Default behaviour, or the "O" method, overwrites existing print area
-     *                            The "I" method, inserts the new print area before any specified index, or at the end of the list
+     *                            The "I" method, inserts the new print area before any specified Index, or at the end of the list
      * @return    PHPExcel_Worksheet_PageSetup
      * @throws    PHPExcel_Exception
      */
@@ -689,7 +689,7 @@ class PHPExcel_Worksheet_PageSetup
                     $index = count($printAreas) - abs($index) + 1;
                 }
                 if (($index <= 0) || ($index > count($printAreas))) {
-                    throw new PHPExcel_Exception('Invalid index for setting print range.');
+                    throw new PHPExcel_Exception('Invalid Index for setting print range.');
                 }
                 $printAreas[$index-1] = $value;
                 $this->printArea = implode(',', $printAreas);
@@ -703,7 +703,7 @@ class PHPExcel_Worksheet_PageSetup
                     $index = abs($index) - 1;
                 }
                 if ($index > count($printAreas)) {
-                    throw new PHPExcel_Exception('Invalid index for setting print range.');
+                    throw new PHPExcel_Exception('Invalid Index for setting print range.');
                 }
                 $printAreas = array_merge(array_slice($printAreas, 0, $index), array($value), array_slice($printAreas, $index));
                 $this->printArea = implode(',', $printAreas);
@@ -720,9 +720,9 @@ class PHPExcel_Worksheet_PageSetup
      *
      * @param    string    $value
      * @param    int        $index    Identifier for a specific print area range allowing several ranges to be set
-     *                            A positive index will insert after that indexed entry in the print areas list, while a
-     *                                negative index will insert before the indexed entry.
-     *                                Specifying an index value of 0, will always append the new print range at the end of the
+     *                            A positive Index will insert after that indexed entry in the print areas list, while a
+     *                                negative Index will insert before the indexed entry.
+     *                                Specifying an Index value of 0, will always append the new print range at the end of the
      *                                list.
      *                            Print areas are numbered from 1
      * @return    PHPExcel_Worksheet_PageSetup
@@ -741,18 +741,18 @@ class PHPExcel_Worksheet_PageSetup
      * @param    int        $column2    Column 2
      * @param    int        $row2        Row 2
      * @param    int        $index        Identifier for a specific print area range allowing several ranges to be set
-     *                                When the method is "O"verwrite, then a positive integer index will overwrite that indexed
-     *                                    entry in the print areas list; a negative index value will identify which entry to
+     *                                When the method is "O"verwrite, then a positive integer Index will overwrite that indexed
+     *                                    entry in the print areas list; a negative Index value will identify which entry to
      *                                    overwrite working bacward through the print area to the list, with the last entry as -1.
-     *                                    Specifying an index value of 0, will overwrite <b>all</b> existing print ranges.
-     *                                When the method is "I"nsert, then a positive index will insert after that indexed entry in
-     *                                    the print areas list, while a negative index will insert before the indexed entry.
-     *                                    Specifying an index value of 0, will always append the new print range at the end of the
+     *                                    Specifying an Index value of 0, will overwrite <b>all</b> existing print ranges.
+     *                                When the method is "I"nsert, then a positive Index will insert after that indexed entry in
+     *                                    the print areas list, while a negative Index will insert before the indexed entry.
+     *                                    Specifying an Index value of 0, will always append the new print range at the end of the
      *                                    list.
      *                                Print areas are numbered from 1
      * @param    string    $method        Determines the method used when setting multiple print areas
      *                                Default behaviour, or the "O" method, overwrites existing print area
-     *                                The "I" method, inserts the new print area before any specified index, or at the end of the list
+     *                                The "I" method, inserts the new print area before any specified Index, or at the end of the list
      * @return    PHPExcel_Worksheet_PageSetup
      * @throws    PHPExcel_Exception
      */
@@ -773,9 +773,9 @@ class PHPExcel_Worksheet_PageSetup
      * @param    int        $column2    End Column for the print area
      * @param    int        $row2        End Row for the print area
      * @param    int        $index        Identifier for a specific print area range allowing several ranges to be set
-     *                                A positive index will insert after that indexed entry in the print areas list, while a
-     *                                    negative index will insert before the indexed entry.
-     *                                    Specifying an index value of 0, will always append the new print range at the end of the
+     *                                A positive Index will insert after that indexed entry in the print areas list, while a
+     *                                    negative Index will insert before the indexed entry.
+     *                                    Specifying an Index value of 0, will always append the new print range at the end of the
      *                                    list.
      *                                Print areas are numbered from 1
      * @return    PHPExcel_Worksheet_PageSetup

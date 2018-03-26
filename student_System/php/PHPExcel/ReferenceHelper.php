@@ -435,7 +435,7 @@ class PHPExcel_ReferenceHelper
             // New coordinates
             $newCoordinates = PHPExcel_Cell::stringFromColumnIndex($cellIndex-1 + $pNumCols) . ($cell->getRow() + $pNumRows);
 
-            // Should the cell be updated? Move value and cellXf index from one cell to another.
+            // Should the cell be updated? Move value and cellXf Index from one cell to another.
             if (($cellIndex >= $beforeColumnIndex) && ($cell->getRow() >= $beforeRow)) {
                 // Update cell styles
                 $pSheet->getCell($newCoordinates)->setXfIndex($cell->getXfIndex());
