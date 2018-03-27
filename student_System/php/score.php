@@ -3,6 +3,19 @@ session_start();
 if(!isset($_SESSION['name'])){
     echo "<script>alert('您正查看的此页已过期,请重新登录');window.location.href='../Index.html'</script>";
 }
+$name=$_SESSION['name'];
+$SID=session_id();
+//查询管理员在数据库中的session_id，并与当前的session_id比较
+include "class.php";
+$sql=new Sql();
+$sql->adminSelectSession($name);
+$result=$sql->result;
+while (list($sessionID) = $result->fetch_row()) {
+    $sid=$sessionID;
+}
+if ($sid!==$SID){
+    echo "<script>alert('您的账号已被登陆,请重新登录');window.location.href='/Index.html'</script>";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,8 +36,6 @@ if(!isset($_SESSION['name'])){
         <td>创建时间</td>
     </tr>
     <?php
-    include "class.php";
-    $sql=new Sql();
     $sql->scoreSelect();
     $result=$sql->result;
     while(list($studentNumber,$studentName,$courseNumber,$courseName,$score,$create_time)=$result->fetch_row())

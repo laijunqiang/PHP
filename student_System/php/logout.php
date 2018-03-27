@@ -13,7 +13,7 @@ var_dump($_SESSION['name']);*/
 if(isset($_SESSION['name']) && $_SESSION['name']==="$name"){
     session_unset();//free all session variable
     session_destroy();//销毁一个会话中的全部数据
-    setcookie(session_name(),'',time()-3600);//销毁与客户端的卡号
+    setcookie(session_name(),'',time()-3600);//销毁与客户端的卡号 PHPSESSID的key值为session_name()
     echo "<script>alert('退出成功！');window.location.href='../index.html'</script>";
 }else {
     include "class.php";

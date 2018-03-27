@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-03-22 12:19:05
+Date: 2018-03-27 17:17:08
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -23,6 +23,7 @@ CREATE TABLE `t_admin` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键',
   `name` char(20) NOT NULL COMMENT '超级管理员账号',
   `password` char(32) NOT NULL COMMENT '超级管理员密码',
+  `session_id` char(26) DEFAULT NULL COMMENT 'session_id',
   `create_time` char(19) DEFAULT NULL COMMENT '创建记录时间',
   `update_time` char(19) DEFAULT NULL COMMENT '修改记录时间',
   PRIMARY KEY (`id`),
@@ -32,9 +33,9 @@ CREATE TABLE `t_admin` (
 -- ----------------------------
 -- Records of t_admin
 -- ----------------------------
-INSERT INTO `t_admin` VALUES ('1', '张老师', '202cb962ac59075b964b07152d234b70', '2018-01-29 16:30:38', '2018-03-19 09:18:20');
-INSERT INTO `t_admin` VALUES ('2', '李老师', 'c20ad4d76fe97759aa27a0c99bff6710', '2018-01-29 16:30:38', '2018-03-07 18:26:37');
-INSERT INTO `t_admin` VALUES ('3', '林老师', '81dc9bdb52d04dc20036dbd8313ed055', '2018-01-29 16:30:38', '2018-03-07 18:22:57');
+INSERT INTO `t_admin` VALUES ('1', '张老师', '202cb962ac59075b964b07152d234b70', 'dmf55p19r9p3gk7hhi6l5d7sd3', '2018-01-29 16:30:38', '2018-03-26 10:47:24');
+INSERT INTO `t_admin` VALUES ('2', '李老师', '202cb962ac59075b964b07152d234b70', 'bks9ptrudbhjeksp55n6j4gtc2', '2018-01-29 16:30:38', '2018-03-07 18:26:37');
+INSERT INTO `t_admin` VALUES ('3', '林老师', '202cb962ac59075b964b07152d234b70', 'bks9ptrudbhjeksp55n6j4gtc2', '2018-01-29 16:30:38', '2018-03-07 18:22:57');
 
 -- ----------------------------
 -- Table structure for t_course
@@ -86,15 +87,21 @@ INSERT INTO `t_score` VALUES ('1', '1', '85.5', '2018-01-29 17:04:36');
 INSERT INTO `t_score` VALUES ('1', '2', '80.5', '2018-02-02 15:53:34');
 INSERT INTO `t_score` VALUES ('1', '7', '70.5', '2018-03-08 21:59:30');
 INSERT INTO `t_score` VALUES ('2', '1', '90.5', '2018-01-29 17:04:36');
+INSERT INTO `t_score` VALUES ('2', '2', '50', '2018-03-22 20:25:03');
 INSERT INTO `t_score` VALUES ('3', '1', '90.5', '2018-02-01 11:15:50');
+INSERT INTO `t_score` VALUES ('3', '2', '50', '2018-03-22 20:26:25');
 INSERT INTO `t_score` VALUES ('3', '3', '95', '2018-01-29 17:04:36');
 INSERT INTO `t_score` VALUES ('8', '1', '59', '2018-02-01 11:16:30');
 INSERT INTO `t_score` VALUES ('15', '1', '90.5', '2018-03-08 22:12:51');
+INSERT INTO `t_score` VALUES ('15', '2', '90', '2018-03-22 20:24:40');
 INSERT INTO `t_score` VALUES ('16', '1', '50', '2018-03-11 16:14:14');
 INSERT INTO `t_score` VALUES ('19', '1', '99.5', '2018-03-22 00:01:37');
 INSERT INTO `t_score` VALUES ('19', '2', '100', '2018-03-11 16:14:49');
+INSERT INTO `t_score` VALUES ('19', '7', '80', '2018-03-22 20:19:16');
 INSERT INTO `t_score` VALUES ('36', '1', '91.5', '2018-03-19 11:02:05');
 INSERT INTO `t_score` VALUES ('36', '2', '100', '2018-03-19 11:04:10');
+INSERT INTO `t_score` VALUES ('37', '1', '80', '2018-03-22 20:21:48');
+INSERT INTO `t_score` VALUES ('37', '2', '80', '2018-03-22 20:24:14');
 
 -- ----------------------------
 -- Table structure for t_student
@@ -111,7 +118,7 @@ CREATE TABLE `t_student` (
   `delete_time` char(19) DEFAULT NULL COMMENT '删除记录时间',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态，0表示未删除，1表示已删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COMMENT='学生';
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8 COMMENT='学生';
 
 -- ----------------------------
 -- Records of t_student
@@ -123,7 +130,8 @@ INSERT INTO `t_student` VALUES ('8', '201811995122532485', '张文', '0', '1995-
 INSERT INTO `t_student` VALUES ('15', '201811995122514867', '李强', '0', '1995-12-25', '2018-02-02 23:57:33', '', '', '0');
 INSERT INTO `t_student` VALUES ('16', '201811995122532894', '许卫国', '0', '1995-12-25', '2018-02-02 23:57:33', '', '', '0');
 INSERT INTO `t_student` VALUES ('19', '201811995122532158', '林琪', '0', '1995-12-25', '2018-02-02 23:57:33', '', '', '0');
-INSERT INTO `t_student` VALUES ('36', '201811995122532435', '赖俊强', '1', '1998-01-01', '2018-03-18 10:00:54', '2018-03-18 13:38:44', '', '0');
+INSERT INTO `t_student` VALUES ('36', '201811995122532435', '赖俊强', '1', '2006-01-01', '2018-03-18 10:00:54', '2018-03-22 20:16:05', '', '0');
+INSERT INTO `t_student` VALUES ('37', '201811970010117309', '张宇', '1', '19700101', '2018-03-22 20:16:58', null, null, '0');
 
 -- ----------------------------
 -- Table structure for t_teacher
@@ -134,6 +142,7 @@ CREATE TABLE `t_teacher` (
   `number` char(20) NOT NULL COMMENT '任课老师编号',
   `password` char(32) NOT NULL COMMENT '任课老师密码',
   `name` char(20) NOT NULL COMMENT '任课老师名字',
+  `session_id` char(26) DEFAULT NULL COMMENT 'session_id',
   `create_time` char(19) DEFAULT NULL COMMENT '创建记录时间',
   `update_time` char(19) DEFAULT NULL COMMENT '修改记录时间',
   `delete_time` char(19) DEFAULT NULL COMMENT '删除记录时间',
@@ -144,10 +153,10 @@ CREATE TABLE `t_teacher` (
 -- ----------------------------
 -- Records of t_teacher
 -- ----------------------------
-INSERT INTO `t_teacher` VALUES ('1', '001', '81dc9bdb52d04dc20036dbd8313ed055', '曾志', '2018-03-07 19:14:11', '2018-03-19 09:26:24', '', '0');
-INSERT INTO `t_teacher` VALUES ('2', '002', '81dc9bdb52d04dc20036dbd8313ed055', '刘雨', '2018-03-07 19:14:34', '2018-03-07 23:26:54', '', '0');
-INSERT INTO `t_teacher` VALUES ('3', '003', '81dc9bdb52d04dc20036dbd8313ed055', '王华', '2018-03-07 20:06:20', '', '', '0');
-INSERT INTO `t_teacher` VALUES ('4', '004', '81dc9bdb52d04dc20036dbd8313ed055', '杨雄', '2018-03-18 22:08:09', '2018-03-18 22:29:50', '', '0');
+INSERT INTO `t_teacher` VALUES ('1', '001', '81dc9bdb52d04dc20036dbd8313ed055', '曾志', '16v52hv3598jlk90avqfmpp794', '2018-03-07 19:14:11', '2018-03-19 09:26:24', '', '0');
+INSERT INTO `t_teacher` VALUES ('2', '002', '81dc9bdb52d04dc20036dbd8313ed055', '刘雨', '5eoebrt7i8ir7070tdn1bkif56', '2018-03-07 19:14:34', '2018-03-07 23:26:54', '', '0');
+INSERT INTO `t_teacher` VALUES ('3', '003', '81dc9bdb52d04dc20036dbd8313ed055', '王华', null, '2018-03-07 20:06:20', '', '', '0');
+INSERT INTO `t_teacher` VALUES ('4', '004', '81dc9bdb52d04dc20036dbd8313ed055', '杨雄', null, '2018-03-18 22:08:09', '2018-03-18 22:29:50', '', '0');
 
 -- ----------------------------
 -- Table structure for t_teacher_course
@@ -171,6 +180,7 @@ CREATE TABLE `t_teacher_course` (
 -- ----------------------------
 INSERT INTO `t_teacher_course` VALUES ('1', '1', '2018-03-16 22:10:19', '', '', '0');
 INSERT INTO `t_teacher_course` VALUES ('1', '2', '2018-03-16 22:10:32', '', '', '0');
+INSERT INTO `t_teacher_course` VALUES ('1', '3', '2018-03-22 20:22:14', null, null, '0');
 INSERT INTO `t_teacher_course` VALUES ('2', '7', '2018-03-16 22:10:32', '', '', '0');
 INSERT INTO `t_teacher_course` VALUES ('4', '8', '2018-03-20 00:02:51', null, null, '0');
 

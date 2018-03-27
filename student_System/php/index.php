@@ -38,10 +38,16 @@
             echo "<script>alert('账号密码错误，请重新输入');window.location.href='../Index.html'</script>";
         } elseif ($adminResult->num_rows == 1) {
             $_SESSION['name'] = $name;
+            //获取当前会话ID，并插入数据库
+            $sessionID=session_id();
+            $sql->adminSession($sessionID,$name);
             header("location:main.php");
         } else {
             $_SESSION['name'] = $name;
-            echo "<script>window.location.href='teacherCourse.php?name=$name'</script>";
+            //获取当前会话ID，并插入数据库
+            $sessionID=session_id();
+            $sql->teacherSession($sessionID,$name);
+            echo "<script>window.location.href='teacherCourse.php'</script>";
         }
     }
 

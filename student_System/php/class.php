@@ -34,6 +34,29 @@
             return $this->result;
         }
 
+        //插入当前会话ID
+        public function adminSession($sessionID,$name)
+        {
+            $query="update t_admin set session_id='$sessionID' where name='$name'";
+            $this->result=$this->query($query);
+        }
+        public function teacherSession($sessionID,$name)
+        {
+            $query="update t_teacher set session_id='$sessionID' where number='$name'";
+            $this->result=$this->query($query);
+        }
+        //查询当前会话ID
+        public function adminSelectSession($name)
+        {
+            $query="select session_id from t_admin where name='$name'";
+            $this->result=$this->query($query);
+        }
+        public function teacherSelectSession($number)
+        {
+            $query="select session_id from t_teacher where number='$number'";
+            $this->result=$this->query($query);
+        }
+
         //超级管理员和任课老师登陆查询
         public function adminLogin($name,$password)
         {
