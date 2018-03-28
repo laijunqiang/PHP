@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学生信息录入</title>
+</head>
+<body>
+<h2 align="center">学生信息录入</h2>
+<form action="../php/studentInput.php" method="post">
+    <table align="center">
+        <tr>
+            <td>姓名：</td>
+            <!--placeholder 属性提供可描述输入字段预期值的提示信息（hint）。
+                该提示会在输入字段为空时显示，并会在字段获得焦点时消失。-->
+            <td><input type="text" name="name"  placeholder="请输入需要录入的姓名"/></td>
+        </tr>
+        <tr>
+            <!--sex,0表示女,1表示男-->
+            <td>性别：</td>
+            <td><input type="radio" name="sex" checked="checked" value="1"/>男<input type="radio" name="sex" value="0"/>女</td>
+        </tr>
+        <tr>
+            <td>出生日期：</td>
+            <td><input type="date" name="age" value="1998-01-01" /></td>
+        </tr>
+        <tr>
+            <td align="center" colspan="2">
+                <input type="submit" value="录入" />
+                <a href="/php/student.php"><input type="button" value="返回"/></a>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
