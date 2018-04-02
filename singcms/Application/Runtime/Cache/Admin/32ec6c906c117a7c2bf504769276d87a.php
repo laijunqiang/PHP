@@ -22,6 +22,8 @@
             </tr>
         </table>
     </form>
+    <?php
+ $a='iloveyou'; ?>
 </div>
 <script src="/Public/js/jquery.js"></script>
 <script src="/Public/js/dialog/layer.js"></script>
