@@ -22,5 +22,14 @@ define('APP_PATH','./Application/');
 
 // 引入ThinkPHP入口文件
 require './ThinkPHP/ThinkPHP.php';
+/*  REWRITE模式是在PATHINFO模式的基础上添加了重写规则的支持，
+    可以去掉URL地址里面的入口文件index.php，但是需要额外配置WEB服务器的重写规则。
+    如果是Apache则需要在入口文件的同级添加.htaccess文件，内容如下：
+    <IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)$ index.php/$1 [QSA,PT,L]
+    </IfModule>*/
 
 // 亲^_^ 后面不需要任何代码了 就是如此简单

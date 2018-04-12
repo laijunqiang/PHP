@@ -10,7 +10,8 @@ class MenuController extends CommonController {
     
     public function add(){
         if($_POST) {
-            if(!isset($_POST['name']) || !$_POST['name']) {
+            //dump($_POST);POST过来的数据都是字符串,不需要!isset($_POST['m'])判断
+            if(!$_POST['name']) {
                 return show(0,'菜单名不能为空');
             }
             if(!isset($_POST['m']) || !$_POST['m']) {
@@ -25,6 +26,7 @@ class MenuController extends CommonController {
             if($_POST['menu_id']) {
                 return $this->save($_POST);
             }
+            // 如果主键是自动增长型 成功后返回值就是最新插入的值
             $menuId = D("Menu")->insert($_POST);
             if($menuId) {
                 return show(1,'新增成功',$menuId);

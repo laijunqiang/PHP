@@ -5,6 +5,7 @@ use Think\Model;
 class MenuModel extends  Model {
     private $_db = '';
     public function __construct() {
+//        M方法返回一个数组
         $this->_db = M('menu');
     }
 
@@ -17,7 +18,9 @@ class MenuModel extends  Model {
     }
 
     public function getMenus($data,$page,$pageSize=10) {
+        //status=-1，为删除状态
         $data['status'] = array('neq',-1);
+        //$offset 起始位置
         $offset = ($page - 1) * $pageSize;
         $list = $this->_db->where($data)->order('listorder desc,menu_id desc')->limit($offset,$pageSize)->select();
         return $list;

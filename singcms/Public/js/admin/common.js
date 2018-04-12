@@ -10,12 +10,16 @@ $("#button-add").click(function(){
  * 提交form表单操作
  */
 $("#singcms-button-submit").click(function(){
+/*序列化表格元素 (类似 '.serialize()' 方法) 返回 JSON 数据结构数据。
+'''注意'''，此方法返回的是JSON对象而非JSON字符串。
+返回的JSON对象是由一个对象数组组成的，其中每个对象包含一个或两个名值对——name参数和value参数（如果value不为空的话）。*/
     var data = $("#singcms-form").serializeArray();
-    postData = {};
-    $(data).each(function(i){
+    postData = {};  //创建一个数组
+    //$(data).each(function(i))与$.each(data,function(i))功能相同
+    $.each(data,function(i){
        postData[this.name] = this.value;
     });
-    console.log(postData);
+
     // 将获取到的数据post给服务器
     url = SCOPE.save_url;
     jump_url = SCOPE.jump_url;
