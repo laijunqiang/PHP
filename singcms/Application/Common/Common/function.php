@@ -2,6 +2,8 @@
 
 /**
  * 公用的方法
+ * 访问所有模块之前都会首先加载公共模块下面的配置文件（Conf/config.pgp）
+ * 和公共函数文件（Common/function.php）
  */
 
 function  show($status, $message,$data=array()) {
@@ -15,6 +17,7 @@ function  show($status, $message,$data=array()) {
     exit(json_encode($reuslt));
 }
 function getMd5Password($password) {
+    //C方法读取配置
     return md5($password . C('MD5_PRE'));
 }
 function getMenuType($type) {

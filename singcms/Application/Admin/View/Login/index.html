@@ -49,8 +49,5 @@
 <script src="/Public/js/dialog.js"></script>
 <script src="/Public/js/admin/login.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script>
-  dialog.error('登录失败');
-</script>
 </body>
 </html>
