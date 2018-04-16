@@ -42,6 +42,7 @@ class MenuController extends CommonController {
     public function index() {
         $data = array();
         if(isset($_REQUEST['type']) && in_array($_REQUEST['type'], array(0,1))) {
+//            intval — 获取变量的整数值
             $data['type'] = intval($_REQUEST['type']);
             $this->assign('type',$data['type']);
         }else{
@@ -72,7 +73,8 @@ class MenuController extends CommonController {
     public function save($data) {
         $menuId = $data['menu_id'];
         unset($data['menu_id']);
-
+//PHP中try{}catch{}是异常处理，将要执行的代码放入TRY块中,如果这些代码执行过程中某一条语句发生异常，
+//则程序直接跳转到CATCH块中，由$e收集错误信息和显示。任何调用 可能抛出异常的方法的代码都应该使用try语句，Catch语句用来处理可能抛出的异常。
         try {
             $id = D("Menu")->updateMenuById($menuId, $data);
             if($id === false) {
@@ -105,6 +107,7 @@ class MenuController extends CommonController {
 
         return show(0,'没有提交的数据');
     }
+    
     public function listorder() {
         $listorder = $_POST['listorder'];
         $jumpUrl = $_SERVER['HTTP_REFERER'];

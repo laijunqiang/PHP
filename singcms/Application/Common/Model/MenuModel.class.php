@@ -44,7 +44,7 @@ class MenuModel extends  Model {
         if(!$data || !is_array($data)) {
             throw_exception('更新的数据不合法');
         }
-
+        //save方法的返回值是影响的记录数，如果返回false则表示更新出错，因此一定要用恒等来判断是否更新失败。
         return $this->_db->where('menu_id='.$id)->save($data);
 
     }

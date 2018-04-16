@@ -108,12 +108,13 @@
             <form action="/admin.php" method="get">
 
                 <div class="input-group">
+                    <!--使用 <span> 来组合行内元素，以便通过样式来格式化它们。-->
                     <span class="input-group-addon">类型</span>
                     <select class="form-control" name="type">
                         <option value='' >请选择类型</option>
-
-                        <option value="1" <?php if($type == 1): ?>selected="selected"<?php endif; ?>>后台菜单</option>
-                        <option value="0" <?php if($type == 0): ?>selected="selected"<?php endif; ?>>前端导航</option>
+                        <!--内置标签IF标签-->
+                        <option value="1" <?php if($type == 1): ?>selected="selected"<?php endif; ?> >后台菜单</option>
+                        <option value="0" <?php if($type == 0): ?>selected="selected"<?php endif; ?> >前端导航</option>
                     <lect>
                 </div>
 
@@ -146,11 +147,14 @@
                         </tr>
                         </thead>
                         <tbody>
+<!--volist标签通常用于查询数据集（select方法）的结果输出，通常模型的select方法返回的结果是一个二维数组，
+可以直接使用volist标签进行输出。-->
                         <?php if(is_array($menus)): $i = 0; $__LIST__ = $menus;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($i % 2 );++$i;?><tr>
                                 <td><input size="4" type="text" name="listorder[<?php echo ($menu["menu_id"]); ?>]" value="<?php echo ($menu["listorder"]); ?>"/></td>
                                 <td><?php echo ($menu["menu_id"]); ?></td>
                                 <td><?php echo ($menu["name"]); ?></td>
                                 <td><?php echo ($menu["m"]); ?></td>
+                                <!--调用function.php里面的getMenuType方法-->
                                 <td><?php echo (getMenuType($menu["type"])); ?></td>
                                 <td><?php echo (status($menu["status"])); ?></td>
                                 <td><span class="glyphicon glyphicon-edit" aria-hidden="true" id="singcms-edit" attr-id="<?php echo ($menu["menu_id"]); ?>"></span>    <a href="javascript:void(0)" attr-id="<?php echo ($menu["menu_id"]); ?>" id="singcms-delete"  attr-a="menu" attr-message="删除"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></td>
