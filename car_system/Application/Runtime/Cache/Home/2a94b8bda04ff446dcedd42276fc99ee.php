@@ -1,55 +1,20 @@
-<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE>
-<html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<html lang="en">
 <head>
-    <script type="text/javascript">
-        function f1() {
-            $('#iframe').attr("src", "./子页面1.html");
-        }
-    </script>
-        </head>
-        <body>
-        <div>
-        <ul>
-        <li>
-        首页
-        </li>
-        <li>
-        <a>模块1</a>
-        <ul>
-        <li>
-        <a onclick="f1()" href="#">子页面1</a>
-            </li>
-            </ul>
-            <ul>
-            <li>
-            <a href="#">子页面2</a>
-            </li>
-            </ul>
-            <ul>
-            <li>
-            <a href="#">子页面3</a>
-            </li>
-            </ul>
-            </li>
-            <li>
-            <a>模块1</a>
-            <ul>
-            <li>
-            <a href="#">子页面1</a>
-            </li>
-            </ul>
-            <ul>
-            <li>
-            <a href="#">子页面2</a>
-            </li>
-            </ul>
-            </li>
-            </ul>
-            </div>
-            <div>
-            <iframe id="iframe">
-
-            </iframe>
-            </div>
-            </body>
-            <html>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div align="center">
+    <nav>
+        <p>ghcfhcfh</p>
+        <a href="/index.php/Home/PublicOrder" target="iframe">公共订单池</a>
+        <a href="https://www.baidu.com/index.php?tn=monline_3_dg" target="iframe">个人订单</a>
+        <a href="https://www.cnblogs.com/" target="iframe">个人中心</a>
+        <a href="">退出登陆</a>
+    </nav>
+</div>
+<iframe src="/index.php/Home/PublicOrder" scrolling="auto" name="iframe" frameborder="0" width="100%" height="2000">
+</iframe>
+</body>
+</html>
