@@ -5,7 +5,7 @@ var dialog = {
         layer.open({
             content:message,
             icon:2,
-            title : '错误提示',
+            title : '错误提示'
         });
     },
 
@@ -16,7 +16,8 @@ var dialog = {
             icon : 1,
             yes : function(){
                 location.href=url;
-            },
+            }
+
         });
     },
 
@@ -28,7 +29,7 @@ var dialog = {
             btn : ['是','否'],
             yes : function(){
                 location.href=url;
-            },
+            }
         });
     },
 
@@ -37,7 +38,7 @@ var dialog = {
         layer.open({
             content : message,
             icon:3,
-            btn : ['确定'],
+            btn : ['确定']
         });
     },
 }

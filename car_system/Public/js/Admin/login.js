@@ -1,5 +1,5 @@
 /**
- * 前端登录业务类
+ * 后端登录业务类
  * @author singwa
  */
 //定义login对象，check属性是一个函数function
@@ -24,7 +24,7 @@ var login = {
             //在本文件中虽然没有调用，但是在index.html中将dialog.js和login.js加载在一起
             dialog.error('账号或密码不能为空');
         }else {
-            var url = "/index.php/Home/Login/check";
+            var url = "/admin.php/Login/check";
             var data = {'account': account, 'password': password};//JSON格式
             // 执行异步请求  $.post
             $.post(url, data, function (result) {
@@ -34,7 +34,7 @@ var login = {
                     return dialog.error(result.message);
                 }
                 if (result.status == 1) {
-                    return dialog.success(result.message, '/index.php/Home/Index');
+                    return dialog.success(result.message, '/admin.php/Index');
                 }
                 //dataType规定预期的服务器响应的数据类型。
             }, 'JSON');
