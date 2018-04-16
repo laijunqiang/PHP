@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-04-16 00:09:20
+Date: 2018-04-16 12:00:02
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -59,7 +59,7 @@ DROP TABLE IF EXISTS `t_driver`;
 CREATE TABLE `t_driver` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增ID',
   `number` char(20) NOT NULL COMMENT '司机编号',
-  `account` char(20) NOT NULL COMMENT '司机账号',
+  `account` varchar(12) NOT NULL COMMENT '司机账号',
   `password` char(32) NOT NULL COMMENT '司机密码',
   `name` char(20) NOT NULL COMMENT '真实姓名',
   `image` char(30) DEFAULT NULL COMMENT '头像路径',
@@ -68,30 +68,17 @@ CREATE TABLE `t_driver` (
   `delete_time` char(19) DEFAULT NULL COMMENT '删除记录时间',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态，0表示未删除，1表示已删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_driver
 -- ----------------------------
-
--- ----------------------------
--- Table structure for t_driver_car
--- ----------------------------
-DROP TABLE IF EXISTS `t_driver_car`;
-CREATE TABLE `t_driver_car` (
-  `driver_id` int(11) NOT NULL COMMENT '司机ID',
-  `car_id` int(11) NOT NULL COMMENT '车辆ID',
-  `create_time` char(19) NOT NULL COMMENT '创建记录时间',
-  `update_time` char(19) DEFAULT NULL COMMENT '修改记录时间',
-  `delete_time` char(19) DEFAULT NULL COMMENT '删除记录时间',
-  `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态，0表示未删除，1表示已删除',
-  PRIMARY KEY (`driver_id`,`car_id`),
-  UNIQUE KEY `car_id` (`car_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of t_driver_car
--- ----------------------------
+INSERT INTO `t_driver` VALUES ('1', 'A001', '555555555', 'a123456', '赖俊强', null, '2018-04-16 11:08:52', null, null, '0');
+INSERT INTO `t_driver` VALUES ('2', 'A001', '1', 'a123456', '赖俊强', null, '2018-04-16 11:14:50', null, null, '0');
+INSERT INTO `t_driver` VALUES ('3', 'A001', '1', 'a123456', '赖俊强', null, '2018-04-16 11:44:06', null, null, '0');
+INSERT INTO `t_driver` VALUES ('4', 'A001', '1', 'a123456', '赖俊强', null, '2018-04-16 11:44:27', null, null, '0');
+INSERT INTO `t_driver` VALUES ('5', '你很好', '1', 'a123456', '赖俊强', null, '2018-04-16 11:45:45', null, null, '0');
+INSERT INTO `t_driver` VALUES ('6', '你很好士', '1', 'a123456', '赖俊强', null, '2018-04-16 11:46:08', null, null, '0');
 
 -- ----------------------------
 -- Table structure for t_goods
