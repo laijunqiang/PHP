@@ -52,7 +52,7 @@
                 <td><?php echo ($vo["update_time"]); ?></td>
                 <td>
                     <button><a href="/admin.php/Order/update?id=<?php echo ($vo["id"]); ?>">修改</a></button>
-                    <button><a onclick="index.delete('<?php echo ($vo["id"]); ?>')">删除</a></button>
+                    <button><a onclick="dialog.confirmOrder('是否确定删除？','<?php echo ($vo["id"]); ?>')">删除</a></button>
                 </td>
             </tr><?php endforeach; endif; else: echo "" ;endif; ?>
     </table>

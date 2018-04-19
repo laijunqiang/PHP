@@ -7,6 +7,7 @@
 <body>
 <div align="center">
     <h3>车辆信息表</h3>
+    <button><a href="/admin.php/Car/add">录入</a></button>
     <table border="1px">
         <tr>
             <td>车辆ID</td>
@@ -37,6 +38,5 @@
 <script src="/Public/js/jquery.js"></script>
 <script src="/Public/js/dialog/layer.js"></script>
 <script src="/Public/js/dialog.js"></script>
-<script src="/Public/js/Admin/car.js"></script>
 </body>
 </html>

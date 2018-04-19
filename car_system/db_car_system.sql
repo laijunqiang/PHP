@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-04-19 23:18:30
+Date: 2018-04-20 01:17:03
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -47,13 +47,14 @@ CREATE TABLE `t_car` (
   `delete_time` char(19) DEFAULT NULL COMMENT '删除记录时间',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态，0表示未删除，1表示已删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_car
 -- ----------------------------
-INSERT INTO `t_car` VALUES ('1', 'A001', '粤L66666', '1G1BL52P7TR115520', '2018-04-19 15:13:40', '2018-04-19 22:48:02', '2018-04-19 23:16:13', '0');
-INSERT INTO `t_car` VALUES ('2', 'A002', '粤L88888', '1G1BL52P7TR115522', '2018-04-19 15:20:40', null, '2018-04-19 23:16:15', '0');
+INSERT INTO `t_car` VALUES ('1', 'A001', '粤L66666', '1G1BL52P7TR115520', '2018-04-19 15:13:40', '2018-04-19 23:52:15', '', '0');
+INSERT INTO `t_car` VALUES ('2', 'A002', '粤L77777', '1G1BL52P7TR115522', '2018-04-19 15:20:40', '2018-04-19 23:51:05', '', '0');
+INSERT INTO `t_car` VALUES ('3', 'A003', '粤L33333', '1G1BL52P7TR115520', '2018-04-20 00:13:44', null, null, '0');
 
 -- ----------------------------
 -- Table structure for t_driver
@@ -61,7 +62,7 @@ INSERT INTO `t_car` VALUES ('2', 'A002', '粤L88888', '1G1BL52P7TR115522', '2018
 DROP TABLE IF EXISTS `t_driver`;
 CREATE TABLE `t_driver` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增ID',
-  `number` char(20) NOT NULL COMMENT '司机编号',
+  `number` char(8) NOT NULL COMMENT '司机编号',
   `account` char(11) NOT NULL COMMENT '司机账号',
   `password` char(32) NOT NULL COMMENT '司机密码',
   `name` char(20) NOT NULL COMMENT '真实姓名',
@@ -71,13 +72,15 @@ CREATE TABLE `t_driver` (
   `delete_time` char(19) DEFAULT NULL COMMENT '删除记录时间',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态，0表示未删除，1表示已删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_driver
 -- ----------------------------
-INSERT INTO `t_driver` VALUES ('1', 'A001', '13669586274', 'd4e11d0fe335d390eb09f07fcf3bddd7', '纠结', '', '2018-04-16 15:13:40', null, null, '1');
+INSERT INTO `t_driver` VALUES ('1', 'A001', '13669586274', 'd4e11d0fe335d390eb09f07fcf3bddd7', '纠结', '', '2018-04-16 15:13:40', null, '', '0');
 INSERT INTO `t_driver` VALUES ('2', 'A002', '13413027537', 'd4e11d0fe335d390eb09f07fcf3bddd7', '赖俊强', null, '2018-04-19 15:13:40', null, null, '0');
+INSERT INTO `t_driver` VALUES ('4', '010804', '13669586278', 'd4e11d0fe335d390eb09f07fcf3bddd7', '张三', '', '2018-04-20 01:04:08', '2018-04-20 01:10:34', null, '0');
+INSERT INTO `t_driver` VALUES ('5', '010805', '13669583333', 'd4e11d0fe335d390eb09f07fcf3bddd7', '李四', '', '2018-04-20 01:08:04', null, null, '0');
 
 -- ----------------------------
 -- Table structure for t_driver_car
@@ -150,5 +153,5 @@ CREATE TABLE `t_order` (
 -- ----------------------------
 -- Records of t_order
 -- ----------------------------
-INSERT INTO `t_order` VALUES ('17', '20180418170006', 'A001', '纸巾', '500箱', '2018-04-18 17:05:00', '2018-04-20T10:00', null, '广州', '1', null, null, null, null, null, null, '', null, null, '0');
-INSERT INTO `t_order` VALUES ('18', '20180418170249', 'A018', '手机', '1000部', '2018-04-18 17:02:49', '2018-05-01T17:00', '', '惠州', '0', '', '', '', '', '', '', '', null, null, '0');
+INSERT INTO `t_order` VALUES ('17', '20180418170006', 'A017', '纸巾', '500箱', '2018-04-18 17:05:00', '2018-04-20T10:00', '', '广州', '1', '', '', '', '', '', '', '', '2018-04-20 00:36:41', null, '0');
+INSERT INTO `t_order` VALUES ('18', '20180418170249', 'A018', '手机', '1000部', '2018-04-18 17:02:49', '2018-05-01T17:00', '', '惠州', '0', '', '', '', '', '', '', '', '2018-04-20 00:36:34', '', '0');

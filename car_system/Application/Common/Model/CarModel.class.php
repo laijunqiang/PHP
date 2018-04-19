@@ -37,4 +37,11 @@ class CarModel extends Model {
         }
         return $this->_db->save($data);
     }
+    //录入司机信息
+    public function addCar($data = array()){
+        if(!$data || !is_array($data)) {
+            return 0;
+        }
+        return $this->_db->add($data);
+    }
 }

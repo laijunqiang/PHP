@@ -7,6 +7,7 @@
 <body>
 <div align="center">
     <h3>司机信息表</h3>
+    <button><a href="/admin.php/Driver/add">录入</a></button>
     <table border="1px">
         <tr>
             <td>司机ID</td>
@@ -33,7 +34,7 @@
                     <!--1.通过<a>标签   2.window.location.href="/admin.php/Driver";
                         才可以跳转到<iframe>页面-->
                     <button><a href="/admin.php/Driver/update?id=<?php echo ($vo["id"]); ?>">修改</a></button>
-                    <button><a onclick="driver.delete('<?php echo ($vo["id"]); ?>')">删除</a></button>
+                    <button><a onclick="dialog.confirmDriver('是否确定删除？','<?php echo ($vo["id"]); ?>')">删除</a></button>
                 </td>
             </tr><?php endforeach; endif; else: echo "" ;endif; ?>
     </table>
@@ -41,6 +42,5 @@
 <script src="/Public/js/jquery.js"></script>
 <script src="/Public/js/dialog/layer.js"></script>
 <script src="/Public/js/dialog.js"></script>
-<script src="/Public/js/Admin/driver.js"></script>
 </body>
 </html>

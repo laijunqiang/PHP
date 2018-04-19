@@ -37,12 +37,11 @@ class OrderModel extends Model {
         return $this->_db->save($data);
     }
     //删除订单信息
-    public function deleteOrder($id=''){
-        $data['status']=1;
+    public function deleteOrder($data){
         if(!$data || !is_array($data)) {
             return 0;
         }
-        return $this->_db->where("id=$id")->save($data);
+        return $this->_db->save($data);
     }
 
 }

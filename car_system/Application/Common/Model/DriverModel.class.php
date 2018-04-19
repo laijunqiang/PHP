@@ -35,11 +35,17 @@ class DriverModel extends Model {
         return $this->_db->save($data);
     }
     //删除司机信息
-    public function deleteDriver($id=''){
-        $data['status']=1;
+    public function deleteDriver($data = array()){
         if(!$data || !is_array($data)) {
             return 0;
         }
-        return $this->_db->where("id=$id")->save($data);
+        return $this->_db->save($data);
+    }
+    //录入司机信息
+    public function addDriver($data = array()){
+        if(!$data || !is_array($data)) {
+            return 0;
+        }
+        return $this->_db->add($data);
     }
 }
