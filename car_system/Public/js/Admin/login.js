@@ -1,6 +1,5 @@
 /**
  * 后端登录业务类
- * @author singwa
  */
 //定义login对象，check属性是一个函数function
 var login = {

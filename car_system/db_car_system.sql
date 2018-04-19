@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-04-16 21:56:10
+Date: 2018-04-19 18:21:16
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -122,7 +122,7 @@ CREATE TABLE `t_goods` (
 DROP TABLE IF EXISTS `t_order`;
 CREATE TABLE `t_order` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增ID',
-  `number` char(20) NOT NULL COMMENT '订单编号',
+  `number` char(14) NOT NULL COMMENT '订单编号',
   `order_number` char(20) DEFAULT NULL COMMENT '订单号',
   `goods_name` char(20) NOT NULL COMMENT '商品名称',
   `goods_quantity` char(10) NOT NULL COMMENT '商品数量',
@@ -137,13 +137,15 @@ CREATE TABLE `t_order` (
   `short_info` char(20) DEFAULT NULL COMMENT '缺货信息',
   `pick_quantity` char(10) DEFAULT NULL COMMENT '商品提货数量',
   `pick_time` char(16) DEFAULT NULL COMMENT '提货时间',
-  `company` char(20) DEFAULT NULL COMMENT '结算单位',
+  `company` char(20) DEFAULT '' COMMENT '结算单位',
   `update_time` char(19) DEFAULT NULL COMMENT '修改记录时间',
   `delete_time` char(19) DEFAULT NULL COMMENT '删除记录时间',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态，0表示未删除，1表示已删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_order
 -- ----------------------------
+INSERT INTO `t_order` VALUES ('17', '20180418170006', 'A001', '纸巾', '500箱', '2018-04-18 17:05:00', '2018-04-20T10:00', null, '广州', '1', null, null, null, null, null, null, '', null, null, '0');
+INSERT INTO `t_order` VALUES ('18', '20180418170249', 'A018', '手机', '1000部', '2018-04-18 17:02:49', '2018-05-01T17:00', '', '惠州', '0', '', '', '', '', '', '', '', null, null, '0');
