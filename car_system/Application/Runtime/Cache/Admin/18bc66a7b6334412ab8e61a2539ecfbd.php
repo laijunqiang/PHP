@@ -6,6 +6,7 @@
 </head>
 <body>
 <div align="center">
+    <h3>订单信息表</h3>
     <button><a href="/admin.php/Order/add">生成订单</a></button>
     <table border="1px">
         <tr>
@@ -51,8 +52,7 @@
                 <td><?php echo ($vo["update_time"]); ?></td>
                 <td>
                     <button><a href="/admin.php/Order/update?id=<?php echo ($vo["id"]); ?>">修改</a></button>
-                    ???????????
-                    <button><a onclick="dialog.confirm('是否确定删除','/admin.php/Order/deleteOrder?id=<?php echo ($vo["id"]); ?>')">删除</a></button>
+                    <button><a onclick="index.delete('<?php echo ($vo["id"]); ?>')">删除</a></button>
                 </td>
             </tr><?php endforeach; endif; else: echo "" ;endif; ?>
     </table>
@@ -60,5 +60,6 @@
 <script src="/Public/js/jquery.js"></script>
 <script src="/Public/js/dialog/layer.js"></script>
 <script src="/Public/js/dialog.js"></script>
+<script src="/Public/js/Admin/index.js"></script>
 </body>
 </html>

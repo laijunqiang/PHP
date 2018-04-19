@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-04-19 18:21:16
+Date: 2018-04-19 23:18:30
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -47,11 +47,13 @@ CREATE TABLE `t_car` (
   `delete_time` char(19) DEFAULT NULL COMMENT '删除记录时间',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态，0表示未删除，1表示已删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_car
 -- ----------------------------
+INSERT INTO `t_car` VALUES ('1', 'A001', '粤L66666', '1G1BL52P7TR115520', '2018-04-19 15:13:40', '2018-04-19 22:48:02', '2018-04-19 23:16:13', '0');
+INSERT INTO `t_car` VALUES ('2', 'A002', '粤L88888', '1G1BL52P7TR115522', '2018-04-19 15:20:40', null, '2018-04-19 23:16:15', '0');
 
 -- ----------------------------
 -- Table structure for t_driver
@@ -69,12 +71,13 @@ CREATE TABLE `t_driver` (
   `delete_time` char(19) DEFAULT NULL COMMENT '删除记录时间',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态，0表示未删除，1表示已删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_driver
 -- ----------------------------
-INSERT INTO `t_driver` VALUES ('1', 'A001', '13669586274', 'd4e11d0fe335d390eb09f07fcf3bddd7', '赖俊强', null, '2018-04-16 15:13:40', null, null, '0');
+INSERT INTO `t_driver` VALUES ('1', 'A001', '13669586274', 'd4e11d0fe335d390eb09f07fcf3bddd7', '纠结', '', '2018-04-16 15:13:40', null, null, '1');
+INSERT INTO `t_driver` VALUES ('2', 'A002', '13413027537', 'd4e11d0fe335d390eb09f07fcf3bddd7', '赖俊强', null, '2018-04-19 15:13:40', null, null, '0');
 
 -- ----------------------------
 -- Table structure for t_driver_car

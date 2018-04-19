@@ -15,7 +15,7 @@ class OrderModel extends Model {
     }
     //获取订单信息
     public function getOrder(){
-        $res=$this->_db->where(status!=1)->order('order_status')->select();
+        $res=$this->_db->where('status=0')->order('order_status')->select();
         return $res;
     }
     //生成订单信息
@@ -39,7 +39,10 @@ class OrderModel extends Model {
     //删除订单信息
     public function deleteOrder($id=''){
         $data['status']=1;
-        return $this->_db->where($id)->save($data);
+        if(!$data || !is_array($data)) {
+            return 0;
+        }
+        return $this->_db->where("id=$id")->save($data);
     }
 
 }

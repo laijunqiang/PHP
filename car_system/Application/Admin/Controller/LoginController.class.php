@@ -5,9 +5,10 @@ class LoginController extends Controller {
     public function index(){
         //后台先访问此处，判断是否存在SESSION
         if(session('adminUser')) {
-            $this->redirect('/admin.php?c=index');
+            $this->redirect('Index/index');
+        }else {
+            $this->display();
         }
-        $this->display();
     }
 
     public function check() {
