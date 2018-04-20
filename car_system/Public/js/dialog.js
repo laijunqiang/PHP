@@ -92,6 +92,17 @@ var dialog = {
                 }, 'JSON');
             }
         });
+    },
+    // 确认接单弹出层
+    confirm : function(message, url) {
+        layer.open({
+            content : message,
+            icon:3,
+            btn : ['是','否'],
+            yes : function(){
+                location.href=url;
+            }
+        });
     }
 };
 

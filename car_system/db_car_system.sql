@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-04-20 01:17:03
+Date: 2018-04-20 11:51:09
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -147,11 +147,14 @@ CREATE TABLE `t_order` (
   `update_time` char(19) DEFAULT NULL COMMENT '修改记录时间',
   `delete_time` char(19) DEFAULT NULL COMMENT '删除记录时间',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态，0表示未删除，1表示已删除',
+  `real_quantity` char(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_order
 -- ----------------------------
-INSERT INTO `t_order` VALUES ('17', '20180418170006', 'A017', '纸巾', '500箱', '2018-04-18 17:05:00', '2018-04-20T10:00', '', '广州', '1', '', '', '', '', '', '', '', '2018-04-20 00:36:41', null, '0');
-INSERT INTO `t_order` VALUES ('18', '20180418170249', 'A018', '手机', '1000部', '2018-04-18 17:02:49', '2018-05-01T17:00', '', '惠州', '0', '', '', '', '', '', '', '', '2018-04-20 00:36:34', '', '0');
+INSERT INTO `t_order` VALUES ('17', '20180418170006', 'A017', '纸巾', '500箱', '2018-04-18 17:05:00', '2018-04-20T10:00', '', '广州', '0', '', '', '', '', '', '', '', '2018-04-20 00:36:41', null, '0', null);
+INSERT INTO `t_order` VALUES ('18', '20180418170249', 'A018', '手机', '1000部', '2018-04-18 17:02:49', '2018-05-01T17:00', '', '惠州', '0', 'A001', '', '', '', '', '', '', '2018-04-20 11:40:07', '', '0', null);
+INSERT INTO `t_order` VALUES ('19', '20180418170240', 'A019', '笔记本', '200箱', '2018-04-18 17:03:00', '2018-06-01T17:00', '', '深圳', '0', 'A001', '', '', '', '', '', '', '2018-04-20 11:24:56', null, '0', null);
+INSERT INTO `t_order` VALUES ('20', '20180418170349', 'A020', '电脑', '1000台', '2018-04-18 17:05:00', '2018-06-01T17:00', null, '广州', '0', null, null, null, null, null, null, '', null, '2018-04-20 11:11:50', '1', null);

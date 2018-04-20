@@ -46,7 +46,7 @@ var order = {
         }
     },
     back: function () {
-        window.location.href="/admin.php/Order";
+        window.location.href="/index.php/Home/Order";
     },
     update:function () {
         // 获取修改订单页面中的信息

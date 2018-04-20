@@ -15,7 +15,8 @@ class OrderModel extends Model {
     }
     //获取订单信息
     public function getOrder(){
-        $res=$this->_db->where('status=0')->order('order_status')->select();
+//        支持对多个字段的排序,如果没有指定desc或者asc排序规则的话，默认为asc。
+        $res=$this->_db->where('status=0')->order('order_status,create_time desc')->select();
         return $res;
     }
     //生成订单信息
@@ -25,7 +26,7 @@ class OrderModel extends Model {
         }
         return $this->_db->add($data);
     }
-    //修改订单信息页面
+    //修改订单信息页面或获取个人订单信息
     public function showOrder($id=''){
         return $this->_db->where("id='$id'")->find();
     }

@@ -23,6 +23,7 @@ class DriverModel extends Model {
         $res=$this->_db->where('status=0')->order('create_time')->select();
         return $res;
     }
+
     //修改司机信息页面
     public function showDriver($id=''){
         return $this->_db->where("id='$id'")->find();
