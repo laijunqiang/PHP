@@ -19,6 +19,10 @@ class OrderModel extends Model {
         $res=$this->_db->where('status=0')->order('order_status,create_time desc')->select();
         return $res;
     }
+    //通过订单状态获取订单信息
+    public function getOrderByStatus($status=''){
+        return $this->_db->where("order_status='$status' and status=0")->select();
+    }
     //生成订单信息
     public function addOrder($data = array()){
         if(!$data || !is_array($data)) {

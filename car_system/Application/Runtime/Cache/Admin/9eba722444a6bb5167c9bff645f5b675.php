@@ -20,6 +20,18 @@
             <td><input type="text" value="<?php echo ($ret["order_number"]); ?>" name="order_number" id="order_number"></td>
         </tr>
         <tr>
+            <td>商品ID：</td>
+            <td><input type="text" value="<?php echo ($ret["goods_id"]); ?>" name="goods_id" id="goods_id" disabled="disabled"></td>
+        </tr>
+        <tr>
+            <td>商品名：</td>
+            <td><input type="text" value="<?php echo ($ret["goods_name"]); ?>" name="goods_name" id="goods_name"></td>
+        </tr>
+        <tr>
+            <td>数量：</td>
+            <td><input type="text" value="<?php echo ($ret["goods_quantity"]); ?>" name="goods_quantity" id="goods_quantity"></td>
+        </tr>
+        <tr>
             <td>出发时间：</td>
             <td><input type="datetime-local" value="<?php echo ($ret["departure_time"]); ?>" name="departure_time" id="departure_time"></td>
         </tr>
@@ -47,14 +59,6 @@
                         <option value ="2">已结束</option><?php endif; ?>
                 </select>
             </td>
-        </tr>
-        <tr>
-            <td>商品：</td>
-            <td><input type="text" value="<?php echo ($ret["goods_name"]); ?>" name="goods_name" id="goods_name"></td>
-        </tr>
-        <tr>
-            <td>数量：</td>
-            <td><input type="text" value="<?php echo ($ret["goods_quantity"]); ?>" name="goods_quantity" id="goods_quantity"></td>
         </tr>
         <tr>
             <td>司机编号：</td>

@@ -22,7 +22,7 @@
         </tr>
         <tr>
             <td>创建时间：</td>
-            <td><input type="text" value="{$ret.create_time}" name="order_number" id="create_time" disabled="disabled"></td>
+            <td><input type="text" value="{$ret.create_time}" name="create_time" id="create_time" disabled="disabled"></td>
         </tr>
         <tr>
             <td>出发时间：</td>
@@ -30,7 +30,13 @@
         </tr>
         <tr>
             <td>车牌号：</td>
-            <td><input type="text" name="car_plate" id="car_plate"></td>
+            <td>
+                <select name="car_plate">
+                    <volist name="car" id="vo">
+                        <option value="{$vo.plate}">{$vo.plate}</option>
+                    </volist>
+                </select>
+            </td>
         </tr>
         <tr>
             <td>目的地：</td>

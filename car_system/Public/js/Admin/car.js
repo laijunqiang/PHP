@@ -12,7 +12,11 @@ var car = {
         var plate = $('input[name="plate"]').val();
         var frame = $('input[name="frame"]').val();
 
-        if (number.length > 20) {
+        //不会显示输入不能为空，无法进行判断
+        //浏览器浏览数据问题
+        if (!number || !plate || !frame) {
+            dialog.error("输入不能为空，请重新输入！");
+        } else if (number.length > 20) {
             dialog.error("车辆编号不能超过20位，请重新输入！");
         } else if (plate.length > 7) {
             dialog.error("车牌号不能超过7位，请重新输入！");

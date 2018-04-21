@@ -14,20 +14,35 @@ class OrderController extends Controller {
     }
     //生成订单处理
     public function addOrder(){
-        //dump($_POST);
         date_default_timezone_set("Asia/Shanghai");
-        $_POST['number']=date("YmdHis");
-        $_POST['create_time']=date("Y-m-d H:i:s");
-        /*D方法实例化模型类的时候通常是实例化某个具体的模型类
-         当 \Admin\Model\AdminModel 类不存在的时候，D函数会尝试实例化公共模块下面的 \Common\Model\AdminModel类。
-         D方法可以自动检测模型类，如果存在自定义的模型类，则实例化自定义模型类，
-         如果不存在，则会实例化系统的\Think\Model基类，同时对于已实例化过的模型，不会重复实例化。*/
-        $ret = D('Order')->addOrder($_POST);
+        $_POST['number']=date("YmdHis"); //订单编号
+        $_POST['create_time']=date("Y-m-d H:i:s");//订单创建时间
+        $goods_number='goods'.$_POST['number'];
+        $data=array(
+            'number'=>$goods_number,
+            'name'=>$_POST['goods_name'],
+            'quantity'=>$_POST['goods_quantity'],
+            'create_time'=>$_POST['create_time']
+        );
+        //dump($data);
+        $ret = D('Goods')->addGoods($data);
         //dump($ret); //成功返回一个数组，失败返回NULL
         if(!$ret) {
             return show(0,'生成订单失败');
         }else {
-            return show(1, '生成订单成功');
+            $ret=D('Goods')->getIdByNumber($data['number']);
+            $_POST['goods_id']=$ret;
+            /*D方法实例化模型类的时候通常是实例化某个具体的模型类
+             当 \Admin\Model\AdminModel 类不存在的时候，D函数会尝试实例化公共模块下面的 \Common\Model\AdminModel类。
+             D方法可以自动检测模型类，如果存在自定义的模型类，则实例化自定义模型类，
+             如果不存在，则会实例化系统的\Think\Model基类，同时对于已实例化过的模型，不会重复实例化。*/
+            $return = D('Order')->addOrder($_POST);
+            //dump($ret); //成功返回一个数组，失败返回NULL
+            if (!$return) {
+                return show(0, '生成订单失败');
+            } else {
+                return show(1, '生成订单成功');
+            }
         }
     }
 
@@ -44,21 +59,35 @@ class OrderController extends Controller {
     public function updateOrder(){
         date_default_timezone_set("Asia/Shanghai");
         $_POST['update_time']=date("Y-m-d H:i:s");
-        /*D方法实例化模型类的时候通常是实例化某个具体的模型类
-         当 \Admin\Model\AdminModel 类不存在的时候，D函数会尝试实例化公共模块下面的 \Common\Model\AdminModel类。
-         D方法可以自动检测模型类，如果存在自定义的模型类，则实例化自定义模型类，
-         如果不存在，则会实例化系统的\Think\Model基类，同时对于已实例化过的模型，不会重复实例化。*/
-        $ret = D('Order')->updateOrder($_POST);
-//        save方法的返回值是影响的记录数，如果返回false则表示更新出错
+        $data=array(
+            'id'=>$_POST['goods_id'],
+            'name'=>$_POST['goods_name'],
+            'quantity'=>$_POST['goods_quantity'],
+            'update_time'=>$_POST['update_time']
+        );
+        $ret = D('Goods')->updateGoods($data);
+        //dump($ret); //成功返回一个数组，失败返回NULL
+//      一有输出，ajax就会获取，但只能获取第一个输出
+        //return没有效果，只是show()函数有exit输出，所以能接受
         if(!$ret) {
-            return show(0,'修改订单失败');
+            return show(0, '修改订单失败');
         }else {
-            return show(1, '修改订单成功');
+            /*D方法实例化模型类的时候通常是实例化某个具体的模型类
+             当 \Admin\Model\AdminModel 类不存在的时候，D函数会尝试实例化公共模块下面的 \Common\Model\AdminModel类。
+             D方法可以自动检测模型类，如果存在自定义的模型类，则实例化自定义模型类，
+             如果不存在，则会实例化系统的\Think\Model基类，同时对于已实例化过的模型，不会重复实例化。*/
+            $return = D('Order')->updateOrder($_POST);
+//        save方法的返回值是影响的记录数，如果返回false则表示更新出错
+            if (!$return) {
+                return show(0, '修改订单失败');
+            } else {
+                return show(1, '修改订单成功');
+            }
         }
     }
     //删除订单处理
     public function deleteOrder(){
-        $id=$_POST['id'];
+
         /*D方法实例化模型类的时候通常是实例化某个具体的模型类
          当 \Admin\Model\AdminModel 类不存在的时候，D函数会尝试实例化公共模块下面的 \Common\Model\AdminModel类。
          D方法可以自动检测模型类，如果存在自定义的模型类，则实例化自定义模型类，
@@ -72,6 +101,16 @@ class OrderController extends Controller {
             return show(0,'删除失败');
         }else {
             return show(1, '删除成功');
+        }
+    }
+
+    //查询未接单的订单信息
+    public function unansweredOrder(){
+        $ret = D('Order')->getOrderByStatus($_POST['status']);
+        //dump($ret); //成功返回二维数组，失败返回NULL
+        if($ret!=null) {
+            $this->assign('ret', $ret);
+            $this->display();
         }
     }
 

@@ -22,7 +22,7 @@
                 <td><input type="text" placeholder="请输入商品名" name="goods_name" id="goods_name"></td>
             </tr>
             <tr>
-                <td>数量：</td>
+                <td>数量（KG）：</td>
                 <td><input type="text" placeholder="请输入商品数量" name="goods_quantity" id="goods_quantity"></td>
             </tr>
             <tr>

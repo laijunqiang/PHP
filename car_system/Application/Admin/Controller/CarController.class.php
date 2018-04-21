@@ -20,6 +20,7 @@ class CarController extends Controller {
     }
     //修改车辆处理
     public function updateCar(){
+
         /*D方法实例化模型类的时候通常是实例化某个具体的模型类
          当 \Admin\Model\AdminModel 类不存在的时候，D函数会尝试实例化公共模块下面的 \Common\Model\AdminModel类。
          D方法可以自动检测模型类，如果存在自定义的模型类，则实例化自定义模型类，

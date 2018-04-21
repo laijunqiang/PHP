@@ -23,6 +23,7 @@ class AdminModel extends Model {
         if(!$data || !is_array($data)) {
             return 0;
         }
-        return $this->_db->where($data['account'])->save($data);
+        $account=$data['account'];//字符串需要引号
+        return $this->_db->where("account='$account'")->save($data);
     }
 }

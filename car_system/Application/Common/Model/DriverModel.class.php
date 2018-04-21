@@ -23,7 +23,17 @@ class DriverModel extends Model {
         $res=$this->_db->where('status=0')->order('create_time')->select();
         return $res;
     }
-
+    //获取剩余司机信息
+    public function getRestDriver($restName){
+        $date['name']=['not in',$restName];
+        $date['status']=0;
+        $res=$this->_db->where($date)->getField('name',true);;
+        return $res;
+    }
+    //获取司机ID值
+    public function getIdByName($name){
+        return $this->_db->where("name='$name'")->getField('id');
+    }
     //修改司机信息页面
     public function showDriver($id=''){
         return $this->_db->where("id='$id'")->find();

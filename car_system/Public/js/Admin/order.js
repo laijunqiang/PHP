@@ -53,12 +53,13 @@ var order = {
         var id=$('input[name="id"]').val();
         var number=$('input[name="number"]').val();
         var order_number = $('input[name="order_number"]').val();
+        var goods_id = $('input[name="goods_id"]').val();
+        var goods_name = $('input[name="goods_name"]').val();
+        var goods_quantity = $('input[name="goods_quantity"]').val();
         var departure_time=$('input[name="departure_time"]').val();
         var car_plate=$('input[name="car_plate"]').val();
         var destination = $('input[name="destination"]').val();
         var order_status=$('select').val();
-        var goods_name = $('input[name="goods_name"]').val();
-        var goods_quantity = $('input[name="goods_quantity"]').val();
         var driver_number=$('input[name="driver_number"]').val();
         var pick_number = $('input[name="pick_number"]').val();
         var contract_number = $('input[name="contract_number"]').val();
@@ -105,6 +106,7 @@ var order = {
                 'number':number,
                 'order_number': order_number,
                 'destination': destination,
+                'goods_id':goods_id,
                 'goods_name': goods_name,
                 'goods_quantity': goods_quantity,
                 'departure_time': departure_time,
@@ -203,4 +205,26 @@ $("#company").blur(function () {
     if ($("#company").val().length>20) {
         dialog.error("结算单位不能超过20位，请重新输入！");
     }
+});
+// 按订单状态管理
+$('#select').click(function () {
+    // jquery获取select选中的值
+    var status=$(".select option:selected").val();
+    var url = "/admin.php/Order/unansweredOrder";
+    // 发送给服务端的数据，相当于POST过去的数据
+    var data = {
+        'status': status
+    };//JSON格式
+    // 执行异步请求  $.post
+    $.post(url, data, function (result) {
+        //result接受后台返回的数据
+        if (result.status == 0) {
+            //后台重新判断，多一层弹层
+            return dialog.error(result.message);
+        }
+        if (result.status == 1) {
+            return dialog.success(result.message, '/admin.php/Order');
+        }
+        //dataType规定预期的服务器响应的数据类型。
+    }, 'JSON');
 });

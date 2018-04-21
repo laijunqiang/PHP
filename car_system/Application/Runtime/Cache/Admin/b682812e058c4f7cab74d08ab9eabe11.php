@@ -29,5 +29,6 @@
 <script src="/Public/js/dialog/layer.js"></script>
 <script src="/Public/js/dialog.js"></script>
 <script src="/Public/js/Admin/admin.js"></script>
+<script src="/Public/js/Admin/login.js"></script>
 </body>
 </html>

@@ -22,7 +22,7 @@
         </tr>
         <tr>
             <td>创建时间：</td>
-            <td><input type="text" value="<?php echo ($ret["create_time"]); ?>" name="order_number" id="create_time" disabled="disabled"></td>
+            <td><input type="text" value="<?php echo ($ret["create_time"]); ?>" name="create_time" id="create_time" disabled="disabled"></td>
         </tr>
         <tr>
             <td>出发时间：</td>
@@ -30,7 +30,11 @@
         </tr>
         <tr>
             <td>车牌号：</td>
-            <td><input type="text" name="car_plate" id="car_plate"></td>
+            <td>
+                <select name="car_plate">
+                    <?php if(is_array($car)): $i = 0; $__LIST__ = $car;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($vo["plate"]); ?>"><?php echo ($vo["plate"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+                </select>
+            </td>
         </tr>
         <tr>
             <td>目的地：</td>
