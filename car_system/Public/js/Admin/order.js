@@ -206,25 +206,31 @@ $("#company").blur(function () {
         dialog.error("结算单位不能超过20位，请重新输入！");
     }
 });
-// 按订单状态管理
+// 按订单状态管理，ajax无法跳转页面，除非有window.location.href
 $('#select').click(function () {
     // jquery获取select选中的值
     var status=$(".select option:selected").val();
-    var url = "/admin.php/Order/unansweredOrder";
-    // 发送给服务端的数据，相当于POST过去的数据
-    var data = {
-        'status': status
-    };//JSON格式
-    // 执行异步请求  $.post
-    $.post(url, data, function (result) {
-        //result接受后台返回的数据
-        if (result.status == 0) {
-            //后台重新判断，多一层弹层
-            return dialog.error(result.message);
-        }
-        if (result.status == 1) {
-            return dialog.success(result.message, '/admin.php/Order');
-        }
-        //dataType规定预期的服务器响应的数据类型。
-    }, 'JSON');
+    // 字符串连接符"+"，通过"?"连接参数
+    window.location.href="/admin.php/Order/selectOrder?status="+status;
+});
+// 按时间段管理
+$('#search').click(function () {
+    // jquery获取select选中的值
+    var startTime=$("#startTime").val();
+    var endTime=$("#endTime").val();
+    if (startTime.length==0) {
+        dialog.error("搜索时间不能为空，请重新输入！");
+    }else if (endTime.length==0) {
+        dialog.error("搜索时间不能为空，请重新输入！");
+    }else {
+        // 字符串连接符"+"，通过"/"连接参数
+        window.location.href="/admin.php/Order/searchOrder/startTime/"+startTime+"/endTime/"+endTime;
+    }
+});
+//生成excel文件
+$('#excel').click(function () {
+    var startTime=$("#startTime").val();
+    //alert(startTime);
+    var endTime=$("#endTime").val();
+    window.location.href="/admin.php/Order/getExcel?startTime="+startTime+"&endTime="+endTime;
 });

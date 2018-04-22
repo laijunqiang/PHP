@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-04-21 17:24:34
+Date: 2018-04-22 20:55:28
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -111,6 +111,24 @@ INSERT INTO `t_goods` VALUES ('44', 'goods20180420201448', '柴油', '10000', '0
 INSERT INTO `t_goods` VALUES ('45', 'goods20180420201537', '天然气', '1000', '0', '2018-04-20 20:15:37', null, null, '0');
 
 -- ----------------------------
+-- Table structure for t_log
+-- ----------------------------
+DROP TABLE IF EXISTS `t_log`;
+CREATE TABLE `t_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增ID',
+  `user` char(20) NOT NULL,
+  `log` varchar(50) DEFAULT NULL COMMENT '操作内容',
+  `time` char(19) DEFAULT NULL COMMENT '操作时间，也是创建时间',
+  `update_time` char(19) DEFAULT NULL,
+  `delete_time` char(19) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_log
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for t_order
 -- ----------------------------
 DROP TABLE IF EXISTS `t_order`;
@@ -153,8 +171,8 @@ CREATE TABLE `t_order` (
 INSERT INTO `t_order` VALUES ('21', '20180420160613', 'A021', '1', 'iphone', '100', '2018-04-20 16:06:13', '2018-04-27T18:00', null, '', '上海', '0', null, '', '', '', '', '0', '', '', '2018-04-20 16:43:13', null, '0');
 INSERT INTO `t_order` VALUES ('22', '20180420160932', 'A022', '2', '笔记本', '100', '2018-04-20 16:09:32', '2018-04-21T12:00', null, '', '广州', '0', null, '', '', '', '', '0', '', '', '2018-04-20 16:44:18', null, '0');
 INSERT INTO `t_order` VALUES ('23', '20180420161013', 'A023', '3', '衬衫', '1000', '2018-04-20 16:10:13', '2018-04-23T12:00', '1', '粤L66666', '深圳', '1', '1', 'A001', '123456789', '123456789', '', '500', '2018-04-21T18:00', '惠州学院', '2018-04-20 19:02:10', '', '0');
-INSERT INTO `t_order` VALUES ('66', '20180420201448', 'A025', '44', '柴油', '10000', '2018-04-20 20:14:48', '2018-04-21T07:00', null, '', '惠州', '0', null, '', '', '', '', '0', '', '', '2018-04-20 20:25:16', '2018-04-20 21:28:43', '1');
-INSERT INTO `t_order` VALUES ('67', '20180420201537', 'A026', '45', '天然气', '1000', '2018-04-20 20:15:37', '2018-04-21T07:00', null, null, '惠州', '0', null, null, null, null, null, null, null, '', null, '2018-04-20 21:28:41', '1');
+INSERT INTO `t_order` VALUES ('66', '20180420201448', 'A025', '44', '柴油', '10000', '2018-04-20 20:14:48', '2018-04-21T07:00', null, '', '惠州', '0', null, '', '', '', '', '0', '', '', '2018-04-20 20:25:16', '', '0');
+INSERT INTO `t_order` VALUES ('67', '20180420201537', 'A026', '45', '天然气', '1000', '2018-04-20 20:15:37', '2018-04-21T07:00', null, null, '惠州', '0', null, null, null, null, null, null, null, '', null, '', '0');
 
 -- ----------------------------
 -- Table structure for t_role

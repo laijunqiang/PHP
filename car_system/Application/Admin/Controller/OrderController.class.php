@@ -105,13 +105,101 @@ class OrderController extends Controller {
     }
 
     //查询未接单的订单信息
-    public function unansweredOrder(){
-        $ret = D('Order')->getOrderByStatus($_POST['status']);
+    public function selectOrder($status){
+        $ret = D('Order')->getOrderByStatus($status);
         //dump($ret); //成功返回二维数组，失败返回NULL
-        if($ret!=null) {
-            $this->assign('ret', $ret);
-            $this->display();
-        }
+        $this->assign('status',$status);
+        $this->assign('ret', $ret);
+        $this->display('index');
+
+    }
+    //查询时间段内的订单信息
+    public function searchOrder($startTime,$endTime){
+        //dump($startTime);
+        //dump($endTime);
+        $data=array();
+        $data['departure_time']=array('between',"$startTime,$endTime");
+        //dump($data);
+        $ret = D('Order')->getOrderBySearch($data);
+        //dump($ret); //成功返回二维数组，失败返回NULL
+        $this->assign('ret', $ret);
+        $this->assign('startTime',$startTime);
+        $this->assign('endTime',$endTime);
+        $this->display('index');
     }
 
+    //导出Excel
+    public  function getExcel($startTime,$endTime){
+        $fileName="订单信息表";
+        $headArr=array(
+            "订单ID","订单编号","订单号","商品","数量","创建时间","出发时间","车牌号","目的地","订单状态","司机编号","提货单号","合同号","缺货信息","提货数量","提货时间","结算单位","修改时间"
+        );
+        if ($startTime!=null&&$endTime!=null){
+            $timeData=array();
+            $timeData['departure_time']=array('between',"$startTime,$endTime");
+            //dump($data);
+            $data = D('Order')->getOrderBySearchExcel($timeData);
+        }else {
+            $data = D('Order')->getOrderExcel();
+        }
+
+        /*$fileName ============  导出表的名字 */
+        /*$headArr============  导出表的第一行名称 */
+        /*$data============  导出表的数据（array） */
+        /*此方法不用刻意去修改，直接使用即可注意导入类时不要出错就行了 */
+        //header("Content-type: text/html;charset=utf-8");
+        //对数据进行检验
+        if(empty($data) || !is_array($data)){
+            die("data must be a array");
+        }
+        //检查文件名
+        if(empty($fileName)){
+            exit;
+        }
+
+        $date = date("Y_m_d",time());
+        $fileName .= "_{$date}.xls";
+        vendor("PHPExcel.PHPExcel");//直接放入vendor下引入
+        $objPHPExcel = new \PHPExcel();
+        $objProps = $objPHPExcel->getProperties();
+
+        //设置表头
+        $key = ord("A");
+        foreach($headArr as $v){
+            $colum = chr($key);
+            $objPHPExcel->setActiveSheetIndex(0) ->setCellValue($colum.'1', $v);
+            $key += 1;
+        }
+
+        $column = 2;
+        $objActSheet = $objPHPExcel->getActiveSheet();
+        foreach($data as $key => $rows){ //行写入
+            $span = ord("A");
+            foreach($rows as $keyName=>$value){// 列写入
+                //$value=iconv("utf-8","gb2312",$value);
+                $j = chr($span);
+                $objActSheet->setCellValue($j.$column, $value);
+                $span++;
+            }
+            $column++;
+        }
+        ob_end_clean();//清除缓冲区,避免乱码
+        $fileName = iconv("utf-8", "gb2312", $fileName);
+        //重命名表
+        // $objPHPExcel->getActiveSheet()->setTitle('test');
+        //设置活动单指数到第一个表,所以Excel打开这是第一个表
+        $objPHPExcel->setActiveSheetIndex(0);
+        header("Content-type: text/csv");//重要
+        header("Content-Type: application/force-download");
+        //header('Content-Type: application/vnd.ms-excel');
+        header("Content-Disposition: attachment;filename=\"$fileName\"");
+        //header('Cache-Control: max-age=0');
+        header('Cache-Control: must-revalidate, post-check=0,pre-check=0');
+        header('Expires:0');
+        header('Pragma:public');
+
+        $objWriter = \PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+        $objWriter->save('php://output'); //文件通过浏览器下载
+        exit;
+    }
 }
