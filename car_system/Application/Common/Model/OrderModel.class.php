@@ -69,4 +69,10 @@ class OrderModel extends Model {
         $data['status']=0;
         return $this->_db->where($data)->getField('id,number,order_number,goods_name,goods_quantity,create_time,departure_time,car_plate,destination,order_status,driver_number,pick_number,contract_number,short_info,pick_quantity,pick_time,company,update_time');
     }
+
+    //查看个人订单
+    public function getOrderByDriverId($driver_id){
+        $res=$this->_db->where("status=0 and driver_id=$driver_id")->order('order_status,create_time desc')->select();
+        return $res;
+    }
 }

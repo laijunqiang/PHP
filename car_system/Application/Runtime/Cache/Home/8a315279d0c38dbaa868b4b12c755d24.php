@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,37 +10,35 @@
     <table>
         <tr>
             <td>订单ID：</td>
-            <td><input type="text" value="{$ret.id}" name="id" disabled="disabled"></td>
+            <td><input type="text" value="<?php echo ($ret["id"]); ?>" name="id" disabled="disabled"></td>
         </tr>
         <tr>
             <td>订单编号：</td>
-            <td><input type="text" value="{$ret.number}" name="number" id="number" disabled="disabled"></td>
+            <td><input type="text" value="<?php echo ($ret["number"]); ?>" name="number" id="number" disabled="disabled"></td>
         </tr>
         <tr>
             <td>订单号：</td>
-            <td><input type="text" value="{$ret.order_number}" name="order_number" id="order_number" disabled="disabled"></td>
+            <td><input type="text" value="<?php echo ($ret["order_number"]); ?>" name="order_number" id="order_number" disabled="disabled"></td>
         </tr>
         <tr>
             <td>创建时间：</td>
-            <td><input type="text" value="{$ret.create_time}" name="create_time" id="create_time" disabled="disabled"></td>
+            <td><input type="text" value="<?php echo ($ret["create_time"]); ?>" name="create_time" id="create_time" disabled="disabled"></td>
         </tr>
         <tr>
             <td>出发时间：</td>
-            <td><input type="datetime-local" value="{$ret.departure_time}" name="departure_time" id="departure_time" disabled="disabled"></td>
+            <td><input type="datetime-local" value="<?php echo ($ret["departure_time"]); ?>" name="departure_time" id="departure_time" disabled="disabled"></td>
         </tr>
         <tr>
             <td>车牌号：</td>
             <td>
                 <select name="car_plate">
-                    <volist name="car" id="vo">
-                        <option value="{$vo.plate}">{$vo.plate}</option>
-                    </volist>
+                    <?php if(is_array($car)): $i = 0; $__LIST__ = $car;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($vo["plate"]); ?>"><?php echo ($vo["plate"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
                 </select>
             </td>
         </tr>
         <tr>
             <td>目的地：</td>
-            <td><input type="text" value="{$ret.destination}" name="destination" id="destination" disabled="disabled"></td>
+            <td><input type="text" value="<?php echo ($ret["destination"]); ?>" name="destination" id="destination" disabled="disabled"></td>
         </tr>
         <tr>
             <td>订单状态：</td>
@@ -55,17 +53,17 @@
         </tr>
         <tr>
             <td>商品：</td>
-            <td><input type="text" value="{$ret.goods_name}" name="goods_name" id="goods_name" disabled="disabled"></td>
+            <td><input type="text" value="<?php echo ($ret["goods_name"]); ?>" name="goods_name" id="goods_name" disabled="disabled"></td>
         </tr>
         <tr>
             <td>数量：</td>
-            <td><input type="text" value="{$ret.goods_quantity}" name="goods_quantity" id="goods_quantity" disabled="disabled"></td>
+            <td><input type="text" value="<?php echo ($ret["goods_quantity"]); ?>" name="goods_quantity" id="goods_quantity" disabled="disabled"></td>
         </tr>
             <!--司机ID-->
-            <input type="hidden" value="{$driver.id}" name="driver_id" id="driver_id" disabled="disabled">
+            <input type="hidden" value="<?php echo ($driver["id"]); ?>" name="driver_id" id="driver_id" disabled="disabled">
         <tr>
             <td>司机编号：</td>
-            <td><input type="text" value="{$driver.number}" name="driver_number" id="driver_number" disabled="disabled"></td>
+            <td><input type="text" value="<?php echo ($driver["number"]); ?>" name="driver_number" id="driver_number" disabled="disabled"></td>
         </tr>
         <tr>
             <td>提货单号：</td>

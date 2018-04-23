@@ -13,7 +13,7 @@ class OrderController extends Controller {
         //dump($id);
 
         //获取司机编号
-        $driver=D('Driver')->getDriverByAccount($_SESSION['driverUser']);
+        $driver=D('Driver')->getDriverByAccount($_SESSION['driverUser']['account']);
         $this->assign('driver',$driver);
         //获取订单信息
         $ret =D('Order')->showOrder($id);
@@ -25,6 +25,10 @@ class OrderController extends Controller {
     }
     //司机接单处理
     public function updateOrder(){
+        $car_plate=$_POST['car_plate'];
+        $ret=D('Car')->getIdByPlate($car_plate);
+        $_POST['car_id']=$ret;
+        //dump($_POST);
         date_default_timezone_set("Asia/Shanghai");
         $_POST['update_time']=date("Y-m-d H:i:s");
         /*D方法实例化模型类的时候通常是实例化某个具体的模型类

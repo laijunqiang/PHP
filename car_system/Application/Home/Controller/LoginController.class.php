@@ -29,7 +29,7 @@ class LoginController extends Controller {
         }else {
             //系统提供了Session管理和操作的完善支持，全部操作可以通过一个内置的session函数完成
             //该函数可以完成Session的设置、获取、删除和管理操作。
-            session('driverUser', $ret['account']);
+            session('driverUser', $ret);
             return show(1, '登录成功');
         }
     }

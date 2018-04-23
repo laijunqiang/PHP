@@ -17,6 +17,8 @@ var order = {
         var order_status=$('select[name="order_status"]').val();
         var goods_name = $('input[name="goods_name"]').val();
         var goods_quantity = $('input[name="goods_quantity"]').val();
+        var driver_id=$('input[name="driver_id"]').val();
+        //alert(driver_id);
         var driver_number=$('input[name="driver_number"]').val();
         var pick_number = $('input[name="pick_number"]').val();
         var contract_number = $('input[name="contract_number"]').val();
@@ -52,6 +54,7 @@ var order = {
                 'create_time':create_time,
                 'car_plate':car_plate,
                 'order_status':order_status,
+                'driver_id':driver_id,
                 'driver_number':driver_number,
                 'pick_number':pick_number,
                 'contract_number':contract_number,
@@ -68,7 +71,7 @@ var order = {
                     return dialog.error(result.message);
                 }
                 if (result.status == 1) {
-                    return dialog.success(result.message, '/index.php/Home/Order');
+                    return dialog.success(result.message, '/index.php/Home/PersonalOrder');
                 }
                 //dataType规定预期的服务器响应的数据类型。
             }, 'JSON');

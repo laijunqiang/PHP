@@ -19,6 +19,12 @@ class CarModel extends Model {
         $res=$this->_db->where('status=0')->order('create_time')->select();
         return $res;
     }
+    //通过车牌号获取车辆ID
+    public function getIdByPlate($car_plate){
+        $res=$this->_db->where("plate='$car_plate'")->getField('id');
+        return $res;
+    }
+
     //修改车辆信息页面
     public function showCar($id=''){
         return $this->_db->where("id='$id'")->find();
@@ -30,14 +36,14 @@ class CarModel extends Model {
         }
         return $this->_db->save($data);
     }
-    //删除司机信息
+    //删除车辆信息
     public function deleteCar($data){
         if(!$data || !is_array($data)) {
             return 0;
         }
         return $this->_db->save($data);
     }
-    //录入司机信息
+    //录入车辆信息
     public function addCar($data = array()){
         if(!$data || !is_array($data)) {
             return 0;
