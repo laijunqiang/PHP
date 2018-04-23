@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-04-22 20:55:28
+Date: 2018-04-23 11:57:57
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -31,7 +31,7 @@ CREATE TABLE `t_admin` (
 -- ----------------------------
 -- Records of t_admin
 -- ----------------------------
-INSERT INTO `t_admin` VALUES ('1', 'admin', 'f79908a3fdc52d8748a76d003372f1e2', '2018-04-16 15:52:36', '2018-04-21 15:05:31');
+INSERT INTO `t_admin` VALUES ('1', 'admin', 'f79908a3fdc52d8748a76d003372f1e2', '2018-04-16 15:52:36', '2018-04-23 11:20:22');
 
 -- ----------------------------
 -- Table structure for t_car
@@ -47,7 +47,7 @@ CREATE TABLE `t_car` (
   `delete_time` char(19) DEFAULT NULL COMMENT '删除记录时间',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态，0表示未删除，1表示已删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_car
@@ -56,6 +56,7 @@ INSERT INTO `t_car` VALUES ('1', 'A001', '粤L66666', '1G1BL52P7TR115520', '2018
 INSERT INTO `t_car` VALUES ('2', 'A002', '粤L66667', '1G1BL52P7TR115521', '2018-04-19 15:20:40', '2018-04-20 21:26:14', '2018-04-20 20:58:01', '0');
 INSERT INTO `t_car` VALUES ('3', 'A003', '粤L33333', '1G1BL52P7TR115522', '2018-04-20 00:13:44', '2018-04-20 20:57:48', null, '0');
 INSERT INTO `t_car` VALUES ('4', 'A004', '粤L66666', '1G1BL52P7TR115523', '2018-04-20 20:51:06', null, null, '0');
+INSERT INTO `t_car` VALUES ('5', 'A005', '粤L88888', '1G1BL52P7TR115520', '2018-04-23 11:06:58', '2018-04-23 11:07:05', '2018-04-23 11:07:08', '1');
 
 -- ----------------------------
 -- Table structure for t_driver
@@ -73,7 +74,7 @@ CREATE TABLE `t_driver` (
   `delete_time` char(19) DEFAULT NULL COMMENT '删除记录时间',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态，0表示未删除，1表示已删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_driver
@@ -83,6 +84,7 @@ INSERT INTO `t_driver` VALUES ('2', 'A002', '13413027537', 'd4e11d0fe335d390eb09
 INSERT INTO `t_driver` VALUES ('4', '010804', '13669586278', 'd4e11d0fe335d390eb09f07fcf3bddd7', '张三', '', '2018-04-20 01:04:08', '2018-04-20 01:10:34', '', '0');
 INSERT INTO `t_driver` VALUES ('5', '010805', '13669583333', 'd4e11d0fe335d390eb09f07fcf3bddd7', '李四', '', '2018-04-20 01:08:04', null, '', '0');
 INSERT INTO `t_driver` VALUES ('6', '202819', '12345678901', 'd4e11d0fe335d390eb09f07fcf3bddd7', '王五', '', '2018-04-20 20:28:19', null, '', '0');
+INSERT INTO `t_driver` VALUES ('7', '105911', '13669586666', '76bdcca0cf4ac227b454667c719df762', '林东凡', '', '2018-04-23 10:59:11', '2018-04-23 10:59:24', '2018-04-23 10:59:27', '1');
 
 -- ----------------------------
 -- Table structure for t_goods
@@ -99,16 +101,19 @@ CREATE TABLE `t_goods` (
   `delete_time` char(19) DEFAULT NULL COMMENT '删除记录时间',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态，0表示未删除，1表示已删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_goods
 -- ----------------------------
 INSERT INTO `t_goods` VALUES ('1', 'goods20180420160613', 'iphone', '100', '0', '2018-04-20 16:06:13', '2018-04-20 16:43:13', null, '0');
 INSERT INTO `t_goods` VALUES ('2', 'goods20180420160932', '笔记本', '100', '0', '2018-04-20 16:09:32', '2018-04-20 16:44:18', null, '0');
-INSERT INTO `t_goods` VALUES ('3', 'goods20180420161013', '衬衫', '1000', '0', '2018-04-20 16:10:13', '2018-04-20 17:03:58', null, '0');
+INSERT INTO `t_goods` VALUES ('3', 'goods20180420161013', '衬衫', '1000', '0', '2018-04-20 16:10:13', '2018-04-23 10:28:44', null, '0');
 INSERT INTO `t_goods` VALUES ('44', 'goods20180420201448', '柴油', '10000', '0', '2018-04-20 20:14:48', '2018-04-20 20:25:16', null, '0');
 INSERT INTO `t_goods` VALUES ('45', 'goods20180420201537', '天然气', '1000', '0', '2018-04-20 20:15:37', null, null, '0');
+INSERT INTO `t_goods` VALUES ('46', 'goods20180423102437', '石油', '10000', '0', '2018-04-23 10:24:37', null, null, '0');
+INSERT INTO `t_goods` VALUES ('47', 'goods20180423102544', '石油', '100000', '0', '2018-04-23 10:25:44', null, null, '0');
+INSERT INTO `t_goods` VALUES ('48', 'goods20180423112105', '11', '11111', '0', '2018-04-23 11:21:05', '2018-04-23 11:21:10', null, '0');
 
 -- ----------------------------
 -- Table structure for t_log
@@ -119,14 +124,24 @@ CREATE TABLE `t_log` (
   `user` char(20) NOT NULL,
   `log` varchar(50) DEFAULT NULL COMMENT '操作内容',
   `time` char(19) DEFAULT NULL COMMENT '操作时间，也是创建时间',
-  `update_time` char(19) DEFAULT NULL,
-  `delete_time` char(19) DEFAULT NULL,
+  `delete_time` char(19) DEFAULT NULL COMMENT '修改记录时间',
+  `status` tinyint(4) DEFAULT '0' COMMENT '删除状态，0表示未删除，1表示已删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_log
 -- ----------------------------
+INSERT INTO `t_log` VALUES ('42', 'admin', '修改账号为：admin 的车辆', '2018-04-23 11:20:23', null, '0');
+INSERT INTO `t_log` VALUES ('43', 'admin', '退出系统', '2018-04-23 11:20:25', null, '0');
+INSERT INTO `t_log` VALUES ('44', '郑文', '登录系统', '2018-04-23 11:20:36', null, '0');
+INSERT INTO `t_log` VALUES ('45', '郑文', '生成订单编号为：20180423112105 的订单', '2018-04-23 11:21:05', null, '0');
+INSERT INTO `t_log` VALUES ('46', '郑文', '修改订单编号为：20180423112105 的订单', '2018-04-23 11:21:10', null, '0');
+INSERT INTO `t_log` VALUES ('47', '郑文', '删除订单ID为：70 的订单', '2018-04-23 11:21:19', null, '0');
+INSERT INTO `t_log` VALUES ('48', '郑文', '退出系统', '2018-04-23 11:21:23', null, '0');
+INSERT INTO `t_log` VALUES ('49', '郑文', '登录系统', '2018-04-23 11:21:36', null, '0');
+INSERT INTO `t_log` VALUES ('50', '郑文', '退出系统', '2018-04-23 11:22:07', null, '0');
+INSERT INTO `t_log` VALUES ('51', 'admin', '登录系统', '2018-04-23 11:22:27', null, '0');
 
 -- ----------------------------
 -- Table structure for t_order
@@ -163,16 +178,18 @@ CREATE TABLE `t_order` (
   CONSTRAINT `t_order_ibfk_1` FOREIGN KEY (`goods_id`) REFERENCES `t_goods` (`id`),
   CONSTRAINT `t_order_ibfk_2` FOREIGN KEY (`car_id`) REFERENCES `t_car` (`id`),
   CONSTRAINT `t_order_ibfk_3` FOREIGN KEY (`driver_id`) REFERENCES `t_driver` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_order
 -- ----------------------------
 INSERT INTO `t_order` VALUES ('21', '20180420160613', 'A021', '1', 'iphone', '100', '2018-04-20 16:06:13', '2018-04-27T18:00', null, '', '上海', '0', null, '', '', '', '', '0', '', '', '2018-04-20 16:43:13', null, '0');
 INSERT INTO `t_order` VALUES ('22', '20180420160932', 'A022', '2', '笔记本', '100', '2018-04-20 16:09:32', '2018-04-21T12:00', null, '', '广州', '0', null, '', '', '', '', '0', '', '', '2018-04-20 16:44:18', null, '0');
-INSERT INTO `t_order` VALUES ('23', '20180420161013', 'A023', '3', '衬衫', '1000', '2018-04-20 16:10:13', '2018-04-23T12:00', '1', '粤L66666', '深圳', '1', '1', 'A001', '123456789', '123456789', '', '500', '2018-04-21T18:00', '惠州学院', '2018-04-20 19:02:10', '', '0');
+INSERT INTO `t_order` VALUES ('23', '20180420161013', 'A023', '3', '衬衫', '1000', '2018-04-20 16:10:13', '2018-04-23T12:00', '1', '粤L66666', '深圳', '1', '1', 'A001', '123456789', '123456789', '', '900', '2018-04-21T18:00', '惠州学院', '2018-04-23 10:28:44', '', '0');
 INSERT INTO `t_order` VALUES ('66', '20180420201448', 'A025', '44', '柴油', '10000', '2018-04-20 20:14:48', '2018-04-21T07:00', null, '', '惠州', '0', null, '', '', '', '', '0', '', '', '2018-04-20 20:25:16', '', '0');
 INSERT INTO `t_order` VALUES ('67', '20180420201537', 'A026', '45', '天然气', '1000', '2018-04-20 20:15:37', '2018-04-21T07:00', null, null, '惠州', '0', null, null, null, null, null, null, null, '', null, '', '0');
+INSERT INTO `t_order` VALUES ('69', '20180423102544', 'A069', '47', '石油', '100000', '2018-04-23 10:25:44', '2018-04-24T12:00', null, null, '北京', '0', null, null, null, null, null, null, null, '', null, '2018-04-23 10:32:05', '1');
+INSERT INTO `t_order` VALUES ('70', '20180423112105', 'A099', '48', '11', '11111', '2018-04-23 11:21:05', '2018-04-11T12:00', null, '', '惠州', '0', null, '', '', '', '', '0', '', '', '2018-04-23 11:21:10', '2018-04-23 11:21:19', '1');
 
 -- ----------------------------
 -- Table structure for t_role
@@ -194,7 +211,7 @@ CREATE TABLE `t_role` (
   PRIMARY KEY (`id`),
   KEY `driver_id` (`driver_id`),
   CONSTRAINT `t_role_ibfk_1` FOREIGN KEY (`driver_id`) REFERENCES `t_driver` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_role
@@ -202,3 +219,4 @@ CREATE TABLE `t_role` (
 INSERT INTO `t_role` VALUES ('8', '1', '郑文', '1', '0', '0', '0', '0', '2018-04-21 10:09:22', '2018-04-21 11:17:57', '', '0');
 INSERT INTO `t_role` VALUES ('9', '2', '赖俊强', '1', '1', '1', '0', '0', '2018-04-21 10:28:17', '2018-04-21 14:44:19', '', '0');
 INSERT INTO `t_role` VALUES ('16', '4', '张三', '1', '1', '0', '0', '0', '2018-04-21 11:13:47', '2018-04-21 11:18:49', '', '0');
+INSERT INTO `t_role` VALUES ('17', '5', '李四', '1', '0', '0', '0', '0', '2018-04-23 11:13:36', '2018-04-23 11:13:42', '2018-04-23 11:13:45', '1');
