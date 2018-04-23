@@ -206,36 +206,29 @@ $("#company").blur(function () {
         dialog.error("结算单位不能超过20位，请重新输入！");
     }
 });
-// 按订单状态管理，ajax无法跳转页面，除非有window.location.href
+// 复合查询，ajax无法跳转页面，除非有window.location.href
 $('#select').click(function () {
     // jquery获取select选中的值
     var status=$(".select option:selected").val();
     // console.log(status);value为空串，value!=null
-    if (status==''){
-        dialog.error("订单状态不能为空，请重新选择！");
-    }else {
-        // 字符串连接符"+"，通过"?"连接参数
-        window.location.href = "/admin.php/Order/selectOrder?status=" + status;
-    }
-});
-// 按时间段管理
-$('#search').click(function () {
-    // jquery获取select选中的值
     var startTime=$("#startTime").val();
     var endTime=$("#endTime").val();
-    if (startTime.length==0) {
-        dialog.error("搜索时间不能为空，请重新输入！");
-    }else if (endTime.length==0) {
-        dialog.error("搜索时间不能为空，请重新输入！");
+    if (status==""&&(startTime==""||endTime=="")){
+        dialog.error("搜索不能为空，请重新输入！");
     }else {
-        // 字符串连接符"+"，通过"/"连接参数
-        window.location.href="/admin.php/Order/searchOrder/startTime/"+startTime+"/endTime/"+endTime;
+        window.location.href = "/admin.php/Order/select?status=" + status + "&startTime=" + startTime + "&endTime=" + endTime;
     }
 });
+
 //生成excel文件
 $('#excel').click(function () {
+    var status=$(".select option:selected").val();
     var startTime=$("#startTime").val();
     //alert(startTime);
     var endTime=$("#endTime").val();
-    window.location.href="/admin.php/Order/getExcel?startTime="+startTime+"&endTime="+endTime;
+    if (status==""&&(startTime==""||endTime=="")){
+        dialog.error("条件不能为空，请重新输入！");
+    }else {
+        window.location.href = "/admin.php/Order/getExcel?status=" + status + "&startTime=" + startTime + "&endTime=" + endTime;
+    }
 });

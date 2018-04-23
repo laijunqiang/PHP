@@ -125,43 +125,56 @@ class OrderController extends Controller {
         }
     }
 
-    //查询未接单的订单信息
-    public function selectOrder($status){
-        $ret = D('Order')->getOrderByStatus($status);
+    //查询订单信息
+    public function select($status,$startTime,$endTime){
+        //dump($status);
+        /*dump($startTime);
+        dump($endTime);*/
+        if ($status==""){  //按搜索时间搜索
+            $data=array();
+            $data['departure_time']=array('between',"$startTime,$endTime");
+            $ret = D('Order')->getOrderBySearch($data);
+        }else if ($startTime==""||$endTime==""){   //按状态搜索
+            //dump($status);
+            $ret = D('Order')->getOrderByStatus($status);
+        }else{     //复合查询
+            $data=array();
+            $data['status']=0;
+            $data['order_status']=$status;
+            $data['departure_time']=array('between',"$startTime,$endTime");
+            $ret = D('Order')->select($data);
+        }
         //dump($ret); //成功返回二维数组，失败返回NULL
         $this->assign('status',$status);
-        $this->assign('ret', $ret);
-        $this->display('index');
-
-    }
-    //查询时间段内的订单信息
-    public function searchOrder($startTime,$endTime){
-        //dump($startTime);
-        //dump($endTime);
-        $data=array();
-        $data['departure_time']=array('between',"$startTime,$endTime");
-        //dump($data);
-        $ret = D('Order')->getOrderBySearch($data);
-        //dump($ret); //成功返回二维数组，失败返回NULL
         $this->assign('ret', $ret);
         $this->assign('startTime',$startTime);
         $this->assign('endTime',$endTime);
         $this->display('index');
+
     }
 
     //导出Excel
-    public  function getExcel($startTime,$endTime){
+    public  function getExcel($status,$startTime,$endTime){
+        //dump($status==null);   $status为空串，===null。
         $fileName="订单信息表";
         $headArr=array(
             "订单ID","订单编号","订单号","商品","数量","创建时间","出发时间","车牌号","目的地","订单状态","司机编号","提货单号","合同号","缺货信息","提货数量","提货时间","结算单位","修改时间"
         );
-        if ($startTime!=null&&$endTime!=null){
-            $timeData=array();
-            $timeData['departure_time']=array('between',"$startTime,$endTime");
+        if ($status==""){  //按搜索时间搜索
+            $arr=array();
+            $arr['departure_time']=array('between',"$startTime,$endTime");
+            $data = D('Order')->getOrderBySearchExcel($arr);
+
+        }else if ($startTime==""||$endTime==""){   //按状态搜索
+            $arr['order_status']=$status;
+            $data = D('Order')->getOrderBySearchExcel($arr);
+
+        }else{     //复合查询
+            $arr=array();
+            $arr['order_status']=$status;
+            $arr['departure_time']=array('between',"$startTime,$endTime");
+            $data = D('Order')->getOrderBySearchExcel($arr);
             //dump($data);
-            $data = D('Order')->getOrderBySearchExcel($timeData);
-        }else {
-            $data = D('Order')->getOrderExcel();
         }
 
         /*$fileName ============  导出表的名字 */

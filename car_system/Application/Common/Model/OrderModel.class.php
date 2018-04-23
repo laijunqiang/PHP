@@ -28,6 +28,10 @@ class OrderModel extends Model {
         $data['status']=0;
         return $this->_db->where($data)->select();
     }
+    //复合查询
+    public function select($data = array()){
+        return $this->_db->where($data)->select();
+    }
 
     //生成订单信息
     public function addOrder($data = array()){
