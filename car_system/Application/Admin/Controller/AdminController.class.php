@@ -20,6 +20,10 @@ class AdminController extends Controller {
         if(!$ret) {
             return show(0,'密码不能与上次的相同，请重新输入！');
         }else {
+            $index = A('Log');
+            $account=$_POST['account'];
+            $index->addLog("修改账号为：$account 的车辆", session('adminUser.account'));
+
             return show(1, '修改成功');
         }
     }

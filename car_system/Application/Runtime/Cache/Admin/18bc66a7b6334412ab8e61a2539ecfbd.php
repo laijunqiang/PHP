@@ -9,10 +9,12 @@
     <h3>订单信息表</h3>
     <nav>
         <button><a href="/admin.php/Order/add">生成订单</a></button>
+        <button id="excel" value="<?php echo ($ret); ?>">生成excel文档</button>
     </nav>
     <br>
     <b>订单状态：</b>
     <select class="select">
+        <option value="">--请选择--</option>
         <?php if(($status) == "0"): ?><option value="0" selected="selected">未接单</option>
             <?php else: ?>
             <option value="0">未接单</option><?php endif; ?>
@@ -29,7 +31,6 @@
     <input name="startTime" type="datetime-local" id="startTime" value="<?php echo ($startTime); ?>"/>到
     <input name="endTime" type="datetime-local" id="endTime" value="<?php echo ($endTime); ?>"/>
     <input name="search" type="button" id='search' value="搜索">
-    <button id="excel" value="<?php echo ($ret); ?>">生成excel文档</button>
     <table border="1px">
         <tr>
             <td>订单ID</td>

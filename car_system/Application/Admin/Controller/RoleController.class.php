@@ -51,6 +51,13 @@ class RoleController extends Controller
             if (!$ret) {
                 return show(0, '录入失败');
             } else {
+                $index = A('Log');
+                $driver_name=$_POST['driver_name'];
+                if (session('adminUser.account')!=null) {
+                    $index->addLog("生成司机名称为：$driver_name 的权限", session('adminUser.account'));
+                }else {
+                    $index->addLog("生成司机名称为：$driver_name 的权限", session('adminUser.driver_name'));
+                }
                 return show(1, '录入成功');
             }
         }
@@ -80,6 +87,13 @@ class RoleController extends Controller
         if (!$return) {
             return show(0, '修改权限失败');
         } else {
+            $index = A('Log');
+            $driver_name=$_POST['driver_name'];
+            if (session('adminUser.account')!=null) {
+                $index->addLog("修改司机名称为：$driver_name 的权限", session('adminUser.account'));
+            }else {
+                $index->addLog("修改司机名称为：$driver_name 的权限", session('adminUser.driver_name'));
+            }
             return show(1, '修改权限成功');
         }
     }
@@ -99,6 +113,13 @@ class RoleController extends Controller
         if(!$ret) {
             return show(0,'删除失败');
         }else {
+            $index = A('Log');
+            $id=$_POST['id'];
+            if (session('adminUser.account')!=null) {
+                $index->addLog("删除ID为：$id 的权限", session('adminUser.account'));
+            }else {
+                $index->addLog("删除ID为：$id 的权限", session('adminUser.driver_name'));
+            }
             return show(1, '删除成功');
         }
     }

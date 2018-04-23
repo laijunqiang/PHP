@@ -210,8 +210,13 @@ $("#company").blur(function () {
 $('#select').click(function () {
     // jquery获取select选中的值
     var status=$(".select option:selected").val();
-    // 字符串连接符"+"，通过"?"连接参数
-    window.location.href="/admin.php/Order/selectOrder?status="+status;
+    // console.log(status);value为空串，value!=null
+    if (status==''){
+        dialog.error("订单状态不能为空，请重新选择！");
+    }else {
+        // 字符串连接符"+"，通过"?"连接参数
+        window.location.href = "/admin.php/Order/selectOrder?status=" + status;
+    }
 });
 // 按时间段管理
 $('#search').click(function () {

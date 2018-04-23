@@ -16,7 +16,7 @@
         <button><a href="/admin.php/Driver" target="iframe">用户信息管理</a></button>
         <button><a href="/admin.php/Car" target="iframe" >车辆信息管理</a></button>
         <button><a href="/admin.php/Role" target="iframe">角色/用户权限管理</a></button>
-        <button><a href="#" target="iframe">操作日志管理</a></button>
+        <button><a href="/admin.php/Log" target="iframe">操作日志管理</a></button>
         <button><a href="/admin.php/Admin" target="iframe">修改密码</a></button>
         <button><a href="/admin.php/Login/loginout">退出登陆</a></button>
     </nav>
@@ -28,7 +28,7 @@
             <?php if(($_SESSION['adminUser']['driver_manage']) == "1"): ?><button><a href="/admin.php/Driver" target="iframe">用户信息管理</a></button><?php endif; ?>
             <?php if(($_SESSION['adminUser']['car_manage']) == "1"): ?><button><a href="/admin.php/Car" target="iframe" >车辆信息管理</a></button><?php endif; ?>
             <?php if(($_SESSION['adminUser']['role_manage']) == "1"): ?><button><a href="/admin.php/Role" target="iframe">角色/用户权限管理</a></button><?php endif; ?>
-            <?php if(($_SESSION['adminUser']['log_manage']) == "1"): ?><button><a href="#" target="iframe">操作日志管理</a></button><?php endif; ?>
+            <?php if(($_SESSION['adminUser']['log_manage']) == "1"): ?><button><a href="/admin.php/Log" target="iframe">操作日志管理</a></button><?php endif; ?>
             <button><a href="/admin.php/Login/loginout">退出登陆</a></button>
         </nav><?php endif; ?>
 </div>

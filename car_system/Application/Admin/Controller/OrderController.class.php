@@ -41,6 +41,13 @@ class OrderController extends Controller {
             if (!$return) {
                 return show(0, '生成订单失败');
             } else {
+                $index = A('Log');
+                $number=$_POST['number'];
+                if (session('adminUser.account')!=null) {
+                    $index->addLog("生成订单编号为：$number 的订单", session('adminUser.account'));
+                }else {
+                    $index->addLog("生成订单编号为：$number 的订单", session('adminUser.driver_name'));
+                }
                 return show(1, '生成订单成功');
             }
         }
@@ -81,6 +88,13 @@ class OrderController extends Controller {
             if (!$return) {
                 return show(0, '修改订单失败');
             } else {
+                $index = A('Log');
+                $number=$_POST['number'];
+                if (session('adminUser.account')!=null) {
+                    $index->addLog("修改订单编号为：$number 的订单", session('adminUser.account'));
+                }else {
+                    $index->addLog("修改订单编号为：$number 的订单", session('adminUser.driver_name'));
+                }
                 return show(1, '修改订单成功');
             }
         }
@@ -100,6 +114,13 @@ class OrderController extends Controller {
         if(!$ret) {
             return show(0,'删除失败');
         }else {
+            $index = A('Log');
+            $id=$_POST['id'];
+            if (session('adminUser.account')!=null) {
+                $index->addLog("删除订单ID为：$id 的订单", session('adminUser.account'));
+            }else {
+                $index->addLog("删除订单ID为：$id 的订单", session('adminUser.driver_name'));
+            }
             return show(1, '删除成功');
         }
     }

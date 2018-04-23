@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,19 +9,19 @@
     <table>
         <tr>
             <td>车辆ID：</td>
-            <td><input type="text" value="{$ret.id}" name="id" disabled="disabled"></td>
+            <td><input type="text" value="<?php echo ($ret["id"]); ?>" name="id" disabled="disabled"></td>
         </tr>
         <tr>
             <td>车辆编号：</td>
-            <td><input type="text" value="{$ret.number}" name="number" id="number" disabled="disabled"></td>
+            <td><input type="text" value="<?php echo ($ret["number"]); ?>" name="number" id="number" disabled="disabled"></td>
         </tr>
         <tr>
             <td>车牌号：</td>
-            <td><input type="text" value="{$ret.plate}" name="plate" id="plate"></td>
+            <td><input type="text" value="<?php echo ($ret["plate"]); ?>" name="plate" id="plate"></td>
         </tr>
         <tr>
             <td>车架号：</td>
-            <td><input type="text" value="{$ret.frame}" name="frame" id="frame"></td>
+            <td><input type="text" value="<?php echo ($ret["frame"]); ?>" name="frame" id="frame"></td>
         </tr>
         <tr align="center">
             <td colspan="2">
