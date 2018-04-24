@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-04-23 23:06:32
+Date: 2018-04-24 17:45:27
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -106,8 +106,8 @@ CREATE TABLE `t_goods` (
 -- ----------------------------
 -- Records of t_goods
 -- ----------------------------
-INSERT INTO `t_goods` VALUES ('1', 'goods20180420160613', 'iphone', '100', '0', '2018-04-20 16:06:13', '2018-04-20 16:43:13', null, '0');
-INSERT INTO `t_goods` VALUES ('2', 'goods20180420160932', '笔记本', '100', '0', '2018-04-20 16:09:32', '2018-04-20 16:44:18', null, '0');
+INSERT INTO `t_goods` VALUES ('1', 'goods20180420160613', 'iphone', '100', '100', '2018-04-20 16:06:13', '2018-04-24 16:05:19', null, '0');
+INSERT INTO `t_goods` VALUES ('2', 'goods20180420160932', '笔记本', '100', '100', '2018-04-20 16:09:32', '2018-04-24 16:05:49', null, '0');
 INSERT INTO `t_goods` VALUES ('3', 'goods20180420161013', '衬衫', '1000', '0', '2018-04-20 16:10:13', '2018-04-23 10:28:44', null, '0');
 INSERT INTO `t_goods` VALUES ('44', 'goods20180420201448', '柴油', '10000', '0', '2018-04-20 20:14:48', '2018-04-20 20:25:16', null, '0');
 INSERT INTO `t_goods` VALUES ('45', 'goods20180420201537', '天然气', '1000', '0', '2018-04-20 20:15:37', null, null, '0');
@@ -127,7 +127,7 @@ CREATE TABLE `t_log` (
   `delete_time` char(19) DEFAULT NULL COMMENT '修改记录时间',
   `status` tinyint(4) DEFAULT '0' COMMENT '删除状态，0表示未删除，1表示已删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_log
@@ -149,6 +149,12 @@ INSERT INTO `t_log` VALUES ('55', 'admin', '退出系统', '2018-04-23 20:04:42'
 INSERT INTO `t_log` VALUES ('56', 'admin', '登录系统', '2018-04-23 20:11:08', null, '0');
 INSERT INTO `t_log` VALUES ('57', 'admin', '退出系统', '2018-04-23 20:12:33', null, '0');
 INSERT INTO `t_log` VALUES ('58', '郑文', '登录系统', '2018-04-23 20:37:59', null, '0');
+INSERT INTO `t_log` VALUES ('59', '郑文', '登录系统', '2018-04-24 16:34:25', null, '0');
+INSERT INTO `t_log` VALUES ('60', '郑文', '退出系统', '2018-04-24 17:08:40', null, '0');
+INSERT INTO `t_log` VALUES ('61', '郑文', '登录系统', '2018-04-24 17:31:44', null, '0');
+INSERT INTO `t_log` VALUES ('62', '郑文', '退出系统', '2018-04-24 17:31:47', null, '0');
+INSERT INTO `t_log` VALUES ('63', 'admin', '登录系统', '2018-04-24 17:31:49', null, '0');
+INSERT INTO `t_log` VALUES ('64', 'admin', '退出系统', '2018-04-24 17:34:39', null, '0');
 
 -- ----------------------------
 -- Table structure for t_order
@@ -190,8 +196,8 @@ CREATE TABLE `t_order` (
 -- ----------------------------
 -- Records of t_order
 -- ----------------------------
-INSERT INTO `t_order` VALUES ('21', '20180420160613', 'A021', '1', 'iphone', '100', '2018-04-20 16:06:13', '2018-04-27T18:00', '3', '粤L33333', '上海', '1', '1', 'A001', '1', '1', '', '1', '0001-01-01T01:01', '1', '2018-04-23 20:45:29', null, '0');
-INSERT INTO `t_order` VALUES ('22', '20180420160932', 'A022', '2', '笔记本', '100', '2018-04-20 16:09:32', '2018-04-21T12:00', '5', '粤L88888', '广州', '1', '1', 'A001', '20180420160932', '20180420160932', '', '100', '2018-04-23T21:00', '广州大学', '2018-04-23 21:09:51', null, '0');
+INSERT INTO `t_order` VALUES ('21', '20180420160613', 'A021', '1', 'iphone', '100', '2018-04-20 16:06:13', '2018-05-27T18:00', '3', '粤L33333', '上海', '2', '1', 'A001', '1', '1', '', '1', '0001-01-01T01:01', '1', '2018-04-24 16:05:19', null, '0');
+INSERT INTO `t_order` VALUES ('22', '20180420160932', 'A022', '2', '笔记本', '100', '2018-04-20 16:09:32', '2018-04-21T12:00', '5', '粤L88888', '广州', '2', '1', 'A001', '20180420160932', '20180420160932', '', '100', '2018-04-23T21:00', '广州大学', '2018-04-24 16:05:49', null, '0');
 INSERT INTO `t_order` VALUES ('23', '20180420161013', 'A023', '3', '衬衫', '1000', '2018-04-20 16:10:13', '2018-04-23T12:00', '1', '粤L66666', '深圳', '1', '1', 'A001', '123456789', '123456789', '', '900', '2018-04-21T18:00', '惠州学院', '2018-04-23 10:28:44', '', '0');
 INSERT INTO `t_order` VALUES ('66', '20180420201448', 'A025', '44', '柴油', '10000', '2018-04-20 20:14:48', '2018-04-21T07:00', '1', '粤L66666', '惠州', '1', '1', 'A001', '666', '666', '', '6666', '2018-04-23T10:00', 'TCL', '2018-04-23 21:53:24', '', '0');
 INSERT INTO `t_order` VALUES ('67', '20180420201537', 'A026', '45', '天然气', '1000', '2018-04-20 20:15:37', '2018-04-21T07:00', null, null, '惠州', '0', null, null, null, null, null, null, null, '', null, '', '0');
@@ -218,7 +224,7 @@ CREATE TABLE `t_role` (
   PRIMARY KEY (`id`),
   KEY `driver_id` (`driver_id`),
   CONSTRAINT `t_role_ibfk_1` FOREIGN KEY (`driver_id`) REFERENCES `t_driver` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_role
