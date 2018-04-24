@@ -47,5 +47,6 @@
 <script src="/Public/js/jquery.js"></script>
 <script src="/Public/js/dialog/layer.js"></script>
 <script src="/Public/js/dialog.js"></script>
+<script src="/Public/js/home/personalOrder.js"></script>
 </body>
 </html>

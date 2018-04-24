@@ -32,7 +32,7 @@
             <button><a href="/admin.php/Login/loginout">退出登陆</a></button>
         </nav><?php endif; ?>
 </div>
-<iframe src="/admin.php/Order" scrolling="no" name="iframe" frameborder="0" width="100%" height="600">
+<iframe src="/admin.php/Order" scrolling="auto" name="iframe" frameborder="0" width="100%" height="600">
 </iframe>
 </body>
 </html>

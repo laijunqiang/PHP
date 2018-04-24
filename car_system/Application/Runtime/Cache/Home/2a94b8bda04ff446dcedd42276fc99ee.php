@@ -14,7 +14,7 @@
     <nav>
         <button><a href="/index.php/Home/Order" target="iframe">公共订单池</a></button>
         <button><a href="/index.php/Home/PersonalOrder" target="iframe">个人订单</a></button>
-        <button><a href="https://www.cnblogs.com/" target="iframe">个人中心</a></button>
+        <button><a href="/index.php/Home/PersonalCenter" target="iframe">个人中心</a></button>
         <button><a href="/index.php/Home/Login/loginout">退出登陆</a></button>
     </nav>
 </div>

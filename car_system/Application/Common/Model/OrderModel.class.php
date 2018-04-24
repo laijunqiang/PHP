@@ -26,7 +26,7 @@ class OrderModel extends Model {
     //通过搜索时间获取订单信息
     public function getOrderBySearch($data = array()){
         $data['status']=0;
-        return $this->_db->where($data)->select();
+        return $this->_db->where($data)->order('order_status,create_time desc')->select();
     }
     //复合查询
     public function select($data = array()){
