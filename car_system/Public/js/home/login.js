@@ -6,9 +6,11 @@
 var login = {
     check : function() {
         // 获取登录页面中的用户名 和 密码
-        var account = $('input[name="account"]').val();
-        var password = $('input[name="password"]').val();
-
+        var account = $.trim($('input[name="account"]').val());
+        var password = $.trim($('input[name="password"]').val());
+        //console.log(typeof(password));  使用 typeof 属性，可以返回变量的类型，typeof 语法中的圆括号是可选项。
+        //var password=$.trim(password);   $.trim() 函数用于去除字符串两端的空白字符。
+        // 在JS的世界里， 0、-0、null、""、false、undefined 或 NaN，这些都可以自动转化为布尔的 false
         if(!account||!password) {
             //在本文件中虽然没有调用，但是在index.html中将dialog.js和login.js加载在一起
             dialog.error('账号或密码不能为空');

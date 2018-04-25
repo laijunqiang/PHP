@@ -6,7 +6,7 @@ var order = {
         window.location.href="/index.php/Home/Order";
     },
     update:function () {
-        // 获取修改订单页面中的信息
+        // 获取修改订单页面中的信息，都是字符串数据
         var id=$('input[name="id"]').val();
         var number=$('input[name="number"]').val();
         var order_number = $('input[name="order_number"]').val();
@@ -15,19 +15,23 @@ var order = {
         var car_plate=$('select[name="car_plate"]').val();
         var destination = $('input[name="destination"]').val();
         var order_status=$('select[name="order_status"]').val();
+        //console.log(order_status);
         var goods_name = $('input[name="goods_name"]').val();
         var goods_quantity = $('input[name="goods_quantity"]').val();
         var driver_id=$('input[name="driver_id"]').val();
         //alert(driver_id);
         var driver_number=$('input[name="driver_number"]').val();
-        var pick_number = $('input[name="pick_number"]').val();
-        var contract_number = $('input[name="contract_number"]').val();
-        var short_info = $('input[name="short_info"]').val();
-        var pick_quantity = $('input[name="pick_quantity"]').val();
-        var pick_time = $('input[name="pick_time"]').val();
-        var company = $('input[name="company"]').val();
+        var pick_number = $.trim($('input[name="pick_number"]').val());
+        var contract_number = $.trim($('input[name="contract_number"]').val());
+        var short_info = $.trim($('input[name="short_info"]').val());
+        var pick_quantity = $.trim($('input[name="pick_quantity"]').val());
+        var pick_time = $.trim($('input[name="pick_time"]').val());
+        //console.log(pick_time);
+        var company = $.trim($('input[name="company"]').val());
 
-        if (pick_number.length > 20) {
+        if (!pick_number||!contract_number||!pick_quantity||!pick_time||!company){
+            dialog.error("输入不能为空，请重新输入！");
+        } else if (pick_number.length > 20) {
             dialog.error("提货单号不能超过20位，请重新输入！");
         } else if (contract_number.length > 20) {
             dialog.error("合同号不能超过20位，请重新输入！");

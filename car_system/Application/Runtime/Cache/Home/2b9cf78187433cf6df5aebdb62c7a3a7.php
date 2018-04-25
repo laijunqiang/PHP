@@ -27,7 +27,7 @@
             <td><input type="text" value="<?php echo ($ret["goods_name"]); ?>" name="goods_name" id="goods_name" disabled="disabled"></td>
         </tr>
         <tr>
-            <td>数量：</td>
+            <td>数量(kg)：</td>
             <td><input type="text" value="<?php echo ($ret["goods_quantity"]); ?>" name="goods_quantity" id="goods_quantity" disabled="disabled"></td>
         </tr>
         <tr>
@@ -77,7 +77,7 @@
             <td><input type="text"  value="<?php echo ($ret["short_info"]); ?>" name="short_info" id="short_info" disabled="disabled"></td>
         </tr>
         <tr>
-            <td>提货数量：</td>
+            <td>提货数量(kg)：</td>
             <td><input type="text"  value="<?php echo ($ret["pick_quantity"]); ?>" name="pick_quantity" id="pick_quantity" disabled="disabled"></td>
         </tr>
         <tr>
@@ -89,8 +89,8 @@
             <td><input type="text" value="<?php echo ($ret["company"]); ?>" name="company" id="company" disabled="disabled"></td>
         </tr>
         <tr>
-            <td>商品实际数量：</td>
-            <td><input type="text" name="real_quantity" id="real_quantity"></td>
+            <td>商品实际数量(kg)：</td>
+            <td><input type="number" name="real_quantity" id="real_quantity"></td>
         </tr>
         <tr align="center">
             <td colspan="2">

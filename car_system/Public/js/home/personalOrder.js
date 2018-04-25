@@ -10,8 +10,11 @@ var personalOrder = {
         var id=$('input[name="id"]').val();
         var goods_id=$('input[name="goods_id"]').val();
         var order_status=$('select[name="order_status"]').val();
-        var real_quantity=$('input[name="real_quantity"]').val();
-        if (real_quantity.length > 10) {
+        var real_quantity=$.trim($('input[name="real_quantity"]').val());
+         console.log(typeof real_quantity);//不输入也是字符串数据
+        if (real_quantity==""){
+            dialog.error("输入不能为空，请重新输入！");
+        } else if (real_quantity.length > 10) {
             dialog.error("商品实际数量不能超过10位，请重新输入！");
         } else {
             var url = "/index.php/Home/PersonalOrder/updateOrder";
