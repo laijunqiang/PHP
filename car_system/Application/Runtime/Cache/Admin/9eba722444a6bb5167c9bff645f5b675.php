@@ -20,8 +20,8 @@
             <td><input type="text" value="<?php echo ($ret["order_number"]); ?>" name="order_number" id="order_number"></td>
         </tr>
         <tr>
-            <td>商品ID：</td>
-            <td><input type="text" value="<?php echo ($ret["goods_id"]); ?>" name="goods_id" id="goods_id" disabled="disabled"></td>
+            <!--商品ID-->
+            <input type="hidden" value="<?php echo ($ret["goods_id"]); ?>" name="goods_id" id="goods_id" disabled="disabled">
         </tr>
         <tr>
             <td>商品名：</td>
@@ -37,7 +37,13 @@
         </tr>
         <tr>
             <td>车牌号：</td>
-            <td><input type="text" value="<?php echo ($ret["car_plate"]); ?>" name="car_plate" id="car_plate"></td>
+            <td>
+                <select name="car_plate">
+                    <?php if(is_array($car)): $i = 0; $__LIST__ = $car;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i; if(($vo["plate"]) == $ret["car_plate"]): ?><option value="<?php echo ($vo["plate"]); ?>" selected="selected"><?php echo ($vo["plate"]); ?></option>
+                            <?php else: ?>
+                            <option value="<?php echo ($vo["plate"]); ?>"><?php echo ($vo["plate"]); ?></option><?php endif; endforeach; endif; else: echo "" ;endif; ?>
+                </select>
+            </td>
         </tr>
         <tr>
             <td>目的地：</td>
@@ -62,7 +68,13 @@
         </tr>
         <tr>
             <td>司机编号：</td>
-            <td><input type="text" value="<?php echo ($ret["driver_number"]); ?>" name="driver_number" id="driver_number"></td>
+            <td>
+                <select name="driver_number">
+                    <?php if(is_array($driver)): $i = 0; $__LIST__ = $driver;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i; if(($vo["number"]) == $ret["driver_number"]): ?><option value="<?php echo ($vo["number"]); ?>" selected="selected"><?php echo ($vo["number"]); ?></option>
+                            <?php else: ?>
+                            <option value="<?php echo ($vo["number"]); ?>"><?php echo ($vo["number"]); ?></option><?php endif; endforeach; endif; else: echo "" ;endif; ?>
+                </select>
+            </td>
         </tr>
         <tr>
             <td>提货单号：</td>

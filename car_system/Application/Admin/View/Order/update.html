@@ -20,8 +20,8 @@
             <td><input type="text" value="{$ret.order_number}" name="order_number" id="order_number"></td>
         </tr>
         <tr>
-            <td>商品ID：</td>
-            <td><input type="text" value="{$ret.goods_id}" name="goods_id" id="goods_id" disabled="disabled"></td>
+            <!--商品ID-->
+            <input type="hidden" value="{$ret.goods_id}" name="goods_id" id="goods_id" disabled="disabled">
         </tr>
         <tr>
             <td>商品名：</td>
@@ -37,7 +37,17 @@
         </tr>
         <tr>
             <td>车牌号：</td>
-            <td><input type="text" value="{$ret.car_plate}" name="car_plate" id="car_plate"></td>
+            <td>
+                <select name="car_plate">
+                    <volist name="car" id="vo">
+                        <eq name="vo.plate" value="$ret.car_plate">
+                            <option value="{$vo.plate}" selected="selected">{$vo.plate}</option>
+                            <else/>
+                            <option value="{$vo.plate}">{$vo.plate}</option>
+                        </eq>
+                    </volist>
+                </select>
+            </td>
         </tr>
         <tr>
             <td>目的地：</td>
@@ -68,7 +78,17 @@
         </tr>
         <tr>
             <td>司机编号：</td>
-            <td><input type="text" value="{$ret.driver_number}" name="driver_number" id="driver_number"></td>
+            <td>
+                <select name="driver_number">
+                    <volist name="driver" id="vo">
+                        <eq name="vo.number" value="$ret.driver_number">
+                            <option value="{$vo.number}" selected="selected">{$vo.number}</option>
+                            <else/>
+                            <option value="{$vo.number}">{$vo.number}</option>
+                        </eq>
+                    </volist>
+                </select>
+            </td>
         </tr>
         <tr>
             <td>提货单号：</td>

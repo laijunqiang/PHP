@@ -14,6 +14,7 @@ var dialog = {
         layer.open({
             content : message,
             icon : 1,
+            // yes - 确定按钮回调方法
             yes : function(){
                 location.href=url;
             }

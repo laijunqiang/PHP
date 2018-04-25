@@ -60,6 +60,10 @@ class OrderController extends Controller {
         $ret = D('Order')->showOrder($id);
         //在视图层可以通过{$ret.id}访问
         $this->assign('ret', $ret);
+        $car = D('Car')->getCar();
+        $this->assign('car',$car);
+        $driver = D('Driver')->getDriver();
+        $this->assign('driver',$driver);
         $this->display();
     }
     //修改订单处理
@@ -79,10 +83,10 @@ class OrderController extends Controller {
         if(!$ret) {
             return show(0, '修改订单失败');
         }else {
-            /*D方法实例化模型类的时候通常是实例化某个具体的模型类
-             当 \Admin\Model\AdminModel 类不存在的时候，D函数会尝试实例化公共模块下面的 \Common\Model\AdminModel类。
-             D方法可以自动检测模型类，如果存在自定义的模型类，则实例化自定义模型类，
-             如果不存在，则会实例化系统的\Think\Model基类，同时对于已实例化过的模型，不会重复实例化。*/
+            //取出车辆ID
+            $_POST['car_id']=D('Car')->getIdByPlate($_POST['car_plate']);
+            //取出司机ID
+            $_POST['driver_id']=D('Driver')->getIdByNumber($_POST['driver_number']);
             $return = D('Order')->updateOrder($_POST);
 //        save方法的返回值是影响的记录数，如果返回false则表示更新出错
             if (!$return) {

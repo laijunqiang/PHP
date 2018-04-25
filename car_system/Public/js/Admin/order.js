@@ -4,15 +4,15 @@
 var order = {
     add: function () {
         // 获取生成订单页面中的信息
-        var order_number = $('input[name="order_number"]').val();
-        var destination = $('input[name="destination"]').val();
-        var goods_name = $('input[name="goods_name"]').val();
-        var goods_quantity = $('input[name="goods_quantity"]').val();
-        var departure_time = $('input[name="departure_time"]').val();
+        var order_number = $.trim($('input[name="order_number"]').val());
+        var destination = $.trim($('input[name="destination"]').val());
+        var goods_name = $.trim($('input[name="goods_name"]').val());
+        var goods_quantity = $.trim($('input[name="goods_quantity"]').val());
+        var departure_time = $.trim($('input[name="departure_time"]').val());
 
         if (!order_number || !destination || !goods_name || !goods_quantity || !departure_time) {
             //在本文件中虽然没有调用，但是在index.html中将dialog.js和login.js加载在一起
-            dialog.error('输入不能为空');
+            dialog.error('输入不能为空，请重新输入！');
         } else if (order_number.length > 20) {
             dialog.error("订单号不能超过20位，请重新输入！");
         } else if (destination.length > 30) {
@@ -57,18 +57,29 @@ var order = {
         var goods_name = $('input[name="goods_name"]').val();
         var goods_quantity = $('input[name="goods_quantity"]').val();
         var departure_time=$('input[name="departure_time"]').val();
-        var car_plate=$('input[name="car_plate"]').val();
+        var car_plate=$('select[name="car_plate"] option:selected').val();
         var destination = $('input[name="destination"]').val();
-        var order_status=$('select').val();
-        var driver_number=$('input[name="driver_number"]').val();
+        var order_status=$('select[name="order_status"] option:selected').val();
+        var driver_number=$('select[name="driver_number"] option:selected').val();
         var pick_number = $('input[name="pick_number"]').val();
         var contract_number = $('input[name="contract_number"]').val();
         var short_info = $('input[name="short_info"]').val();
         var pick_quantity = $('input[name="pick_quantity"]').val();
         var pick_time = $('input[name="pick_time"]').val();
         var company = $('input[name="company"]').val();
+        //alert(car_plate);alert(order_status);alert(driver_number);
 
-        if (number.length > 14) {
+        if (!order_number){
+            dialog.error("订单号不能为空，请重新输入！");
+        } else if (!goods_name){
+            dialog.error("商品名称不能为空，请重新输入！");
+        } else if (!goods_quantity){
+            dialog.error("商品数量不能为空，请重新输入！");
+        } else if (!destination){
+            dialog.error("目的地不能为空，请重新输入！");
+        } else if (!departure_time){
+            dialog.error("出发时间不能为空，请重新输入！");
+        } else if (number.length > 14) {
             dialog.error("订单编号不能超过14位，请重新输入！");
         } else if(order_number.length>20){
             dialog.error("订单号不能超过14位，请重新输入！");
@@ -76,9 +87,6 @@ var order = {
             dialog.error("车牌号不能超过7位，请重新输入！");
         } else if (destination.length > 30) {
             dialog.error("目的地不能超过30位，请重新输入！");
-        } else if (departure_time.length==0) {
-            //input的type="datetime-local"填写完整时长度为16，其他情况都是0
-            dialog.error("出发时间不能为空，请重新输入！");
         } else if (goods_name.length > 20) {
             dialog.error("商品名不能超过20位，请重新输入！");
         } else if (goods_quantity.length > 10) {

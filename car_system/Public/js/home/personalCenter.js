@@ -8,7 +8,7 @@ var personalCenter = {
     setPassword : function() {
         // 获取登录页面中的用户名 和 密码
         var account = $('input[name="account"]').val();
-        var password = $('input[name="password"]').val();
+        var password =$.trim($('input[name="password"]').val());
 
         if(!password) {
             //在本文件中虽然没有调用，但是在index.html中将dialog.js和login.js加载在一起

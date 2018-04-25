@@ -34,6 +34,9 @@ class DriverModel extends Model {
     public function getIdByName($name){
         return $this->_db->where("name='$name'")->getField('id');
     }
+    public function getIdByNumber($number){
+        return $this->_db->where("number='$number'")->getField('id');
+    }
     //修改司机信息页面
     public function showDriver($id=''){
         return $this->_db->where("id='$id'")->find();

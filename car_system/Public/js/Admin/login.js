@@ -16,12 +16,12 @@ var login = {
     },
     check : function() {
         // 获取登录页面中的用户名 和 密码
-        var account = $('input[name="account"]').val();
-        var password = $('input[name="password"]').val();
+        var account = $.trim($('input[name="account"]').val());
+        var password = $.trim($('input[name="password"]').val());
 
         if(!account||!password) {
             //在本文件中虽然没有调用，但是在index.html中将dialog.js和login.js加载在一起
-            dialog.error('账号或密码不能为空');
+            dialog.error('账号或密码不能为空，请重新输入！');
         }else {
             var url = "/admin.php/Login/check";
             var data = {'account': account, 'password': password};//JSON格式
