@@ -59,4 +59,12 @@ class DriverModel extends Model {
         }
         return $this->_db->add($data);
     }
+    //修改司机密码
+    public function update($data){
+        if(!$data || !is_array($data)) {
+            return 0;
+        }
+        $account=$data['account'];//字符串需要引号
+        return $this->_db->where("account='$account'")->save($data);
+    }
 }

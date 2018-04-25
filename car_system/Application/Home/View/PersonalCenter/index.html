@@ -9,8 +9,8 @@
     <h3>个人中心</h3>
     <nav>
         <button><a href="/index.php/Home/PersonalCenter/setPasswordPage">个人密码修改</a></button>
-        <button><a>个人信息</a></button>
-        <button><a>个人订单管理</a></button>
+        <button><a href="/index.php/Home/PersonalCenter">个人信息</a></button>
+        <button><a href="/index.php/Home/PersonalOrder">个人订单管理</a></button>
     </nav>
     <table>
         <tr>

@@ -18,7 +18,7 @@ class AdminController extends Controller {
         $ret = D('Admin')->update($_POST);
         //        save方法的返回值是影响的记录数，如果返回false则表示更新出错
         if(!$ret) {
-            return show(0,'密码不能与上次的相同，请重新输入！');
+            return show(0,'修改失败，请重新修改！');
         }else {
             $index = A('Log');
             $account=$_POST['account'];

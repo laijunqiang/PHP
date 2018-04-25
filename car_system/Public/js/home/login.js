@@ -4,17 +4,6 @@
  */
 //定义login对象，check属性是一个函数function
 var login = {
-    hideShowPsw :function () {
-        //console.log($('#input').attr("type"));
-        //jq的attr()获取并修改属性值
-        if ($('#input').attr("type")== "password") {
-            $('input[type="password"]').attr('type','text');
-            $('#img').attr('src','/Public/image/invisible.png');
-        }else {
-            $('#input').attr('type','password');
-            $('#img').attr('src','/Public/image/visible.png');
-        }
-    },
     check : function() {
         // 获取登录页面中的用户名 和 密码
         var account = $('input[name="account"]').val();
@@ -41,3 +30,12 @@ var login = {
         }
     }
 };
+$('#img').click(function () {
+    if ($('#input').attr("type")== "password") {
+        $('#input').attr('type','text');
+        $('#img').attr('src','/Public/image/invisible.png');
+    }else {
+        $('#input').attr('type','password');
+        $('#img').attr('src','/Public/image/visible.png');
+    }
+});
