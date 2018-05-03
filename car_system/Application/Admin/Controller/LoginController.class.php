@@ -27,9 +27,6 @@ class LoginController extends Controller {
             //该函数可以完成Session的设置、获取、删除和管理操作。
             session('adminUser', $ret);
             //dump($_SESSION['adminUser']['account']);
-            //登录成功,写入日志
-            $index = A('Log');//A 方法用于实例化其他模块（当于 new 关键字），模块被实例化之后，就可以以对象的方式调用模块内的操作。
-            $index->addLog("登录系统", session('adminUser.account'));//二维数组取值
             //超级管理员登陆成功
             return show(1, '登录成功');
         }elseif($ret!=null&&$ret['password'] != getMd5Password($password)){
@@ -37,9 +34,6 @@ class LoginController extends Controller {
             return show(0,'密码错误，请重新登陆！');
         }elseif ($driver!=null&&$return['password'] == getMd5Password($password)){
             session('adminUser', $driver);
-            $index = A('Log');
-            $index->addLog("登录系统", session('adminUser.driver_name'));
-            //管理员登陆成功
             return show(1, '登录成功');
         }elseif ($driver!=null&&$ret['password'] != getMd5Password($password)){
             //超级管理员密码错误
@@ -53,12 +47,6 @@ class LoginController extends Controller {
     //退出登录清除用户SESSION相关信息
     public function loginout() {
         //dump(session('adminUser.account'));
-        $index = A('Log');
-        if (session('adminUser.account')!=null) {
-            $index->addLog("退出系统", session('adminUser.account'));
-        }else {
-            $index->addLog("退出系统", session('adminUser.driver_name'));
-        }
         session('adminUser', null);
 /*        redirect方法的参数用法和U函数的用法一致，U('地址表达式',['参数'],['伪静态后缀'],['显示域名'])
         地址表达式的格式定义如下：

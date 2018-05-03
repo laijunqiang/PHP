@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>司机信息管理</title>
+    <link rel="stylesheet" href="/Public/css/home/login.css">
 </head>
 <body>
 <div align="center">
@@ -13,9 +14,10 @@
             <td>司机ID</td>
             <td>司机编号</td>
             <td>司机账号</td>
-            <td>司机密码</td>
+            <!--司机密码没意义，不显示-->
+            <!--<td>司机密码</td>-->
             <td>真实姓名</td>
-            <td>头像路径</td>
+            <td>头像</td>
             <td>创建记录时间</td>
             <td>修改记录时间</td>
             <td>操作</td>
@@ -25,9 +27,10 @@
                 <td><?php echo ($vo["id"]); ?></td>
                 <td><?php echo ($vo["number"]); ?></td>
                 <td><?php echo ($vo["account"]); ?></td>
-                <td><?php echo ($vo["password"]); ?></td>
                 <td><?php echo ($vo["name"]); ?></td>
-                <td><?php echo ($vo["image"]); ?></td>
+                <td>
+                    <?php if(($vo["image"]) != ""): ?><img src="<?php echo ($vo["image"]); ?>"><?php endif; ?>
+                </td>
                 <td><?php echo ($vo["create_time"]); ?></td>
                 <td><?php echo ($vo["update_time"]); ?></td>
                 <td>

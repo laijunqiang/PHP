@@ -73,7 +73,7 @@ class PHPExcel_CalcEngine_CyclicReferenceStack {
 	/**
 	 * Test to see if a specified entry exists on the stack
 	 *
-	 * @param  mixed  $value  The value to test
+	 * @param  mixed  $value  The value to phpexcel
 	 */
 	public function onStack($value) {
 		return in_array($value, $this->_stack);

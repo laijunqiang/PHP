@@ -13,8 +13,10 @@
     2、跳转是用a标签的href传递参数，在含有iframe页面中用jquery接收判断传递过来的参数，然后获取iframe的id，根据参数设置iframe的src,显示指定的页面。-->
     <nav>
         <button><a href="/admin.php/Order" target="iframe">订单信息管理</a></button>
-        <button><a href="/admin.php/Driver" target="iframe">用户信息管理</a></button>
+        <button><a href="/admin.php/Driver" target="iframe">司机信息管理</a></button>
         <button><a href="/admin.php/Car" target="iframe" >车辆信息管理</a></button>
+        <button><a href="/admin.php/Goods" target="iframe" >商品信息管理</a></button>
+        <button><a href="/admin.php/User" target="iframe" >用户信息管理</a></button>
         <button><a href="/admin.php/Role" target="iframe">角色/用户权限管理</a></button>
         <button><a href="/admin.php/Log" target="iframe">操作日志管理</a></button>
         <button><a href="/admin.php/Admin" target="iframe">修改密码</a></button>
@@ -25,8 +27,10 @@
         <!--<?php if(is_array($_SESSION['adminUser'])): foreach($_SESSION['adminUser'] as $key=>$vo): echo ($key); ?>|<?php echo ($vo); ?><br><?php endforeach; endif; ?>-->
         <nav>
             <button><a href="/admin.php/Order" target="iframe">订单信息管理</a></button>
-            <?php if(($_SESSION['adminUser']['driver_manage']) == "1"): ?><button><a href="/admin.php/Driver" target="iframe">用户信息管理</a></button><?php endif; ?>
+            <?php if(($_SESSION['adminUser']['driver_manage']) == "1"): ?><button><a href="/admin.php/Driver" target="iframe">司机信息管理</a></button><?php endif; ?>
             <?php if(($_SESSION['adminUser']['car_manage']) == "1"): ?><button><a href="/admin.php/Car" target="iframe" >车辆信息管理</a></button><?php endif; ?>
+            <?php if(($_SESSION['adminUser']['goods_manage']) == "1"): ?><button><a href="/admin.php/Goods" target="iframe" >商品信息管理</a></button><?php endif; ?>
+            <?php if(($_SESSION['adminUser']['user_manage']) == "1"): ?><button><a href="/admin.php/User" target="iframe" >用户信息管理</a></button><?php endif; ?>
             <?php if(($_SESSION['adminUser']['role_manage']) == "1"): ?><button><a href="/admin.php/Role" target="iframe">角色/用户权限管理</a></button><?php endif; ?>
             <?php if(($_SESSION['adminUser']['log_manage']) == "1"): ?><button><a href="/admin.php/Log" target="iframe">操作日志管理</a></button><?php endif; ?>
             <button><a href="/admin.php/Login/loginout">退出登陆</a></button>

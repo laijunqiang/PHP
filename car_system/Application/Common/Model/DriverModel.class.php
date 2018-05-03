@@ -20,7 +20,7 @@ class DriverModel extends Model {
     }
     //获取司机信息
     public function getDriver(){
-        $res=$this->_db->where('status=0')->order('create_time')->select();
+        $res=$this->_db->where('status=0')->order('create_time desc')->select();
         return $res;
     }
     //获取剩余司机信息
@@ -54,6 +54,11 @@ class DriverModel extends Model {
             return 0;
         }
         return $this->_db->save($data);
+    }
+    //获得现有司机的账号
+    public function getDriverAccount(){
+        $res=$this->_db->where('status=0')->order('create_time desc')->getField('account',true);// 获取account数组
+        return $res;
     }
     //录入司机信息
     public function addDriver($data = array()){

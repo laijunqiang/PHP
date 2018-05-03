@@ -18,7 +18,7 @@
         <tr>
             <td>密码：</td>
             <td><input type="password" id="input" name="password" placeholder="请输入您的密码" /></td>
-            <td><img id="img" src="/Public/image/visible.png">  </td>
+            <td><img id="img" onclick="login.hideShowPsw()" src="/Public/image/visible.png">  </td>
         </tr>
         <tr align="center">
             <td colspan="2"><input type="button" value="登陆" onclick="login.check()" style="width:100%;"/></td>
@@ -28,6 +28,6 @@
 <script src="/Public/js/jquery.js"></script>
 <script src="/Public/js/dialog/layer.js"></script>
 <script src="/Public/js/dialog.js"></script>
-<script src="/Public/js/home/login.js"></script>
+<script src="/Public/js/Admin/login.js"></script>
 </body>
 </html>

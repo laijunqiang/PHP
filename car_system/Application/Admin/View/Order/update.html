@@ -20,20 +20,26 @@
             <td><input type="text" value="{$ret.order_number}" name="order_number" id="order_number"></td>
         </tr>
         <tr>
-            <!--商品ID-->
-            <input type="hidden" value="{$ret.goods_id}" name="goods_id" id="goods_id" disabled="disabled">
-        </tr>
-        <tr>
             <td>商品名：</td>
-            <td><input type="text" value="{$ret.goods_name}" name="goods_name" id="goods_name"></td>
+            <td>
+                <select name="goods_name">
+                    <volist name="goods" id="vo">
+                        <eq name="vo.name" value="$ret.goods_name">
+                            <option value="{$vo.name}" selected="selected">{$vo.name}</option>
+                            <else/>
+                            <option value="{$vo.name}">{$vo.name}</option>
+                        </eq>
+                    </volist>
+                </select>
+            </td>
         </tr>
         <tr>
-            <td>数量：</td>
-            <td><input type="text" value="{$ret.goods_quantity}" name="goods_quantity" id="goods_quantity"></td>
+            <td>数量(kg)：</td>
+            <td><input type="number" value="{$ret.goods_quantity}" name="goods_quantity" id="goods_quantity"></td>
         </tr>
         <tr>
             <td>出发时间：</td>
-            <td><input type="datetime-local" value="{$ret.departure_time}" name="departure_time" id="departure_time"></td>
+            <td><input type="text" value="{$ret.departure_time}" name="departure_time" id="departure_time"></td>
         </tr>
         <tr>
             <td>车牌号：</td>
@@ -103,16 +109,20 @@
             <td><input type="text" value="{$ret.short_info}" name="short_info" id="short_info"></td>
         </tr>
         <tr>
-            <td>提货数量：</td>
-            <td><input type="text" value="{$ret.pick_quantity}" name="pick_quantity" id="pick_quantity"></td>
+            <td>提货数量(kg)：</td>
+            <td><input type="number" value="{$ret.pick_quantity}" name="pick_quantity" id="pick_quantity"></td>
         </tr>
         <tr>
             <td>提货时间：</td>
-            <td><input type="datetime-local" value="{$ret.pick_time}" name="pick_time" id="pick_time"></td>
+            <td><input type="text" value="{$ret.pick_time}" name="pick_time" id="pick_time"></td>
         </tr>
         <tr>
             <td>结算单位：</td>
             <td><input type="text" value="{$ret.company}" name="company" id="company"></td>
+        </tr>
+        <tr>
+            <td>真实数量(kg)：</td>
+            <td><input type="number" value="{$ret.real_quantity}" name="real_quantity" id="real_quantity"></td>
         </tr>
         <tr align="center">
             <td colspan="2">
@@ -126,5 +136,14 @@
 <script src="/Public/js/Admin/order.js"></script>
 <script src="/Public/js/dialog/layer.js"></script>
 <script src="/Public/js/dialog.js"></script>
+<script src="/Public/laydate/laydate.js"></script>
+<!--不能直接使用layUI，"/Public/laydate/layui.css"有样式-->
+<script>
+    //执行一个laydate实例
+    laydate.render({
+        elem: '#departure_time,#pick_time' //指定元素
+        ,type: 'datetime'
+    });
+</script>
 </body>
 </html>

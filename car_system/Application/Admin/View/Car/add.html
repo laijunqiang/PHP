@@ -10,12 +10,20 @@
     <form>
         <table>
             <tr>
-                <td>车辆编号：</td>
-                <td><input type="text" placeholder="请输入车辆编号" name="number" id="number"></td>
-            </tr>
-            <tr>
                 <td>车牌号：</td>
-                <td><input type="text" placeholder="请输入车牌号" name="plate" id="plate"></td>
+                <td>
+                    <select name="province">
+                        <foreach name="province" item="vo">
+                            <option value="{$vo}">{$vo}</option>
+                        </foreach>
+                    </select>
+                    <select name="city">
+                        <foreach name="city" item="vo">
+                            <option value="{$vo}">{$vo}</option>
+                        </foreach>
+                    </select>
+                    <input type="text" placeholder="请输入车牌号后五位" name="plate" id="plate" size="15px">
+                </td>
             </tr>
             <tr>
                 <td>车架号：</td>

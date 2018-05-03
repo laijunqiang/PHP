@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-04-25 23:03:13
+Date: 2018-05-03 18:37:50
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -46,17 +46,17 @@ CREATE TABLE `t_car` (
   `update_time` char(19) DEFAULT NULL COMMENT '修改记录时间',
   `delete_time` char(19) DEFAULT NULL COMMENT '删除记录时间',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态，0表示未删除，1表示已删除',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `frame` (`frame`) USING BTREE,
+  UNIQUE KEY `plate` (`plate`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_car
 -- ----------------------------
-INSERT INTO `t_car` VALUES ('1', 'A001', '粤L66666', '1G1BL52P7TR115520', '2018-04-19 15:13:40', '2018-04-20 21:00:26', '', '0');
-INSERT INTO `t_car` VALUES ('2', 'A002', '粤L66667', '1G1BL52P7TR115521', '2018-04-19 15:20:40', '2018-04-20 21:26:14', '', '0');
-INSERT INTO `t_car` VALUES ('3', 'A003', '粤L33333', '1G1BL52P7TR115522', '2018-04-20 00:13:44', '2018-04-20 20:57:48', null, '0');
-INSERT INTO `t_car` VALUES ('4', 'A004', '粤L66666', '1G1BL52P7TR115523', '2018-04-20 20:51:06', null, null, '0');
-INSERT INTO `t_car` VALUES ('5', 'A005', '粤L88888', '1G1BL52P7TR115520', '2018-04-23 11:06:58', '2018-04-23 11:07:05', '', '0');
+INSERT INTO `t_car` VALUES ('7', 'C07421', '京A00000', '221BL52P7TR115521', '2018-05-02 16:30:50', null, null, '0');
+INSERT INTO `t_car` VALUES ('8', 'C02554', '粤L66666', '111BL52P7TR115522', '2018-05-02 16:43:22', '2018-05-03 11:08:35', null, '0');
+INSERT INTO `t_car` VALUES ('9', 'C09461', '滇C55555', '221BL52P7TR115522', '2018-05-02 17:02:24', '2018-05-03 11:07:38', '', '0');
 
 -- ----------------------------
 -- Table structure for t_driver
@@ -68,12 +68,13 @@ CREATE TABLE `t_driver` (
   `account` char(11) NOT NULL COMMENT '司机账号',
   `password` char(32) NOT NULL COMMENT '司机密码',
   `name` char(20) NOT NULL COMMENT '真实姓名',
-  `image` char(30) DEFAULT NULL COMMENT '头像路径',
+  `image` char(31) DEFAULT NULL COMMENT '头像路径',
   `create_time` char(19) NOT NULL COMMENT '创建记录时间',
   `update_time` char(19) DEFAULT NULL COMMENT '修改记录时间',
   `delete_time` char(19) DEFAULT NULL COMMENT '删除记录时间',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态，0表示未删除，1表示已删除',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `account` (`account`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -92,28 +93,22 @@ INSERT INTO `t_driver` VALUES ('7', '105911', '13669586666', 'd4e11d0fe335d390eb
 DROP TABLE IF EXISTS `t_goods`;
 CREATE TABLE `t_goods` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增ID',
-  `number` char(20) NOT NULL COMMENT '商品编号',
+  `number` char(5) NOT NULL COMMENT '商品编号',
   `name` char(20) NOT NULL COMMENT '商品名称',
-  `quantity` int(11) NOT NULL COMMENT '商品数量',
-  `real_quantity` int(11) NOT NULL COMMENT '商品实际数量',
   `create_time` char(19) NOT NULL COMMENT '创建记录时间',
   `update_time` char(19) DEFAULT NULL COMMENT '修改记录时间',
   `delete_time` char(19) DEFAULT NULL COMMENT '删除记录时间',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态，0表示未删除，1表示已删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_goods
 -- ----------------------------
-INSERT INTO `t_goods` VALUES ('1', 'goods20180420160613', '笔', '100', '100', '2018-04-20 16:06:13', '2018-04-25 22:45:29', null, '0');
-INSERT INTO `t_goods` VALUES ('2', 'goods20180420160932', '笔记本', '100', '100', '2018-04-20 16:09:32', '2018-04-25 23:01:15', null, '0');
-INSERT INTO `t_goods` VALUES ('3', 'goods20180420161013', '衬衫', '1000', '0', '2018-04-20 16:10:13', '2018-04-23 10:28:44', null, '0');
-INSERT INTO `t_goods` VALUES ('44', 'goods20180420201448', '柴油', '10000', '0', '2018-04-20 20:14:48', '2018-04-20 20:25:16', null, '0');
-INSERT INTO `t_goods` VALUES ('45', 'goods20180420201537', '天然气', '1000', '0', '2018-04-20 20:15:37', '2018-04-25 23:01:30', null, '0');
-INSERT INTO `t_goods` VALUES ('46', 'goods20180423102437', '石油', '10000', '0', '2018-04-23 10:24:37', null, null, '0');
-INSERT INTO `t_goods` VALUES ('47', 'goods20180423102544', '石油', '100000', '0', '2018-04-23 10:25:44', null, null, '0');
-INSERT INTO `t_goods` VALUES ('48', 'goods20180423112105', '11', '11111', '0', '2018-04-23 11:21:05', '2018-04-23 11:21:10', null, '0');
+INSERT INTO `t_goods` VALUES ('1', 'G0001', '汽油', '2018-04-29 14:04:55', null, null, '0');
+INSERT INTO `t_goods` VALUES ('2', 'G0002', '石油', '2018-04-29 14:23:55', null, null, '0');
+INSERT INTO `t_goods` VALUES ('3', 'G0003', '柴油', '2018-04-29 15:23:55', null, null, '0');
+INSERT INTO `t_goods` VALUES ('4', 'G0004', '煤油', '2018-04-29 16:00:00', null, null, '0');
 
 -- ----------------------------
 -- Table structure for t_log
@@ -127,7 +122,7 @@ CREATE TABLE `t_log` (
   `delete_time` char(19) DEFAULT NULL COMMENT '修改记录时间',
   `status` tinyint(4) DEFAULT '0' COMMENT '删除状态，0表示未删除，1表示已删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=96 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=120 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_log
@@ -186,6 +181,30 @@ INSERT INTO `t_log` VALUES ('92', 'admin', '修改订单编号为：201804201609
 INSERT INTO `t_log` VALUES ('93', 'admin', '修改订单编号为：20180420160932 的订单', '2018-04-25 23:01:15', null, '0');
 INSERT INTO `t_log` VALUES ('94', 'admin', '修改订单编号为：20180420201537 的订单', '2018-04-25 23:01:30', null, '0');
 INSERT INTO `t_log` VALUES ('95', 'admin', '删除订单ID为：67 的订单', '2018-04-25 23:02:08', null, '0');
+INSERT INTO `t_log` VALUES ('96', 'admin', '登录系统', '2018-04-29 13:57:37', null, '0');
+INSERT INTO `t_log` VALUES ('97', 'admin', '生成订单编号为：20180429140455 的订单', '2018-04-29 14:04:55', null, '0');
+INSERT INTO `t_log` VALUES ('98', 'admin', '生成订单编号为：O20180429164413 的订单', '2018-04-29 16:44:13', null, '0');
+INSERT INTO `t_log` VALUES ('99', 'admin', '生成订单编号为：O20180429164616 的订单', '2018-04-29 16:46:16', null, '0');
+INSERT INTO `t_log` VALUES ('100', 'admin', '生成订单编号为：O20180430090334 的订单', '2018-04-30 09:03:34', null, '0');
+INSERT INTO `t_log` VALUES ('101', 'admin', '修改订单编号为：O20180429164616 的订单', '2018-05-01 17:39:03', null, '0');
+INSERT INTO `t_log` VALUES ('102', 'admin', '删除订单ID为：73 的订单', '2018-05-01 17:41:38', null, '0');
+INSERT INTO `t_log` VALUES ('103', 'admin', '生成司机编号为：090047 的司机', '2018-05-02 09:00:47', null, '0');
+INSERT INTO `t_log` VALUES ('104', 'admin', '生成司机编号为：090555 的司机', '2018-05-02 09:05:55', null, '0');
+INSERT INTO `t_log` VALUES ('105', 'admin', '生成司机编号为：091139 的司机', '2018-05-02 09:11:39', null, '0');
+INSERT INTO `t_log` VALUES ('106', 'admin', '生成司机编号为：091236 的司机', '2018-05-02 09:12:36', null, '0');
+INSERT INTO `t_log` VALUES ('107', 'admin', '生成司机编号为：124920 的司机', '2018-05-02 12:49:20', null, '0');
+INSERT INTO `t_log` VALUES ('108', 'admin', '生成车辆编号为：C09058 的车辆', '2018-05-02 16:28:43', null, '0');
+INSERT INTO `t_log` VALUES ('109', 'admin', '生成车辆编号为：C07421 的车辆', '2018-05-02 16:30:50', null, '0');
+INSERT INTO `t_log` VALUES ('110', 'admin', '生成车辆编号为：C02554 的车辆', '2018-05-02 16:43:22', null, '0');
+INSERT INTO `t_log` VALUES ('111', 'admin', '生成车辆编号为：C09461 的车辆', '2018-05-02 17:02:24', null, '0');
+INSERT INTO `t_log` VALUES ('112', 'admin', '修改车辆编号为：C09461 的车辆', '2018-05-02 18:21:27', null, '0');
+INSERT INTO `t_log` VALUES ('113', 'admin', '修改车辆编号为：C09461 的车辆', '2018-05-02 18:27:23', null, '0');
+INSERT INTO `t_log` VALUES ('114', 'admin', '修改车辆编号为：C09461 的车辆', '2018-05-02 18:27:34', null, '0');
+INSERT INTO `t_log` VALUES ('115', 'admin', '修改车辆编号为：C02554 的车辆', '2018-05-02 18:27:45', null, '0');
+INSERT INTO `t_log` VALUES ('116', 'admin', '修改车辆编号为：C09461 的车辆', '2018-05-03 11:07:31', null, '0');
+INSERT INTO `t_log` VALUES ('117', 'admin', '修改车辆编号为：C09461 的车辆', '2018-05-03 11:07:38', null, '0');
+INSERT INTO `t_log` VALUES ('118', 'admin', '修改车辆编号为：C02554 的车辆', '2018-05-03 11:08:35', null, '0');
+INSERT INTO `t_log` VALUES ('119', 'admin', '删除车辆ID为：9 的车辆', '2018-05-03 11:09:10', null, '0');
 
 -- ----------------------------
 -- Table structure for t_order
@@ -193,13 +212,13 @@ INSERT INTO `t_log` VALUES ('95', 'admin', '删除订单ID为：67 的订单', '
 DROP TABLE IF EXISTS `t_order`;
 CREATE TABLE `t_order` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增ID',
-  `number` char(14) NOT NULL COMMENT '订单编号',
+  `number` char(15) NOT NULL COMMENT '订单编号',
   `order_number` char(20) DEFAULT NULL COMMENT '订单号',
   `goods_id` int(11) DEFAULT NULL COMMENT '商品ID',
   `goods_name` char(20) NOT NULL COMMENT '商品名称',
   `goods_quantity` int(11) NOT NULL COMMENT '商品数量',
   `create_time` char(19) NOT NULL COMMENT '订单创建时间',
-  `departure_time` char(16) DEFAULT NULL COMMENT '订单出发时间',
+  `departure_time` char(19) DEFAULT NULL COMMENT '订单出发时间',
   `car_id` int(11) DEFAULT NULL COMMENT '车辆ID',
   `car_plate` char(7) DEFAULT NULL COMMENT '车牌号',
   `destination` char(30) NOT NULL COMMENT '目的地',
@@ -212,6 +231,7 @@ CREATE TABLE `t_order` (
   `pick_quantity` int(11) DEFAULT NULL COMMENT '商品提货数量',
   `pick_time` char(16) DEFAULT NULL COMMENT '提货时间',
   `company` char(20) DEFAULT '' COMMENT '结算单位',
+  `real_quantity` int(11) DEFAULT NULL,
   `update_time` char(19) DEFAULT NULL COMMENT '修改记录时间',
   `delete_time` char(19) DEFAULT NULL COMMENT '删除记录时间',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态，0表示未删除，1表示已删除',
@@ -222,18 +242,13 @@ CREATE TABLE `t_order` (
   CONSTRAINT `t_order_ibfk_1` FOREIGN KEY (`goods_id`) REFERENCES `t_goods` (`id`),
   CONSTRAINT `t_order_ibfk_2` FOREIGN KEY (`car_id`) REFERENCES `t_car` (`id`),
   CONSTRAINT `t_order_ibfk_3` FOREIGN KEY (`driver_id`) REFERENCES `t_driver` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_order
 -- ----------------------------
-INSERT INTO `t_order` VALUES ('21', '20180420160613', 'A024', '1', '笔', '100', '2018-04-20 16:06:13', '2018-05-27T18:00', '1', '粤L66666', '上海', '1', '1', '010801', '1', '1', '', '1', '2018-04-25T22:00', '惠州学院', '2018-04-25 22:45:29', null, '0');
-INSERT INTO `t_order` VALUES ('22', '20180420160932', 'A022', '2', '笔记本', '100', '2018-04-20 16:09:32', '2018-04-21T12:00', '1', '粤L66666', '广州', '1', '1', '010801', '123', '123', '', '100', '2018-04-26T12:00', '一匠科技', '2018-04-25 23:01:15', null, '0');
-INSERT INTO `t_order` VALUES ('23', '20180420161013', 'A023', '3', '衬衫', '1000', '2018-04-20 16:10:13', '2018-04-23T12:00', null, '', '深圳', '0', null, '', '', '', '', null, '', '', '', '', '0');
-INSERT INTO `t_order` VALUES ('66', '20180420201448', 'A025', '44', '柴油', '10000', '2018-04-20 20:14:48', '2018-04-21T07:00', null, '', '惠州', '0', null, '', '', '', '', null, '', '', '', '', '0');
-INSERT INTO `t_order` VALUES ('67', '20180420201537', 'A026', '45', '天然气', '1000', '2018-04-20 20:15:37', '2018-04-21T07:00', '1', '粤L66666', '惠州', '0', '1', '010801', '', '', '', '0', '', '', '2018-04-25 23:01:30', '2018-04-25 23:02:08', '1');
-INSERT INTO `t_order` VALUES ('69', '20180423102544', 'A069', '47', '石油', '100000', '2018-04-23 10:25:44', '2018-04-24T12:00', null, null, '北京', '0', null, null, null, null, null, null, null, '', null, '2018-04-23 10:32:05', '1');
-INSERT INTO `t_order` VALUES ('70', '20180423112105', 'A099', '48', '11', '11111', '2018-04-23 11:21:05', '2018-04-11T12:00', null, '', '惠州', '0', null, '', '', '', '', null, '', '', '', '2018-04-23 11:21:19', '1');
+INSERT INTO `t_order` VALUES ('73', 'O20180429164413', 'O201804', '2', '石油', '1000', '2018-04-29 16:44:13', '2018-05-01 16:00:00', null, null, '一匠科技', '0', null, null, null, null, null, null, null, '', null, null, '', '0');
+INSERT INTO `t_order` VALUES ('75', 'O20180430090334', 'O201806', '4', '煤油', '1000', '2018-04-30 09:03:34', '2018-05-01 02:03:00', null, null, '长隆欢乐世界', '0', null, null, null, null, null, null, null, '', null, null, null, '0');
 
 -- ----------------------------
 -- Table structure for t_role

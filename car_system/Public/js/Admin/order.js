@@ -6,10 +6,11 @@ var order = {
         // 获取生成订单页面中的信息
         var order_number = $.trim($('input[name="order_number"]').val());
         var destination = $.trim($('input[name="destination"]').val());
-        var goods_name = $.trim($('input[name="goods_name"]').val());
+        var goods_name = $('select[name="goods_name"] option:selected').val();
         var goods_quantity = $.trim($('input[name="goods_quantity"]').val());
-        var departure_time = $.trim($('input[name="departure_time"]').val());
-
+        var departure_time = $('input[name="departure_time"]').val();
+        /*console.log(goods_name);
+        console.log(departure_time);*/
         if (!order_number || !destination || !goods_name || !goods_quantity || !departure_time) {
             //在本文件中虽然没有调用，但是在index.html中将dialog.js和login.js加载在一起
             dialog.error('输入不能为空，请重新输入！');
@@ -17,8 +18,6 @@ var order = {
             dialog.error("订单号不能超过20位，请重新输入！");
         } else if (destination.length > 30) {
             dialog.error("目的地不能超过30位，请重新输入！");
-        } else if (goods_name.length > 20) {
-            dialog.error("商品名不能超过20位，请重新输入！");
         } else if (goods_quantity.length > 10) {
             dialog.error("商品数量不能超过10位，请重新输入！");
         } else {
@@ -54,13 +53,13 @@ var order = {
         var number=$('input[name="number"]').val();
         var order_number = $('input[name="order_number"]').val();
         var goods_id = $('input[name="goods_id"]').val();
-        var goods_name = $('input[name="goods_name"]').val();
+        var goods_name = $('select[name="goods_name"]').val();
         var goods_quantity = $('input[name="goods_quantity"]').val();
         var departure_time=$('input[name="departure_time"]').val();
-        var car_plate=$('select[name="car_plate"] option:selected').val();
+        var car_plate=$('select[name="car_plate"]').val();
         var destination = $('input[name="destination"]').val();
-        var order_status=$('select[name="order_status"] option:selected').val();
-        var driver_number=$('select[name="driver_number"] option:selected').val();
+        var order_status=$('select[name="order_status"]').val();
+        var driver_number=$('select[name="driver_number"]').val();
         var pick_number = $('input[name="pick_number"]').val();
         var contract_number = $('input[name="contract_number"]').val();
         var short_info = $('input[name="short_info"]').val();
@@ -79,21 +78,13 @@ var order = {
             dialog.error("目的地不能为空，请重新输入！");
         } else if (!departure_time){
             dialog.error("出发时间不能为空，请重新输入！");
-        } else if (number.length > 14) {
-            dialog.error("订单编号不能超过14位，请重新输入！");
         } else if(order_number.length>20){
-            dialog.error("订单号不能超过14位，请重新输入！");
-        } else if (car_plate.length > 7) {
-            dialog.error("车牌号不能超过7位，请重新输入！");
+            dialog.error("订单号不能超过20位，请重新输入！");
         } else if (destination.length > 30) {
             dialog.error("目的地不能超过30位，请重新输入！");
-        } else if (goods_name.length > 20) {
-            dialog.error("商品名不能超过20位，请重新输入！");
         } else if (goods_quantity.length > 10) {
             dialog.error("商品数量不能超过10位，请重新输入！");
-        } else if (driver_number.length > 20) {
-            dialog.error("司机编号不能超过20位，请重新输入！");
-        } else if (pick_number.length > 20) {
+        }else if (pick_number.length > 20) {
             dialog.error("提货单号不能超过20位，请重新输入！");
         } else if (contract_number.length > 20) {
             dialog.error("合同号不能超过20位，请重新输入！");
@@ -101,8 +92,8 @@ var order = {
             dialog.error("缺货信息不能超过20位，请重新输入！");
         } else if (pick_quantity.length > 10) {
             dialog.error("商品提货数量不能超过10位，请重新输入！");
-        } else if (pick_time.length > 16) {
-            dialog.error("提货时间不能超过16位，请重新输入！");
+        } else if (pick_time.length > 19) {
+            dialog.error("提货时间不能超过19位，请重新输入！");
         } else if (company.length > 20) {
             dialog.error("结算单位不能超过20位，请重新输入！");
         } else {
@@ -153,25 +144,9 @@ $("#order_number").blur(function () {
         dialog.error("订单号不能超过20位，请重新输入！");
     }
 });
-$("#departure_time").blur(function () {
-    //input的type="datetime-local"填写完整时长度为16，其他情况都是0
-    if ($("#departure_time").val().length==0) {
-        dialog.error("出发时间不能为空，请重新输入！");
-    }
-});
-$("#car_plate").blur(function () {
-    if ($("#car_plate").val().length>7) {
-        dialog.error("车牌号不能超过7位，请重新输入！");
-    }
-});
 $("#destination").blur(function () {
     if ($("#destination").val().length>30) {
         dialog.error("目的地不能超过30位，请重新输入！");
-    }
-});
-$("#goods_name").blur(function () {
-    if ($("#goods_name").val().length>20) {
-        dialog.error("商品名不能超过20位，请重新输入！");
     }
 });
 $("#goods_quantity").blur(function () {
@@ -205,8 +180,8 @@ $("#pick_quantity").blur(function () {
     }
 });
 $("#pick_time").blur(function () {
-    if ($("#pick_time").val().length>16) {
-        dialog.error("提货时间不能超过16位，请重新输入！");
+    if ($("#pick_time").val().length>19) {
+        dialog.error("提货时间不能超过19位，请重新输入！");
     }
 });
 $("#company").blur(function () {
@@ -214,29 +189,37 @@ $("#company").blur(function () {
         dialog.error("结算单位不能超过20位，请重新输入！");
     }
 });
-// 复合查询，ajax无法跳转页面，除非有window.location.href
-$('#select').click(function () {
+//清空
+$('input[name="empty"]').click(function () {
+    /*当调用.attr("value")在文本框中，它将返回在标记中设置的值
+    value属性描述默认值对于元素，而不是当前值。当前值是通过value属性(JQuery)可以访问的内容。val()。*/
+    $('input[name="searchTime"]').val("");
+    //将状态下拉框清空，选择第一个option
+    $(".select").val("");
+});
+
+// 订单状态查询，ajax无法跳转页面，除非有window.location.href
+$('.select').change(function () {
     // jquery获取select选中的值
     var status=$(".select option:selected").val();
-    // console.log(status);value为空串，value!=null
-    var startTime=$("#startTime").val();
-    var endTime=$("#endTime").val();
-    if (status==""&&(startTime==""||endTime=="")){
-        dialog.error("搜索不能为空，请重新输入！");
-    }else {
-        window.location.href = "/admin.php/Order/select?status=" + status + "&startTime=" + startTime + "&endTime=" + endTime;
-    }
+    //console.log(status);//value为空串，value!=null
+    window.location.href = "/admin.php/Order/select?status=" + status;
+});
+//复合查询
+$('.search').click(function () {
+    var status=$(".select option:selected").val();
+    var searchTime=$('input[name="searchTime"]').val();
+    window.location.href = "/admin.php/Order/search?status=" + status+"&searchTime="+searchTime;
 });
 
 //生成excel文件
 $('#excel').click(function () {
     var status=$(".select option:selected").val();
-    var startTime=$("#startTime").val();
-    //alert(startTime);
-    var endTime=$("#endTime").val();
-    if (status==""&&(startTime==""||endTime=="")){
+    var searchTime=$("#searchTime").val();
+    //数据量大，不能直接生成
+    if (status==""&&searchTime==""){
         dialog.error("条件不能为空，请重新输入！");
     }else {
-        window.location.href = "/admin.php/Order/getExcel?status=" + status + "&startTime=" + startTime + "&endTime=" + endTime;
+        window.location.href = "/admin.php/Order/getExcel?status=" + status + "&searchTime=" + searchTime;
     }
 });

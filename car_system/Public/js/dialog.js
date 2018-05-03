@@ -47,6 +47,30 @@ var dialog = {
         });
     },
     // 确认弹出层
+    confirmGoods : function(message, id) {
+        layer.open({
+            content : message,
+            icon:3,
+            btn : ['是','否'],
+            yes : function(){
+                var url = "/admin.php/Goods/deleteGoods";
+                var data = {'id': id};//JSON格式
+                // 执行异步请求  $.post
+                $.post(url, data, function (result) {
+                    //result接受后台返回的数据
+                    if (result.status == 0) {
+                        //后台重新判断，多一层弹层
+                        return dialog.error(result.message);
+                    }
+                    if (result.status == 1) {
+                        return dialog.success(result.message, '/admin.php/Goods');
+                    }
+                    //dataType规定预期的服务器响应的数据类型。
+                }, 'JSON');
+            }
+        });
+    },
+    // 确认弹出层
     confirmOrder : function(message, id) {
         layer.open({
             content : message,

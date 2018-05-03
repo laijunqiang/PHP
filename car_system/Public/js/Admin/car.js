@@ -11,16 +11,15 @@ var car = {
         var number = $('input[name="number"]').val();
         var plate = $('input[name="plate"]').val();
         var frame = $('input[name="frame"]').val();
-
+        var province=$('select[name="province"]').val();
+        var city=$('select[name="city"]').val();
         //不会显示输入不能为空，无法进行判断
         //浏览器浏览数据问题
-        if (!number || !plate || !frame) {
+        if (!plate || !frame) {
             dialog.error("输入不能为空，请重新输入！");
-        } else if (number.length > 20) {
-            dialog.error("车辆编号不能超过20位，请重新输入！");
-        } else if (plate.length > 7) {
+        } else if (plate.length!=5) {
             dialog.error("车牌号不能超过7位，请重新输入！");
-        } else if (frame.length > 17) {
+        } else if (frame.length!=17) {
             dialog.error("车架号不能超过17位，请重新输入！");
         } else {
             var url = "/admin.php/Car/updateCar";
@@ -29,7 +28,9 @@ var car = {
                 'id': id,
                 'number': number,
                 'plate': plate,
-                'frame': frame
+                'frame': frame,
+                'province':province,
+                'city':city
             };//JSON格式
             // 执行异步请求  $.post
             $.post(url, data, function (result) {
@@ -47,24 +48,25 @@ var car = {
     },
     add: function () {
         // 获取录入车辆页面中的信息
-        var number = $('input[name="number"]').val();
+        var province=$('select[name="province"]').val();
+        var city=$('select[name="city"]').val();
         var plate = $('input[name="plate"]').val();
         var frame = $('input[name="frame"]').val();
-
-        if (!number || !plate || !frame) {
+        /*console.log(province);
+        console.log(city);*/
+        if (!plate || !frame) {
             //在本文件中虽然没有调用，但是在index.html中将dialog.js和login.js加载在一起
             dialog.error('输入不能为空');
-        } else if (number.length > 20) {
-            dialog.error("车辆编号不能超过20位，请重新输入！");
-        } else if (plate.length !=7) {
-            dialog.error("车牌号为7位，请重新输入！");
+        } else if (plate.length !=5) {
+            dialog.error("车牌号为5位，请重新输入！");
         } else if (frame.length != 17) {
             dialog.error("车架号为17位，请重新输入！");
         } else {
             var url = "/admin.php/Car/addCar";
             // 发送给服务端的数据，相当于POST过去的数据
             var data = {
-                'number': number,
+                'province':province,
+                'city':city,
                 'plate': plate,
                 'frame': frame
             };//JSON格式
@@ -83,14 +85,9 @@ var car = {
         }
     }
 };
-$("#number").blur(function () {
-    if ($("#number").val().length>20) {
-        dialog.error("车辆编号不能超过20位，请重新输入！");
-    }
-});
 $("#plate").blur(function () {
-    if ($("#plate").val().length!=7) {
-        dialog.error("车牌号为7位，请重新输入！");
+    if ($("#plate").val().length!=5) {
+        dialog.error("车牌号为5位，请重新输入！");
     }
 });
 $("#frame").blur(function () {

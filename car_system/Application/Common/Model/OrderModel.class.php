@@ -21,6 +21,7 @@ class OrderModel extends Model {
     }
     //通过订单状态获取订单信息
     public function getOrderByStatus($status=''){
+        //dump($status); 如果$status=""，而order_status为数字类型，则$status会强制格式化为数字格式后进行查询操作(""转化为0)。
         return $this->_db->where("order_status='$status' and status=0")->select();
     }
     //通过搜索时间获取订单信息
@@ -61,13 +62,13 @@ class OrderModel extends Model {
 
     public function getOrderExcel(){
 //        支持对多个字段的排序,如果没有指定desc或者asc排序规则的话，默认为asc。
-        $res=$this->_db->where('status=0')->order('order_status,create_time desc')->getField('id,number,order_number,goods_name,goods_quantity,create_time,departure_time,car_plate,destination,order_status,driver_number,pick_number,contract_number,short_info,pick_quantity,pick_time,company,update_time');
+        $res=$this->_db->where('status=0')->order('order_status,create_time desc')->getField('id,number,order_number,goods_name,goods_quantity,create_time,departure_time,car_plate,destination,order_status,driver_number,pick_number,contract_number,short_info,pick_quantity,pick_time,company,real_quantity,update_time');
         return $res;
     }
 
     public function getOrderBySearchExcel($data = array()){
         $data['status']=0;
-        return $this->_db->where($data)->getField('id,number,order_number,goods_name,goods_quantity,create_time,departure_time,car_plate,destination,order_status,driver_number,pick_number,contract_number,short_info,pick_quantity,pick_time,company,update_time');
+        return $this->_db->where($data)->getField('id,number,order_number,goods_name,goods_quantity,create_time,departure_time,car_plate,destination,order_status,driver_number,pick_number,contract_number,short_info,pick_quantity,pick_time,company,real_quantity,update_time');
     }
 
     //查看个人订单

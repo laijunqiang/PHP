@@ -28,16 +28,16 @@
 
     <br>
     <b>订单时间搜索：</b>
-    <input name="startTime" type="datetime-local" id="startTime" value="<?php echo ($startTime); ?>"/>到
-    <input name="endTime" type="datetime-local" id="endTime" value="<?php echo ($endTime); ?>"/>
-    <input name="search" type="button" id='select' value="搜索">
+    <input name="searchTime" type="text" id="searchTime" size="35px" value="<?php echo ($searchTime); ?>"/>
+    <input name="search" type="button" value="搜索" class="search">
+    <input name="empty" type="button" value="清空">
     <table border="1px">
         <tr>
             <td>订单ID</td>
             <td>订单编号</td>
             <td>订单号</td>
             <td>商品</td>
-            <td>数量</td>
+            <td>数量(kg)</td>
             <td>创建时间</td>
             <td>出发时间</td>
             <td>车牌号</td>
@@ -47,9 +47,10 @@
             <td>提货单号</td>
             <td>合同号</td>
             <td>缺货信息</td>
-            <td>提货数量</td>
+            <td>提货数量(kg)</td>
             <td>提货时间</td>
             <td>结算单位</td>
+            <td>真实数量(kg)</td>
             <td>修改时间</td>
             <td>操作</td>
         </tr>
@@ -74,6 +75,7 @@
                 <td><?php echo ($vo["pick_quantity"]); ?></td>
                 <td><?php echo ($vo["pick_time"]); ?></td>
                 <td><?php echo ($vo["company"]); ?></td>
+                <td><?php echo ($vo["real_quantity"]); ?></td>
                 <td><?php echo ($vo["update_time"]); ?></td>
                 <td>
                     <button><a href="/admin.php/Order/update?id=<?php echo ($vo["id"]); ?>">修改</a></button>
@@ -86,5 +88,15 @@
 <script src="/Public/js/dialog/layer.js"></script>
 <script src="/Public/js/dialog.js"></script>
 <script src="/Public/js/Admin/order.js"></script>
+<script src="/Public/laydate/laydate.js"></script>
+<!--不能直接使用layUI，"/Public/laydate/layui.css"有样式-->
+<script>
+    //日期时间范围
+    laydate.render({
+        elem: '#searchTime'
+        ,type: 'datetime'
+        ,range: true
+    });
+</script>
 </body>
 </html>
