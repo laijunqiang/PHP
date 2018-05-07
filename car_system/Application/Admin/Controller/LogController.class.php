@@ -6,10 +6,15 @@ use Think\Controller;
 class LogController extends Controller {
     public function index()
     {
-        $ret = D('Log')->getLog();
-        //dump($ret);
-        $this->assign('ret', $ret);
-        $this->display();
+        $count= D('Log')->count();// 查询满足要求的总记录数
+        $Page = new \Think\Page($count,6);// 实例化分页类 传入总记录数和每页显示的记录数(5)
+        $show = $Page->show();// 分页显示输出
+        // 进行分页数据查询 注意limit方法的参数要使用Page类的属性
+        $list = D('Log')->getLog($Page);
+        $this->assign('list',$list);// 赋值数据集
+        $this->assign('page',$show);// 赋值分页输出
+        $this->display(); // 输出模板
+
     }
 
     //录入日志处理
@@ -44,7 +49,7 @@ class LogController extends Controller {
             if (session('adminUser.account')!=null) {
                 $index->addLog("删除日志ID为：$id 的日志", session('adminUser.account'));
             }else {
-                $index->addLog("删除日志ID为：$id 的日志", session('adminUser.driver_name'));
+                $index->addLog("删除日志ID为：$id 的日志", session('User.name'));
             }
             return show(1, '删除成功');
         }

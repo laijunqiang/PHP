@@ -34,7 +34,7 @@ class OrderController extends Controller {
             if (session('adminUser.account')!=null) {
                 $index->addLog("生成订单编号为：$number 的订单", session('adminUser.account'));
             }else {
-                $index->addLog("生成订单编号为：$number 的订单", session('adminUser.driver_name'));
+                $index->addLog("生成订单编号为：$number 的订单", session('User.name'));
             }
             return show(1, '生成订单成功');
         }
@@ -78,7 +78,7 @@ class OrderController extends Controller {
             if (session('adminUser.account')!=null) {
                 $index->addLog("修改订单编号为：$number 的订单", session('adminUser.account'));
             }else {
-                $index->addLog("修改订单编号为：$number 的订单", session('adminUser.driver_name'));
+                $index->addLog("修改订单编号为：$number 的订单", session('User.name'));
             }
             return show(1, '修改订单成功');
         }
@@ -103,7 +103,7 @@ class OrderController extends Controller {
             if (session('adminUser.account')!=null) {
                 $index->addLog("删除订单ID为：$id 的订单", session('adminUser.account'));
             }else {
-                $index->addLog("删除订单ID为：$id 的订单", session('adminUser.driver_name'));
+                $index->addLog("删除订单ID为：$id 的订单", session('User.name'));
             }
             return show(1, '删除成功');
         }

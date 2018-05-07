@@ -14,9 +14,14 @@ class LogModel extends Model {
         $this->_db = M('log');
     }
 
-    //获取日志信息
-    public function getLog(){
-        $res=$this->_db->where('status=0')->order('time desc')->select();
+    //获取日志信息（进行分页数据查询 注意limit方法的参数要使用Page类的属性）
+    public function getLog($Page){
+        $res=$this->_db->where('status=0')->order('time desc')->limit($Page->firstRow.','.$Page->listRows)->select();
+        return $res;
+    }
+    //查询满足要求的总记录数
+    public function count(){
+        $res=$this->_db->where('status=0')->count();
         return $res;
     }
 

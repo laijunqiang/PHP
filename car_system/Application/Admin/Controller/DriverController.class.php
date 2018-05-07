@@ -62,9 +62,9 @@ class DriverController extends Controller {
                 $index = A('Log');
                 $number = $_POST['number'];
                 if (session('adminUser.account') != null) {
-                    $index->addLog("修改订单编号为：$number 的用户", session('adminUser.account'));
+                    $index->addLog("修改司机编号为：$number 的司机", session('adminUser.account'));
                 } else {
-                    $index->addLog("修改订单编号为：$number 的用户", session('adminUser.driver_name'));
+                    $index->addLog("修改司机编号为：$number 的司机", session('User.name'));
                 }
                 return show(1, '修改司机成功');
             }
@@ -87,9 +87,9 @@ class DriverController extends Controller {
             $index = A('Log');
             $id=$_POST['id'];
             if (session('adminUser.account')!=null) {
-                $index->addLog("删除司机ID为：$id 的用户", session('adminUser.account'));
+                $index->addLog("删除司机ID为：$id 的司机", session('adminUser.account'));
             }else {
-                $index->addLog("删除司机ID为：$id 的用户", session('adminUser.driver_name'));
+                $index->addLog("删除司机ID为：$id 的司机", session('User.name'));
             }
             return show(1, '删除成功');
         }
@@ -169,7 +169,7 @@ class DriverController extends Controller {
                 if (session('adminUser.account') != null) {
                     $index->addLog("生成司机编号为：$number 的司机", session('adminUser.account'));
                 } else {
-                    $index->addLog("生成司机编号为：$number 的司机", session('adminUser.driver_name'));
+                    $index->addLog("生成司机编号为：$number 的司机", session('User.name'));
                 }
                 return show(1,'录入成功！');
             }

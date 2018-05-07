@@ -38,6 +38,13 @@ class UserController extends Controller {
         if(!$ret) {
             return show(0,'修改用户失败，请重新修改');
         }else {
+            $index = A('Log');
+            $id=$_POST['id'];
+            if (session('adminUser.account')!=null) {
+                $index->addLog("修改用户ID为：$id 的用户", session('adminUser.account'));
+            }else {
+                $index->addLog("修改用户ID为：$id 的用户", session('User.name'));
+            }
             return show(1, '修改用户成功');
         }
     }
@@ -56,6 +63,13 @@ class UserController extends Controller {
         if(!$ret) {
             return show(0,'删除失败');
         }else {
+            $index = A('Log');
+            $id=$_POST['id'];
+            if (session('adminUser.account')!=null) {
+                $index->addLog("删除用户ID为：$id 的用户", session('adminUser.account'));
+            }else {
+                $index->addLog("删除用户ID为：$id 的用户", session('User.name'));
+            }
             return show(1, '删除成功');
         }
     }
@@ -87,11 +101,11 @@ class UserController extends Controller {
             return show(0,'录入失败');
         }else {
             $index = A('Log');
-            $number=$_POST['number'];
+            $account=$_POST['account'];
             if (session('adminUser.account')!=null) {
-                $index->addLog("生成车辆编号为：$number 的车辆", session('adminUser.account'));
+                $index->addLog("生成账号为：$account 的用户", session('adminUser.account'));
             }else {
-                $index->addLog("生成车辆编号为：$number 的车辆", session('adminUser.driver_name'));
+                $index->addLog("生成账号为：$account 的用户", session('User.name'));
             }
             return show(1, '录入成功');
         }

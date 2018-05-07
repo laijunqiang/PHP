@@ -55,7 +55,7 @@ class CarController extends Controller {
             if (session('adminUser.account')!=null) {
                 $index->addLog("修改车辆编号为：$number 的车辆", session('adminUser.account'));
             }else {
-                $index->addLog("修改车辆编号为：$number 的车辆", session('adminUser.driver_name'));
+                $index->addLog("修改车辆编号为：$number 的车辆", session('User.name'));
             }
             return show(1, '修改车辆成功');
         }
@@ -80,7 +80,7 @@ class CarController extends Controller {
             if (session('adminUser.account')!=null) {
                 $index->addLog("删除车辆ID为：$id 的车辆", session('adminUser.account'));
             }else {
-                $index->addLog("删除车辆ID为：$id 的车辆", session('adminUser.driver_name'));
+                $index->addLog("删除车辆ID为：$id 的车辆", session('User.name'));
             }
             return show(1, '删除成功');
         }
@@ -127,7 +127,7 @@ class CarController extends Controller {
             if (session('adminUser.account')!=null) {
                 $index->addLog("生成车辆编号为：$number 的车辆", session('adminUser.account'));
             }else {
-                $index->addLog("生成车辆编号为：$number 的车辆", session('adminUser.driver_name'));
+                $index->addLog("生成车辆编号为：$number 的车辆", session('User.name'));
             }
             return show(1, '录入成功');
         }

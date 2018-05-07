@@ -38,11 +38,11 @@ class RoleController extends Controller
             return show(0, '录入失败');
         } else {
             $index = A('Log');
-            $driver_name = $_POST['driver_name'];
+            $name = $_POST['name'];
             if (session('adminUser.account') != null) {
-                $index->addLog("生成司机名称为：$driver_name 的权限", session('adminUser.account'));
+                $index->addLog("生成角色为：$name 的权限", session('adminUser.account'));
             } else {
-                $index->addLog("生成司机名称为：$driver_name 的权限", session('adminUser.driver_name'));
+                $index->addLog("生成角色为：$name 的权限", session('User.name'));
             }
             return show(1, '录入成功');
         }
@@ -78,11 +78,11 @@ class RoleController extends Controller
             return show(0, '修改权限失败');
         } else {
             $index = A('Log');
-            $driver_name=$_POST['driver_name'];
+            $id=$_POST['id'];
             if (session('adminUser.account')!=null) {
-                $index->addLog("修改司机名称为：$driver_name 的权限", session('adminUser.account'));
+                $index->addLog("修改权限ID为：$id 的权限", session('adminUser.account'));
             }else {
-                $index->addLog("修改司机名称为：$driver_name 的权限", session('adminUser.driver_name'));
+                $index->addLog("修改权限ID为：$id 的权限", session('User.name'));
             }
             return show(1, '修改权限成功');
         }
@@ -106,9 +106,9 @@ class RoleController extends Controller
             $index = A('Log');
             $id=$_POST['id'];
             if (session('adminUser.account')!=null) {
-                $index->addLog("删除ID为：$id 的权限", session('adminUser.account'));
+                $index->addLog("删除权限ID为：$id 的权限", session('adminUser.account'));
             }else {
-                $index->addLog("删除ID为：$id 的权限", session('adminUser.driver_name'));
+                $index->addLog("删除权限ID为：$id 的权限", session('User.name'));
             }
             return show(1, '删除成功');
         }
