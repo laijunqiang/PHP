@@ -18,7 +18,6 @@ class GoodsModel extends Model {
         $res=$this->_db->where('status=0')->order('create_time desc')->select();
         return $res;
     }
-
     //生成商品信息
     public function addGoods($data = array()){
         if(!$data || !is_array($data)) {
@@ -34,11 +33,25 @@ class GoodsModel extends Model {
     public function getIdByName($name){
         return $this->_db->where("name='$name'")->getField('id');
     }
+    //修改商品信息页面
+    public function showGoods($id=''){
+        return $this->_db->where("id='$id'")->find();
+    }
     //修改商品信息
     public function updateGoods($data = array()){
         if(!$data || !is_array($data)) {
             return 0;
         }
         return $this->_db->save($data);
+    }
+    //获取商品名信息
+    public function getName(){
+        $res=$this->_db->where('status=0')->order('create_time desc')->getField('name',true);
+        return $res;
+    }
+    //获取商品名信息(修改)
+    public function getNameUpdate($id=''){
+        $res=$this->_db->where("status=0&&id!='$id'")->order('create_time desc')->getField('name',true);
+        return $res;
     }
 }

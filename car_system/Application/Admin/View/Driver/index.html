@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>司机信息管理</title>
-    <link rel="stylesheet" href="/Public/css/home/login.css">
+    <link rel="stylesheet" href="/Public/css/admin/image.css">
 </head>
 <body>
 <div align="center">

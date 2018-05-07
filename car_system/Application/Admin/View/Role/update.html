@@ -8,21 +8,21 @@
 <div align="center">
     <table>
         <tr>
-            <td>ID：</td>
+            <td>权限ID：</td>
             <td><input type="text" value="{$ret.id}" name="id" disabled="disabled"></td>
         </tr>
         <tr>
-            <td>司机ID：</td>
-            <td><input type="text" value="{$ret.driver_id}" name="driver_id" id="driver_id" disabled="disabled"></td>
-        </tr>
-        <tr>
-            <td>司机名称：</td>
-            <td><input type="text" value="{$ret.driver_name}" name="driver_name" id="driver_name" disabled="disabled"></td>
+            <td>角色名：</td>
+            <td><input type="text" value="{$ret.name}" name="name" id="name"></td>
         </tr>
         <tr>
             <td>请选择权限：</td>
             <td>
-                <input type="checkbox" name="role" value="order_manage" checked="checked" disabled="disabled"/>订单管理权限
+                <eq name="ret.order_manage" value="1">
+                    <input type="checkbox" name="role" value="order_manage" checked="checked"/>订单管理权限
+                <else/>
+                    <input type="checkbox" name="role" value="order_manage" />订单管理权限
+                </eq>
                 <eq name="ret.driver_manage" value="1">
                     <input type="checkbox" name="role" value="driver_manage" checked="checked"/>用户管理权限
                 <else/>
@@ -32,6 +32,16 @@
                     <input type="checkbox" name="role" value="car_manage" checked="checked"/>车辆管理权限
                 <else/>
                     <input type="checkbox" name="role" value="car_manage"/>车辆管理权限
+                </eq>
+                <eq name="ret.goods_manage" value="1">
+                    <input type="checkbox" name="role" value="goods_manage" checked="checked"/>商品管理权限
+                    <else/>
+                    <input type="checkbox" name="role" value="goods_manage"/>商品管理权限
+                </eq>
+                <eq name="ret.user_manage" value="1">
+                    <input type="checkbox" name="role" value="user_manage" checked="checked"/>用户管理权限
+                    <else/>
+                    <input type="checkbox" name="role" value="user_manage"/>用户管理权限
                 </eq>
                 <eq name="ret.role_manage" value="1">
                     <input type="checkbox" name="role" value="role_manage" checked="checked"/>角色管理权限

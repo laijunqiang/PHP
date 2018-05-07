@@ -118,7 +118,7 @@ class trendClass
                 return self::$trendCache[$key];
             case self::TREND_BEST_FIT:
             case self::TREND_BEST_FIT_NO_POLY:
-                //    If the request is to determine the best fit regression, then we test each trend line in turn
+                //    If the request is to determine the best fit regression, then we phpexcel each trend line in turn
                 //    Start by generating an instance of each available trend method
                 foreach (self::$trendTypes as $trendMethod) {
                     $className = 'PHPExcel_'.$trendMethod.'BestFit';

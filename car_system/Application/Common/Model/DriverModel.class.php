@@ -75,4 +75,9 @@ class DriverModel extends Model {
         $account=$data['account'];//字符串需要引号
         return $this->_db->where("account='$account'")->save($data);
     }
+    //获取司机账号信息(修改)
+    public function getAccountUpdate($id=''){
+        $res=$this->_db->where("status=0&&id!='$id'")->order('create_time desc')->getField('account',true);
+        return $res;
+    }
 }

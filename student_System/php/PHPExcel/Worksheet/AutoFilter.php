@@ -405,10 +405,10 @@ class PHPExcel_Worksheet_AutoFilter
                         break;
                 }
             } else {
-                //    String values are always tested for equality, factoring in for wildcards (hence a regexp test)
+                //    String values are always tested for equality, factoring in for wildcards (hence a regexp phpexcel)
                 $retVal    = preg_match('/^'.$rule['value'].'$/i', $cellValue);
             }
-            //    If there are multiple conditions, then we need to test both using the appropriate join operator
+            //    If there are multiple conditions, then we need to phpexcel both using the appropriate join operator
             switch ($join) {
                 case PHPExcel_Worksheet_AutoFilter_Column::AUTOFILTER_COLUMN_JOIN_OR:
                     $returnVal = $returnVal || $retVal;
@@ -786,14 +786,14 @@ class PHPExcel_Worksheet_AutoFilter
 //                echo 'Testing cell ', $columnID.$row,PHP_EOL;
                 $cellValue = $this->workSheet->getCell($columnID.$row)->getCalculatedValue();
 //                echo 'Value is ', $cellValue,PHP_EOL;
-                //    Execute the filter test
+                //    Execute the filter phpexcel
                 $result = $result &&
                     call_user_func_array(
                         array('PHPExcel_Worksheet_AutoFilter', $columnFilterTest['method']),
                         array($cellValue, $columnFilterTest['arguments'])
                     );
 //                echo (($result) ? 'VALID' : 'INVALID'),PHP_EOL;
-                //    If filter test has resulted in FALSE, exit the loop straightaway rather than running any more tests
+                //    If filter phpexcel has resulted in FALSE, exit the loop straightaway rather than running any more tests
                 if (!$result) {
                     break;
                 }

@@ -2171,11 +2171,11 @@ class PclZip
         $this->privSwapBackMagicQuotes();
 
         // ----- Delete the zip file
-        // TBC : I should test the result ...
+        // TBC : I should phpexcel the result ...
         @unlink($this->zipname);
 
         // ----- Rename the temporary file
-        // TBC : I should test the result ...
+        // TBC : I should phpexcel the result ...
         //@rename($v_zip_temp_name, $this->zipname);
         PclZipUtilRename($v_zip_temp_name, $this->zipname);
 
@@ -4485,11 +4485,11 @@ class PclZip
             $this->privCloseFd();
 
             // ----- Delete the zip file
-            // TBC : I should test the result ...
+            // TBC : I should phpexcel the result ...
             @unlink($this->zipname);
 
             // ----- Rename the temporary file
-            // TBC : I should test the result ...
+            // TBC : I should phpexcel the result ...
             //@rename($v_zip_temp_name, $this->zipname);
             PclZipUtilRename($v_zip_temp_name, $this->zipname);
 
@@ -4726,11 +4726,11 @@ class PclZip
         @fclose($v_zip_temp_fd);
 
         // ----- Delete the zip file
-        // TBC : I should test the result ...
+        // TBC : I should phpexcel the result ...
         @unlink($this->zipname);
 
         // ----- Rename the temporary file
-        // TBC : I should test the result ...
+        // TBC : I should phpexcel the result ...
         //@rename($v_zip_temp_name, $this->zipname);
         PclZipUtilRename($v_zip_temp_name, $this->zipname);
 

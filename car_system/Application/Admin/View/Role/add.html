@@ -9,22 +9,19 @@
     <h4>录入权限功能</h4>
     <table>
         <tr>
-            <td>请选择用户：</td>
+            <td>角色名：</td>
             <td>
-                <select name="driver_name">
-                    <!--循环输出一位数组-->
-                    <volist name="ret" id="vo">
-                        <option value="{$vo}">{$vo}</option>
-                    </volist>
-                </select>
+                <input type="text" name="name" id="name"/>
             </td>
         </tr>
         <tr>
             <td>请选择权限：</td>
             <td>
-                <input type="checkbox" name="role" value="order_manage" checked="checked" disabled="disabled"/>订单管理权限
-                <input type="checkbox" name="role" value="driver_manage"/>用户管理权限
+                <input type="checkbox" name="role" value="order_manage"/>订单管理权限
+                <input type="checkbox" name="role" value="driver_manage"/>司机管理权限
                 <input type="checkbox" name="role" value="car_manage"/>车辆管理权限
+                <input type="checkbox" name="role" value="goods_manage"/>商品管理权限
+                <input type="checkbox" name="role" value="user_manage"/>用户管理权限
                 <input type="checkbox" name="role" value="role_manage"/>角色管理权限
                 <input type="checkbox" name="role" value="log_manage"/>日志管理权限
             </td>

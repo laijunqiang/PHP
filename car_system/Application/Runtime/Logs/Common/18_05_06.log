@@ -1,0 +1,12 @@
+[ 2018-05-06T11:22:13+08:00 ] 127.0.0.1 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000494s ]
+ERR: 无法加载模块:Favicon
+
+[ 2018-05-06T16:54:13+08:00 ] 127.0.0.1 /9b6aa7c7-5698-47e9-a700-4c143ade6779
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000036s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001274s ]
+ERR: 无法加载模块:9b6aa7c7-5698-47e9-a700-4c143ade6779
+

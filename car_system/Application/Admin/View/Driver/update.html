@@ -28,8 +28,13 @@
             <td><input type="text" value="{$ret.name}" name="name" id="name" placeholder="请输入司机姓名"></td>
         </tr>
         <tr>
-            <td>头像路径：</td>
-            <td><input type="text" value="{$ret.image}" name="image" id="image"></td>
+            <td>头像上传：</td>
+            <td>
+                <input type='file' id="file" accept = 'image/gif,image/jpeg,image/jpg,image/png' name="file" />
+            </td>
+        </tr>
+        <tr align="center">
+            <td colspan="2"><img src="{$ret.image}" id="img0" alt="上传后图片预览"></td>
         </tr>
         <tr align="center">
             <td colspan="2">

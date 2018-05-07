@@ -14,19 +14,6 @@ class RoleController extends Controller
     //录入权限页面
     public function add()
     {
-        //查询剩余司机用户信息
-        $restName=D('Role')->getDriver();
-        if ($restName==null){
-            $restName='';   //当role表为空时，$restName为空数组，查询出错。$restName为空字符串，查询成功。
-        }
-        //var_dump($restName);
-        $ret = D('Driver')->getRestDriver($restName);
-        $this->assign('ret', $ret);
-        //dump($ret);
-        //查询权限信息
-        $return = D('Role')->getRole();
-        //dump($ret);
-        $this->assign('return', $return);
         $this->display();
     }
 
@@ -34,32 +21,30 @@ class RoleController extends Controller
     public function addRole()
     {
         //dump($_POST);
-        //获取司机用户的ID
-        $ret = D('Driver')->getIdByName($_POST['driver_name']);
+        $name = D('Role')->getName();
+        foreach ($name as $v) {
+            if ($v == $_POST['name'])
+                return show(0, '角色已存在，请重新录入');
+        }
+        date_default_timezone_set("Asia/Shanghai");
+        $_POST['create_time'] = date("Y-m-d H:i:s");
+        /*D方法实例化模型类的时候通常是实例化某个具体的模型类
+         当 \Admin\Model\AdminModel 类不存在的时候，D函数会尝试实例化公共模块下面的 \Common\Model\AdminModel类。
+         D方法可以自动检测模型类，如果存在自定义的模型类，则实例化自定义模型类，
+         如果不存在，则会实例化系统的\Think\Model基类，同时对于已实例化过的模型，不会重复实例化。*/
+        $ret = D('Role')->addRole($_POST);
+        //dump($ret); //成功返回一个数组，失败返回NULL
         if (!$ret) {
             return show(0, '录入失败');
         } else {
-            $_POST['driver_id']=$ret;
-            date_default_timezone_set("Asia/Shanghai");
-            $_POST['create_time'] = date("Y-m-d H:i:s");
-            /*D方法实例化模型类的时候通常是实例化某个具体的模型类
-             当 \Admin\Model\AdminModel 类不存在的时候，D函数会尝试实例化公共模块下面的 \Common\Model\AdminModel类。
-             D方法可以自动检测模型类，如果存在自定义的模型类，则实例化自定义模型类，
-             如果不存在，则会实例化系统的\Think\Model基类，同时对于已实例化过的模型，不会重复实例化。*/
-            $ret = D('Role')->addRole($_POST);
-            //dump($ret); //成功返回一个数组，失败返回NULL
-            if (!$ret) {
-                return show(0, '录入失败');
+            $index = A('Log');
+            $driver_name = $_POST['driver_name'];
+            if (session('adminUser.account') != null) {
+                $index->addLog("生成司机名称为：$driver_name 的权限", session('adminUser.account'));
             } else {
-                $index = A('Log');
-                $driver_name=$_POST['driver_name'];
-                if (session('adminUser.account')!=null) {
-                    $index->addLog("生成司机名称为：$driver_name 的权限", session('adminUser.account'));
-                }else {
-                    $index->addLog("生成司机名称为：$driver_name 的权限", session('adminUser.driver_name'));
-                }
-                return show(1, '录入成功');
+                $index->addLog("生成司机名称为：$driver_name 的权限", session('adminUser.driver_name'));
             }
+            return show(1, '录入成功');
         }
     }
 
@@ -74,6 +59,11 @@ class RoleController extends Controller
     }
     //修改权限处理
     public function updateRole(){
+        $name = D('Role')->getNameUpdate($_POST['id']);
+        foreach ($name as $v) {
+            if ($v == $_POST['name'])
+                return show(0, '角色已存在，请重新录入');
+        }
         date_default_timezone_set("Asia/Shanghai");
         $_POST['update_time']=date("Y-m-d H:i:s");
         //dump($_POST);

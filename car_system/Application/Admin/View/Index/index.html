@@ -23,36 +23,41 @@
         <button><a href="/admin.php/Admin" target="iframe">修改密码</a></button>
         <button><a href="/admin.php/Login/loginout">退出登陆</a></button>
     </nav>
+    </div>
+    <iframe src="/admin.php/Order" scrolling="auto" name="iframe" frameborder="0" width="100%" height="600">
+    </iframe>
     <else/>
-        <p>欢迎，{$Think.session.adminUser.driver_name}！</p>
+        <p>欢迎，{$Think.session.User.name}！</p>
         <!--<foreach name="Think.session.adminUser" item="vo">
             {$key}|{$vo}<br>
         </foreach>-->
         <nav>
+            <eq name="role.order_manage" value="1">
             <button><a href="/admin.php/Order" target="iframe">订单信息管理</a></button>
-            <eq name="Think.session.adminUser.driver_manage" value="1">
+            </eq>
+            <eq name="role.driver_manage" value="1">
             <button><a href="/admin.php/Driver" target="iframe">司机信息管理</a></button>
             </eq>
-            <eq name="Think.session.adminUser.car_manage" value="1">
+            <eq name="role.car_manage" value="1">
             <button><a href="/admin.php/Car" target="iframe" >车辆信息管理</a></button>
             </eq>
-            <eq name="Think.session.adminUser.goods_manage" value="1">
+            <eq name="role.goods_manage" value="1">
             <button><a href="/admin.php/Goods" target="iframe" >商品信息管理</a></button>
             </eq>
-            <eq name="Think.session.adminUser.user_manage" value="1">
+            <eq name="role.user_manage" value="1">
             <button><a href="/admin.php/User" target="iframe" >用户信息管理</a></button>
             </eq>
-            <eq name="Think.session.adminUser.role_manage" value="1">
+            <eq name="role.role_manage" value="1">
             <button><a href="/admin.php/Role" target="iframe">角色/用户权限管理</a></button>
             </eq>
-            <eq name="Think.session.adminUser.log_manage" value="1">
+            <eq name="role.log_manage" value="1">
             <button><a href="/admin.php/Log" target="iframe">操作日志管理</a></button>
             </eq>
             <button><a href="/admin.php/Login/loginout">退出登陆</a></button>
         </nav>
+    </div>
+    <iframe src="{$src}" scrolling="auto" name="iframe" frameborder="0" width="100%" height="600">
+    </iframe>
     </if>
-</div>
-<iframe src="/admin.php/Order" scrolling="auto" name="iframe" frameborder="0" width="100%" height="600">
-</iframe>
 </body>
 </html>
