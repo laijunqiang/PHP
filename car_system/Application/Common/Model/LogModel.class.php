@@ -32,7 +32,7 @@ class LogModel extends Model {
         }
         return $this->_db->add($data);
     }
-    //删除司机信息
+    //删除日志信息
     public function deleteLog($data){
         if(!$data || !is_array($data)) {
             return 0;

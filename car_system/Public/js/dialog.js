@@ -201,26 +201,38 @@ var dialog = {
         });
     },
     confirmDeleteLog : function(message, id) {
-        layer.open({
-            content : message,
-            icon:3,
-            btn : ['是','否'],
-            yes : function(){
-                var url = "/admin.php/Log/deleteLog";
-                var data = {'id': id};//JSON格式
-                // 执行异步请求  $.post
-                $.post(url, data, function (result) {
-                    //result接受后台返回的数据
-                    if (result.status == 0) {
-                        //后台重新判断，多一层弹层
-                        return dialog.error(result.message);
-                    }
-                    if (result.status == 1) {
-                        return dialog.success(result.message, '/admin.php/Log');
-                    }
-                    //dataType规定预期的服务器响应的数据类型。
-                }, 'JSON');
-            }
-        });
+        if($(':checked').size() > 0) {
+            var arr=[],i=0;
+            $(".ck").each(function(){
+                if($(this).is(':checked')){
+                    arr[i]=$(this).val();
+                    i++;
+                }
+            });
+            //console.log(arr);
+            layer.open({
+                content : '是否确定删除？',
+                icon:3,
+                btn : ['是','否'],
+                yes : function(){
+                    var url = "/admin.php/Log/deleteAllLog";
+                    var data = {'arr': arr};//JSON格式
+                    // 执行异步请求  $.post
+                    $.post(url, data, function (result) {
+                        //result接受后台返回的数据
+                        if (result.status == 0) {
+                            //后台重新判断，多一层弹层
+                            return dialog.error(result.message);
+                        }
+                        if (result.status == 1) {
+                            return dialog.success(result.message, '/admin.php/Log');
+                        }
+                        //dataType规定预期的服务器响应的数据类型。
+                    }, 'JSON');
+                }
+            });
+    }else{
+            return dialog.error('没有选择！');
+        }
     }
 };

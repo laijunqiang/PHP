@@ -13507,3 +13507,989 @@ INFO: [ app_end ] --START--
 INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
 INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
 
+[ 2018-05-07T21:54:55+08:00 ] 127.0.0.1 /admin.php/Index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002188s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001519s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001590s ]
+
+[ 2018-05-07T21:54:55+08:00 ] 127.0.0.1 /admin.php/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000652s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001605s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001695s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000876s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001002s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013909s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001453s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001518s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001511s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001561s ]
+
+[ 2018-05-07T21:54:56+08:00 ] 127.0.0.1 /admin.php/Index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000021s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000540s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001058s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001134s ]
+
+[ 2018-05-07T21:54:58+08:00 ] 127.0.0.1 /admin.php/Login/check
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000463s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000854s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000901s ]
+SQL: SHOW COLUMNS FROM `t_admin` [ RunTime:0.0119s ]
+SQL: SELECT * FROM `t_admin` WHERE ( account='admin' ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `t_user` [ RunTime:0.0115s ]
+SQL: SELECT * FROM `t_user` WHERE ( account='admin'&& status=0 ) LIMIT 1   [ RunTime:0.0004s ]
+
+[ 2018-05-07T21:54:59+08:00 ] 127.0.0.1 /admin.php/Index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000034s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000544s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001433s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001512s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000049s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000109s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017083s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017174s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000629s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000670s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000875s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000920s ]
+
+[ 2018-05-07T21:54:59+08:00 ] 127.0.0.1 /admin.php/Order
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000523s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000845s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000913s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `t_order` WHERE ( status=0 ) ORDER BY order_status,create_time desc  [ RunTime:0.0007s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000050s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000103s ]
+NOTIC: [8] Undefined variable: status C:\phpStudy\PHPTutorial\WWW\php\car_system\Application\Runtime\Cache\Admin\18bc66a7b6334412ab8e61a2539ecfbd.php 第 18 行.
+NOTIC: [8] Undefined variable: status C:\phpStudy\PHPTutorial\WWW\php\car_system\Application\Runtime\Cache\Admin\18bc66a7b6334412ab8e61a2539ecfbd.php 第 21 行.
+NOTIC: [8] Undefined variable: status C:\phpStudy\PHPTutorial\WWW\php\car_system\Application\Runtime\Cache\Admin\18bc66a7b6334412ab8e61a2539ecfbd.php 第 24 行.
+NOTIC: [8] Undefined variable: searchTime C:\phpStudy\PHPTutorial\WWW\php\car_system\Application\Runtime\Cache\Admin\18bc66a7b6334412ab8e61a2539ecfbd.php 第 31 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013696s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013763s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000712s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000753s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000879s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000925s ]
+
+[ 2018-05-07T21:55:02+08:00 ] 127.0.0.1 /admin.php/Role
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000506s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000884s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000944s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0161s ]
+SQL: SELECT * FROM `t_role` WHERE ( status=0 ) ORDER BY create_time desc  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000044s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000094s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013036s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013135s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000632s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000675s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000918s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000958s ]
+
+[ 2018-05-07T21:55:03+08:00 ] 127.0.0.1 /admin.php/Log
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000458s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000830s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000916s ]
+SQL: SHOW COLUMNS FROM `t_log` [ RunTime:0.0115s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `t_log` WHERE ( status=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `t_log` WHERE ( status=0 ) ORDER BY time desc LIMIT 0,6   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000036s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000085s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009245s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009321s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000607s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000646s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000861s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000899s ]
+
+[ 2018-05-07T21:55:06+08:00 ] 127.0.0.1 /admin.php/Admin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001076s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002016s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002113s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000033s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000086s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009345s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009411s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000565s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000602s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000833s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000875s ]
+
+[ 2018-05-07T21:55:07+08:00 ] 127.0.0.1 /admin.php/Log
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000555s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000950s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001008s ]
+SQL: SHOW COLUMNS FROM `t_log` [ RunTime:0.0113s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `t_log` WHERE ( status=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `t_log` WHERE ( status=0 ) ORDER BY time desc LIMIT 0,6   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000036s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000090s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010324s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010388s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000577s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000617s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000809s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000852s ]
+
+[ 2018-05-07T21:55:08+08:00 ] 127.0.0.1 /admin.php/Log
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000018s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000550s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000984s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001052s ]
+SQL: SHOW COLUMNS FROM `t_log` [ RunTime:0.0110s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `t_log` WHERE ( status=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `t_log` WHERE ( status=0 ) ORDER BY time desc LIMIT 0,6   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000037s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000086s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009850s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009939s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000609s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000647s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000855s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000894s ]
+
+[ 2018-05-07T21:55:09+08:00 ] 127.0.0.1 /admin.php/Admin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000816s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000909s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001012s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000035s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000103s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009037s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009114s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001201s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001249s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000989s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001035s ]
+
+[ 2018-05-07T21:55:10+08:00 ] 127.0.0.1 /admin.php/Log
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000575s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001268s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001381s ]
+SQL: SHOW COLUMNS FROM `t_log` [ RunTime:0.0125s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `t_log` WHERE ( status=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `t_log` WHERE ( status=0 ) ORDER BY time desc LIMIT 0,6   [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000041s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000099s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011530s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011624s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000650s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000697s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000970s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001019s ]
+
+[ 2018-05-07T21:55:11+08:00 ] 127.0.0.1 /admin.php/Admin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000512s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000812s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000881s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000034s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000086s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009594s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009655s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000701s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000749s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000950s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001010s ]
+
+[ 2018-05-07T21:55:12+08:00 ] 127.0.0.1 /admin.php/Log
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001696s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000872s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000925s ]
+SQL: SHOW COLUMNS FROM `t_log` [ RunTime:0.0117s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `t_log` WHERE ( status=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `t_log` WHERE ( status=0 ) ORDER BY time desc LIMIT 0,6   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000062s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000158s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010196s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010272s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000703s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000755s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000939s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000986s ]
+
+[ 2018-05-07T21:55:13+08:00 ] 127.0.0.1 /admin.php/Admin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000720s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001445s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001545s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000040s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000100s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011704s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011803s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000967s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001038s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001292s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001351s ]
+
+[ 2018-05-07T21:55:13+08:00 ] 127.0.0.1 /admin.php/Log
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000444s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000872s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000930s ]
+SQL: SHOW COLUMNS FROM `t_log` [ RunTime:0.0109s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `t_log` WHERE ( status=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `t_log` WHERE ( status=0 ) ORDER BY time desc LIMIT 0,6   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000048s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000107s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009161s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009225s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000592s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000630s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000848s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000886s ]
+
+[ 2018-05-07T21:55:19+08:00 ] 127.0.0.1 /admin.php/Order
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001046s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001639s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001772s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0127s ]
+SQL: SELECT * FROM `t_order` WHERE ( status=0 ) ORDER BY order_status,create_time desc  [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000067s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000116s ]
+NOTIC: [8] Undefined variable: status C:\phpStudy\PHPTutorial\WWW\php\car_system\Application\Runtime\Cache\Admin\18bc66a7b6334412ab8e61a2539ecfbd.php 第 18 行.
+NOTIC: [8] Undefined variable: status C:\phpStudy\PHPTutorial\WWW\php\car_system\Application\Runtime\Cache\Admin\18bc66a7b6334412ab8e61a2539ecfbd.php 第 21 行.
+NOTIC: [8] Undefined variable: status C:\phpStudy\PHPTutorial\WWW\php\car_system\Application\Runtime\Cache\Admin\18bc66a7b6334412ab8e61a2539ecfbd.php 第 24 行.
+NOTIC: [8] Undefined variable: searchTime C:\phpStudy\PHPTutorial\WWW\php\car_system\Application\Runtime\Cache\Admin\18bc66a7b6334412ab8e61a2539ecfbd.php 第 31 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011551s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011615s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001031s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001123s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001019s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001068s ]
+
+[ 2018-05-07T21:55:26+08:00 ] 127.0.0.1 /admin.php/Driver
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000020s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000565s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001072s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001157s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0107s ]
+SQL: SELECT * FROM `t_driver` WHERE ( status=0 ) ORDER BY create_time desc  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000037s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000083s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010226s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010292s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000726s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000767s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000866s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000908s ]
+
+[ 2018-05-07T21:55:28+08:00 ] 127.0.0.1 /admin.php/Driver/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000569s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001275s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001352s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000039s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000094s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009737s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009810s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000981s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001043s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001396s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001457s ]
+
+[ 2018-05-07T21:55:34+08:00 ] 127.0.0.1 /admin.php/Driver/upload
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000470s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000937s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001022s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0105s ]
+SQL: SELECT `account` FROM `t_driver` WHERE ( status=0 ) ORDER BY create_time desc  [ RunTime:0.0004s ]
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given C:\phpStudy\PHPTutorial\WWW\php\car_system\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+SQL: INSERT INTO `t_driver` (`account`,`password`,`name`,`number`,`create_time`,`image`) VALUES ('admin','f79908a3fdc52d8748a76d003372f1e2','ss','215534','2018-05-07 21:55:34','/Public/image/5af05ad6946c4.jpg') [ RunTime:0.0028s ]
+SQL: SHOW COLUMNS FROM `t_log` [ RunTime:0.0107s ]
+SQL: INSERT INTO `t_log` (`user`,`log`,`time`) VALUES ('admin','生成司机编号为：215534 的司机','2018-05-07 21:55:34') [ RunTime:0.0028s ]
+
+[ 2018-05-07T21:55:35+08:00 ] 127.0.0.1 /admin.php/Driver
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001384s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004700s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004768s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0109s ]
+SQL: SELECT * FROM `t_driver` WHERE ( status=0 ) ORDER BY create_time desc  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000080s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000215s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.027685s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.027768s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.004604s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004652s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005612s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005679s ]
+
+[ 2018-05-07T21:55:37+08:00 ] 127.0.0.1 /admin.php/Driver/update?id=13
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001381s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004696s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004775s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0111s ]
+SQL: SELECT * FROM `t_driver` WHERE ( id='13' ) LIMIT 1   [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000045s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000127s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.023543s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.023612s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.004923s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004971s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004789s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004847s ]
+
+[ 2018-05-07T21:55:38+08:00 ] 127.0.0.1 /admin.php/Driver/updateDriver
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001494s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004534s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004604s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0112s ]
+SQL: SELECT `account` FROM `t_driver` WHERE ( status=0&&id!='13' ) ORDER BY create_time desc  [ RunTime:0.0004s ]
+SQL: UPDATE `t_driver` SET `number`='215534',`account`='admin',`password`='f79908a3fdc52d8748a76d003372f1e2',`name`='ss',`update_time`='2018-05-07 21:55:38' WHERE `id` = 13 [ RunTime:0.0031s ]
+SQL: SHOW COLUMNS FROM `t_log` [ RunTime:0.0105s ]
+SQL: INSERT INTO `t_log` (`user`,`log`,`time`) VALUES ('admin','修改司机编号为：215534 的司机','2018-05-07 21:55:38') [ RunTime:0.0028s ]
+
+[ 2018-05-07T21:55:39+08:00 ] 127.0.0.1 /admin.php/Driver
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001436s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004717s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004796s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0109s ]
+SQL: SELECT * FROM `t_driver` WHERE ( status=0 ) ORDER BY create_time desc  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000040s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000115s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.024598s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.024672s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.004482s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004536s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.007017s ]
+INFO: [ app_end ] --END-- [ RunTime:0.007068s ]
+
+[ 2018-05-07T21:55:40+08:00 ] 127.0.0.1 /admin.php/Driver/update?id=13
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001480s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004824s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004891s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0112s ]
+SQL: SELECT * FROM `t_driver` WHERE ( id='13' ) LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000035s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000084s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022978s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.023050s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.005050s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005101s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004951s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005005s ]
+
+[ 2018-05-07T21:55:41+08:00 ] 127.0.0.1 /admin.php/Driver/updateDriver
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000018s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001640s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.005184s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005256s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0110s ]
+SQL: SELECT `account` FROM `t_driver` WHERE ( status=0&&id!='13' ) ORDER BY create_time desc  [ RunTime:0.0004s ]
+SQL: UPDATE `t_driver` SET `number`='215534',`account`='admin',`password`='f79908a3fdc52d8748a76d003372f1e2',`name`='ss',`update_time`='2018-05-07 21:55:41' WHERE `id` = 13 [ RunTime:0.0027s ]
+SQL: SHOW COLUMNS FROM `t_log` [ RunTime:0.0108s ]
+SQL: INSERT INTO `t_log` (`user`,`log`,`time`) VALUES ('admin','修改司机编号为：215534 的司机','2018-05-07 21:55:41') [ RunTime:0.0022s ]
+
+[ 2018-05-07T21:55:42+08:00 ] 127.0.0.1 /admin.php/Driver
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001371s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004573s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004640s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0138s ]
+SQL: SELECT * FROM `t_driver` WHERE ( status=0 ) ORDER BY create_time desc  [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000037s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000085s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.025691s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.025758s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.004434s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004486s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004823s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004871s ]
+
+[ 2018-05-07T21:55:42+08:00 ] 127.0.0.1 /admin.php/Driver/update?id=13
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001406s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004546s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004633s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0124s ]
+SQL: SELECT * FROM `t_driver` WHERE ( id='13' ) LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000035s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000084s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.025061s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.025141s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.004818s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004868s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005012s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005070s ]
+
+[ 2018-05-07T21:55:43+08:00 ] 127.0.0.1 /admin.php/Driver/updateDriver
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000020s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001665s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004546s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004613s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0111s ]
+SQL: SELECT `account` FROM `t_driver` WHERE ( status=0&&id!='13' ) ORDER BY create_time desc  [ RunTime:0.0004s ]
+SQL: UPDATE `t_driver` SET `number`='215534',`account`='admin',`password`='f79908a3fdc52d8748a76d003372f1e2',`name`='ss',`update_time`='2018-05-07 21:55:43' WHERE `id` = 13 [ RunTime:0.0031s ]
+SQL: SHOW COLUMNS FROM `t_log` [ RunTime:0.0134s ]
+SQL: INSERT INTO `t_log` (`user`,`log`,`time`) VALUES ('admin','修改司机编号为：215534 的司机','2018-05-07 21:55:43') [ RunTime:0.0029s ]
+
+[ 2018-05-07T21:55:44+08:00 ] 127.0.0.1 /admin.php/Driver
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001445s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004518s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004588s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0118s ]
+SQL: SELECT * FROM `t_driver` WHERE ( status=0 ) ORDER BY create_time desc  [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000041s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000095s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.024105s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.024180s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.004483s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004538s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004665s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004846s ]
+
+[ 2018-05-07T21:55:46+08:00 ] 127.0.0.1 /admin.php/Driver/update?id=13
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001453s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004429s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004499s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0116s ]
+SQL: SELECT * FROM `t_driver` WHERE ( id='13' ) LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000102s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000177s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.026374s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.026447s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.004462s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004508s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004601s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004652s ]
+
+[ 2018-05-07T21:55:47+08:00 ] 127.0.0.1 /admin.php/Driver/updateDriver
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001406s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004529s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004617s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0121s ]
+SQL: SELECT `account` FROM `t_driver` WHERE ( status=0&&id!='13' ) ORDER BY create_time desc  [ RunTime:0.0004s ]
+SQL: UPDATE `t_driver` SET `number`='215534',`account`='admin',`password`='f79908a3fdc52d8748a76d003372f1e2',`name`='ss',`update_time`='2018-05-07 21:55:47' WHERE `id` = 13 [ RunTime:0.0029s ]
+SQL: SHOW COLUMNS FROM `t_log` [ RunTime:0.0128s ]
+SQL: INSERT INTO `t_log` (`user`,`log`,`time`) VALUES ('admin','修改司机编号为：215534 的司机','2018-05-07 21:55:47') [ RunTime:0.0032s ]
+
+[ 2018-05-07T21:55:48+08:00 ] 127.0.0.1 /admin.php/Driver
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001536s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004526s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004598s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0124s ]
+SQL: SELECT * FROM `t_driver` WHERE ( status=0 ) ORDER BY create_time desc  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000036s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000084s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.025452s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.025525s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.004262s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004307s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004965s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005017s ]
+
+[ 2018-05-07T21:55:49+08:00 ] 127.0.0.1 /admin.php/Driver/update?id=13
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000020s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001664s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.005416s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005503s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `t_driver` WHERE ( id='13' ) LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000037s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000096s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.023257s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.023342s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.006495s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.006547s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005312s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005382s ]
+
+[ 2018-05-07T21:55:51+08:00 ] 127.0.0.1 /admin.php/Driver/updateDriver
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000018s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001524s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004734s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004811s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0113s ]
+SQL: SELECT `account` FROM `t_driver` WHERE ( status=0&&id!='13' ) ORDER BY create_time desc  [ RunTime:0.0004s ]
+SQL: UPDATE `t_driver` SET `number`='215534',`account`='admin',`password`='f79908a3fdc52d8748a76d003372f1e2',`name`='ss',`update_time`='2018-05-07 21:55:50' WHERE `id` = 13 [ RunTime:0.0023s ]
+SQL: SHOW COLUMNS FROM `t_log` [ RunTime:0.0115s ]
+SQL: INSERT INTO `t_log` (`user`,`log`,`time`) VALUES ('admin','修改司机编号为：215534 的司机','2018-05-07 21:55:51') [ RunTime:0.0033s ]
+
+[ 2018-05-07T21:55:51+08:00 ] 127.0.0.1 /admin.php/Driver
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001572s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.008905s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.009016s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0127s ]
+SQL: SELECT * FROM `t_driver` WHERE ( status=0 ) ORDER BY create_time desc  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000042s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000099s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.025244s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.025333s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.005143s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005216s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004876s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004935s ]
+
+[ 2018-05-07T21:55:53+08:00 ] 127.0.0.1 /admin.php/Driver/deleteDriver
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000604s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001201s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001255s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0109s ]
+SQL: UPDATE `t_driver` SET `delete_time`='2018-05-07 21:55:53',`status`='1' WHERE `id` = 13 [ RunTime:0.0032s ]
+SQL: SHOW COLUMNS FROM `t_log` [ RunTime:0.0109s ]
+SQL: INSERT INTO `t_log` (`user`,`log`,`time`) VALUES ('admin','删除司机ID为：13 的司机','2018-05-07 21:55:53') [ RunTime:0.0023s ]
+
+[ 2018-05-07T21:55:54+08:00 ] 127.0.0.1 /admin.php/Driver
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000018s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000523s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001005s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001074s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0122s ]
+SQL: SELECT * FROM `t_driver` WHERE ( status=0 ) ORDER BY create_time desc  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000039s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000090s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013610s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013678s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001107s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001149s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001371s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001414s ]
+
+[ 2018-05-07T21:56:07+08:00 ] 127.0.0.1 /admin.php/Index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000586s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000932s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000989s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000037s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000089s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014978s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015061s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001107s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001147s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001369s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001417s ]
+
+[ 2018-05-07T21:56:07+08:00 ] 127.0.0.1 /admin.php/Order
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000626s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000934s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000990s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0133s ]
+SQL: SELECT * FROM `t_order` WHERE ( status=0 ) ORDER BY order_status,create_time desc  [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000056s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000121s ]
+NOTIC: [8] Undefined variable: status C:\phpStudy\PHPTutorial\WWW\php\car_system\Application\Runtime\Cache\Admin\18bc66a7b6334412ab8e61a2539ecfbd.php 第 18 行.
+NOTIC: [8] Undefined variable: status C:\phpStudy\PHPTutorial\WWW\php\car_system\Application\Runtime\Cache\Admin\18bc66a7b6334412ab8e61a2539ecfbd.php 第 21 行.
+NOTIC: [8] Undefined variable: status C:\phpStudy\PHPTutorial\WWW\php\car_system\Application\Runtime\Cache\Admin\18bc66a7b6334412ab8e61a2539ecfbd.php 第 24 行.
+NOTIC: [8] Undefined variable: searchTime C:\phpStudy\PHPTutorial\WWW\php\car_system\Application\Runtime\Cache\Admin\18bc66a7b6334412ab8e61a2539ecfbd.php 第 31 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016232s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016293s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001211s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001275s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001477s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001529s ]
+
+[ 2018-05-07T21:56:08+08:00 ] 127.0.0.1 /admin.php/Driver
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000018s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000529s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000998s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001073s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0111s ]
+SQL: SELECT * FROM `t_driver` WHERE ( status=0 ) ORDER BY create_time desc  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000038s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000085s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011585s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011665s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001121s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001171s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001727s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001777s ]
+
+[ 2018-05-07T21:56:09+08:00 ] 127.0.0.1 /admin.php/Log
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000434s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000846s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000901s ]
+SQL: SHOW COLUMNS FROM `t_log` [ RunTime:0.0112s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `t_log` WHERE ( status=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `t_log` WHERE ( status=0 ) ORDER BY time desc LIMIT 0,6   [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000038s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000085s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011437s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011498s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001026s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001067s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001335s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001381s ]
+
+[ 2018-05-07T21:56:11+08:00 ] 127.0.0.1 /admin.php/Log/index/p/2.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001623s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004660s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004732s ]
+SQL: SHOW COLUMNS FROM `t_log` [ RunTime:0.0104s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `t_log` WHERE ( status=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `t_log` WHERE ( status=0 ) ORDER BY time desc LIMIT 6,6   [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000037s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000082s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.023132s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.023215s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.004810s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004859s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004609s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004655s ]
+
+[ 2018-05-07T21:56:14+08:00 ] 127.0.0.1 /admin.php/Log/index/p/1.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001612s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004492s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004557s ]
+SQL: SHOW COLUMNS FROM `t_log` [ RunTime:0.0120s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `t_log` WHERE ( status=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `t_log` WHERE ( status=0 ) ORDER BY time desc LIMIT 0,6   [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000041s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000091s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.023038s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.023107s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.004317s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004364s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004850s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004900s ]
+
+[ 2018-05-07T21:56:16+08:00 ] 127.0.0.1 /admin.php/Log/index/p/2.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001402s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004805s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004874s ]
+SQL: SHOW COLUMNS FROM `t_log` [ RunTime:0.0109s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `t_log` WHERE ( status=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `t_log` WHERE ( status=0 ) ORDER BY time desc LIMIT 6,6   [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000037s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000085s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022848s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.022933s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.004349s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004397s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005024s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005090s ]
+
+[ 2018-05-07T21:56:17+08:00 ] 127.0.0.1 /admin.php/Log/index/p/1.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001717s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004419s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004485s ]
+SQL: SHOW COLUMNS FROM `t_log` [ RunTime:0.0117s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `t_log` WHERE ( status=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `t_log` WHERE ( status=0 ) ORDER BY time desc LIMIT 0,6   [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000037s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000107s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.025648s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.025719s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.004517s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004571s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004678s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004728s ]
+
+[ 2018-05-07T21:56:18+08:00 ] 127.0.0.1 /admin.php/Log/index/p/2.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001370s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004501s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004574s ]
+SQL: SHOW COLUMNS FROM `t_log` [ RunTime:0.0105s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `t_log` WHERE ( status=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `t_log` WHERE ( status=0 ) ORDER BY time desc LIMIT 6,6   [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000061s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000142s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.024734s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.024802s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.004441s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004487s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005298s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005348s ]
+
+[ 2018-05-07T21:56:20+08:00 ] 127.0.0.1 /admin.php/Log/index/p/1.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001645s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004545s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004611s ]
+SQL: SHOW COLUMNS FROM `t_log` [ RunTime:0.0116s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `t_log` WHERE ( status=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `t_log` WHERE ( status=0 ) ORDER BY time desc LIMIT 0,6   [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000039s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000091s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.023821s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.023888s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.004627s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004678s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004583s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004639s ]
+

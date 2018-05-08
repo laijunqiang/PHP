@@ -54,4 +54,30 @@ class LogController extends Controller {
             return show(1, '删除成功');
         }
     }
+    //批量删除日志处理
+    public function deleteAllLog(){
+        //dump($_POST);
+        /*D方法实例化模型类的时候通常是实例化某个具体的模型类
+         当 \Admin\Model\AdminModel 类不存在的时候，D函数会尝试实例化公共模块下面的 \Common\Model\AdminModel类。
+         D方法可以自动检测模型类，如果存在自定义的模型类，则实例化自定义模型类，
+         如果不存在，则会实例化系统的\Think\Model基类，同时对于已实例化过的模型，不会重复实例化。*/
+        date_default_timezone_set("Asia/Shanghai");
+        $_POST['delete_time']=date("Y-m-d H:i:s");
+        $_POST['status']=1;
+        $_POST['id']  = array('in',$_POST['arr']);
+        $ret = D('Log')->deleteLog($_POST);
+//        save方法的返回值是影响的记录数，如果返回false则表示更新出错
+        if(!$ret) {
+            return show(0,'删除失败');
+        }else {
+            $index = A('Log');
+            $id=implode(",", $_POST['arr']);
+            if (session('adminUser.account')!=null) {
+                $index->addLog("删除日志ID为：$id 的日志", session('adminUser.account'));
+            }else {
+                $index->addLog("删除日志ID为：$id 的日志", session('User.name'));
+            }
+            return show(1, '删除成功');
+        }
+    }
 }

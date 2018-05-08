@@ -10,7 +10,7 @@
     <h3>操作日志信息表</h3>
     <table border="1px">
         <tr>
-            <td><input type="checkbox" name="checkAll" value="checkAll">全选</td>
+            <td><input type="checkbox" name="checkAll" id="all" value="checkAll">全选</td>
             <td>日志ID</td>
             <td>用户</td>
             <td>操作内容</td>
@@ -31,7 +31,7 @@
                 </td>
             </tr><?php endforeach; endif; else: echo "" ;endif; ?>
     </table>
-    <button onclick="deleteAll()">批量删除</button>
+    <button onclick="dialog.confirmDeleteLog()">批量删除</button>
     <div class="pagination">
         　　<ul>
         <li><?php echo ($page); ?></li>
