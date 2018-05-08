@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-05-07 13:08:27
+Date: 2018-05-08 14:48:39
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -80,7 +80,7 @@ CREATE TABLE `t_driver` (
 -- ----------------------------
 -- Records of t_driver
 -- ----------------------------
-INSERT INTO `t_driver` VALUES ('10', '130754', '12345676666', 'd4e11d0fe335d390eb09f07fcf3bddd7', '刘强东', '/Public/image/5aee8daad3a6d.jpg', '2018-05-06 13:07:54', null, null, '0');
+INSERT INTO `t_driver` VALUES ('10', '130754', '12345676666', 'd4e11d0fe335d390eb09f07fcf3bddd7', '刘强东', '/Public/image/5aee8daad3a6d.jpg', '2018-05-06 13:07:54', '2018-05-08 14:27:38', null, '0');
 INSERT INTO `t_driver` VALUES ('11', '161544', '13669586274', 'd4e11d0fe335d390eb09f07fcf3bddd7', '赖俊强', '/Public/image/5aeeb9b05c507.jpg', '2018-05-06 16:15:44', null, null, '0');
 INSERT INTO `t_driver` VALUES ('12', '161650', '13669581111', 'd4e11d0fe335d390eb09f07fcf3bddd7', '张三', '/Public/image/5aeec3e904668.jpg', '2018-05-06 16:16:50', '2018-05-06 16:59:21', '', '0');
 
@@ -119,11 +119,26 @@ CREATE TABLE `t_log` (
   `delete_time` char(19) DEFAULT NULL COMMENT '修改记录时间',
   `status` tinyint(4) DEFAULT '0' COMMENT '删除状态，0表示未删除，1表示已删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=153 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=168 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_log
 -- ----------------------------
+INSERT INTO `t_log` VALUES ('153', 'admin', '生成司机编号为：215534 的司机', '2018-05-07 21:55:34', null, '0');
+INSERT INTO `t_log` VALUES ('154', 'admin', '修改司机编号为：215534 的司机', '2018-05-07 21:55:38', null, '0');
+INSERT INTO `t_log` VALUES ('155', 'admin', '修改司机编号为：215534 的司机', '2018-05-07 21:55:41', null, '0');
+INSERT INTO `t_log` VALUES ('156', 'admin', '修改司机编号为：215534 的司机', '2018-05-07 21:55:43', null, '0');
+INSERT INTO `t_log` VALUES ('157', 'admin', '修改司机编号为：215534 的司机', '2018-05-07 21:55:47', '2018-05-08 10:32:46', '1');
+INSERT INTO `t_log` VALUES ('158', 'admin', '修改司机编号为：215534 的司机', '2018-05-07 21:55:51', '2018-05-08 10:20:16', '1');
+INSERT INTO `t_log` VALUES ('159', 'admin', '删除司机ID为：13 的司机', '2018-05-07 21:55:53', '2018-05-08 10:20:16', '1');
+INSERT INTO `t_log` VALUES ('160', 'admin', '删除日志ID为：Array 的日志', '2018-05-08 10:20:16', '2018-05-08 10:32:46', '1');
+INSERT INTO `t_log` VALUES ('161', 'admin', '删除日志ID为：160,157 的日志', '2018-05-08 10:32:46', null, '0');
+INSERT INTO `t_log` VALUES ('162', 'admin', '修改订单编号为：O20180430090334 的订单', '2018-05-08 10:36:44', null, '0');
+INSERT INTO `t_log` VALUES ('163', 'admin', '删除订单ID为：75 的订单', '2018-05-08 10:36:47', null, '0');
+INSERT INTO `t_log` VALUES ('164', 'admin', '删除订单ID为：73 的订单', '2018-05-08 10:36:50', null, '0');
+INSERT INTO `t_log` VALUES ('165', 'admin', '生成订单编号为：O20180508143014 的订单', '2018-05-08 14:30:14', '', '0');
+INSERT INTO `t_log` VALUES ('166', 'admin', '生成订单编号为：O20180508143050 的订单', '2018-05-08 14:30:50', '', '0');
+INSERT INTO `t_log` VALUES ('167', 'admin', '删除日志ID为：166,165 的日志', '2018-05-08 14:31:20', null, '0');
 
 -- ----------------------------
 -- Table structure for t_order
@@ -148,9 +163,9 @@ CREATE TABLE `t_order` (
   `contract_number` char(20) DEFAULT NULL COMMENT '合同号',
   `short_info` char(20) DEFAULT NULL COMMENT '缺货信息',
   `pick_quantity` int(11) DEFAULT NULL COMMENT '商品提货数量',
-  `pick_time` char(16) DEFAULT NULL COMMENT '提货时间',
+  `pick_time` char(19) DEFAULT NULL COMMENT '提货时间',
   `company` char(20) DEFAULT '' COMMENT '结算单位',
-  `real_quantity` int(11) DEFAULT NULL,
+  `real_quantity` int(11) DEFAULT NULL COMMENT '商品实际数量',
   `update_time` char(19) DEFAULT NULL COMMENT '修改记录时间',
   `delete_time` char(19) DEFAULT NULL COMMENT '删除记录时间',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态，0表示未删除，1表示已删除',
@@ -161,13 +176,15 @@ CREATE TABLE `t_order` (
   CONSTRAINT `t_order_ibfk_1` FOREIGN KEY (`goods_id`) REFERENCES `t_goods` (`id`),
   CONSTRAINT `t_order_ibfk_2` FOREIGN KEY (`car_id`) REFERENCES `t_car` (`id`),
   CONSTRAINT `t_order_ibfk_3` FOREIGN KEY (`driver_id`) REFERENCES `t_driver` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_order
 -- ----------------------------
-INSERT INTO `t_order` VALUES ('73', 'O20180429164413', 'O201804', '2', '石油', '1000', '2018-04-29 16:44:13', '2018-05-01 16:00:00', null, null, '一匠科技', '0', null, null, null, null, null, null, null, '', null, null, '', '0');
-INSERT INTO `t_order` VALUES ('75', 'O20180430090334', 'O201806', '4', '煤油', '1000', '2018-04-30 09:03:34', '2018-05-01 02:03:00', null, null, '长隆欢乐世界', '0', null, null, null, null, null, null, null, '', null, null, null, '0');
+INSERT INTO `t_order` VALUES ('73', 'O20180429164413', 'O201804', '2', '石油', '1000', '2018-04-29 16:44:13', '2018-05-01 16:00:00', '9', '滇C55555', '一匠科技', '1', '10', '130754', 'O456', 'O456', '', '1000', '2018-05-08 22:00:00', '一匠', null, '2018-05-08 13:43:59', '', '0');
+INSERT INTO `t_order` VALUES ('75', 'O20180430090334', 'O201806', '4', '煤油', '1000', '2018-04-30 09:03:34', '2018-06-01 02:03:00', '9', '滇C55555', '长隆欢乐世界', '2', '10', '130754', 'O123', 'O123', '', '1000', '2018-05-08 20:00:00', '一匠', '999', '2018-05-08 13:43:07', '', '0');
+INSERT INTO `t_order` VALUES ('76', 'O20180508143014', 'O201811', '4', '煤油', '1000', '2018-05-08 14:30:14', '2018-05-08 21:00:00', null, null, '罗浮山', '0', null, null, null, null, null, null, null, '', null, null, null, '0');
+INSERT INTO `t_order` VALUES ('77', 'O20180508143050', 'O201813', '4', '煤油', '10000', '2018-05-08 14:30:50', '2018-05-25 17:00:00', null, '', '台湾', '0', null, '', '', '', '', null, '', '', null, '', null, '0');
 
 -- ----------------------------
 -- Table structure for t_role

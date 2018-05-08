@@ -2,11 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>公共订单池</title>
+    <title>个人订单</title>
 </head>
 <body>
 <div align="center">
-    <h3>公共订单池</h3>
+    <h3>个人订单</h3>
+    <b>订单时间搜索：</b>
+    <input name="searchTime" type="text" id="searchTime" value="<?php echo ($searchTime); ?>"/>
+    <input name="search" type="button" value="搜索" class="search">
+    <input name="empty" type="button" value="清空">
     <table border="1px">
         <tr>
             <td>订单ID</td>
@@ -30,12 +34,12 @@
                 <td><?php echo ($vo["destination"]); ?></td>
                 <td><?php echo ($vo["goods_name"]); ?></td>
                 <td><?php echo ($vo["goods_quantity"]); ?></td>
-                <?php if(($vo["order_status"]) == "0"): ?><td>未接单</td>
-                    <?php else: ?>
-                    <td>已接单</td><?php endif; ?>
+                <?php if(($vo["order_status"]) == "0"): ?><td>未接单</td><?php endif; ?>
+                <?php if(($vo["order_status"]) == "1"): ?><td>已接单</td><?php endif; ?>
+                <?php if(($vo["order_status"]) == "2"): ?><td>已结束</td><?php endif; ?>
                 <td>
-                    <?php if(($vo["order_status"]) == "0"): ?><!--将id值传到js中，无法通过URL传id值-->
-                        <button><a onclick="dialog.confirm('是否确定接单？','/index.php/Home/Order/takeOrder?id=<?php echo ($vo["id"]); ?>')">接单</a></button><?php endif; ?>
+                    <?php if(($vo["order_status"]) == "1"): ?><button><a onclick="dialog.confirm('是否确定送达？','/index.php/Home/PersonalOrder/deliveryOrder?id=<?php echo ($vo["id"]); ?>')">送达</a></button><?php endif; ?>
+                    <button><a href="/index.php/Home/PersonalOrder/showOrder?id=<?php echo ($vo["id"]); ?>">查看</a></button>
                 </td>
             </tr><?php endforeach; endif; else: echo "" ;endif; ?>
     </table>
@@ -43,6 +47,16 @@
 <script src="/Public/js/jquery.js"></script>
 <script src="/Public/js/dialog/layer.js"></script>
 <script src="/Public/js/dialog.js"></script>
-
+<script src="/Public/js/home/personalOrder.js"></script>
+<script src="/Public/laydate/laydate.js"></script>
+<!--不能直接使用layUI，"/Public/laydate/layui.css"有样式-->
+<script>
+    //年月范围
+    laydate.render({
+        elem: '#searchTime'
+        ,type: 'month'
+        ,range: true
+    });
+</script>
 </body>
 </html>

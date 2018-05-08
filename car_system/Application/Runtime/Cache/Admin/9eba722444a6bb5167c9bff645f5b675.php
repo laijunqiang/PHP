@@ -123,7 +123,12 @@
 <script>
     //执行一个laydate实例
     laydate.render({
-        elem: '#departure_time,#pick_time' //指定元素
+        elem: '#departure_time' //指定元素
+        ,type: 'datetime'
+    });
+    //执行一个laydate实例
+    laydate.render({
+        elem: '#pick_time' //指定元素
         ,type: 'datetime'
     });
 </script>

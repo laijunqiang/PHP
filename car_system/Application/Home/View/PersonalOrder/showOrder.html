@@ -14,7 +14,7 @@
             <td>订单号</td>
             <td>商品ID</td>
             <td>商品</td>
-            <td>数量</td>
+            <td>数量(kg)</td>
             <td>创建时间</td>
             <td>出发时间</td>
             <td>车辆ID</td>
@@ -26,9 +26,10 @@
             <td>提货单号</td>
             <td>合同号</td>
             <td>缺货信息</td>
-            <td>提货数量</td>
+            <td>提货数量(kg)</td>
             <td>提货时间</td>
             <td>结算单位</td>
+            <td>实际数量(kg)</td>
             <td>修改时间</td>
         </tr>
         <tr>
@@ -60,6 +61,7 @@
             <td>{$ret.pick_quantity}</td>
             <td>{$ret.pick_time}</td>
             <td>{$ret.company}</td>
+            <td>{$ret.real_quantity}</td>
             <td>{$ret.update_time}</td>
         </tr>
     </table>

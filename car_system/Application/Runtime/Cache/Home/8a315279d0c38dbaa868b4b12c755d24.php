@@ -26,7 +26,7 @@
         </tr>
         <tr>
             <td>出发时间：</td>
-            <td><input type="datetime-local" value="<?php echo ($ret["departure_time"]); ?>" name="departure_time" id="departure_time" disabled="disabled"></td>
+            <td><input type="text" value="<?php echo ($ret["departure_time"]); ?>" name="departure_time" id="departure_time" disabled="disabled"></td>
         </tr>
         <tr>
             <td>车牌号：</td>
@@ -56,8 +56,8 @@
             <td><input type="text" value="<?php echo ($ret["goods_name"]); ?>" name="goods_name" id="goods_name" disabled="disabled"></td>
         </tr>
         <tr>
-            <td>数量：</td>
-            <td><input type="text" value="<?php echo ($ret["goods_quantity"]); ?>" name="goods_quantity" id="goods_quantity" disabled="disabled"></td>
+            <td>数量(kg)：</td>
+            <td><input type="number" value="<?php echo ($ret["goods_quantity"]); ?>" name="goods_quantity" id="goods_quantity" disabled="disabled"></td>
         </tr>
             <!--司机ID-->
             <input type="hidden" value="<?php echo ($driver["id"]); ?>" name="driver_id" id="driver_id" disabled="disabled">
@@ -78,12 +78,12 @@
             <td><input type="text"  name="short_info" id="short_info"></td>
         </tr>
         <tr>
-            <td>提货数量：</td>
-            <td><input type="text"  name="pick_quantity" id="pick_quantity"></td>
+            <td>提货数量(kg)：</td>
+            <td><input type="number"  name="pick_quantity" id="pick_quantity"></td>
         </tr>
         <tr>
             <td>提货时间：</td>
-            <td><input type="datetime-local"  name="pick_time" id="pick_time"></td>
+            <td><input type="text"  name="pick_time" id="pick_time"></td>
         </tr>
         <tr>
             <td>结算单位：</td>
@@ -101,5 +101,14 @@
 <script src="/Public/js/dialog/layer.js"></script>
 <script src="/Public/js/dialog.js"></script>
 <script src="/Public/js/Home/order.js"></script>
+<script src="/Public/laydate/laydate.js"></script>
+<!--不能直接使用layUI，"/Public/laydate/layui.css"有样式-->
+<script>
+    //执行一个laydate实例
+    laydate.render({
+        elem: '#pick_time' //指定元素
+        ,type: 'datetime'
+    });
+</script>
 </body>
 </html>

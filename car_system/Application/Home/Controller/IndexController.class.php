@@ -7,6 +7,9 @@ class IndexController extends Controller {
         if(!session('driverUser')) {
             $this->redirect('Login/index');
         }else {
+            $account = $_SESSION['driverUser']['account'];
+            $ret=D('Driver')->getDriverByAccount($account);
+            $this->assign('ret',$ret);
 //            ajax跳转时，有display的控制器的视图会被覆盖
             $this->display();
         }

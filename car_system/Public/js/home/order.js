@@ -39,10 +39,12 @@ var order = {
             dialog.error("缺货信息不能超过20位，请重新输入！");
         } else if (pick_quantity.length > 10) {
             dialog.error("商品提货数量不能超过10位，请重新输入！");
-        } else if (pick_time.length > 16) {
-            dialog.error("提货时间不能超过16位，请重新输入！");
+        } else if (pick_time.length > 19) {
+            dialog.error("提货时间不能超过19位，请重新输入！");
         } else if (company.length > 20) {
             dialog.error("结算单位不能超过20位，请重新输入！");
+        } else if (pick_quantity> goods_quantity) {
+            dialog.error("提货数量不能超过订单数量，请重新输入！");
         } else {
 
             var url = "/index.php/Home/Order/updateOrder";
@@ -105,8 +107,8 @@ $("#pick_quantity").blur(function () {
     }
 });
 $("#pick_time").blur(function () {
-    if ($("#pick_time").val().length==0) {
-        dialog.error("提货时间不能为空，请重新输入！");
+    if ($("#pick_time").val().length>19) {
+        dialog.error("提货时间不能超过19位，请重新输入！");
     }
 });
 $("#company").blur(function () {

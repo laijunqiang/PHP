@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,19 +16,19 @@
     <table>
         <tr>
             <td>司机ID：</td>
-            <td><input type="text" value="{$ret.id}" name="id" disabled="disabled"></td>
+            <td><input type="text" value="<?php echo ($ret["id"]); ?>" name="id" disabled="disabled"></td>
         </tr>
         <tr>
             <td>司机编号：</td>
-            <td><input type="text" value="{$ret.number}" name="number" id="number" disabled="disabled"></td>
+            <td><input type="text" value="<?php echo ($ret["number"]); ?>" name="number" id="number" disabled="disabled"></td>
         </tr>
         <tr>
             <td>司机账号：</td>
-            <td><input type="text" value="{$ret.account}" name="account" id="account" disabled="disabled"></td>
+            <td><input type="text" value="<?php echo ($ret["account"]); ?>" name="account" id="account" disabled="disabled"></td>
         </tr>
         <tr>
             <td>真实姓名：</td>
-            <td><input type="text" value="{$ret.name}" name="name" id="name" disabled="disabled"></td>
+            <td><input type="text" value="<?php echo ($ret["name"]); ?>" name="name" id="name" disabled="disabled"></td>
         </tr>
     </table>
 </div>

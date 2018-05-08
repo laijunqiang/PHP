@@ -26,8 +26,8 @@ class OrderController extends Controller {
     //司机接单处理
     public function updateOrder(){
         $car_plate=$_POST['car_plate'];
-        $ret=D('Car')->getIdByPlate($car_plate);
-        $_POST['car_id']=$ret;
+        $car_id=D('Car')->getIdByPlate($car_plate);
+        $_POST['car_id']=$car_id;
         //dump($_POST);
         date_default_timezone_set("Asia/Shanghai");
         $_POST['update_time']=date("Y-m-d H:i:s");

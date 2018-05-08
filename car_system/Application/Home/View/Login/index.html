@@ -13,7 +13,7 @@
             <td>账号：</td>
             <!--placeholder 属性提供可描述输入字段预期值的提示信息（hint）。
             该提示会在输入字段为空时显示，并会在字段获得焦点时消失。-->
-            <td><input type="text" name="account" placeholder="请输入您的账号"  /></td>
+            <td><input type="text" name="account" id="account" placeholder="请输入您的账号"  /></td>
         </tr>
         <tr>
             <td>密码：</td>

@@ -36,7 +36,7 @@
         </tr>
         <tr>
             <td>出发时间：</td>
-            <td><input type="datetime-local" value="{$ret.departure_time}" name="departure_time" id="departure_time" disabled="disabled"></td>
+            <td><input type="text" value="{$ret.departure_time}" name="departure_time" id="departure_time" disabled="disabled"></td>
         </tr>
         <!--车辆ID-->
         <input type="hidden" value="{$ret.car_id}" name="car_id" id="car_id" disabled="disabled">
@@ -82,14 +82,14 @@
         </tr>
         <tr>
             <td>提货时间：</td>
-            <td><input type="datetime-local" value="{$ret.pick_time}"  name="pick_time" id="pick_time" disabled="disabled"></td>
+            <td><input type="text" value="{$ret.pick_time}"  name="pick_time" id="pick_time" disabled="disabled"></td>
         </tr>
         <tr>
             <td>结算单位：</td>
             <td><input type="text" value="{$ret.company}" name="company" id="company" disabled="disabled"></td>
         </tr>
         <tr>
-            <td>商品实际数量(kg)：</td>
+            <td>实际数量(kg)：</td>
             <td><input type="number" name="real_quantity" id="real_quantity"></td>
         </tr>
         <tr align="center">

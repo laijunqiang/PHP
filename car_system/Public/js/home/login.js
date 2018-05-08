@@ -14,7 +14,9 @@ var login = {
         if(!account||!password) {
             //在本文件中虽然没有调用，但是在index.html中将dialog.js和login.js加载在一起
             dialog.error('账号或密码不能为空');
-        }else {
+        }else if(account.length>11){
+            dialog.error("司机账号不能超过11位，请重新输入！")
+        }else{
             var url = "/index.php/Home/Login/check";
             var data = {'account': account, 'password': password};//JSON格式
             // 执行异步请求  $.post
@@ -39,5 +41,10 @@ $('#img').click(function () {
     }else {
         $('#input').attr('type','password');
         $('#img').attr('src','/Public/image/visible.png');
+    }
+});
+$('#account').blur(function () {
+    if ($('#account').val().length>11){
+        dialog.error("司机账号不能超过11位，请重新输入！")
     }
 });
