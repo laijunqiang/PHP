@@ -121,12 +121,11 @@
 <script src="/Public/laydate/laydate.js"></script>
 <!--不能直接使用layUI，"/Public/laydate/layui.css"有样式-->
 <script>
-    //执行一个laydate实例
+    //执行一个laydate实例 elem: '#departure_time,#pick_time'一起会出错误
     laydate.render({
         elem: '#departure_time' //指定元素
         ,type: 'datetime'
     });
-    //执行一个laydate实例
     laydate.render({
         elem: '#pick_time' //指定元素
         ,type: 'datetime'
