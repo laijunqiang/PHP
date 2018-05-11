@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-05-11 17:07:10
+Date: 2018-05-11 21:55:49
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -31,30 +31,7 @@ CREATE TABLE `t_admin` (
 -- ----------------------------
 -- Records of t_admin
 -- ----------------------------
-INSERT INTO `t_admin` VALUES ('1', 'admin', 'f79908a3fdc52d8748a76d003372f1e2', '2018-04-16 15:52:36', '2018-05-07 12:41:21');
-
--- ----------------------------
--- Table structure for t_car
--- ----------------------------
-DROP TABLE IF EXISTS `t_car`;
-CREATE TABLE `t_car` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增ID',
-  `number` char(20) NOT NULL COMMENT '车辆编号',
-  `plate` char(7) NOT NULL COMMENT '车牌号',
-  `driver_id` int(11) NOT NULL COMMENT '司机ID',
-  `create_time` char(19) NOT NULL COMMENT '创建记录时间',
-  `update_time` char(19) DEFAULT NULL COMMENT '修改记录时间',
-  `delete_time` char(19) DEFAULT NULL COMMENT '删除记录时间',
-  `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态，0表示未删除，1表示已删除',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `plate` (`plate`) USING BTREE,
-  KEY `driver_id` (`driver_id`),
-  CONSTRAINT `t_car_ibfk_1` FOREIGN KEY (`driver_id`) REFERENCES `t_driver` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of t_car
--- ----------------------------
+INSERT INTO `t_admin` VALUES ('1', 'admin', '6ce2fd100b183b52f35d616d669fd114', '2018-04-16 15:52:36', '2018-05-11 20:56:32');
 
 -- ----------------------------
 -- Table structure for t_driver
@@ -75,11 +52,12 @@ CREATE TABLE `t_driver` (
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态，0表示未删除，1表示已删除',
   PRIMARY KEY (`id`),
   UNIQUE KEY `account` (`account`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_driver
 -- ----------------------------
+INSERT INTO `t_driver` VALUES ('1', 'D0001', '13669586274', 'ba8180831b8d94535ddefad359f735b2', '赖俊强', null, '纠结', '一匠科技', '2018-05-11 15:52:36', null, null, '0');
 
 -- ----------------------------
 -- Table structure for t_log
@@ -93,10 +71,29 @@ CREATE TABLE `t_log` (
   `delete_time` char(19) DEFAULT NULL COMMENT '修改记录时间',
   `status` tinyint(4) DEFAULT '0' COMMENT '删除状态，0表示未删除，1表示已删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=168 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_log
+-- ----------------------------
+INSERT INTO `t_log` VALUES ('1', 'admin', '修改账号为：admin 的车辆', '2018-05-11 20:56:09', null, '0');
+INSERT INTO `t_log` VALUES ('2', 'admin', '修改账号为：admin 的车辆', '2018-05-11 20:56:32', null, '0');
+
+-- ----------------------------
+-- Table structure for t_notice
+-- ----------------------------
+DROP TABLE IF EXISTS `t_notice`;
+CREATE TABLE `t_notice` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增ID',
+  `content` text NOT NULL COMMENT '公告内容',
+  `create_time` char(19) NOT NULL COMMENT '创建记录时间',
+  `update_time` char(19) DEFAULT NULL COMMENT '修改记录时间',
+  `delete_time` char(19) DEFAULT NULL COMMENT '删除记录时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_notice
 -- ----------------------------
 
 -- ----------------------------
@@ -113,11 +110,12 @@ CREATE TABLE `t_oil` (
   `delete_time` char(19) DEFAULT NULL COMMENT '删除记录时间',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态，0表示未删除，1表示已删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_oil
 -- ----------------------------
+INSERT INTO `t_oil` VALUES ('1', 'O0111', '二甲苯', '芳香烃类', '2018-05-11 15:52:36', null, null, '0');
 
 -- ----------------------------
 -- Table structure for t_order
@@ -125,41 +123,33 @@ CREATE TABLE `t_oil` (
 DROP TABLE IF EXISTS `t_order`;
 CREATE TABLE `t_order` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增ID',
-  `number` char(15) NOT NULL COMMENT '订单编号',
-  `order_number` char(20) DEFAULT NULL COMMENT '订单号',
-  `goods_id` int(11) DEFAULT NULL COMMENT '商品ID',
-  `goods_name` char(20) NOT NULL COMMENT '商品名称',
-  `goods_quantity` int(11) NOT NULL COMMENT '商品数量',
-  `create_time` char(19) NOT NULL COMMENT '订单创建时间',
-  `departure_time` char(19) DEFAULT NULL COMMENT '订单出发时间',
-  `car_id` int(11) DEFAULT NULL COMMENT '车辆ID',
-  `car_plate` char(7) DEFAULT NULL COMMENT '车牌号',
-  `destination` char(30) NOT NULL COMMENT '目的地',
-  `order_status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '订单状态，0表示未接单，1表示已接单，2表示已结束',
-  `driver_id` int(11) DEFAULT NULL COMMENT '司机ID',
+  `number` char(20) NOT NULL COMMENT '订单编号',
+  `oil_id` int(11) NOT NULL COMMENT '油品ID',
+  `oil_name` char(20) NOT NULL COMMENT '油品名称',
+  `oil_type` char(20) NOT NULL COMMENT '油品类型',
+  `vehicle_id` int(11) NOT NULL COMMENT '车辆ID',
+  `vehicle_plate` char(7) NOT NULL COMMENT '车牌号',
+  `driver_id` int(11) NOT NULL COMMENT '司机ID',
   `driver_number` char(20) DEFAULT NULL COMMENT '司机编号',
-  `pick_number` char(20) DEFAULT NULL COMMENT '提货单号',
-  `contract_number` char(20) DEFAULT NULL COMMENT '合同号',
-  `short_info` char(20) DEFAULT NULL COMMENT '缺货信息',
-  `pick_quantity` int(11) DEFAULT NULL COMMENT '商品提货数量',
-  `pick_time` char(19) DEFAULT NULL COMMENT '提货时间',
-  `company` char(20) DEFAULT '' COMMENT '结算单位',
-  `real_quantity` int(11) DEFAULT NULL COMMENT '商品实际数量',
+  `driver_company` char(20) DEFAULT NULL COMMENT '司机隶属公司',
+  `order_status` tinyint(4) NOT NULL COMMENT '订单状态',
+  `create_time` char(19) NOT NULL COMMENT '创建记录时间',
   `update_time` char(19) DEFAULT NULL COMMENT '修改记录时间',
   `delete_time` char(19) DEFAULT NULL COMMENT '删除记录时间',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态，0表示未删除，1表示已删除',
   PRIMARY KEY (`id`),
-  KEY `goods_id` (`goods_id`),
-  KEY `car_id` (`car_id`),
+  KEY `oil_id` (`oil_id`),
   KEY `driver_id` (`driver_id`),
-  CONSTRAINT `t_order_ibfk_1` FOREIGN KEY (`goods_id`) REFERENCES `t_oil` (`id`),
-  CONSTRAINT `t_order_ibfk_2` FOREIGN KEY (`car_id`) REFERENCES `t_car` (`id`),
+  KEY `vehicle_id` (`vehicle_id`) USING BTREE,
+  CONSTRAINT `t_order_ibfk_2` FOREIGN KEY (`vehicle_id`) REFERENCES `t_vehicle` (`id`),
+  CONSTRAINT `t_order_ibfk_1` FOREIGN KEY (`oil_id`) REFERENCES `t_oil` (`id`),
   CONSTRAINT `t_order_ibfk_3` FOREIGN KEY (`driver_id`) REFERENCES `t_driver` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_order
 -- ----------------------------
+INSERT INTO `t_order` VALUES ('1', 'O0001', '1', '二甲苯', '芳香烃类', '1', '粤L66666', '1', 'D0001', '一匠科技', '0', '2018-05-11 15:52:36', null, null, '0');
 
 -- ----------------------------
 -- Table structure for t_role
@@ -170,11 +160,12 @@ CREATE TABLE `t_role` (
   `name` char(20) NOT NULL COMMENT '角色名称',
   `order_manage` tinyint(4) DEFAULT NULL COMMENT '订单管理权限',
   `driver_manage` tinyint(4) DEFAULT NULL COMMENT '司机管理权限',
-  `car_manage` tinyint(4) DEFAULT NULL COMMENT '车辆管理权限',
-  `goods_manage` tinyint(4) DEFAULT NULL COMMENT '商品管理权限',
+  `vehicle_manage` tinyint(4) DEFAULT NULL COMMENT '车辆管理权限',
+  `oil_manage` tinyint(4) DEFAULT NULL COMMENT '油品管理权限',
   `user_manage` tinyint(4) DEFAULT NULL COMMENT '用户管理权限',
   `role_manage` tinyint(4) DEFAULT NULL COMMENT '角色管理权限',
   `log_manage` tinyint(4) DEFAULT NULL COMMENT '日志管理权限',
+  `notice_manage` tinyint(4) DEFAULT NULL COMMENT '公告管理权限',
   `create_time` char(19) DEFAULT NULL COMMENT '创建记录时间',
   `update_time` char(19) DEFAULT NULL COMMENT '修改记录时间',
   `delete_time` char(19) DEFAULT NULL COMMENT '删除记录时间',
@@ -185,9 +176,9 @@ CREATE TABLE `t_role` (
 -- ----------------------------
 -- Records of t_role
 -- ----------------------------
-INSERT INTO `t_role` VALUES ('1', '派单员', '1', '0', '0', '0', '0', '0', '0', '2018-04-29 14:04:55', '2018-05-06 21:35:25', '', '0');
-INSERT INTO `t_role` VALUES ('24', '司机管理员', '0', '1', '0', '0', '0', '0', '0', '2018-05-06 21:35:42', null, null, '0');
-INSERT INTO `t_role` VALUES ('25', '管理员', '1', '1', '1', '1', '1', '0', '0', '2018-05-07 12:36:11', null, null, '0');
+INSERT INTO `t_role` VALUES ('1', '派单员', '1', '0', '0', '0', '0', '0', '0', null, '2018-04-29 14:04:55', '2018-05-06 21:35:25', '', '0');
+INSERT INTO `t_role` VALUES ('24', '司机管理员', '0', '1', '0', '0', '0', '0', '0', null, '2018-05-06 21:35:42', null, null, '0');
+INSERT INTO `t_role` VALUES ('25', '管理员', '1', '1', '1', '1', '1', '0', '0', null, '2018-05-07 12:36:11', null, null, '0');
 
 -- ----------------------------
 -- Table structure for t_user
@@ -211,6 +202,29 @@ CREATE TABLE `t_user` (
 -- ----------------------------
 -- Records of t_user
 -- ----------------------------
-INSERT INTO `t_user` VALUES ('1', '', 'd4e11d0fe335d390eb09f07fcf3bddd7', '萧晓东', '1', '2018-04-29 14:04:55', null, '', '0');
-INSERT INTO `t_user` VALUES ('4', '13138336273', 'd4e11d0fe335d390eb09f07fcf3bddd7', '马东', '25', '2018-05-06 23:16:27', '2018-05-07 12:36:26', null, '0');
-INSERT INTO `t_user` VALUES ('5', '12345678901', 'd4e11d0fe335d390eb09f07fcf3bddd7', '朱琪', '24', '2018-05-07 12:31:55', null, null, '0');
+INSERT INTO `t_user` VALUES ('1', '13669586274', 'ba8180831b8d94535ddefad359f735b2', '萧晓东', '1', '2018-04-29 14:04:55', null, '', '0');
+INSERT INTO `t_user` VALUES ('4', '13138336273', 'ba8180831b8d94535ddefad359f735b2', '马东', '25', '2018-05-06 23:16:27', '2018-05-07 12:36:26', null, '0');
+INSERT INTO `t_user` VALUES ('5', '12345678901', 'ba8180831b8d94535ddefad359f735b2', '朱琪', '24', '2018-05-07 12:31:55', null, null, '0');
+
+-- ----------------------------
+-- Table structure for t_vehicle
+-- ----------------------------
+DROP TABLE IF EXISTS `t_vehicle`;
+CREATE TABLE `t_vehicle` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增ID',
+  `number` char(20) NOT NULL COMMENT '车辆编号',
+  `plate` char(7) NOT NULL COMMENT '车牌号',
+  `driver_id` int(11) NOT NULL COMMENT '司机ID',
+  `create_time` char(19) NOT NULL COMMENT '创建记录时间',
+  `update_time` char(19) DEFAULT NULL COMMENT '修改记录时间',
+  `delete_time` char(19) DEFAULT NULL COMMENT '删除记录时间',
+  `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态，0表示未删除，1表示已删除',
+  PRIMARY KEY (`id`),
+  KEY `driver_id` (`driver_id`),
+  CONSTRAINT `t_vehicle_ibfk_1` FOREIGN KEY (`driver_id`) REFERENCES `t_driver` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_vehicle
+-- ----------------------------
+INSERT INTO `t_vehicle` VALUES ('1', 'V0110', '粤L66666', '1', '2018-05-11 15:52:36', null, null, '0');
