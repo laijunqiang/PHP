@@ -1,7 +1,7 @@
 <?php
 namespace Admin\Controller;
 use Think\Controller;
-class GoodsController extends Controller {
+class OilController extends Controller {
     public function index(){
         $ret = D('Goods')->getGoods();
         //dump($ret);

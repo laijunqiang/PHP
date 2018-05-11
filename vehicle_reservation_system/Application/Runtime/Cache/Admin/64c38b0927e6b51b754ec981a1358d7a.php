@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -26,29 +26,25 @@
             <td>操作</td>
         </tr>
         <!--volist标签通常用于查询数据集（select方法）的结果输出，通常模型的select方法返回的结果是一个二维数组，可以直接使用volist标签进行输出。-->
-        <volist name="ret" id="vo">
-            <tr>
-                <td>{$vo.id}</td>
-                <td>{$vo.number}</td>
-                <td>{$vo.account}</td>
-                <td>{$vo.name}</td>
+        <?php if(is_array($ret)): $i = 0; $__LIST__ = $ret;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
+                <td><?php echo ($vo["id"]); ?></td>
+                <td><?php echo ($vo["number"]); ?></td>
+                <td><?php echo ($vo["account"]); ?></td>
+                <td><?php echo ($vo["name"]); ?></td>
                 <td>
-                    <neq  name="vo.image" value="">
-                    <img src="{$vo.image}">
-                    </neq >
+                    <?php if(($vo["image"]) != ""): ?><img src="<?php echo ($vo["image"]); ?>"><?php endif; ?>
                 </td>
-                <td>{$vo.nickname}</td>
-                <td>{$vo.company}</td>
-                <td>{$vo.create_time}</td>
-                <td>{$vo.update_time}</td>
+                <td><?php echo ($vo["nickname"]); ?></td>
+                <td><?php echo ($vo["company"]); ?></td>
+                <td><?php echo ($vo["create_time"]); ?></td>
+                <td><?php echo ($vo["update_time"]); ?></td>
                 <td>
                     <!--1.通过<a>标签   2.window.location.href="/admin.php/Driver";
                         才可以跳转到<iframe>页面-->
-                    <button><a href="/admin.php/Driver/update?id={$vo.id}">修改</a></button>
-                    <button><a onclick="dialog.confirmDriver('是否确定删除？','{$vo.id}')">删除</a></button>
+                    <button><a href="/admin.php/Driver/update?id=<?php echo ($vo["id"]); ?>">修改</a></button>
+                    <button><a onclick="dialog.confirmDriver('是否确定删除？','<?php echo ($vo["id"]); ?>')">删除</a></button>
                 </td>
-            </tr>
-        </volist>
+            </tr><?php endforeach; endif; else: echo "" ;endif; ?>
     </table>
 </div>
 <script src="/Public/js/jquery.js"></script>

@@ -1,7 +1,7 @@
 <?php
 namespace Admin\Controller;
 use Think\Controller;
-class CarController extends Controller {
+class VehicleController extends Controller {
     public function index(){
         $ret = D('Car')->getCar();
         //dump($ret);

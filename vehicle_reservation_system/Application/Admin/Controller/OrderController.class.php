@@ -40,49 +40,6 @@ class OrderController extends Controller {
         }
     }
 
-    //修改订单页面
-    public function update(){
-        $id=$_GET['id'];
-//      如果查询出错，find方法返回false，如果查询结果为空返回NULL，查询成功则返回一个关联数组（键值是字段名或者别名）。
-        $ret = D('Order')->showOrder($id);
-        //在视图层可以通过{$ret.id}访问
-        $this->assign('ret', $ret);
-        $goods=D('Goods')->getGoods();
-        $this->assign('goods',$goods);
-        $car = D('Car')->getCar();
-        $this->assign('car',$car);
-        $driver = D('Driver')->getDriver();
-        $this->assign('driver',$driver);
-        $this->display();
-    }
-    //修改订单处理
-    public function updateOrder(){
-        date_default_timezone_set("Asia/Shanghai");
-        $_POST['update_time']=date("Y-m-d H:i:s");
-        //dump($_POST); //成功返回一个数组，失败返回NULL
-//      一有输出，ajax就会获取，但只能获取第一个输出
-        //return没有效果，只是show()函数有exit输出，所以能接受
-        //取出商品ID
-        $_POST['goods_id']=D('Goods')->getIdByName($_POST['goods_name']);
-        //取出车辆ID
-        $_POST['car_id']=D('Car')->getIdByPlate($_POST['car_plate']);
-        //取出司机ID
-        $_POST['driver_id']=D('Driver')->getIdByNumber($_POST['driver_number']);
-        $return = D('Order')->updateOrder($_POST);
-//       save方法的返回值是影响的记录数，如果返回false则表示更新出错
-        if (!$return) {
-            return show(0, '修改订单失败');
-        } else {
-            $index = A('Log');
-            $number=$_POST['number'];
-            if (session('adminUser.account')!=null) {
-                $index->addLog("修改订单编号为：$number 的订单", session('adminUser.account'));
-            }else {
-                $index->addLog("修改订单编号为：$number 的订单", session('User.name'));
-            }
-            return show(1, '修改订单成功');
-        }
-    }
     //删除订单处理
     public function deleteOrder(){
 
