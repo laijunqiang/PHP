@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-05-11 21:55:49
+Date: 2018-05-13 22:58:21
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -32,6 +32,29 @@ CREATE TABLE `t_admin` (
 -- Records of t_admin
 -- ----------------------------
 INSERT INTO `t_admin` VALUES ('1', 'admin', '6ce2fd100b183b52f35d616d669fd114', '2018-04-16 15:52:36', '2018-05-11 20:56:32');
+
+-- ----------------------------
+-- Table structure for t_car
+-- ----------------------------
+DROP TABLE IF EXISTS `t_car`;
+CREATE TABLE `t_car` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增ID',
+  `number` char(20) NOT NULL COMMENT '车辆编号',
+  `plate` char(7) NOT NULL COMMENT '车牌号',
+  `driver_id` int(11) NOT NULL COMMENT '司机ID',
+  `create_time` char(19) NOT NULL COMMENT '创建记录时间',
+  `update_time` char(19) DEFAULT NULL COMMENT '修改记录时间',
+  `delete_time` char(19) DEFAULT NULL COMMENT '删除记录时间',
+  `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态，0表示未删除，1表示已删除',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `plate` (`plate`) USING BTREE,
+  KEY `driver_id` (`driver_id`),
+  CONSTRAINT `t_car_ibfk_1` FOREIGN KEY (`driver_id`) REFERENCES `t_driver` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_car
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for t_driver
@@ -110,12 +133,13 @@ CREATE TABLE `t_oil` (
   `delete_time` char(19) DEFAULT NULL COMMENT '删除记录时间',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态，0表示未删除，1表示已删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_oil
 -- ----------------------------
 INSERT INTO `t_oil` VALUES ('1', 'O0111', '二甲苯', '芳香烃类', '2018-05-11 15:52:36', null, null, '0');
+INSERT INTO `t_oil` VALUES ('2', 'O0002', '乙醇', '芳香烃类', '2018-05-11 15:52:36', null, null, '0');
 
 -- ----------------------------
 -- Table structure for t_order
@@ -133,6 +157,7 @@ CREATE TABLE `t_order` (
   `driver_number` char(20) DEFAULT NULL COMMENT '司机编号',
   `driver_company` char(20) DEFAULT NULL COMMENT '司机隶属公司',
   `order_status` tinyint(4) NOT NULL COMMENT '订单状态',
+  `order` int(11) NOT NULL COMMENT '排队次序',
   `create_time` char(19) NOT NULL COMMENT '创建记录时间',
   `update_time` char(19) DEFAULT NULL COMMENT '修改记录时间',
   `delete_time` char(19) DEFAULT NULL COMMENT '删除记录时间',
@@ -141,15 +166,16 @@ CREATE TABLE `t_order` (
   KEY `oil_id` (`oil_id`),
   KEY `driver_id` (`driver_id`),
   KEY `vehicle_id` (`vehicle_id`) USING BTREE,
-  CONSTRAINT `t_order_ibfk_2` FOREIGN KEY (`vehicle_id`) REFERENCES `t_vehicle` (`id`),
   CONSTRAINT `t_order_ibfk_1` FOREIGN KEY (`oil_id`) REFERENCES `t_oil` (`id`),
+  CONSTRAINT `t_order_ibfk_2` FOREIGN KEY (`vehicle_id`) REFERENCES `t_vehicle` (`id`),
   CONSTRAINT `t_order_ibfk_3` FOREIGN KEY (`driver_id`) REFERENCES `t_driver` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_order
 -- ----------------------------
-INSERT INTO `t_order` VALUES ('1', 'O0001', '1', '二甲苯', '芳香烃类', '1', '粤L66666', '1', 'D0001', '一匠科技', '0', '2018-05-11 15:52:36', null, null, '0');
+INSERT INTO `t_order` VALUES ('1', 'O0001', '1', '二甲苯', '芳香烃类', '1', '粤L66666', '1', 'D0001', '一匠科技', '1', '1', '2018-05-11 15:52:36', null, null, '0');
+INSERT INTO `t_order` VALUES ('2', 'O0002', '2', '乙醇', '芳香烃类', '1', '粤L66666', '1', 'D0001', '一匠', '2', '2', '2018-05-11 15:52:36', null, null, '0');
 
 -- ----------------------------
 -- Table structure for t_role
