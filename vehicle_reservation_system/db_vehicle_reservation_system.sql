@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-05-13 22:58:21
+Date: 2018-05-14 11:14:21
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -94,13 +94,14 @@ CREATE TABLE `t_log` (
   `delete_time` char(19) DEFAULT NULL COMMENT '修改记录时间',
   `status` tinyint(4) DEFAULT '0' COMMENT '删除状态，0表示未删除，1表示已删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_log
 -- ----------------------------
 INSERT INTO `t_log` VALUES ('1', 'admin', '修改账号为：admin 的车辆', '2018-05-11 20:56:09', null, '0');
 INSERT INTO `t_log` VALUES ('2', 'admin', '修改账号为：admin 的车辆', '2018-05-11 20:56:32', null, '0');
+INSERT INTO `t_log` VALUES ('3', 'admin', '生成商品编号为：O7434 的商品', '2018-05-14 11:07:10', null, '0');
 
 -- ----------------------------
 -- Table structure for t_notice
@@ -133,13 +134,14 @@ CREATE TABLE `t_oil` (
   `delete_time` char(19) DEFAULT NULL COMMENT '删除记录时间',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态，0表示未删除，1表示已删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_oil
 -- ----------------------------
-INSERT INTO `t_oil` VALUES ('1', 'O0111', '二甲苯', '芳香烃类', '2018-05-11 15:52:36', null, null, '0');
-INSERT INTO `t_oil` VALUES ('2', 'O0002', '乙醇', '芳香烃类', '2018-05-11 15:52:36', null, null, '0');
+INSERT INTO `t_oil` VALUES ('1', 'O0111', '二甲苯', '芳香烃', '2018-05-11 15:52:36', null, null, '0');
+INSERT INTO `t_oil` VALUES ('2', 'O0002', '乙醇', '芳香烃', '2018-05-13 15:52:36', null, null, '0');
+INSERT INTO `t_oil` VALUES ('3', 'O7434', '乙炔', '炔烃', '2018-05-14 11:07:09', null, null, '0');
 
 -- ----------------------------
 -- Table structure for t_order

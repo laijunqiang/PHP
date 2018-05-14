@@ -169,10 +169,10 @@ class PHPExcel_Shared_Drawing
     }
 
     /**
-     * Create a new image from file. By alexander at alexauto dot nl
+     * Create a new images from file. By alexander at alexauto dot nl
      *
      * @link http://www.php.net/manual/en/function.imagecreatefromwbmp.php#86214
-     * @param string $filename Path to Windows DIB (BMP) image
+     * @param string $filename Path to Windows DIB (BMP) images
      * @return resource
      */
     public static function imagecreatefrombmp($p_sFile)

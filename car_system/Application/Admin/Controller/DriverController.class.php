@@ -49,7 +49,7 @@ class DriverController extends Controller {
         $info = $upload->upload();
         if (!$info) {// 上传错误提示错误信息
             //$this->error($upload->getError());
-        } else {// 上传成功,file为<input type='file' id="file" accept = 'image/gif,image/jpeg,image/jpg,image/png' name="file" />的file
+        } else {// 上传成功,file为<input type='file' id="file" accept = 'image/gif,images/jpeg,images/jpg,images/png' name="file" />的file
             $path = $info['file']['savepath'] . $info['file']['savename'];
             $_POST['image'] = "/" . $path; //图片路径
         }
@@ -155,7 +155,7 @@ class DriverController extends Controller {
         if (!$info) {// 上传错误提示错误信息
             //$this->error($upload->getError());
             return show(0,$upload->getError());
-        } else {// 上传成功,file为<input type='file' id="file" accept = 'image/gif,image/jpeg,image/jpg,image/png' name="file" />的file
+        } else {// 上传成功,file为<input type='file' id="file" accept = 'images/gif,images/jpeg,images/jpg,images/png' name="file" />的file
             $path = $info['file']['savepath'] . $info['file']['savename'];
             $_POST['image']="/".$path; //图片路径
 

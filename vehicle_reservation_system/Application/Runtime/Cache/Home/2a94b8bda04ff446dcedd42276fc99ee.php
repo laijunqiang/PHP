@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html lang="zh">
 <head>
 	<meta charset="UTF-8">
@@ -80,7 +80,7 @@
 
 			<!-- <div class="list" v-else>
 					<div class="nothing">
-						<img src="__PUBLIC__/Home/icon/nothing.png" alt="" />
+						<img src="/Public/Home/icon/nothing.png" alt="" />
 						<p>暂无更多数据</p>
 					</div>
 			</div> -->

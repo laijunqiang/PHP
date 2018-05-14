@@ -106,7 +106,7 @@ class RestController extends Controller {
             'pdf'   =>  'application/pdf',
             'text'  =>  'text/plain',
             'png'   =>  'image/png',
-            'jpg'   =>  'image/jpg,image/jpeg,image/pjpeg',
+            'jpg'   =>  'images/jpg,images/jpeg,images/pjpeg',
             'gif'   =>  'image/gif',
             'csv'   =>  'text/csv',
             'html'  =>  'text/html,application/xhtml+xml,*/*'

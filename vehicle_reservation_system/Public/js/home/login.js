@@ -37,10 +37,10 @@ var login = {
 $('#img').click(function () {
     if ($('#input').attr("type")== "password") {
         $('#input').attr('type','text');
-        $('#img').attr('src','/Public/image/invisible.png');
+        $('#img').attr('src','/Public/images/invisible.png');
     }else {
         $('#input').attr('type','password');
-        $('#img').attr('src','/Public/image/visible.png');
+        $('#img').attr('src','/Public/images/visible.png');
     }
 });
 $('#account').blur(function () {

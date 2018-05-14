@@ -20,7 +20,7 @@ class IndexController extends Controller {
                 }elseif ($role['car_manage']==1){
                     $src='/admin.php/Car';
                 }elseif ($role['goods_manage']==1){
-                    $src='/admin.php/Goods';
+                    $src='/admin.php/Oil';
                 }elseif ($role['user_manage']==1){
                     $src='/admin.php/User';
                 }elseif ($role['role_manage']==1){

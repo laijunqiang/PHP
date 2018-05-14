@@ -11,7 +11,7 @@ class OrderController extends Controller {
     //生成订单页面
     public function add(){
         //获取商品信息
-        $ret=D('Goods')->getGoods();
+        $ret=D('Oil')->getGoods();
         $this->assign('ret',$ret);
         $this->display();
     }
@@ -21,7 +21,7 @@ class OrderController extends Controller {
         $_POST['number']="O".date("YmdHis"); //订单编号
         $_POST['create_time']=date("Y-m-d H:i:s");//订单创建时间
         //获取商品ID
-        $ret=D('Goods')->getIdByName($_POST['goods_name']);
+        $ret=D('Oil')->getIdByName($_POST['goods_name']);
         $_POST['goods_id']=$ret;
         //dump($_POST);
         $return = D('Order')->addOrder($_POST);

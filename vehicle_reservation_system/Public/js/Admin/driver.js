@@ -129,7 +129,7 @@ var driver = {
                 'account': account,
                 'password': password,
                 'name': name,
-                'image':image
+                'images':images
             };//JSON格式
             // 执行异步请求  $.post
             $.post(url, data, function (result) {

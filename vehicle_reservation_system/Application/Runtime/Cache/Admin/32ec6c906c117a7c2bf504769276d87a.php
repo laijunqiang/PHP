@@ -18,7 +18,7 @@
         <tr>
             <td>密码：</td>
             <td><input type="password" id="input" name="password" placeholder="请输入您的密码" /></td>
-            <td><img id="img" onclick="login.hideShowPsw()" src="/Public/image/visible.png">  </td>
+            <td><img id="img" onclick="login.hideShowPsw()" src="/Public/images/visible.png">  </td>
         </tr>
         <tr align="center">
             <td colspan="2"><input type="button" value="登陆" onclick="login.check()" style="width:100%;"/></td>

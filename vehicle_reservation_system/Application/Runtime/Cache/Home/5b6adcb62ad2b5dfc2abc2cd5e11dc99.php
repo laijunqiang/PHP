@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>出车系统登陆页面</title>
+    <title>车辆预约系统登陆页面</title>
     <link rel="stylesheet" href="/Public/css/home/login.css">
 </head>
 <body>
-<h2 align="center">出车管理系统</h2>
+<h2 align="center">车辆预约系统</h2>
 <div>
     <table align="center">
         <tr>

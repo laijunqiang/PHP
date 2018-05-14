@@ -2,24 +2,20 @@
 namespace Common\Model;
 use Think\Model;
 
-/**
- * 超级管理员用户操作
- * @author  singwa
- */
-class GoodsModel extends Model {
+class OilModel extends Model {
     private $_db = '';
 
     public function __construct() {
         //仅仅是对数据表进行基本的CURD操作的话，使用M方法实例化的话，由于不需要加载具体的模型类，所以性能会更高。
-        $this->_db = M('goods');
+        $this->_db = M('oil');
     }
-    //获取商品信息
-    public function getGoods(){
+    //获取油品信息
+    public function getOil(){
         $res=$this->_db->where('status=0')->order('create_time desc')->select();
         return $res;
     }
-    //生成商品信息
-    public function addGoods($data = array()){
+    //生成油品信息
+    public function addOil($data = array()){
         if(!$data || !is_array($data)) {
             return 0;
         }
@@ -44,7 +40,7 @@ class GoodsModel extends Model {
         }
         return $this->_db->save($data);
     }
-    //获取商品名信息
+    //获取油品名信息
     public function getName(){
         $res=$this->_db->where('status=0')->order('create_time desc')->getField('name',true);
         return $res;

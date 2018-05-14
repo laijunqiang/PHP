@@ -2303,14 +2303,14 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
     }
 
     /**
-     * Insert a 24bit bitmap image in a worksheet.
+     * Insert a 24bit bitmap images in a worksheet.
      *
      * @access public
      * @param integer $row     The row we are going to insert the bitmap into
      * @param integer $col     The column we are going to insert the bitmap into
-     * @param mixed   $bitmap  The bitmap filename or GD-image resource
-     * @param integer $x       The horizontal position (offset) of the image inside the cell.
-     * @param integer $y       The vertical position (offset) of the image inside the cell.
+     * @param mixed   $bitmap  The bitmap filename or GD-images resource
+     * @param integer $x       The horizontal position (offset) of the images inside the cell.
+     * @param integer $y       The vertical position (offset) of the images inside the cell.
      * @param float   $scale_x The horizontal scale
      * @param float   $scale_y The vertical scale
      */
@@ -2338,7 +2338,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
     }
 
     /**
-     * Calculate the vertices that define the position of the image as required by
+     * Calculate the vertices that define the position of the images as required by
      * the OBJ record.
      *
      *         +------------+------------+
@@ -2385,8 +2385,8 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
      * @param integer $row_start Row containing top left corner of object
      * @param integer $x1        Distance to left side of object
      * @param integer $y1        Distance to top of object
-     * @param integer $width     Width of image frame
-     * @param integer $height    Height of image frame
+     * @param integer $width     Width of images frame
+     * @param integer $height    Height of images frame
      */
     public function positionImage($col_start, $row_start, $x1, $y1, $width, $height)
     {
@@ -2522,10 +2522,10 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
     }
 
     /**
-     * Convert a GD-image into the internal format.
+     * Convert a GD-images into the internal format.
      *
      * @access private
-     * @param resource $image The image to process
+     * @param resource $image The images to process
      * @return array Array with data and properties of the bitmap
      */
     public function processBitmapGd($image)

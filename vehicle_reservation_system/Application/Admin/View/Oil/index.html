@@ -2,17 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>商品信息管理</title>
+    <title>油品类型管理</title>
 </head>
 <body>
 <div align="center">
-    <h3>商品信息表</h3>
-    <button><a href="/admin.php/Goods/add">录入</a></button>
+    <h3>油品信息表</h3>
+    <button><a href="/admin.php/Oil/add">录入</a></button>
     <table border="1px">
         <tr>
-            <td>商品ID</td>
-            <td>商品编号</td>
-            <td>商品名</td>
+            <td>油品ID</td>
+            <td>油品编号</td>
+            <td>油品名</td>
+            <td>油品类型</td>
             <td>创建记录时间</td>
             <td>修改记录时间</td>
             <td>操作</td>
@@ -23,13 +24,14 @@
                 <td>{$vo.id}</td>
                 <td>{$vo.number}</td>
                 <td>{$vo.name}</td>
+                <td>{$vo.type}</td>
                 <td>{$vo.create_time}</td>
                 <td>{$vo.update_time}</td>
                 <td>
                     <!--1.通过<a>标签   2.window.location.href="/admin.php/Driver";
                         才可以跳转到<iframe>页面-->
-                    <button><a href="/admin.php/Goods/update?id={$vo.id}">修改</a></button>
-                    <button><a onclick="dialog.confirmGoods('是否确定删除？','{$vo.id}')">删除</a></button>
+                    <button><a href="/admin.php/Oil/update?id={$vo.id}">修改</a></button>
+                    <button><a onclick="dialog.confirmOil('是否确定删除？','{$vo.id}')">删除</a></button>
                 </td>
             </tr>
         </volist>
