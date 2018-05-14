@@ -23,7 +23,7 @@ class GoodsController extends Controller {
         date_default_timezone_set("Asia/Shanghai");
         $_POST['update_time']=date("Y-m-d H:i:s");
 
-        $name=D('Oil')->getNameUpdate($_POST['id']);
+        $name=D('Goods')->getNameUpdate($_POST['id']);
         foreach ($name as $v){
             if ($v==$_POST['name'])
                 return show(0,'商品名已存在，请重新修改');
