@@ -12,11 +12,11 @@ var role = {
         var role = {
             order_manage: "0",
             driver_manage: "0",
-            car_manage: "0",
-            goods_manage: "0",
+            oil_manage: "0",
             user_manage: "0",
             role_manage: "0",
-            log_manage: "0"
+            log_manage: "0",
+            notice_manage:'0'
         };
         if($("input:checkbox[name='role']:checked").length==0){
             dialog.error("权限不能为空，请重新选择！");
@@ -27,16 +27,16 @@ var role = {
                     role.order_manage = 1;
                 } else if ($(this).val() == "driver_manage") {
                     role.driver_manage = 1;
-                } else if ($(this).val() == "car_manage") {
-                    role.car_manage = 1;
-                } else if ($(this).val() == "goods_manage") {
-                    role.goods_manage = 1;
+                } else if ($(this).val() == "oil_manage") {
+                    role.oil_manage = 1;
                 } else if ($(this).val() == "user_manage") {
                     role.user_manage = 1;
                 } else if ($(this).val() == "role_manage") {
                     role.role_manage = 1;
-                } else {
+                } else if ($(this).val() == "log_manage") {
                     role.log_manage = 1;
+                } else {
+                    role.notice_manage = 1;
                 }
             });
             //console.log(role);
@@ -47,11 +47,11 @@ var role = {
                 'name': name,
                 'order_manage': role.order_manage,
                 'driver_manage': role.driver_manage,
-                'car_manage': role.car_manage,
-                'goods_manage': role.goods_manage,
+                'oil_manage': role.oil_manage,
                 'user_manage': role.user_manage,
                 'role_manage': role.role_manage,
-                'log_manage': role.log_manage
+                'log_manage': role.log_manage,
+                'notice_manage':role.notice_manage
             };//JSON格式
             // 执行异步请求  $.post
             $.post(url, data, function (result) {
@@ -73,11 +73,11 @@ var role = {
         var role = {
             order_manage: "0",
             driver_manage: "0",
-            car_manage: "0",
-            goods_manage: "0",
+            oil_manage: "0",
             user_manage: "0",
             role_manage: "0",
-            log_manage: "0"
+            log_manage: "0",
+            notice_manage:'0'
         };
         if($("input:checkbox[name='role']:checked").length==0){
             dialog.error("权限不能为空，请重新选择！");
@@ -88,16 +88,16 @@ var role = {
                     role.order_manage = 1;
                 } else if ($(this).val() == "driver_manage") {
                     role.driver_manage = 1;
-                } else if ($(this).val() == "car_manage") {
-                    role.car_manage = 1;
-                } else if ($(this).val() == "goods_manage") {
-                    role.goods_manage = 1;
+                } else if ($(this).val() == "oil_manage") {
+                    role.oil_manage = 1;
                 } else if ($(this).val() == "user_manage") {
                     role.user_manage = 1;
                 } else if ($(this).val() == "role_manage") {
                     role.role_manage = 1;
-                } else {
+                } else if ($(this).val() == "log_manage") {
                     role.log_manage = 1;
+                } else {
+                    role.notice_manage = 1;
                 }
             });
             //console.log(role);
@@ -112,11 +112,11 @@ var role = {
                     'name': name,
                     'order_manage': role.order_manage,
                     'driver_manage': role.driver_manage,
-                    'car_manage': role.car_manage,
-                    'goods_manage': role.goods_manage,
+                    'oil_manage': role.oil_manage,
                     'user_manage': role.user_manage,
                     'role_manage': role.role_manage,
-                    'log_manage': role.log_manage
+                    'log_manage': role.log_manage,
+                    'notice_manage':role.notice_manage
                 };//JSON格式
                 // 执行异步请求  $.post
                 $.post(url, data, function (result) {

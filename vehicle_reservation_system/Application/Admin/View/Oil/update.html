@@ -2,35 +2,63 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>修改商品信息</title>
+    <title>修改油品信息</title>
 </head>
 <body>
 <div align="center">
     <table>
         <tr>
-            <td>商品ID：</td>
+            <td>油品ID：</td>
             <td><input type="text" value="{$ret.id}" name="id" disabled="disabled"></td>
         </tr>
         <tr>
-            <td>商品编号：</td>
+            <td>油品编号：</td>
             <td><input type="text" value="{$ret.number}" name="number" id="number" disabled="disabled"></td>
         </tr>
         <tr>
-            <td>商品名：</td>
+            <td>油品名：</td>
             <td>
-                <input type="text" placeholder="请输入商品名" name="name" id="name"  value="{$ret.name}">
+                <input type="text" placeholder="请输入油品名" name="name" id="name"  value="{$ret.name}">
+            </td>
+        </tr>
+        <tr>
+            <td>油品类型：</td>
+            <td>
+                <select name="type">
+                    <option value="">--请选择--</option>
+                    <eq name="ret.type" value="芳香烃">
+                        <option value="芳香烃" selected="selected">芳香烃</option>
+                        <else/>
+                        <option value="芳香烃">芳香烃</option>
+                    </eq>
+                    <eq name="ret.type" value="烷烃">
+                        <option value="烷烃" selected="selected">烷烃</option>
+                        <else/>
+                        <option value="烷烃">烷烃</option>
+                    </eq>
+                    <eq name="ret.type" value="烯烃">
+                        <option value="烯烃" selected="selected">烯烃</option>
+                        <else/>
+                        <option value="烯烃">烯烃</option>
+                    </eq>
+                    <eq name="ret.type" value="炔烃">
+                        <option value="炔烃" selected="selected">炔烃</option>
+                        <else/>
+                        <option value="炔烃">炔烃</option>
+                    </eq>
+                </select>
             </td>
         </tr>
         <tr align="center">
             <td colspan="2">
-                <button onclick="goods.update()">修改</button>
-                <button onclick="goods.back()">返回</button>
+                <button onclick="oil.update()">修改</button>
+                <button onclick="oil.back()">返回</button>
             </td>
         </tr>
     </table>
 </div>
 <script src="/Public/js/jquery.js"></script>
-<script src="/Public/js/Admin/goods.js"></script>
+<script src="/Public/js/Admin/oil.js"></script>
 <script src="/Public/js/dialog/layer.js"></script>
 <script src="/Public/js/dialog.js"></script>
 </body>

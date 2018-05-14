@@ -12,13 +12,13 @@
         <tr>
             <td>权限ID</td>
             <td>角色名</td>
-            <td>订单管理权限</td>
+            <td>排队管理权限</td>
             <td>司机管理权限</td>
-            <td>车辆管理权限</td>
-            <td>商品管理权限</td>
+            <td>油品管理权限</td>
             <td>用户管理权限</td>
             <td>角色管理权限</td>
             <td>日志管理权限</td>
+            <td>公告管理权限</td>
             <td>创建时间</td>
             <td>修改时间</td>
             <td>操作</td>
@@ -29,11 +29,11 @@
                 <td><?php echo ($vo["name"]); ?></td>
                 <td><?php echo ($vo["order_manage"]); ?></td>
                 <td><?php echo ($vo["driver_manage"]); ?></td>
-                <td><?php echo ($vo["car_manage"]); ?></td>
-                <td><?php echo ($vo["goods_manage"]); ?></td>
+                <td><?php echo ($vo["oil_manage"]); ?></td>
                 <td><?php echo ($vo["user_manage"]); ?></td>
                 <td><?php echo ($vo["role_manage"]); ?></td>
                 <td><?php echo ($vo["log_manage"]); ?></td>
+                <td><?php echo ($vo["notice_manage"]); ?></td>
                 <td><?php echo ($vo["create_time"]); ?></td>
                 <td><?php echo ($vo["update_time"]); ?></td>
                 <td>

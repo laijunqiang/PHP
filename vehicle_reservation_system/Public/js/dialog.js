@@ -53,7 +53,7 @@ var dialog = {
             icon:3,
             btn : ['是','否'],
             yes : function(){
-                var url = "/admin.php/Oil/deleteGoods";
+                var url = "/admin.php/Oil/deleteOil";
                 var data = {'id': id};//JSON格式
                 // 执行异步请求  $.post
                 $.post(url, data, function (result) {

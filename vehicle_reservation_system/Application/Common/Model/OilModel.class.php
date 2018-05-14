@@ -21,20 +21,20 @@ class OilModel extends Model {
         }
         return $this->_db->add($data);
     }
-    //读取商品ID值
+    //读取油品ID值
     public function getIdByNumber($number){
         return $this->_db->where("number='$number'")->getField('id');
     }
-    //通过商品名获取商品ID
+    //通过油品名获取油品ID
     public function getIdByName($name){
         return $this->_db->where("name='$name'")->getField('id');
     }
-    //修改商品信息页面
-    public function showGoods($id=''){
+    //修改油品信息页面
+    public function showOil($id=''){
         return $this->_db->where("id='$id'")->find();
     }
-    //修改商品信息
-    public function updateGoods($data = array()){
+    //修改油品信息
+    public function updateOil($data = array()){
         if(!$data || !is_array($data)) {
             return 0;
         }
@@ -45,7 +45,7 @@ class OilModel extends Model {
         $res=$this->_db->where('status=0')->order('create_time desc')->getField('name',true);
         return $res;
     }
-    //获取商品名信息(修改)
+    //获取油品名信息(修改)
     public function getNameUpdate($id=''){
         $res=$this->_db->where("status=0&&id!='$id'")->order('create_time desc')->getField('name',true);
         return $res;

@@ -14,7 +14,6 @@
     <nav>
         <button><a href="/admin.php/Order" target="iframe">排队信息管理</a></button>
         <button><a href="/admin.php/Driver" target="iframe">司机信息管理</a></button>
-        <button><a href="/admin.php/Vehicle" target="iframe" >车辆信息管理</a></button>
         <button><a href="/admin.php/Oil" target="iframe" >油品信息管理</a></button>
         <button><a href="/admin.php/User" target="iframe" >用户信息管理</a></button>
         <button><a href="/admin.php/Role" target="iframe">角色权限管理</a></button>
@@ -32,7 +31,6 @@
         <nav>
             <?php if(($role["order_manage"]) == "1"): ?><button><a href="/admin.php/Order" target="iframe">排队信息管理</a></button><?php endif; ?>
             <?php if(($role["driver_manage"]) == "1"): ?><button><a href="/admin.php/Driver" target="iframe">司机信息管理</a></button><?php endif; ?>
-            <?php if(($role["vehicle_manage"]) == "1"): ?><button><a href="/admin.php/Vehicle" target="iframe" >车辆信息管理</a></button><?php endif; ?>
             <?php if(($role["oil_manage"]) == "1"): ?><button><a href="/admin.php/Oil" target="iframe" >油品信息管理</a></button><?php endif; ?>
             <?php if(($role["user_manage"]) == "1"): ?><button><a href="/admin.php/User" target="iframe" >用户信息管理</a></button><?php endif; ?>
             <?php if(($role["role_manage"]) == "1"): ?><button><a href="/admin.php/Role" target="iframe">角色权限管理</a></button><?php endif; ?>

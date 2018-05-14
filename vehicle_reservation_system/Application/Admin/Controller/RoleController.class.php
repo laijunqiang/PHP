@@ -62,7 +62,7 @@ class RoleController extends Controller
         $name = D('Role')->getNameUpdate($_POST['id']);
         foreach ($name as $v) {
             if ($v == $_POST['name'])
-                return show(0, '角色已存在，请重新录入');
+                return show(0, '该角色已存在，请重新录入');
         }
         date_default_timezone_set("Asia/Shanghai");
         $_POST['update_time']=date("Y-m-d H:i:s");

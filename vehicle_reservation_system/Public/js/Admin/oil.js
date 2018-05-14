@@ -9,18 +9,24 @@ var oil = {
         // 获取修改订单页面中的信息
         var id = $('input[name="id"]').val();
         var number = $('input[name="number"]').val();
-        var name=$('input[name="name"]').val();
+        var name=$.trim($('input[name="name"]').val());
+        var type=$('select option:selected').val();
+        //console.log(type);
+
         if (!name) {
-            dialog.error("商品名不能为空，请重新输入！");
+            dialog.error("油品名不能为空，请重新输入！");
         } else if (name.length>20){
-            dialog.error('商品名不能超过20位，请重新输入！');
+            dialog.error('油品名不能超过20位，请重新输入！');
+        } else if (type==""){
+            dialog.error('油品类型不能为空，请重新选择！');
         } else {
-            var url = "/admin.php/Oil/updateGoods";
+            var url = "/admin.php/Oil/updateOil";
             // 发送给服务端的数据，相当于POST过去的数据
             var data = {
                 'id': id,
                 'number': number,
-                'name':name
+                'name':name,
+                'type':type
             };//JSON格式
             // 执行异步请求  $.post
             $.post(url, data, function (result) {
