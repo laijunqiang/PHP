@@ -6,6 +6,9 @@ class OrderController extends Controller {
         $ret = D('Order')->getOrder();
         //dump($ret); //成功返回二维数组，失败返回NULL
         $this->assign('ret', $ret);
+        //因为order是SQL的关键字,不能用它作表名或字段名
+        $maxOrder= D('Order')->getMaxOrder();
+        $this->assign('maxOrder',$maxOrder);
         $this->display();
     }
     //生成订单页面
@@ -13,6 +16,10 @@ class OrderController extends Controller {
         //获取商品信息
         $ret=D('Oil')->getGoods();
         $this->assign('ret',$ret);
+        $province=array('京', '津', '沪', '渝','冀', '豫','滇','辽','黑','湘','皖','鲁','新','苏','浙','赣','鄂','桂','甘','晋','蒙','陕','吉','闽','黔','粤','青','藏','蜀','宁','琼','台','港','澳');
+        $city=range('A','Z');
+        $this->assign('province', $province);
+        $this->assign('city', $city);
         $this->display();
     }
     //生成订单处理
@@ -89,7 +96,7 @@ class OrderController extends Controller {
             $ret = D('Order')->getOrder();
         }else if ($status==""){  //按搜索时间搜索
             $data=array();
-            $data['departure_time']=array('between',"$startTime,$endTime");
+            $data['create_time']=array('between',"$startTime,$endTime");
             $ret = D('Order')->getOrderBySearch($data);
         }else if ($startTime==""||$endTime==""){   //按状态搜索
             //dump($status);
@@ -98,7 +105,7 @@ class OrderController extends Controller {
             $data=array();
             $data['status']=0;
             $data['order_status']=$status;
-            $data['departure_time']=array('between',"$startTime,$endTime");
+            $data['create_time']=array('between',"$startTime,$endTime");
             $ret = D('Order')->select($data);
         }
         //dump($ret); //成功返回二维数组，失败返回NULL

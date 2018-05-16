@@ -51,7 +51,7 @@
             <td>油品名称</td>
             <td>油品类型</td>
             <td>车牌号</td>
-            <td>司机编号</td>
+            <td>真实姓名</td>
             <td>隶属公司</td>
             <td>订单状态</td>
             <td>排队次序</td>
@@ -66,8 +66,8 @@
                 <td>{$vo.number}</td>
                 <td>{$vo.oil_name}</td>
                 <td>{$vo.oil_type}</td>
-                <td>{$vo.vehicle_plate}</td>
-                <td>{$vo.driver_number}</td>
+                <td>{$vo.plate}</td>
+                <td>{$vo.driver_name}</td>
                 <td>{$vo.driver_company}</td>
                 <eq name="vo.order_status" value="0">
                     <td>已装</td>
@@ -81,13 +81,29 @@
                 <eq name="vo.order_status" value="3">
                     <td>厂外待装</td>
                 </eq>
-                <td>{$vo.order}</td>
+                <td>{$vo.order_number}</td>
                 <td>{$vo.create_time}</td>
                 <td>{$vo.update_time}</td>
                 <td>
-                    <button id="up">上移</button>
-                    <button id="down">下移</button>
-                    <button><a onclick="dialog.confirmOrder('是否确定删除？','{$vo.id}')">删除</a></button>
+                    <eq name="vo.order_status" value="0">
+                        <else/>
+                        <eq name="vo.order_number" value="1">
+                            <else/>
+                            <eq name="vo.order_number" value="2">
+                                <button id="down">下移</button>
+                                <button><a onclick="dialog.confirmOrder('是否确定删除？','{$vo.id}')">删除</a></button>
+                                <else/>
+                                <eq name="vo.order_number" value="$maxOrder">
+                                    <button id="up">上移</button>
+                                    <button><a onclick="dialog.confirmOrder('是否确定删除？','{$vo.id}')">删除</a></button>
+                                    <else/>
+                                    <button id="up">上移</button>
+                                    <button id="down">下移</button>
+                                    <button><a onclick="dialog.confirmOrder('是否确定删除？','{$vo.id}')">删除</a></button>
+                                </eq>
+                            </eq>
+                        </eq>
+                    </eq>
                 </td>
             </tr>
         </volist>

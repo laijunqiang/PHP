@@ -16,7 +16,7 @@ class OrderModel extends Model {
     //获取订单信息
     public function getOrder(){
 //        支持对多个字段的排序,如果没有指定desc或者asc排序规则的话，默认为asc。
-        $res=$this->_db->where('status=0')->order('order_status,create_time desc')->select();
+        $res=$this->_db->where('status=0')->order('order_status,order_number')->select();
         return $res;
     }
     //通过订单状态获取订单信息
@@ -74,6 +74,12 @@ class OrderModel extends Model {
     //查看个人订单
     public function getOrderByDriverId($driver_id){
         $res=$this->_db->where("status=0 and driver_id=$driver_id")->order('order_status,create_time desc')->select();
+        return $res;
+    }
+
+    //获得排队次序最大值
+    public function getMaxOrder(){
+        $res=$this->_db->where('status=0')->max('order_number');
         return $res;
     }
 }

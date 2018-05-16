@@ -23,13 +23,13 @@ var dialog = {
     },
 
     // 确认弹出层
-    confirmCar : function(message, id) {
+    confirmNotice : function(message, id) {
         layer.open({
             content : message,
             icon:3,
             btn : ['是','否'],
             yes : function(){
-                var url = "/admin.php/Car/deleteCar";
+                var url = "/admin.php/Notice/deleteNotice";
                 var data = {'id': id};//JSON格式
                 // 执行异步请求  $.post
                 $.post(url, data, function (result) {
@@ -39,7 +39,7 @@ var dialog = {
                         return dialog.error(result.message);
                     }
                     if (result.status == 1) {
-                        return dialog.success(result.message, '/admin.php/Car');
+                        return dialog.success(result.message, '/admin.php/Notice');
                     }
                     //dataType规定预期的服务器响应的数据类型。
                 }, 'JSON');

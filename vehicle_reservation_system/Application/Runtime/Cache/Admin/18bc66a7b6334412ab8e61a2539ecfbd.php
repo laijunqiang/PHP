@@ -43,7 +43,7 @@
             <td>油品名称</td>
             <td>油品类型</td>
             <td>车牌号</td>
-            <td>司机编号</td>
+            <td>真实姓名</td>
             <td>隶属公司</td>
             <td>订单状态</td>
             <td>排队次序</td>
@@ -57,20 +57,28 @@
                 <td><?php echo ($vo["number"]); ?></td>
                 <td><?php echo ($vo["oil_name"]); ?></td>
                 <td><?php echo ($vo["oil_type"]); ?></td>
-                <td><?php echo ($vo["vehicle_plate"]); ?></td>
-                <td><?php echo ($vo["driver_number"]); ?></td>
+                <td><?php echo ($vo["plate"]); ?></td>
+                <td><?php echo ($vo["driver_name"]); ?></td>
                 <td><?php echo ($vo["driver_company"]); ?></td>
                 <?php if(($vo["order_status"]) == "0"): ?><td>已装</td><?php endif; ?>
                 <?php if(($vo["order_status"]) == "1"): ?><td>装车中</td><?php endif; ?>
                 <?php if(($vo["order_status"]) == "2"): ?><td>厂区内待装</td><?php endif; ?>
                 <?php if(($vo["order_status"]) == "3"): ?><td>厂外待装</td><?php endif; ?>
-                <td><?php echo ($vo["order"]); ?></td>
+                <td><?php echo ($vo["order_number"]); ?></td>
                 <td><?php echo ($vo["create_time"]); ?></td>
                 <td><?php echo ($vo["update_time"]); ?></td>
                 <td>
-                    <button id="up">上移</button>
-                    <button id="down">下移</button>
-                    <button><a onclick="dialog.confirmOrder('是否确定删除？','<?php echo ($vo["id"]); ?>')">删除</a></button>
+                    <?php if(($vo["order_status"]) == "0"): else: ?>
+                        <?php if(($vo["order_number"]) == "1"): else: ?>
+                            <?php if(($vo["order_number"]) == "2"): ?><button id="down">下移</button>
+                                <button><a onclick="dialog.confirmOrder('是否确定删除？','<?php echo ($vo["id"]); ?>')">删除</a></button>
+                                <?php else: ?>
+                                <?php if(($vo["order_number"]) == $maxOrder): ?><button id="up">上移</button>
+                                    <button><a onclick="dialog.confirmOrder('是否确定删除？','<?php echo ($vo["id"]); ?>')">删除</a></button>
+                                    <?php else: ?>
+                                    <button id="up">上移</button>
+                                    <button id="down">下移</button>
+                                    <button><a onclick="dialog.confirmOrder('是否确定删除？','<?php echo ($vo["id"]); ?>')">删除</a></button><?php endif; endif; endif; endif; ?>
                 </td>
             </tr><?php endforeach; endif; else: echo "" ;endif; ?>
     </table>
