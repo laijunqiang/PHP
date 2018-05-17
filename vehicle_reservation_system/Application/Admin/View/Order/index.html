@@ -90,16 +90,19 @@
                         <eq name="vo.order_number" value="1">
                             <else/>
                             <eq name="vo.order_number" value="2">
-                                <button id="down">下移</button>
-                                <button><a onclick="dialog.confirmOrder('是否确定删除？','{$vo.id}')">删除</a></button>
+                                <button><a onclick="order.down('{$vo.id}')">下移</a></button>
+                                <egt name="vo.order_number" value="$maxOrder-3">
+                                    <button><a onclick="dialog.confirmOrder('是否确定删除？','{$vo.id}')">删除</a></button>
+                                </egt>
                                 <else/>
                                 <eq name="vo.order_number" value="$maxOrder">
-                                    <button id="up">上移</button>
-                                    <button><a onclick="dialog.confirmOrder('是否确定删除？','{$vo.id}')">删除</a></button>
+                                    <button><a onclick="order.up('{$vo.id}')">上移</a></button>
                                     <else/>
-                                    <button id="up">上移</button>
-                                    <button id="down">下移</button>
-                                    <button><a onclick="dialog.confirmOrder('是否确定删除？','{$vo.id}')">删除</a></button>
+                                    <button><a onclick="order.up('{$vo.id}')">上移</a></button>
+                                    <button><a onclick="order.down('{$vo.id}')">下移</a></button>
+                                    <egt name="vo.order_number" value="$maxOrder">
+                                        <button><a onclick="dialog.confirmOrder('是否确定删除？','{$vo.id}')">删除</a></button>
+                                    </egt>
                                 </eq>
                             </eq>
                         </eq>

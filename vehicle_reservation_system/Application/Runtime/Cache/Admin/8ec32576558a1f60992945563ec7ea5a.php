@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -29,9 +29,7 @@
                 <td>
                     <select name="driver_name">
                         <option value="">--请选择--</option>
-                        <foreach name="restDriverName" item="vo" >
-                            <option value="{$vo}">{$vo}</option>
-                        </foreach>
+                        <?php if(is_array($restDriverName)): foreach($restDriverName as $key=>$vo): ?><option value="<?php echo ($vo); ?>"><?php echo ($vo); ?></option><?php endforeach; endif; ?>
                     </select>
                 </td>
             </tr>

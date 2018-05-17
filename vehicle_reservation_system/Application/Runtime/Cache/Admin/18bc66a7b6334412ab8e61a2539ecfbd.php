@@ -70,15 +70,14 @@
                 <td>
                     <?php if(($vo["order_status"]) == "0"): else: ?>
                         <?php if(($vo["order_number"]) == "1"): else: ?>
-                            <?php if(($vo["order_number"]) == "2"): ?><button id="down">下移</button>
-                                <button><a onclick="dialog.confirmOrder('是否确定删除？','<?php echo ($vo["id"]); ?>')">删除</a></button>
+                            <?php if(($vo["order_number"]) == "2"): ?><button><a onclick="order.down('<?php echo ($vo["id"]); ?>')">下移</a></button>
+                                <?php if(($vo["order_number"]) >= $maxOrder-3): ?><button><a onclick="dialog.confirmOrder('是否确定删除？','<?php echo ($vo["id"]); ?>')">删除</a></button><?php endif; ?>
                                 <?php else: ?>
-                                <?php if(($vo["order_number"]) == $maxOrder): ?><button id="up">上移</button>
-                                    <button><a onclick="dialog.confirmOrder('是否确定删除？','<?php echo ($vo["id"]); ?>')">删除</a></button>
+                                <?php if(($vo["order_number"]) == $maxOrder): ?><button><a onclick="order.up('<?php echo ($vo["id"]); ?>')">上移</a></button>
                                     <?php else: ?>
-                                    <button id="up">上移</button>
-                                    <button id="down">下移</button>
-                                    <button><a onclick="dialog.confirmOrder('是否确定删除？','<?php echo ($vo["id"]); ?>')">删除</a></button><?php endif; endif; endif; endif; ?>
+                                    <button><a onclick="order.up('<?php echo ($vo["id"]); ?>')">上移</a></button>
+                                    <button><a onclick="order.down('<?php echo ($vo["id"]); ?>')">下移</a></button>
+                                    <?php if(($vo["order_number"]) >= $maxOrder): ?><button><a onclick="dialog.confirmOrder('是否确定删除？','<?php echo ($vo["id"]); ?>')">删除</a></button><?php endif; endif; endif; endif; endif; ?>
                 </td>
             </tr><?php endforeach; endif; else: echo "" ;endif; ?>
     </table>

@@ -73,4 +73,18 @@ class DriverModel extends Model {
         $res=$this->_db->where("status=0&&id!='$id'")->order('create_time desc')->getField('account',true);
         return $res;
     }
+
+    //获得未排队的司机名
+    public function getRestDriverName($name=array()){
+        $data['name']=array('not in',$name);
+        $data['status']=0;
+        $res=$this->_db->where($data)->order('create_time desc')->getField('name',true);
+        return $res;
+    }
+
+    //通过司机名获取信息
+    public function getDriverByName($name=''){
+        $res=$this->_db->where("status=0 && name='$name'")->find();
+        return $res;
+    }
 }

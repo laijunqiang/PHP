@@ -4,31 +4,21 @@
 var order = {
     add: function () {
         // 获取生成订单页面中的信息
-        var order_number = $.trim($('input[name="order_number"]').val());
-        var destination = $.trim($('input[name="destination"]').val());
-        var goods_name = $('select[name="goods_name"] option:selected').val();
-        var goods_quantity = $.trim($('input[name="goods_quantity"]').val());
-        var departure_time = $('input[name="departure_time"]').val();
-        /*console.log(goods_name);
-        console.log(departure_time);*/
-        if (!order_number || !destination || !goods_name || !goods_quantity || !departure_time) {
+        var oil_type = $('select[name="oil_type"] option:selected').val();
+        var oil_name = $('select[name="oil_name"] option:selected').val();
+        var driver_name =$('select[name="driver_name"] option:selected').val();
+        /*console.log(oil_type);
+        console.log(oil_name);*/
+        if (!oil_type || !oil_name || !driver_name) {
             //在本文件中虽然没有调用，但是在index.html中将dialog.js和login.js加载在一起
-            dialog.error('输入不能为空，请重新输入！');
-        } else if (order_number.length > 20) {
-            dialog.error("订单号不能超过20位，请重新输入！");
-        } else if (destination.length > 30) {
-            dialog.error("目的地不能超过30位，请重新输入！");
-        } else if (goods_quantity.length > 10) {
-            dialog.error("商品数量不能超过10位，请重新输入！");
+            dialog.error('选择不能为空，请重新输入！');
         } else {
             var url = "/admin.php/Order/addOrder";
             // 发送给服务端的数据，相当于POST过去的数据
             var data = {
-                'order_number': order_number,
-                'destination': destination,
-                'goods_name': goods_name,
-                'goods_quantity': goods_quantity,
-                'departure_time': departure_time
+                'oil_type': oil_type,
+                'oil_name': oil_name,
+                'driver_name':driver_name
             };//JSON格式
             // 执行异步请求  $.post
             $.post(url, data, function (result) {
@@ -47,148 +37,50 @@ var order = {
     back: function () {
         window.location.href="/admin.php/Order";
     },
-    update:function () {
-        // 获取修改订单页面中的信息
-        var id=$('input[name="id"]').val();
-        var number=$('input[name="number"]').val();
-        var order_number = $('input[name="order_number"]').val();
-        var goods_id = $('input[name="goods_id"]').val();
-        var goods_name = $('select[name="goods_name"]').val();
-        var goods_quantity = $('input[name="goods_quantity"]').val();
-        var departure_time=$('input[name="departure_time"]').val();
-        var car_plate=$('select[name="car_plate"]').val();
-        var destination = $('input[name="destination"]').val();
-        var order_status=$('select[name="order_status"]').val();
-        var driver_number=$('select[name="driver_number"]').val();
-        var pick_number = $('input[name="pick_number"]').val();
-        var contract_number = $('input[name="contract_number"]').val();
-        var short_info = $('input[name="short_info"]').val();
-        var pick_quantity = $('input[name="pick_quantity"]').val();
-        var pick_time = $('input[name="pick_time"]').val();
-        var company = $('input[name="company"]').val();
-        //alert(car_plate);alert(order_status);alert(driver_number);
-
-        if (!order_number){
-            dialog.error("订单号不能为空，请重新输入！");
-        } else if (!goods_name){
-            dialog.error("商品名称不能为空，请重新输入！");
-        } else if (!goods_quantity){
-            dialog.error("商品数量不能为空，请重新输入！");
-        } else if (!destination){
-            dialog.error("目的地不能为空，请重新输入！");
-        } else if (!departure_time){
-            dialog.error("出发时间不能为空，请重新输入！");
-        } else if(order_number.length>20){
-            dialog.error("订单号不能超过20位，请重新输入！");
-        } else if (destination.length > 30) {
-            dialog.error("目的地不能超过30位，请重新输入！");
-        } else if (goods_quantity.length > 10) {
-            dialog.error("商品数量不能超过10位，请重新输入！");
-        }else if (pick_number.length > 20) {
-            dialog.error("提货单号不能超过20位，请重新输入！");
-        } else if (contract_number.length > 20) {
-            dialog.error("合同号不能超过20位，请重新输入！");
-        } else if (short_info.length > 20) {
-            dialog.error("缺货信息不能超过20位，请重新输入！");
-        } else if (pick_quantity.length > 10) {
-            dialog.error("商品提货数量不能超过10位，请重新输入！");
-        } else if (pick_time.length > 19) {
-            dialog.error("提货时间不能超过19位，请重新输入！");
-        } else if (company.length > 20) {
-            dialog.error("结算单位不能超过20位，请重新输入！");
-        } else {
-
-            var url = "/admin.php/Order/updateOrder";
-            // 发送给服务端的数据，相当于POST过去的数据
-            var data = {
-                'id':id,
-                'number':number,
-                'order_number': order_number,
-                'destination': destination,
-                'goods_id':goods_id,
-                'goods_name': goods_name,
-                'goods_quantity': goods_quantity,
-                'departure_time': departure_time,
-                'car_plate':car_plate,
-                'order_status':order_status,
-                'driver_number':driver_number,
-                'pick_number':pick_number,
-                'contract_number':contract_number,
-                'short_info':short_info,
-                'pick_quantity':pick_quantity,
-                'pick_time':pick_time,
-                'company':company
-            };//JSON格式
-            // 执行异步请求  $.post
-            $.post(url, data, function (result) {
-                //result接受后台返回的数据
-                if (result.status == 0) {
-                    //后台重新判断，多一层弹层
-                    return dialog.error(result.message);
-                }
-                if (result.status == 1) {
-                    return dialog.success(result.message, '/admin.php/Order');
-                }
-                //dataType规定预期的服务器响应的数据类型。
-            }, 'JSON');
-        }
+    //下移功能
+    down:function (id) {
+        //alert(id);
+        var url = "/admin.php/Order/down";
+        // 发送给服务端的数据，相当于POST过去的数据
+        var data = {
+            'id': id
+        };//JSON格式
+        // 执行异步请求  $.post
+        $.post(url, data, function (result) {
+            //result接受后台返回的数据
+            if (result.status == 0) {
+                //后台重新判断，多一层弹层
+                return dialog.error(result.message);
+            }
+            if (result.status == 1) {
+                return dialog.success(result.message, '/admin.php/Order');
+            }
+            //dataType规定预期的服务器响应的数据类型。
+        }, 'JSON');
+    },
+    //上移功能
+    up:function (id) {
+        //alert(id);
+        var url = "/admin.php/Order/up";
+        // 发送给服务端的数据，相当于POST过去的数据
+        var data = {
+            'id': id
+        };//JSON格式
+        // 执行异步请求  $.post
+        $.post(url, data, function (result) {
+            //result接受后台返回的数据
+            if (result.status == 0) {
+                //后台重新判断，多一层弹层
+                return dialog.error(result.message);
+            }
+            if (result.status == 1) {
+                return dialog.success(result.message, '/admin.php/Order');
+            }
+            //dataType规定预期的服务器响应的数据类型。
+        }, 'JSON');
     }
 };
-$("#number").blur(function () {
-    if ($("#number").val().length>14) {
-        dialog.error("订单编号不能超过14位，请重新输入！");
-    }
-});
-$("#order_number").blur(function () {
-    if ($("#order_number").val().length>20) {
-        dialog.error("订单号不能超过20位，请重新输入！");
-    }
-});
-$("#destination").blur(function () {
-    if ($("#destination").val().length>30) {
-        dialog.error("目的地不能超过30位，请重新输入！");
-    }
-});
-$("#goods_quantity").blur(function () {
-    if ($("#goods_quantity").val().length>10) {
-        dialog.error("商品数量不能超过10位，请重新输入！");
-    }
-});
-$("#driver_number").blur(function () {
-    if ($("#driver_number").val().length>20) {
-        dialog.error("司机编号不能超过20位，请重新输入！");
-    }
-});
-$("#pick_number").blur(function () {
-    if ($("#pick_number").val().length>20) {
-        dialog.error("提货单号不能超过20位，请重新输入！");
-    }
-});
-$("#contract_number").blur(function () {
-    if ($("#contract_number").val().length>20) {
-        dialog.error("合同号不能超过20位，请重新输入！");
-    }
-});
-$("#short_info").blur(function () {
-    if ($("#short_info").val().length>20) {
-        dialog.error("缺货信息不能超过20位，请重新输入！");
-    }
-});
-$("#pick_quantity").blur(function () {
-    if ($("#pick_quantity").val().length>10) {
-        dialog.error("商品提货数量不能超过10位，请重新输入！");
-    }
-});
-$("#pick_time").blur(function () {
-    if ($("#pick_time").val().length>19) {
-        dialog.error("提货时间不能超过19位，请重新输入！");
-    }
-});
-$("#company").blur(function () {
-    if ($("#company").val().length>20) {
-        dialog.error("结算单位不能超过20位，请重新输入！");
-    }
-});
+
 //清空
 $('input[name="empty"]').click(function () {
     /*当调用.attr("value")在文本框中，它将返回在标记中设置的值
@@ -231,6 +123,7 @@ $('select[name="oil_type"]').change(function () {
     if (type=="") {
         dialog.error("油品类型不能为空，请重新选择！")
     }else{
+        //empty()是只移除了 指定元素中的所有子节点
         $('select[name="oil_name"]').empty();
         var url = "/admin.php/Order/getOilName";
         // 发送给服务端的数据，相当于POST过去的数据
@@ -243,9 +136,15 @@ $('select[name="oil_type"]').change(function () {
             $.each(result,function (key, val) {
                 //console.log(key);  0
                 //console.log(val);  二甲苯
-                $('select[name="oil_name"]').append("<option value='val'>" + val + "</option>");
+                //需要用到 +连接符（解析val）
+                $('select[name="oil_name"]').append("<option value="+val+">" + val + "</option>");
             })
             //dataType规定预期的服务器响应的数据类型。
         }, 'JSON');
     }
+});
+
+//暂停全部车辆排队
+$('#stop').click(function () {
+    window.location.href = "/admin.php/Order/stop";
 });

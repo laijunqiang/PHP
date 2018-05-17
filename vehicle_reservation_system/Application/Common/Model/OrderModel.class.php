@@ -82,4 +82,16 @@ class OrderModel extends Model {
         $res=$this->_db->where('status=0')->max('order_number');
         return $res;
     }
+
+    //获取排队中的司机名字
+    public function getDriverName(){
+        $res=$this->_db->where('status=0 && order_status!=0')->getField('driver_name',true);
+        return $res;
+    }
+
+    //通过排队次序获取个人订单
+    public function getOrderByOrderNumber($orderNumber){
+        $res=$this->_db->where("status=0 && order_number='$orderNumber'")->find();
+        return $res;
+    }
 }

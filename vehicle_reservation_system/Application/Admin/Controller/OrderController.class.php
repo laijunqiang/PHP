@@ -13,10 +13,15 @@ class OrderController extends Controller {
     }
     //生成订单页面
     public function add(){
-        $province=array('京', '津', '沪', '渝','冀', '豫','滇','辽','黑','湘','皖','鲁','新','苏','浙','赣','鄂','桂','甘','晋','蒙','陕','吉','闽','黔','粤','青','藏','蜀','宁','琼','台','港','澳');
+        //已知司机名，就可以知道他的车牌号与公司名
+        /*$province=array('京', '津', '沪', '渝','冀', '豫','滇','辽','黑','湘','皖','鲁','新','苏','浙','赣','鄂','桂','甘','晋','蒙','陕','吉','闽','黔','粤','青','藏','蜀','宁','琼','台','港','澳');
         $city=range('A','Z');
         $this->assign('province', $province);
-        $this->assign('city', $city);
+        $this->assign('city', $city);*/
+        $driverName= D('Order')->getDriverName();
+        //获得未排队的司机名
+        $restDriverName= D('Driver')->getRestDriverName($driverName);
+        $this->assign('restDriverName',$restDriverName);
         $this->display();
     }
     //获取油品信息
@@ -27,16 +32,32 @@ class OrderController extends Controller {
     //生成订单处理
     public function addOrder(){
         date_default_timezone_set("Asia/Shanghai");
-        $_POST['number']="O".date("YmdHis"); //订单编号
+        $_POST['number']="O".str_pad(rand(0,9999),4,'0',STR_PAD_LEFT);
         $_POST['create_time']=date("Y-m-d H:i:s");//订单创建时间
-        //获取商品ID
-        $ret=D('Oil')->getIdByName($_POST['goods_name']);
-        $_POST['goods_id']=$ret;
-        //dump($_POST);
+        //获取油品ID
+        $oil_id=D('Oil')->getIdByName($_POST['oil_name']);
+        $_POST['oil_id']=$oil_id;
+
+        //获取司机相关信息
+        $driver=D('Driver')->getDriverByName($_POST['driver_name']);
+        $_POST['plate']=$driver['plate'];
+        $_POST['driver_id']=$driver['id'];
+        $_POST['driver_company']=$driver['company'];
+        //获取排队次序最大值
+        $maxOrderNumber=D('Order')->getMaxOrder();
+        $_POST['order_number']=$maxOrderNumber+1;
+        if ($_POST['order_number']==1){
+            $_POST['order_status']=1;
+        }elseif($_POST['order_number']==2){
+            $_POST['order_status']=2;
+        }else{
+            $_POST['order_status']=3;
+        }
+
         $return = D('Order')->addOrder($_POST);
         //dump($ret); //成功返回一个数组，失败返回NULL
         if (!$return) {
-            return show(0, '生成订单失败');
+            return show(0, '生成车辆失败');
         } else {
             $index = A('Log');
             $number=$_POST['number'];
@@ -45,27 +66,55 @@ class OrderController extends Controller {
             }else {
                 $index->addLog("生成订单编号为：$number 的订单", session('User.name'));
             }
-            return show(1, '生成订单成功');
+            return show(1, '添加车辆成功');
         }
     }
 
     //删除订单处理
     public function deleteOrder(){
 
-        /*D方法实例化模型类的时候通常是实例化某个具体的模型类
-         当 \Admin\Model\AdminModel 类不存在的时候，D函数会尝试实例化公共模块下面的 \Common\Model\AdminModel类。
-         D方法可以自动检测模型类，如果存在自定义的模型类，则实例化自定义模型类，
-         如果不存在，则会实例化系统的\Think\Model基类，同时对于已实例化过的模型，不会重复实例化。*/
         date_default_timezone_set("Asia/Shanghai");
-        $_POST['delete_time']=date("Y-m-d H:i:s");
-        $_POST['status']=1;
-        $ret = D('Order')->deleteOrder($_POST);
+        $_POST['update_time']=date("Y-m-d H:i:s");
+        $id=$_POST['id'];
+        //通过订单ID获取个人订单信息
+        $order= D('Order')->showOrder($_POST['id']);
+        $order_number=$order['order_number']+1;
+        $order1=  D('Order')->getOrderByOrderNumber($order_number);
+        $order2= D('Order')->getOrderByOrderNumber($order_number+1);
+        $order3=  D('Order')->getOrderByOrderNumber($order_number+2);
+
+        $_POST['order_number']=$order['order_number']+3;
+        if ($_POST['order_number']==1){
+            $_POST['order_status']=1;
+        }elseif($_POST['order_number']==2){
+            $_POST['order_status']=2;
+        }else{
+            $_POST['order_status']=3;
+        }
+        $ret = D('Order')->updateOrder($_POST);
+
+        //下一车辆上移
+        for ($i=1;$i<=3;$i++) {
+            $_POST['order_number'] = ${'order'.$i}['order_number']-1;
+            $_POST['id'] = ${'order'.$i}['id'];
+            if ($_POST['order_number'] == 1) {
+                $_POST['order_status'] = 1;
+            } elseif ($_POST['order_number'] == 2) {
+                $_POST['order_status'] = 2;
+            } else {
+                $_POST['order_status'] = 3;
+            }
+            $return = D('Order')->updateOrder($_POST);
+            if(!$return) {
+                return show(0,'删除失败');
+            }
+        }
+
 //        save方法的返回值是影响的记录数，如果返回false则表示更新出错
         if(!$ret) {
             return show(0,'删除失败');
         }else {
             $index = A('Log');
-            $id=$_POST['id'];
             if (session('adminUser.account')!=null) {
                 $index->addLog("删除订单ID为：$id 的订单", session('adminUser.account'));
             }else {
@@ -214,4 +263,127 @@ class OrderController extends Controller {
         $objWriter->save('php://output'); //文件通过浏览器下载
         exit;
     }
+
+    //下移功能
+    public function down(){
+        date_default_timezone_set("Asia/Shanghai");
+        $_POST['update_time']=date("Y-m-d H:i:s");
+        $id=$_POST['id'];
+        //通过订单ID获取个人订单信息
+        $order= D('Order')->showOrder($_POST['id']);
+        $order_number=$order['order_number']+1;
+        $nextOrder=D('Order')->getOrderByOrderNumber($order_number);
+        $_POST['order_number']=$order['order_number']+1;
+        if ($_POST['order_number']==1){
+            $_POST['order_status']=1;
+        }elseif($_POST['order_number']==2){
+            $_POST['order_status']=2;
+        }else{
+            $_POST['order_status']=3;
+        }
+        $ret = D('Order')->updateOrder($_POST);
+
+        //下一车辆上移
+        $_POST['order_number']=$order['order_number'];
+        $_POST['id']=$nextOrder['id'];
+        if ($_POST['order_number']==1){
+            $_POST['order_status']=1;
+        }elseif($_POST['order_number']==2){
+            $_POST['order_status']=2;
+        }else{
+            $_POST['order_status']=3;
+        }
+        $return = D('Order')->updateOrder($_POST);
+
+//        save方法的返回值是影响的记录数，如果返回false则表示更新出错
+        if(!$ret||!$return) {
+            return show(0,'下移失败');
+        }else {
+            $index = A('Log');
+            if (session('adminUser.account')!=null) {
+                $index->addLog("下移订单ID为：$id 的订单", session('adminUser.account'));
+            }else {
+                $index->addLog("下移订单ID为：$id 的订单", session('User.name'));
+            }
+            return show(1, '下移成功');
+        }
+    }
+    //上移功能
+    public function up(){
+        date_default_timezone_set("Asia/Shanghai");
+        $_POST['update_time']=date("Y-m-d H:i:s");
+        $id=$_POST['id'];
+        //通过订单ID获取个人订单信息
+        $order= D('Order')->showOrder($_POST['id']);
+        $order_number=$order['order_number']-1;
+        $nextOrder=D('Order')->getOrderByOrderNumber($order_number);
+        $_POST['order_number']=$order['order_number']-1;
+        if ($_POST['order_number']==1){
+            $_POST['order_status']=1;
+        }elseif($_POST['order_number']==2){
+            $_POST['order_status']=2;
+        }else{
+            $_POST['order_status']=3;
+        }
+        $ret = D('Order')->updateOrder($_POST);
+
+        //上一车辆下移
+        $_POST['order_number']=$order['order_number'];
+        $_POST['id']=$nextOrder['id'];
+        if ($_POST['order_number']==1){
+            $_POST['order_status']=1;
+        }elseif($_POST['order_number']==2){
+            $_POST['order_status']=2;
+        }else{
+            $_POST['order_status']=3;
+        }
+        $return = D('Order')->updateOrder($_POST);
+
+//        save方法的返回值是影响的记录数，如果返回false则表示更新出错
+        if(!$ret||!$return) {
+            return show(0,'上移失败');
+        }else {
+            $index = A('Log');
+            if (session('adminUser.account')!=null) {
+                $index->addLog("上移订单ID为：$id 的订单", session('adminUser.account'));
+            }else {
+                $index->addLog("上移订单ID为：$id 的订单", session('User.name'));
+            }
+            return show(1, '上移成功');
+        }
+    }
+    //暂停全部车辆排队
+    public function stop()
+    {
+        date_default_timezone_set("Asia/Shanghai");
+        $_POST['update_time'] = date("Y-m-d H:i:s");
+        //获得排队次序最大值
+        $maxOrderNumber = D('Order')->getMaxOrder();
+
+        //全部车辆下移
+        for ($i = 1; $i <= $maxOrderNumber; $i++) {
+            dump($i);
+            $order = D('Order')->getOrderByOrderNumber($i);
+            $_POST['order_number'] = $order['order_number'] + 1;
+            $_POST['id'] = $order['id'];
+            if ($_POST['order_number'] == 1) {
+                $_POST['order_status'] = 1;
+            } elseif ($_POST['order_number'] == 2) {
+                $_POST['order_status'] = 2;
+            } else {
+                $_POST['order_status'] = 3;
+            }
+            dump($_POST);
+            D('Order')->updateOrder($_POST);
+        }
+        exit;
+        $index = A('Log');
+        if (session('adminUser.account') != null) {
+            $index->addLog("暂停全部车辆排队", session('adminUser.account'));
+        } else {
+            $index->addLog("暂停全部车辆排队", session('User.name'));
+        }
+        $this->redirect('Order/index');
+    }
+
 }
