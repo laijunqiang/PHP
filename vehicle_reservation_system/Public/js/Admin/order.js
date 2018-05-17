@@ -223,3 +223,29 @@ $('#excel').click(function () {
         window.location.href = "/admin.php/Order/getExcel?status=" + status + "&searchTime=" + searchTime;
     }
 });
+
+//油品类型
+$('select[name="oil_type"]').change(function () {
+    var type=$('select[name="oil_type"] option:selected').val();
+    //不需要重新渲染，直接AJAX操作
+    if (type=="") {
+        dialog.error("油品类型不能为空，请重新选择！")
+    }else{
+        $('select[name="oil_name"]').empty();
+        var url = "/admin.php/Order/getOilName";
+        // 发送给服务端的数据，相当于POST过去的数据
+        var data = {
+            'type':type
+        };//JSON格式
+        // 执行异步请求  $.post
+        $.post(url, data, function (result) {
+            //console.log(result);
+            $.each(result,function (key, val) {
+                //console.log(key);  0
+                //console.log(val);  二甲苯
+                $('select[name="oil_name"]').append("<option value='val'>" + val + "</option>");
+            })
+            //dataType规定预期的服务器响应的数据类型。
+        }, 'JSON');
+    }
+});

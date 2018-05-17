@@ -13,14 +13,16 @@ class OrderController extends Controller {
     }
     //生成订单页面
     public function add(){
-        //获取商品信息
-        $ret=D('Oil')->getGoods();
-        $this->assign('ret',$ret);
         $province=array('京', '津', '沪', '渝','冀', '豫','滇','辽','黑','湘','皖','鲁','新','苏','浙','赣','鄂','桂','甘','晋','蒙','陕','吉','闽','黔','粤','青','藏','蜀','宁','琼','台','港','澳');
         $city=range('A','Z');
         $this->assign('province', $province);
         $this->assign('city', $city);
         $this->display();
+    }
+    //获取油品信息
+    public function getOilName(){
+        $ret = D('Oil')->getNameByType($_POST['type']);
+        exit(json_encode($ret));
     }
     //生成订单处理
     public function addOrder(){

@@ -50,4 +50,9 @@ class OilModel extends Model {
         $res=$this->_db->where("status=0&&id!='$id'")->order('create_time desc')->getField('name',true);
         return $res;
     }
+    //通过油品类型获取油品名
+    public function getNameByType($type=''){
+        $res=$this->_db->where("status=0 && type='$type'")->order('create_time desc')->getField('name',true);
+        return $res;
+    }
 }
