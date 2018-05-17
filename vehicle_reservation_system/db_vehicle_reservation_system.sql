@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-05-16 21:58:04
+Date: 2018-05-17 22:21:44
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -53,13 +53,16 @@ CREATE TABLE `t_driver` (
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态，0表示未删除，1表示已删除',
   PRIMARY KEY (`id`),
   UNIQUE KEY `account` (`account`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_driver
 -- ----------------------------
-INSERT INTO `t_driver` VALUES ('1', 'o47Fa0mp9SRTf3eiKmqWm69BjG_8', '13669586274', 'ba8180831b8d94535ddefad359f735b2', '赖俊强', 'http://thirdwx.qlogo.cn/mmopen/6Zzu4IicyEE5xptsib9Kia11eibwQciblhnUEVlyhu4UNK5BMqs47kYbYYG4dlRa8NRhw3iciaybyO2vUGJnB8CYJM2ya2q1gjldx9ib/132', '纠结', '粤L66666', '一匠科技', '2018-05-11 15:52:36', null, null, '0');
+INSERT INTO `t_driver` VALUES ('1', 'o47Fa0mp9SRTf3eiKmqWm69BjG_8', '13669586274', 'ba8180831b8d94535ddefad359f735b2', '赖俊强', 'http://thirdwx.qlogo.cn/mmopen/6Zzu4IicyEE5xptsib9Kia11eibwQciblhnUEVlyhu4UNK5BMqs47kYbYYG4dlRa8NRhw3iciaybyO2vUGJnB8CYJM2ya2q1gjldx9ib/132', '纠结', '粤L66666', '一匠', '2018-05-11 15:52:36', null, null, '0');
 INSERT INTO `t_driver` VALUES ('2', 'oyur_1JsPp73VApJ5AfbUHGmvyPo', '13669581234', 'ba8180831b8d94535ddefad359f735b2', '林晓聪', 'http://thirdwx.qlogo.cn/mmopen/6Zzu4IicyEE7ar2kVTlu6ZgPpINE6aslAgWTNIibCMPvDib3LgRFxnnC07kR2aaL9hiau0caichC0zhFweQBDj60objmmuAt7O2DK/132', '晓聪', '粤L88888', '一匠', '2018-05-11 15:52:36', null, null, '0');
+INSERT INTO `t_driver` VALUES ('3', 'oyur_1JsPp73VApJ5AfbUHGmvy12', '13138336179', 'ba8180831b8d94535ddefad359f735b2', '红底', 'http://thirdwx.qlogo.cn/mmopen/6Zzu4IicyEE7ar2kVTlu6ZgPpINE6aslAgWTNIibCMPvDib3LgRFxnnC07kR2aaL9hiau0caichC0zhFweQBDj60objmmuAt7O2DK/132', '红底', '粤L77777', '一匠', '2018-05-11 15:52:36', null, null, '0');
+INSERT INTO `t_driver` VALUES ('4', 'oyur_1JsPp73VApJ5AfbUHGmvy17', '13138336666', 'ba8180831b8d94535ddefad359f735b2', '楚特', 'http://thirdwx.qlogo.cn/mmopen/6Zzu4IicyEE7ar2kVTlu6ZgPpINE6aslAgWTNIibCMPvDib3LgRFxnnC07kR2aaL9hiau0caichC0zhFweQBDj60objmmuAt7O2DK/132', '楚特', '粤L55555', '一匠', '2018-05-11 15:52:36', null, null, '0');
+INSERT INTO `t_driver` VALUES ('5', 'o47Fa0mp9SRTf3eiKmqWm69BjG_9', '13669586666', 'ba8180831b8d94535ddefad359f735b2', '张飞', 'http://thirdwx.qlogo.cn/mmopen/6Zzu4IicyEE5xptsib9Kia11eibwQciblhnUEVlyhu4UNK5BMqs47kYbYYG4dlRa8NRhw3iciaybyO2vUGJnB8CYJM2ya2q1gjldx9ib/132', '张飞', '粤L11111', '一匠', '2018-05-11 15:52:36', null, null, '0');
 
 -- ----------------------------
 -- Table structure for t_log
@@ -73,7 +76,7 @@ CREATE TABLE `t_log` (
   `delete_time` char(19) DEFAULT NULL COMMENT '修改记录时间',
   `status` tinyint(4) DEFAULT '0' COMMENT '删除状态，0表示未删除，1表示已删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_log
@@ -116,6 +119,69 @@ INSERT INTO `t_log` VALUES ('35', 'admin', '取消置顶公告ID为：1 的公�
 INSERT INTO `t_log` VALUES ('36', 'admin', '取消置顶公告ID为：3 的公告', '2018-05-16 20:10:53', null, '0');
 INSERT INTO `t_log` VALUES ('37', 'admin', '删除公告ID为：1 的公告', '2018-05-16 20:13:30', null, '0');
 INSERT INTO `t_log` VALUES ('38', 'admin', '删除公告ID为：2 的公告', '2018-05-16 20:13:34', null, '0');
+INSERT INTO `t_log` VALUES ('39', 'admin', '置顶公告ID为：3 的公告', '2018-05-17 19:04:12', null, '0');
+INSERT INTO `t_log` VALUES ('40', 'admin', '取消置顶公告ID为：3 的公告', '2018-05-17 19:04:15', null, '0');
+INSERT INTO `t_log` VALUES ('41', 'admin', '生成订单编号为：O4643 的订单', '2018-05-17 20:02:17', null, '0');
+INSERT INTO `t_log` VALUES ('42', 'admin', '生成订单编号为：O6287 的订单', '2018-05-17 20:03:34', null, '0');
+INSERT INTO `t_log` VALUES ('43', 'admin', '生成订单编号为：O4767 的订单', '2018-05-17 20:04:48', null, '0');
+INSERT INTO `t_log` VALUES ('44', 'admin', '下移订单ID为：6 的订单', '2018-05-17 20:38:03', null, '0');
+INSERT INTO `t_log` VALUES ('45', 'admin', '下移订单ID为：6 的订单', '2018-05-17 20:38:39', null, '0');
+INSERT INTO `t_log` VALUES ('46', 'admin', '下移订单ID为：6 的订单', '2018-05-17 20:38:41', null, '0');
+INSERT INTO `t_log` VALUES ('47', 'admin', '下移订单ID为：7 的订单', '2018-05-17 20:38:43', null, '0');
+INSERT INTO `t_log` VALUES ('48', 'admin', '下移订单ID为：7 的订单', '2018-05-17 20:38:45', null, '0');
+INSERT INTO `t_log` VALUES ('49', 'admin', '下移订单ID为：7 的订单', '2018-05-17 20:38:47', null, '0');
+INSERT INTO `t_log` VALUES ('50', 'admin', '下移订单ID为：7 的订单', '2018-05-17 20:38:49', null, '0');
+INSERT INTO `t_log` VALUES ('51', 'admin', '下移订单ID为：6 的订单', '2018-05-17 20:38:52', null, '0');
+INSERT INTO `t_log` VALUES ('52', 'admin', '下移订单ID为：6 的订单', '2018-05-17 20:47:39', null, '0');
+INSERT INTO `t_log` VALUES ('53', 'admin', '下移订单ID为：7 的订单', '2018-05-17 20:47:45', null, '0');
+INSERT INTO `t_log` VALUES ('54', 'admin', '下移订单ID为：7 的订单', '2018-05-17 20:47:50', null, '0');
+INSERT INTO `t_log` VALUES ('55', 'admin', '下移订单ID为：6 的订单', '2018-05-17 20:47:58', null, '0');
+INSERT INTO `t_log` VALUES ('56', 'admin', '上移订单ID为：6 的订单', '2018-05-17 20:59:31', null, '0');
+INSERT INTO `t_log` VALUES ('57', 'admin', '上移订单ID为：7 的订单', '2018-05-17 20:59:37', null, '0');
+INSERT INTO `t_log` VALUES ('58', 'admin', '上移订单ID为：7 的订单', '2018-05-17 20:59:41', null, '0');
+INSERT INTO `t_log` VALUES ('59', 'admin', '下移订单ID为：7 的订单', '2018-05-17 20:59:44', null, '0');
+INSERT INTO `t_log` VALUES ('60', 'admin', '下移订单ID为：6 的订单', '2018-05-17 21:10:42', null, '0');
+INSERT INTO `t_log` VALUES ('61', 'admin', '生成订单编号为：O3884 的订单', '2018-05-17 21:12:32', null, '0');
+INSERT INTO `t_log` VALUES ('62', 'admin', '下移订单ID为：6 的订单', '2018-05-17 21:23:11', null, '0');
+INSERT INTO `t_log` VALUES ('63', 'admin', '下移订单ID为：7 的订单', '2018-05-17 21:23:14', null, '0');
+INSERT INTO `t_log` VALUES ('64', 'admin', '删除订单ID为：6 的订单', '2018-05-17 21:41:21', null, '0');
+INSERT INTO `t_log` VALUES ('65', 'admin', '删除订单ID为：7 的订单', '2018-05-17 21:41:27', null, '0');
+INSERT INTO `t_log` VALUES ('66', 'admin', '暂停全部车辆排队', '2018-05-17 21:58:20', null, '0');
+INSERT INTO `t_log` VALUES ('67', 'admin', '暂停全部车辆排队', '2018-05-17 22:03:06', null, '0');
+INSERT INTO `t_log` VALUES ('68', 'admin', '暂停全部车辆排队', '2018-05-17 22:03:16', null, '0');
+INSERT INTO `t_log` VALUES ('69', 'admin', '暂停全部车辆排队', '2018-05-17 22:05:47', null, '0');
+INSERT INTO `t_log` VALUES ('70', 'admin', '暂停全部车辆排队', '2018-05-17 22:05:50', null, '0');
+INSERT INTO `t_log` VALUES ('71', 'admin', '暂停全部车辆排队', '2018-05-17 22:05:51', null, '0');
+INSERT INTO `t_log` VALUES ('72', 'admin', '暂停全部车辆排队', '2018-05-17 22:05:52', null, '0');
+INSERT INTO `t_log` VALUES ('73', 'admin', '暂停全部车辆排队', '2018-05-17 22:05:53', null, '0');
+INSERT INTO `t_log` VALUES ('74', 'admin', '暂停全部车辆排队', '2018-05-17 22:08:32', null, '0');
+INSERT INTO `t_log` VALUES ('75', 'admin', '暂停全部车辆排队', '2018-05-17 22:08:47', null, '0');
+INSERT INTO `t_log` VALUES ('76', 'admin', '暂停全部车辆排队', '2018-05-17 22:08:50', null, '0');
+INSERT INTO `t_log` VALUES ('77', 'admin', '暂停全部车辆排队', '2018-05-17 22:08:51', null, '0');
+INSERT INTO `t_log` VALUES ('78', 'admin', '暂停全部车辆排队', '2018-05-17 22:08:53', null, '0');
+INSERT INTO `t_log` VALUES ('79', 'admin', '暂停全部车辆排队', '2018-05-17 22:08:54', null, '0');
+INSERT INTO `t_log` VALUES ('80', 'admin', '暂停全部车辆排队', '2018-05-17 22:08:55', null, '0');
+INSERT INTO `t_log` VALUES ('81', 'admin', '暂停全部车辆排队', '2018-05-17 22:08:56', null, '0');
+INSERT INTO `t_log` VALUES ('82', 'admin', '暂停全部车辆排队', '2018-05-17 22:09:01', null, '0');
+INSERT INTO `t_log` VALUES ('83', 'admin', '暂停全部车辆排队', '2018-05-17 22:09:05', null, '0');
+INSERT INTO `t_log` VALUES ('84', 'admin', '暂停全部车辆排队', '2018-05-17 22:09:06', null, '0');
+INSERT INTO `t_log` VALUES ('85', 'admin', '暂停全部车辆排队', '2018-05-17 22:09:07', null, '0');
+INSERT INTO `t_log` VALUES ('86', 'admin', '暂停全部车辆排队', '2018-05-17 22:09:08', null, '0');
+INSERT INTO `t_log` VALUES ('87', 'admin', '暂停全部车辆排队', '2018-05-17 22:09:09', null, '0');
+INSERT INTO `t_log` VALUES ('88', 'admin', '暂停全部车辆排队', '2018-05-17 22:09:11', null, '0');
+INSERT INTO `t_log` VALUES ('89', 'admin', '暂停全部车辆排队', '2018-05-17 22:09:15', null, '0');
+INSERT INTO `t_log` VALUES ('90', 'admin', '暂停全部车辆排队', '2018-05-17 22:09:17', null, '0');
+INSERT INTO `t_log` VALUES ('91', 'admin', '暂停全部车辆排队', '2018-05-17 22:09:18', null, '0');
+INSERT INTO `t_log` VALUES ('92', 'admin', '暂停全部车辆排队', '2018-05-17 22:09:19', null, '0');
+INSERT INTO `t_log` VALUES ('93', 'admin', '暂停全部车辆排队', '2018-05-17 22:09:19', null, '0');
+INSERT INTO `t_log` VALUES ('94', 'admin', '暂停全部车辆排队', '2018-05-17 22:16:22', null, '0');
+INSERT INTO `t_log` VALUES ('95', 'admin', '暂停全部车辆排队', '2018-05-17 22:16:27', null, '0');
+INSERT INTO `t_log` VALUES ('96', 'admin', '暂停全部车辆排队', '2018-05-17 22:16:32', null, '0');
+INSERT INTO `t_log` VALUES ('97', 'admin', '暂停全部车辆排队', '2018-05-17 22:16:44', null, '0');
+INSERT INTO `t_log` VALUES ('98', 'admin', '暂停全部车辆排队', '2018-05-17 22:16:46', null, '0');
+INSERT INTO `t_log` VALUES ('99', 'admin', '暂停全部车辆排队', '2018-05-17 22:16:48', null, '0');
+INSERT INTO `t_log` VALUES ('100', 'admin', '暂停全部车辆排队', '2018-05-17 22:16:49', null, '0');
+INSERT INTO `t_log` VALUES ('101', 'admin', '暂停全部车辆排队', '2018-05-17 22:16:49', null, '0');
 
 -- ----------------------------
 -- Table structure for t_notice
@@ -138,7 +204,7 @@ CREATE TABLE `t_notice` (
 -- ----------------------------
 INSERT INTO `t_notice` VALUES ('1', 'N0001', '请把微信姓名改成真实姓名', '0', '2018-05-11 15:52:36', '2018-05-16 20:10:52', '', '0');
 INSERT INTO `t_notice` VALUES ('2', 'N6018', '请准时到达。否则，后果自负！', '0', '2018-05-16 19:25:36', '2018-05-16 20:10:50', '', '0');
-INSERT INTO `t_notice` VALUES ('3', 'N5565', '请保存好发票！', '0', '2018-05-16 19:45:41', '2018-05-16 20:10:53', null, '0');
+INSERT INTO `t_notice` VALUES ('3', 'N5565', '请保存好发票！', '0', '2018-05-16 19:45:41', '2018-05-17 19:04:15', null, '0');
 
 -- ----------------------------
 -- Table structure for t_oil
@@ -154,7 +220,7 @@ CREATE TABLE `t_oil` (
   `delete_time` char(19) DEFAULT NULL COMMENT '删除记录时间',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态，0表示未删除，1表示已删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_oil
@@ -163,6 +229,7 @@ INSERT INTO `t_oil` VALUES ('1', 'O0111', '二甲苯', '芳香烃', '2018-05-11 
 INSERT INTO `t_oil` VALUES ('2', 'O0002', '乙醇', '烷烃', '2018-05-13 15:52:36', '2018-05-14 19:53:39', null, '0');
 INSERT INTO `t_oil` VALUES ('5', 'O6436', '丙烯', '烯烃', '2018-05-14 19:21:01', null, null, '0');
 INSERT INTO `t_oil` VALUES ('6', 'O2496', '乙烯', '烯烃', '2018-05-14 19:24:40', null, '', '0');
+INSERT INTO `t_oil` VALUES ('7', 'O1256', '乙炔', '炔烃', '2018-05-14 19:24:40', null, null, '0');
 
 -- ----------------------------
 -- Table structure for t_order
@@ -189,16 +256,17 @@ CREATE TABLE `t_order` (
   KEY `driver_id` (`driver_id`),
   CONSTRAINT `t_order_ibfk_1` FOREIGN KEY (`oil_id`) REFERENCES `t_oil` (`id`),
   CONSTRAINT `t_order_ibfk_3` FOREIGN KEY (`driver_id`) REFERENCES `t_driver` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_order
 -- ----------------------------
-INSERT INTO `t_order` VALUES ('1', 'O0001', '1', '二甲苯', '芳香烃类', '粤L66666', '1', '赖俊强', '一匠科技', '0', null, '2018-05-11 15:52:36', null, null, '0');
-INSERT INTO `t_order` VALUES ('2', 'O0002', '2', '乙醇', '芳香烃类', '粤L66666', '1', '赖俊强', '一匠', '2', '2', '2018-05-16 15:52:36', null, null, '0');
-INSERT INTO `t_order` VALUES ('3', 'O0003', '5', '丙烯', '烯烃', '粤L88888', '2', '林晓聪', '一匠', '1', '1', '2018-05-13 15:52:36', null, null, '0');
-INSERT INTO `t_order` VALUES ('4', 'O0004', '6', '乙烯', '烯烃', '粤L88888', '2', '林晓聪', '一匠', '3', '3', '2018-05-17 15:52:36', null, null, '0');
-INSERT INTO `t_order` VALUES ('5', 'O0005', '6', '乙烯', '烯烃', '粤L88888', '2', '林晓聪', '一匠', '3', '4', '2018-05-18 15:52:36', null, null, '0');
+INSERT INTO `t_order` VALUES ('1', 'O0001', '1', '二甲苯', '芳香烃类', '粤L66666', '1', '赖俊强', '一匠', '0', null, '2018-05-11 15:52:36', null, null, '0');
+INSERT INTO `t_order` VALUES ('3', 'O0003', '5', '丙烯', '烯烃', '粤L88888', '2', '林晓聪', '一匠', '1', '1', '2018-05-13 15:52:36', '2018-05-17 22:19:44', null, '0');
+INSERT INTO `t_order` VALUES ('6', 'O4643', '1', '二甲苯', '芳香烃', '粤L66666', '1', '赖俊强', '一匠', '2', '2', '2018-05-17 20:02:17', '2018-05-17 22:16:49', null, '0');
+INSERT INTO `t_order` VALUES ('7', 'O6287', '6', '乙烯', '烯烃', '粤L77777', '3', '红底', '一匠', '3', '3', '2018-05-17 20:03:34', '2018-05-17 22:16:49', null, '0');
+INSERT INTO `t_order` VALUES ('8', 'O4767', '6', '乙烯', '烯烃', '粤L55555', '4', '楚特', '一匠', '3', '4', '2018-05-17 20:04:48', '2018-05-17 22:16:49', null, '0');
+INSERT INTO `t_order` VALUES ('9', 'O3884', '7', '乙炔', '炔烃', '粤L11111', '5', '张飞', '一匠', '3', '5', '2018-05-17 21:12:32', '2018-05-17 22:16:49', null, '0');
 
 -- ----------------------------
 -- Table structure for t_role
