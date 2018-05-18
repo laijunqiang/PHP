@@ -62,13 +62,15 @@ class OrderModel extends Model {
 
     public function getOrderExcel(){
 //        支持对多个字段的排序,如果没有指定desc或者asc排序规则的话，默认为asc。
-        $res=$this->_db->where('status=0')->order('order_status,create_time desc')->getField('id,number,order_number,goods_name,goods_quantity,create_time,departure_time,car_plate,destination,order_status,driver_number,pick_number,contract_number,short_info,pick_quantity,pick_time,company,real_quantity,update_time');
+        $res=$this->_db->where('status=0')->order('order_status,create_time desc')->getField('id,number,oil_name,oil_type,plate,driver_name,driver_company,order_status,order_number,create_time,update_time');
         return $res;
     }
 
     public function getOrderBySearchExcel($data = array()){
+        //如果传入多个字段的名称
+        //返回的是一个二维数组，类似select方法的返回结果，区别的是这个二维数组的键名是用户的id（准确的说是getField方法的第一个字段名）。
         $data['status']=0;
-        return $this->_db->where($data)->getField('id,number,order_number,goods_name,goods_quantity,create_time,departure_time,car_plate,destination,order_status,driver_number,pick_number,contract_number,short_info,pick_quantity,pick_time,company,real_quantity,update_time');
+        return $this->_db->where($data)->getField('id,number,oil_name,oil_type,plate,driver_name,driver_company,order_status,order_number,create_time,update_time');
     }
 
     //查看个人订单
@@ -80,6 +82,11 @@ class OrderModel extends Model {
     //获得排队次序最大值
     public function getMaxOrder(){
         $res=$this->_db->where('status=0')->max('order_number');
+        return $res;
+    }
+    //获得排队次序最小值
+    public function getMinOrder(){
+        $res=$this->_db->where('status=0')->min('order_number');
         return $res;
     }
 

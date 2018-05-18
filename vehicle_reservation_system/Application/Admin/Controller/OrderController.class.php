@@ -2,13 +2,15 @@
 namespace Admin\Controller;
 use Think\Controller;
 class OrderController extends Controller {
-    public function index(){
+    public function index($stop=''){
         $ret = D('Order')->getOrder();
         //dump($ret); //成功返回二维数组，失败返回NULL
         $this->assign('ret', $ret);
         //因为order是SQL的关键字,不能用它作表名或字段名
         $maxOrder= D('Order')->getMaxOrder();
+        //dump($maxOrder);
         $this->assign('maxOrder',$maxOrder);
+        $this->assign('stop',$stop);
         $this->display();
     }
     //生成订单页面
@@ -132,6 +134,9 @@ class OrderController extends Controller {
         } else {
             $ret = D('Order')->getOrderByStatus($status);
         }
+        $maxOrder= D('Order')->getMaxOrder();
+        //dump($maxOrder);
+        $this->assign('maxOrder',$maxOrder);
         //dump($ret); //成功返回二维数组，失败返回NULL
         $this->assign('status',$status);
         $this->assign('ret', $ret);
@@ -159,6 +164,9 @@ class OrderController extends Controller {
             $data['create_time']=array('between',"$startTime,$endTime");
             $ret = D('Order')->select($data);
         }
+        $maxOrder= D('Order')->getMaxOrder();
+        //dump($maxOrder);
+        $this->assign('maxOrder',$maxOrder);
         //dump($ret); //成功返回二维数组，失败返回NULL
         $this->assign('status',$status);
         $this->assign('ret', $ret);
@@ -171,13 +179,13 @@ class OrderController extends Controller {
         //dump($status==null);   $status为空串，===null。
         $startTime = substr($searchTime, 0, 19);
         $endTime = substr($searchTime, 22, 19);
-        $fileName = "订单信息表";
+        $fileName = "排队信息表";
         $headArr = array(
-            "订单ID", "订单编号", "订单号", "商品", "数量", "创建时间", "出发时间", "车牌号", "目的地", "订单状态", "司机编号", "提货单号", "合同号", "缺货信息", "提货数量", "提货时间", "结算单位", "真实数量", "修改时间"
+            "订单ID", "订单编号", "油品名称", "油品类型", "车牌号", "真实姓名", "隶属公司", "订单状态", "排队次序","创建时间","修改时间"
         );
         if ($status == "") {  //按搜索时间搜索
             $arr = array();
-            $arr['departure_time'] = array('between', "$startTime,$endTime");
+            $arr['create_time'] = array('between', "$startTime,$endTime");
             $data = D('Order')->getOrderBySearchExcel($arr);
 
         } else if ($searchTime == "") {   //按状态搜索
@@ -186,26 +194,19 @@ class OrderController extends Controller {
         } else {     //复合查询
             $arr = array();
             $arr['order_status'] = $status;
-            $arr['departure_time'] = array('between', "$startTime,$endTime");
+            $arr['create_time'] = array('between', "$startTime,$endTime");
             $data = D('Order')->getOrderBySearchExcel($arr);
         }
 //        用foreach来遍历数组，所操作的是指定数组的一个拷贝，而不是数组本身,所以可以通过引用
         foreach ($data as &$v) {
-            if ($v['goods_quantity']) {
-                $v['goods_quantity'] = $v['goods_quantity']."kg";
-            }
-            if ($v['pick_quantity']) {
-                $v['pick_quantity'] = $v['pick_quantity']."kg";
-            }
-            if ($v['real_quantity']) {
-                $v['real_quantity'] = $v['real_quantity']."kg";
-            }
-            if ($v['order_status'] == 0) {
-                $v['order_status'] = "未接单";
-            } elseif ($v['order_status'] == 1) {
-                $v['order_status'] = "已接单";
-            } elseif ($v['order_status'] == 2) {
-                $v['order_status'] = "已结束";
+            if ($v['order_status']==0) {
+                $v['order_status'] ="已装";
+            }elseif ($v['order_status']==1) {
+                $v['order_status'] ="装车中";
+            }elseif ($v['order_status']==2) {
+                $v['order_status'] ="厂内待装";
+            }else{
+                $v['order_status'] ="厂外待装";
             }
             unset($v);//必须释放$v，因为如果不释放的话，第二次循环时变成'&&v'出错，相当于[74] => &array(19)
         }
@@ -359,12 +360,14 @@ class OrderController extends Controller {
         $_POST['update_time'] = date("Y-m-d H:i:s");
         //获得排队次序最大值
         $maxOrderNumber = D('Order')->getMaxOrder();
+        //获得排队次序最小值
+        $minOrderNumber = D('Order')->getMinOrder();
 
         //全部车辆下移
-        for ($i = 1; $i <= $maxOrderNumber; $i++) {
+        for ($i = $maxOrderNumber; $i >=$minOrderNumber ; $i--) {
             //dump($i);
             $order = D('Order')->getOrderByOrderNumber($i);
-            $_POST['order_number'] = $order['order_number'] + 1;
+            $_POST['order_number'] = $order['order_number']+1;
             $_POST['id'] = $order['id'];
             if ($_POST['order_number'] == 1) {
                 $_POST['order_status'] = 1;
@@ -384,7 +387,85 @@ class OrderController extends Controller {
             $index->addLog("暂停全部车辆排队", session('User.name'));
         }
         //$this->index();//可以调用index方法，但是index方法中的$this->display()展示的是stop.html
-        $this->redirect('Order/index');
+        //重定向到New模块的Category操作，可以传参数
+        //$this->redirect('New/category', array('cate_id' => 2), 5, '页面跳转中...');
+        $this->redirect('Order/index',array('$stop' => '恢复全部车辆排队'));
+    }
+    //恢复全部车辆排队
+    public function start()
+    {
+        date_default_timezone_set("Asia/Shanghai");
+        $_POST['update_time'] = date("Y-m-d H:i:s");
+        //获得排队次序最大值
+        $maxOrderNumber = D('Order')->getMaxOrder();
+        //获得排队次序最小值
+        $minOrderNumber = D('Order')->getMinOrder();
+
+        //全部车辆下移
+        for ($i = $minOrderNumber; $i <= $maxOrderNumber; $i++) {
+            //dump($i);
+            $order = D('Order')->getOrderByOrderNumber($i);
+            $_POST['order_number'] = $order['order_number']-1;
+            $_POST['id'] = $order['id'];
+            if ($_POST['order_number'] == 1) {
+                $_POST['order_status'] = 1;
+            } elseif ($_POST['order_number'] == 2) {
+                $_POST['order_status'] = 2;
+            } else {
+                $_POST['order_status'] = 3;
+            }
+            //dump($_POST);
+            D('Order')->updateOrder($_POST);
+        }
+        //exit;
+        $index = A('Log');
+        if (session('adminUser.account') != null) {
+            $index->addLog("暂停全部车辆排队", session('adminUser.account'));
+        } else {
+            $index->addLog("暂停全部车辆排队", session('User.name'));
+        }
+        //$this->index();//可以调用index方法，但是index方法中的$this->display()展示的是stop.html
+        $this->redirect('Order/index',array('$stop' => '暂停全部车辆排队'));
+    }
+    //装车完成
+    public function over()
+    {
+        date_default_timezone_set("Asia/Shanghai");
+        $_POST['update_time'] = date("Y-m-d H:i:s");
+        $_POST['order_status'] = 0;
+        $_POST['order_number'] = null;//string(0) ""转换整形为 int(0)
+        $ret = D('Order')->updateOrder($_POST);
+        if (!$ret) {
+            return show(0, '装车完成失败');
+        } else {
+            //获得排队次序最大值
+            $maxOrderNumber = D('Order')->getMaxOrder();
+            //全部车辆下移
+            for ($i = 2; $i <= $maxOrderNumber; $i++) {
+                //dump($i);
+                $order = D('Order')->getOrderByOrderNumber($i);
+                $_POST['order_number'] = $order['order_number'] - 1;
+                $_POST['id'] = $order['id'];
+                if ($_POST['order_number'] == 1) {
+                    $_POST['order_status'] = 1;
+                } elseif ($_POST['order_number'] == 2) {
+                    $_POST['order_status'] = 2;
+                } else {
+                    $_POST['order_status'] = 3;
+                }
+                //dump($_POST);
+                D('Order')->updateOrder($_POST);
+            }
+            //exit;
+            $index = A('Log');
+            if (session('adminUser.account') != null) {
+                $index->addLog("暂停全部车辆排队", session('adminUser.account'));
+            } else {
+                $index->addLog("暂停全部车辆排队", session('User.name'));
+            }
+            //$this->index();//可以调用index方法，但是index方法中的$this->display()展示的是stop.html
+            return show(1, '装车完成');
+        }
     }
 
 }

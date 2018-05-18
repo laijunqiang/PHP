@@ -10,7 +10,11 @@
     <h3>排队信息表</h3>
     <nav>
         <button><a href="/admin.php/Order/add">添加车辆</a></button>
-        <button id="stop">暂停全部车辆排队</button>
+        <eq name="stop" value="">
+            <button id="stop">暂停全部车辆排队</button>
+            <else/>
+            <button id="stop">{$stop}</button>
+        </eq>
         <button id="excel">生成excel文档</button>
     </nav>
     <br>
@@ -76,7 +80,7 @@
                     <td>装车中</td>
                 </eq>
                 <eq name="vo.order_status" value="2">
-                    <td>厂区内待装</td>
+                    <td>厂内待装</td>
                 </eq>
                 <eq name="vo.order_status" value="3">
                     <td>厂外待装</td>
@@ -88,21 +92,22 @@
                     <eq name="vo.order_status" value="0">
                         <else/>
                         <eq name="vo.order_number" value="1">
+                            <button><a onclick="order.over('{$vo.id}')">装车完成</a></button>
                             <else/>
                             <eq name="vo.order_number" value="2">
                                 <button><a onclick="order.down('{$vo.id}')">下移</a></button>
-                                <egt name="vo.order_number" value="$maxOrder-3">
+                                <elt name="vo.order_number" value="$maxOrder-3">
                                     <button><a onclick="dialog.confirmOrder('是否确定删除？','{$vo.id}')">删除</a></button>
-                                </egt>
+                                </elt>
                                 <else/>
                                 <eq name="vo.order_number" value="$maxOrder">
                                     <button><a onclick="order.up('{$vo.id}')">上移</a></button>
                                     <else/>
                                     <button><a onclick="order.up('{$vo.id}')">上移</a></button>
                                     <button><a onclick="order.down('{$vo.id}')">下移</a></button>
-                                    <egt name="vo.order_number" value="$maxOrder">
+                                    <elt name="vo.order_number" value="$maxOrder-3">
                                         <button><a onclick="dialog.confirmOrder('是否确定删除？','{$vo.id}')">删除</a></button>
-                                    </egt>
+                                    </elt>
                                 </eq>
                             </eq>
                         </eq>

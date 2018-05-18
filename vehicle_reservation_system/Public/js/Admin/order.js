@@ -78,6 +78,27 @@ var order = {
             }
             //dataType规定预期的服务器响应的数据类型。
         }, 'JSON');
+    },
+    //装车完成功能
+    over:function (id) {
+        //alert(id);
+        var url = "/admin.php/Order/over";
+        // 发送给服务端的数据，相当于POST过去的数据
+        var data = {
+            'id': id
+        };//JSON格式
+        // 执行异步请求  $.post
+        $.post(url, data, function (result) {
+            //result接受后台返回的数据
+            if (result.status == 0) {
+                //后台重新判断，多一层弹层
+                return dialog.error(result.message);
+            }
+            if (result.status == 1) {
+                return dialog.success(result.message, '/admin.php/Order');
+            }
+            //dataType规定预期的服务器响应的数据类型。
+        }, 'JSON');
     }
 };
 
@@ -146,5 +167,12 @@ $('select[name="oil_type"]').change(function () {
 
 //暂停全部车辆排队
 $('#stop').click(function () {
-    window.location.href = "/admin.php/Order/stop";
+    //alert($(this).html());//html() 方法设置或返回被选元素的文本内容（包括html标记）
+    var content=$(this).html();
+    if (content=="暂停全部车辆排队"){
+        window.location.href = "/admin.php/Order/stop";
+    }else {
+        window.location.href="/admin.php/Order/start"
+    }
+
 });
