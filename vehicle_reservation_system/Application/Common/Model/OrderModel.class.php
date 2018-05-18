@@ -19,6 +19,12 @@ class OrderModel extends Model {
         $res=$this->_db->where('status=0')->order('order_status,order_number')->select();
         return $res;
     }
+    //获取正在排队的订单信息
+    public function getOrdering(){
+//        支持对多个字段的排序,如果没有指定desc或者asc排序规则的话，默认为asc。
+        $res=$this->_db->where('status=0 && order_status!=0')->order('order_status,order_number')->select();
+        return $res;
+    }
     //通过订单状态获取订单信息
     public function getOrderByStatus($status=''){
         //dump($status); 如果$status=""，而order_status为数字类型，则$status会强制格式化为数字格式后进行查询操作(""转化为0)。

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-05-17 22:21:44
+Date: 2018-05-18 22:00:53
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -76,7 +76,7 @@ CREATE TABLE `t_log` (
   `delete_time` char(19) DEFAULT NULL COMMENT '修改记录时间',
   `status` tinyint(4) DEFAULT '0' COMMENT '删除状态，0表示未删除，1表示已删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=201 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_log
@@ -182,6 +182,105 @@ INSERT INTO `t_log` VALUES ('98', 'admin', '暂停全部车辆排队', '2018-05-
 INSERT INTO `t_log` VALUES ('99', 'admin', '暂停全部车辆排队', '2018-05-17 22:16:48', null, '0');
 INSERT INTO `t_log` VALUES ('100', 'admin', '暂停全部车辆排队', '2018-05-17 22:16:49', null, '0');
 INSERT INTO `t_log` VALUES ('101', 'admin', '暂停全部车辆排队', '2018-05-17 22:16:49', null, '0');
+INSERT INTO `t_log` VALUES ('102', 'admin', '暂停全部车辆排队', '2018-05-18 19:10:52', null, '0');
+INSERT INTO `t_log` VALUES ('103', 'admin', '暂停全部车辆排队', '2018-05-18 19:10:56', null, '0');
+INSERT INTO `t_log` VALUES ('104', 'admin', '暂停全部车辆排队', '2018-05-18 19:10:57', null, '0');
+INSERT INTO `t_log` VALUES ('105', 'admin', '暂停全部车辆排队', '2018-05-18 19:10:57', null, '0');
+INSERT INTO `t_log` VALUES ('106', 'admin', '暂停全部车辆排队', '2018-05-18 19:10:58', null, '0');
+INSERT INTO `t_log` VALUES ('107', 'admin', '暂停全部车辆排队', '2018-05-18 19:10:59', null, '0');
+INSERT INTO `t_log` VALUES ('108', 'admin', '暂停全部车辆排队', '2018-05-18 19:10:59', null, '0');
+INSERT INTO `t_log` VALUES ('109', 'admin', '暂停全部车辆排队', '2018-05-18 19:11:00', null, '0');
+INSERT INTO `t_log` VALUES ('110', 'admin', '暂停全部车辆排队', '2018-05-18 19:11:00', null, '0');
+INSERT INTO `t_log` VALUES ('111', 'admin', '暂停全部车辆排队', '2018-05-18 19:11:01', null, '0');
+INSERT INTO `t_log` VALUES ('112', 'admin', '暂停全部车辆排队', '2018-05-18 19:11:02', null, '0');
+INSERT INTO `t_log` VALUES ('113', 'admin', '暂停全部车辆排队', '2018-05-18 19:11:53', null, '0');
+INSERT INTO `t_log` VALUES ('114', 'admin', '下移订单ID为：3 的订单', '2018-05-18 19:14:49', null, '0');
+INSERT INTO `t_log` VALUES ('115', 'admin', '下移订单ID为：6 的订单', '2018-05-18 19:14:52', null, '0');
+INSERT INTO `t_log` VALUES ('116', 'admin', '上移订单ID为：6 的订单', '2018-05-18 19:15:17', null, '0');
+INSERT INTO `t_log` VALUES ('117', 'admin', '上移订单ID为：3 的订单', '2018-05-18 19:15:54', null, '0');
+INSERT INTO `t_log` VALUES ('118', 'admin', '暂停全部车辆排队', '2018-05-18 19:17:44', null, '0');
+INSERT INTO `t_log` VALUES ('119', 'admin', '暂停全部车辆排队', '2018-05-18 19:20:59', null, '0');
+INSERT INTO `t_log` VALUES ('120', 'admin', '上移订单ID为：9 的订单', '2018-05-18 19:21:56', null, '0');
+INSERT INTO `t_log` VALUES ('121', 'admin', '上移订单ID为：8 的订单', '2018-05-18 19:22:06', null, '0');
+INSERT INTO `t_log` VALUES ('122', 'admin', '暂停全部车辆排队', '2018-05-18 19:35:15', null, '0');
+INSERT INTO `t_log` VALUES ('123', 'admin', '删除订单ID为：6 的订单', '2018-05-18 19:45:15', null, '0');
+INSERT INTO `t_log` VALUES ('124', 'admin', '暂停全部车辆排队', '2018-05-18 19:47:25', null, '0');
+INSERT INTO `t_log` VALUES ('125', 'admin', '暂停全部车辆排队', '2018-05-18 19:47:27', null, '0');
+INSERT INTO `t_log` VALUES ('126', 'admin', '暂停全部车辆排队', '2018-05-18 19:47:28', null, '0');
+INSERT INTO `t_log` VALUES ('127', 'admin', '暂停全部车辆排队', '2018-05-18 19:47:28', null, '0');
+INSERT INTO `t_log` VALUES ('128', 'admin', '暂停全部车辆排队', '2018-05-18 19:47:52', null, '0');
+INSERT INTO `t_log` VALUES ('129', 'admin', '暂停全部车辆排队', '2018-05-18 19:47:53', null, '0');
+INSERT INTO `t_log` VALUES ('130', 'admin', '暂停全部车辆排队', '2018-05-18 19:47:58', null, '0');
+INSERT INTO `t_log` VALUES ('131', 'admin', '暂停全部车辆排队', '2018-05-18 19:48:01', null, '0');
+INSERT INTO `t_log` VALUES ('132', 'admin', '暂停全部车辆排队', '2018-05-18 19:48:03', null, '0');
+INSERT INTO `t_log` VALUES ('133', 'admin', '暂停全部车辆排队', '2018-05-18 19:51:03', null, '0');
+INSERT INTO `t_log` VALUES ('134', 'admin', '删除订单ID为：7 的订单', '2018-05-18 19:52:27', null, '0');
+INSERT INTO `t_log` VALUES ('135', 'admin', '暂停全部车辆排队', '2018-05-18 20:00:50', null, '0');
+INSERT INTO `t_log` VALUES ('136', 'admin', '暂停全部车辆排队', '2018-05-18 20:00:51', null, '0');
+INSERT INTO `t_log` VALUES ('137', 'admin', '暂停全部车辆排队', '2018-05-18 20:02:46', null, '0');
+INSERT INTO `t_log` VALUES ('138', 'admin', '暂停全部车辆排队', '2018-05-18 20:02:47', null, '0');
+INSERT INTO `t_log` VALUES ('139', 'admin', '暂停全部车辆排队', '2018-05-18 20:02:48', null, '0');
+INSERT INTO `t_log` VALUES ('140', 'admin', '暂停全部车辆排队', '2018-05-18 20:02:50', null, '0');
+INSERT INTO `t_log` VALUES ('141', 'admin', '暂停全部车辆排队', '2018-05-18 20:03:44', null, '0');
+INSERT INTO `t_log` VALUES ('142', 'admin', '暂停全部车辆排队', '2018-05-18 20:03:45', null, '0');
+INSERT INTO `t_log` VALUES ('143', 'admin', '暂停全部车辆排队', '2018-05-18 20:03:45', null, '0');
+INSERT INTO `t_log` VALUES ('144', 'admin', '暂停全部车辆排队', '2018-05-18 20:06:07', null, '0');
+INSERT INTO `t_log` VALUES ('145', 'admin', '暂停全部车辆排队', '2018-05-18 20:06:25', null, '0');
+INSERT INTO `t_log` VALUES ('146', 'admin', '暂停全部车辆排队', '2018-05-18 20:06:28', null, '0');
+INSERT INTO `t_log` VALUES ('147', 'admin', '暂停全部车辆排队', '2018-05-18 20:06:40', null, '0');
+INSERT INTO `t_log` VALUES ('148', 'admin', '暂停全部车辆排队', '2018-05-18 20:08:06', null, '0');
+INSERT INTO `t_log` VALUES ('149', 'admin', '暂停全部车辆排队', '2018-05-18 20:08:08', null, '0');
+INSERT INTO `t_log` VALUES ('150', 'admin', '暂停全部车辆排队', '2018-05-18 20:10:16', null, '0');
+INSERT INTO `t_log` VALUES ('151', 'admin', '暂停全部车辆排队', '2018-05-18 20:10:19', null, '0');
+INSERT INTO `t_log` VALUES ('152', 'admin', '暂停全部车辆排队', '2018-05-18 20:10:19', null, '0');
+INSERT INTO `t_log` VALUES ('153', 'admin', '暂停全部车辆排队', '2018-05-18 20:10:20', null, '0');
+INSERT INTO `t_log` VALUES ('154', 'admin', '暂停全部车辆排队', '2018-05-18 20:10:21', null, '0');
+INSERT INTO `t_log` VALUES ('155', 'admin', '暂停全部车辆排队', '2018-05-18 20:10:21', null, '0');
+INSERT INTO `t_log` VALUES ('156', 'admin', '暂停全部车辆排队', '2018-05-18 20:10:22', null, '0');
+INSERT INTO `t_log` VALUES ('157', 'admin', '暂停全部车辆排队', '2018-05-18 20:10:23', null, '0');
+INSERT INTO `t_log` VALUES ('158', 'admin', '暂停全部车辆排队', '2018-05-18 20:12:14', null, '0');
+INSERT INTO `t_log` VALUES ('159', 'admin', '暂停全部车辆排队', '2018-05-18 20:12:22', null, '0');
+INSERT INTO `t_log` VALUES ('160', 'admin', '暂停全部车辆排队', '2018-05-18 20:12:24', null, '0');
+INSERT INTO `t_log` VALUES ('161', 'admin', '暂停全部车辆排队', '2018-05-18 20:12:26', null, '0');
+INSERT INTO `t_log` VALUES ('162', 'admin', '暂停全部车辆排队', '2018-05-18 20:12:27', null, '0');
+INSERT INTO `t_log` VALUES ('163', 'admin', '暂停全部车辆排队', '2018-05-18 20:12:27', null, '0');
+INSERT INTO `t_log` VALUES ('164', 'admin', '暂停全部车辆排队', '2018-05-18 20:12:28', null, '0');
+INSERT INTO `t_log` VALUES ('165', 'admin', '暂停全部车辆排队', '2018-05-18 20:12:28', null, '0');
+INSERT INTO `t_log` VALUES ('166', 'admin', '暂停全部车辆排队', '2018-05-18 20:12:29', null, '0');
+INSERT INTO `t_log` VALUES ('167', 'admin', '暂停全部车辆排队', '2018-05-18 20:12:30', null, '0');
+INSERT INTO `t_log` VALUES ('168', 'admin', '暂停全部车辆排队', '2018-05-18 20:12:31', null, '0');
+INSERT INTO `t_log` VALUES ('169', 'admin', '暂停全部车辆排队', '2018-05-18 20:12:32', null, '0');
+INSERT INTO `t_log` VALUES ('170', 'admin', '暂停全部车辆排队', '2018-05-18 20:12:33', null, '0');
+INSERT INTO `t_log` VALUES ('171', 'admin', '暂停全部车辆排队', '2018-05-18 20:12:33', null, '0');
+INSERT INTO `t_log` VALUES ('172', 'admin', '暂停全部车辆排队', '2018-05-18 20:14:27', null, '0');
+INSERT INTO `t_log` VALUES ('173', 'admin', '暂停全部车辆排队', '2018-05-18 20:14:32', null, '0');
+INSERT INTO `t_log` VALUES ('174', 'admin', '暂停全部车辆排队', '2018-05-18 20:14:33', null, '0');
+INSERT INTO `t_log` VALUES ('175', 'admin', '暂停全部车辆排队', '2018-05-18 20:14:34', null, '0');
+INSERT INTO `t_log` VALUES ('176', 'admin', '暂停全部车辆排队', '2018-05-18 20:14:35', null, '0');
+INSERT INTO `t_log` VALUES ('177', 'admin', '暂停全部车辆排队', '2018-05-18 20:14:36', null, '0');
+INSERT INTO `t_log` VALUES ('178', 'admin', '暂停全部车辆排队', '2018-05-18 20:14:37', null, '0');
+INSERT INTO `t_log` VALUES ('179', 'admin', '暂停全部车辆排队', '2018-05-18 20:14:45', null, '0');
+INSERT INTO `t_log` VALUES ('180', 'admin', '暂停全部车辆排队', '2018-05-18 20:14:46', null, '0');
+INSERT INTO `t_log` VALUES ('181', 'admin', '暂停全部车辆排队', '2018-05-18 20:14:49', null, '0');
+INSERT INTO `t_log` VALUES ('182', 'admin', '暂停全部车辆排队', '2018-05-18 20:26:21', null, '0');
+INSERT INTO `t_log` VALUES ('183', 'admin', '暂停全部车辆排队', '2018-05-18 20:27:01', null, '0');
+INSERT INTO `t_log` VALUES ('184', 'admin', '暂停全部车辆排队', '2018-05-18 20:27:29', null, '0');
+INSERT INTO `t_log` VALUES ('185', 'admin', '暂停全部车辆排队', '2018-05-18 20:28:19', null, '0');
+INSERT INTO `t_log` VALUES ('186', 'admin', '暂停全部车辆排队', '2018-05-18 20:28:22', null, '0');
+INSERT INTO `t_log` VALUES ('187', 'admin', '暂停全部车辆排队', '2018-05-18 20:29:25', null, '0');
+INSERT INTO `t_log` VALUES ('188', 'admin', '暂停全部车辆排队', '2018-05-18 20:29:39', null, '0');
+INSERT INTO `t_log` VALUES ('189', 'admin', '暂停全部车辆排队', '2018-05-18 20:30:04', null, '0');
+INSERT INTO `t_log` VALUES ('190', 'admin', '暂停全部车辆排队', '2018-05-18 20:30:08', null, '0');
+INSERT INTO `t_log` VALUES ('191', 'admin', '置顶公告ID为：3 的公告', '2018-05-18 20:46:55', null, '0');
+INSERT INTO `t_log` VALUES ('192', 'admin', '取消置顶公告ID为：3 的公告', '2018-05-18 20:47:03', null, '0');
+INSERT INTO `t_log` VALUES ('193', 'admin', '置顶公告ID为：2 的公告', '2018-05-18 20:47:05', null, '0');
+INSERT INTO `t_log` VALUES ('194', 'admin', '置顶公告ID为：3 的公告', '2018-05-18 20:52:41', null, '0');
+INSERT INTO `t_log` VALUES ('195', 'admin', '暂停全部车辆排队', '2018-05-18 21:45:42', null, '0');
+INSERT INTO `t_log` VALUES ('196', 'admin', '暂停全部车辆排队', '2018-05-18 21:45:44', null, '0');
+INSERT INTO `t_log` VALUES ('197', 'admin', '暂停全部车辆排队', '2018-05-18 21:46:27', null, '0');
+INSERT INTO `t_log` VALUES ('198', 'admin', '暂停全部车辆排队', '2018-05-18 21:46:30', null, '0');
+INSERT INTO `t_log` VALUES ('199', 'admin', '暂停全部车辆排队', '2018-05-18 21:46:50', null, '0');
+INSERT INTO `t_log` VALUES ('200', 'admin', '暂停全部车辆排队', '2018-05-18 21:47:01', null, '0');
 
 -- ----------------------------
 -- Table structure for t_notice
@@ -203,8 +302,8 @@ CREATE TABLE `t_notice` (
 -- Records of t_notice
 -- ----------------------------
 INSERT INTO `t_notice` VALUES ('1', 'N0001', '请把微信姓名改成真实姓名', '0', '2018-05-11 15:52:36', '2018-05-16 20:10:52', '', '0');
-INSERT INTO `t_notice` VALUES ('2', 'N6018', '请准时到达。否则，后果自负！', '0', '2018-05-16 19:25:36', '2018-05-16 20:10:50', '', '0');
-INSERT INTO `t_notice` VALUES ('3', 'N5565', '请保存好发票！', '0', '2018-05-16 19:45:41', '2018-05-17 19:04:15', null, '0');
+INSERT INTO `t_notice` VALUES ('2', 'N6018', '请准时到达。否则，后果自负！', '1', '2018-05-16 19:25:36', '2018-05-18 20:47:05', '', '0');
+INSERT INTO `t_notice` VALUES ('3', 'N5565', '请保存好发票！', '1', '2018-05-16 19:45:41', '2018-05-18 20:52:41', null, '0');
 
 -- ----------------------------
 -- Table structure for t_oil
@@ -262,11 +361,11 @@ CREATE TABLE `t_order` (
 -- Records of t_order
 -- ----------------------------
 INSERT INTO `t_order` VALUES ('1', 'O0001', '1', '二甲苯', '芳香烃类', '粤L66666', '1', '赖俊强', '一匠', '0', null, '2018-05-11 15:52:36', null, null, '0');
-INSERT INTO `t_order` VALUES ('3', 'O0003', '5', '丙烯', '烯烃', '粤L88888', '2', '林晓聪', '一匠', '1', '1', '2018-05-13 15:52:36', '2018-05-17 22:19:44', null, '0');
-INSERT INTO `t_order` VALUES ('6', 'O4643', '1', '二甲苯', '芳香烃', '粤L66666', '1', '赖俊强', '一匠', '2', '2', '2018-05-17 20:02:17', '2018-05-17 22:16:49', null, '0');
-INSERT INTO `t_order` VALUES ('7', 'O6287', '6', '乙烯', '烯烃', '粤L77777', '3', '红底', '一匠', '3', '3', '2018-05-17 20:03:34', '2018-05-17 22:16:49', null, '0');
-INSERT INTO `t_order` VALUES ('8', 'O4767', '6', '乙烯', '烯烃', '粤L55555', '4', '楚特', '一匠', '3', '4', '2018-05-17 20:04:48', '2018-05-17 22:16:49', null, '0');
-INSERT INTO `t_order` VALUES ('9', 'O3884', '7', '乙炔', '炔烃', '粤L11111', '5', '张飞', '一匠', '3', '5', '2018-05-17 21:12:32', '2018-05-17 22:16:49', null, '0');
+INSERT INTO `t_order` VALUES ('3', 'O0003', '5', '丙烯', '烯烃', '粤L88888', '2', '林晓聪', '一匠', '1', '1', '2018-05-13 15:52:36', '2018-05-18 21:47:01', null, '0');
+INSERT INTO `t_order` VALUES ('6', 'O4643', '1', '二甲苯', '芳香烃', '粤L66666', '1', '赖俊强', '一匠', '2', '2', '2018-05-17 20:02:17', '2018-05-18 21:47:01', null, '0');
+INSERT INTO `t_order` VALUES ('7', 'O6287', '6', '乙烯', '烯烃', '粤L77777', '3', '红底', '一匠', '3', '3', '2018-05-17 20:03:34', '2018-05-18 21:47:01', null, '0');
+INSERT INTO `t_order` VALUES ('8', 'O4767', '6', '乙烯', '烯烃', '粤L55555', '4', '楚特', '一匠', '3', '4', '2018-05-17 20:04:48', '2018-05-18 21:47:01', null, '0');
+INSERT INTO `t_order` VALUES ('9', 'O3884', '7', '乙炔', '炔烃', '粤L11111', '5', '张飞', '一匠', '3', '5', '2018-05-17 21:12:32', '2018-05-18 21:47:01', null, '0');
 
 -- ----------------------------
 -- Table structure for t_role

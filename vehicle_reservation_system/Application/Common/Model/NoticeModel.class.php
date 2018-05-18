@@ -20,31 +20,6 @@ class NoticeModel extends Model {
         $res=$this->_db->where('status=0')->order('top desc,create_time desc')->select();
         return $res;
     }
-    //获取车牌号信息
-    public function getPlate(){
-        $res=$this->_db->where('status=0')->order('create_time desc')->getField('plate',true);
-        return $res;
-    }
-    //获取车牌号信息(修改)
-    public function getPlateUpdate($id=''){
-        $res=$this->_db->where("status=0&&id!='$id'")->order('create_time desc')->getField('plate',true);
-        return $res;
-    }
-    //获取车架号信息
-    public function getFrame(){
-        $res=$this->_db->where('status=0')->order('create_time desc')->getField('frame',true);
-        return $res;
-    }
-    //获取车架号信息(修改)
-    public function getFrameUpdate($id=''){
-        $res=$this->_db->where("status=0&&id!='$id'")->order('create_time desc')->getField('frame',true);
-        return $res;
-    }
-    //通过车牌号获取车辆ID
-    public function getIdByPlate($car_plate){
-        $res=$this->_db->where("plate='$car_plate'")->getField('id');
-        return $res;
-    }
 
     //修改公告信息页面
     public function showNotice($id=''){
@@ -70,5 +45,10 @@ class NoticeModel extends Model {
             return 0;
         }
         return $this->_db->add($data);
+    }
+    //获取公告信息
+    public function getFirstNotice(){
+        $res=$this->_db->where('status=0')->order('top desc,create_time desc')->find();
+        return $res;
     }
 }

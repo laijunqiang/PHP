@@ -7,11 +7,19 @@ class IndexController extends Controller {
         if(!session('driverUser')) {
             $this->redirect('Login/index');
         }else {
-            $account = $_SESSION['driverUser']['account'];
-            $ret=D('Driver')->getDriverByAccount($account);
-            $this->assign('ret',$ret);
+            $firstNotice=D('Notice')->getFirstNotice();
+            $content=$firstNotice['content'];
+            $this->assign('content',$content);
+            $order=D('Order')->getOrdering();
+            $this->assign('order',$order);
 //            ajax跳转时，有display的控制器的视图会被覆盖
             $this->display();
         }
     }
+    //获取油品信息
+    public function getOilName(){
+        $ret = D('Oil')->getNameByType($_POST['type']);
+        exit(json_encode($ret));
+    }
+
 }

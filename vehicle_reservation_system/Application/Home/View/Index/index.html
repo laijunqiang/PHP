@@ -3,6 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!--<meta http-equiv="refresh" content="0; url="> -->
+    <!--页面定期刷新，如果加url的，则会重新定向到指定的网页，content后面跟的是时间（单位秒）-->
 	<meta http-equiv="refresh" content="60">
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 	<title>车辆运货预约</title>
@@ -24,13 +26,13 @@
 			<div id="box" class="box" v-show="boxDp">
 			    <div id="wrap" class="wrap">
 			        <div id="start" class="start">
-			            <span>告示：</span>请把微信姓名改成真实姓名
+			            <span>告示：</span>{$content}
 			        </div>
 			    </div>
 			</div>
 			<div id="top">
 				<img src="/Public/images/banner.png" class="topImg">
-				<p style="text-align: center;color: #333;height: 0.7rem;line-height: 0.7rem;font-size: .4rem; background-color: #fff;width: 90%;margin: 0 auto;padding: .1rem .2rem;">二甲苯装车排队情况</p>
+				<p style="text-align: center;color: #333;height: 0.7rem;line-height: 0.7rem;font-size: .4rem; background-color: #fff;width: 90%;margin: 0 auto;padding: .1rem .2rem;">装车排队情况</p>
 				<div class="search">
 					<div class="searchCon">
 						<!-- <span class="sx" @click="sxBtn">筛选</span> -->
@@ -44,16 +46,17 @@
 
 				<div class="search" >
 					<div class="searchCon-right">
-						<select id="sel" >
-							<option>油品类</option>
-							<option>化工类</option>
+						<select id="sel" name="oil_type">
+                            <option>请选择</option>
+							<option value="芳香烃">芳香烃</option>
+							<option value="烷烃">烷烃</option>
+							<option value="烯烃">烯烃</option>
+							<option value="炔烃">炔烃</option>
 						</select>
 					</div>
 					<div class="searchCon-right">
-						<select id="sel"  v-model="proName"  >
-							<option disabled="disabled">请选择类型</option>
-							<option >二甲苯</option>
-							<option >粗甲苯</option>
+						<select id="sel"  v-model="proName" name="oil_name" >
+							<option>请选择类型</option>
 						</select>
 					</div>
 				</div>
@@ -61,21 +64,29 @@
 
 			</div>
 			<div class="list" style="height:6.5rem">
-				<div class="line">
-					<span class="num numIng" >1</span>
-						<span class="chepai">粤AE86</span>
-						<span class="statu ing" >正在装</span>
-					</div>
-					<div class="line">
-					<span class="num numCq" >2</span>
-						<span class="chepai">粤BE86</span>
-						<span class="statu cq" >厂区待装</span>
-					</div>
-					<div class="line">
-					<span class="num" >3</span>
-						<span class="chepai">粤CE86</span>
-						<span class="statu" >厂外待装</span>
-				</div>
+				<volist name="order" id="vo">
+                    <eq name="vo.order_number" value="1">
+                        <div class="line">
+                            <span class="num numIng" >1</span>
+                                <span class="chepai">{$vo.plate}</span>
+                                <span class="statu ing" >装车中</span>
+                        </div>
+                        <else/>
+                        <eq name="vo.order_number" value="2">
+                            <div class="line">
+                                <span class="num numCq" >2</span>
+                                    <span class="chepai">{$vo.plate}</span>
+                                    <span class="statu cq" >厂区待装</span>
+                            </div>
+                            <else/>
+                            <div class="line">
+                                <span class="num" >{$vo.order_number}</span>
+                                    <span class="chepai">{$vo.plate}</span>
+                                    <span class="statu" >厂外待装</span>
+                            </div>
+                        </eq>
+                    </eq>
+                </volist>
 
 
 			<!-- <div class="list" v-else>
@@ -104,5 +115,5 @@
 	<script type="text/javascript" src="/Public/js/home/vue.min.js"></script>
 	<script src="/Public/js/home/jquery.min weui.js"></script>
     <script src="/Public/js/home/jquery-weui.min.js"></script>
-
+    <script src="/Public/js/home/index.js"></script>
 </html>
