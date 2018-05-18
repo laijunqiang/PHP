@@ -362,7 +362,7 @@ class OrderController extends Controller {
 
         //全部车辆下移
         for ($i = 1; $i <= $maxOrderNumber; $i++) {
-            dump($i);
+            //dump($i);
             $order = D('Order')->getOrderByOrderNumber($i);
             $_POST['order_number'] = $order['order_number'] + 1;
             $_POST['id'] = $order['id'];
@@ -373,16 +373,17 @@ class OrderController extends Controller {
             } else {
                 $_POST['order_status'] = 3;
             }
-            dump($_POST);
+            //dump($_POST);
             D('Order')->updateOrder($_POST);
         }
-        exit;
+        //exit;
         $index = A('Log');
         if (session('adminUser.account') != null) {
             $index->addLog("暂停全部车辆排队", session('adminUser.account'));
         } else {
             $index->addLog("暂停全部车辆排队", session('User.name'));
         }
+        //$this->index();//可以调用index方法，但是index方法中的$this->display()展示的是stop.html
         $this->redirect('Order/index');
     }
 
