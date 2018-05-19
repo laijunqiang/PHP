@@ -32,7 +32,7 @@
 			</div>
 			<div id="top">
 				<img src="/Public/images/banner.png" class="topImg">
-				<p style="text-align: center;color: #333;height: 0.7rem;line-height: 0.7rem;font-size: .4rem; background-color: #fff;width: 90%;margin: 0 auto;padding: .1rem .2rem;">装车排队情况</p>
+				<p style="text-align: center;color: #333;height: 0.7rem;line-height: 0.7rem;font-size: .4rem; background-color: #fff;width: 90%;margin: 0 auto;padding: .1rem .2rem;"><?php echo ($name[0]); ?>装车排队情况</p>
 				<div class="search">
 					<div class="searchCon">
 						<!-- <span class="sx" @click="sxBtn">筛选</span> -->
@@ -47,16 +47,24 @@
 				<div class="search" >
 					<div class="searchCon-right">
 						<select id="sel" name="oil_type">
-                            <option>请选择</option>
-							<option value="芳香烃">芳香烃</option>
-							<option value="烷烃">烷烃</option>
-							<option value="烯烃">烯烃</option>
-							<option value="炔烃">炔烃</option>
+                            <option value="">请选择</option>
+                            <?php if(($type) == "芳香烃"): ?><option value="芳香烃" selected="selected">芳香烃</option>
+							    <?php else: ?><option value="芳香烃">芳香烃</option><?php endif; ?>
+                            <?php if(($type) == "烷烃"): ?><option value="烷烃" selected="selected">烷烃</option>
+                                <?php else: ?><option value="烷烃">烷烃</option><?php endif; ?>
+                            <?php if(($type) == "烯烃"): ?><option value="烯烃" selected="selected">烯烃</option>
+                                <?php else: ?><option value="烯烃">烯烃</option><?php endif; ?>
+                            <?php if(($type) == "炔烃"): ?><option value="炔烃" selected="selected">炔烃</option>
+                                <?php else: ?><option value="炔烃">炔烃</option><?php endif; ?>
 						</select>
 					</div>
 					<div class="searchCon-right">
 						<select id="sel"  v-model="proName" name="oil_name" >
-							<option>请选择类型</option>
+							<?php if(($name) == ""): ?><option>请选择类型</option>
+                            <?php else: ?>
+                                <?php if(is_array($name)): foreach($name as $key=>$vo): if(($vo) == $oilName): ?><option value="<?php echo ($vo); ?>" selected="selected"><?php echo ($vo); ?></option>
+                                        <?php else: ?>
+                                        <option value="<?php echo ($vo); ?>"><?php echo ($vo); ?></option><?php endif; endforeach; endif; endif; ?>
 						</select>
 					</div>
 				</div>
@@ -106,8 +114,10 @@
 
 </div>
 </body>
-	<script type="text/javascript" src="/Public/js/home/vue.min.js"></script>
+	<script src="/Public/js/home/vue.min.js"></script>
 	<script src="/Public/js/home/jquery.min weui.js"></script>
     <script src="/Public/js/home/jquery-weui.min.js"></script>
+    <script src="/Public/js/dialog/layer.js"></script>
+    <script src="/Public/js/dialog.js"></script>
     <script src="/Public/js/home/index.js"></script>
 </html>

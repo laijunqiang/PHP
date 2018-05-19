@@ -107,4 +107,9 @@ class OrderModel extends Model {
         $res=$this->_db->where("status=0 && order_number='$orderNumber'")->find();
         return $res;
     }
+
+    //通过油品名获取排队信息
+    public function getOrderByName($name=''){
+        return $this->_db->where("oil_name='$name' and status=0 and order_status!=0")->select();
+    }
 }

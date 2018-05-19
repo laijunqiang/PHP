@@ -32,7 +32,7 @@
 			</div>
 			<div id="top">
 				<img src="/Public/images/banner.png" class="topImg">
-				<p style="text-align: center;color: #333;height: 0.7rem;line-height: 0.7rem;font-size: .4rem; background-color: #fff;width: 90%;margin: 0 auto;padding: .1rem .2rem;">装车排队情况</p>
+				<p style="text-align: center;color: #333;height: 0.7rem;line-height: 0.7rem;font-size: .4rem; background-color: #fff;width: 90%;margin: 0 auto;padding: .1rem .2rem;">{$name[0]}装车排队情况</p>
 				<div class="search">
 					<div class="searchCon">
 						<!-- <span class="sx" @click="sxBtn">筛选</span> -->
@@ -47,16 +47,38 @@
 				<div class="search" >
 					<div class="searchCon-right">
 						<select id="sel" name="oil_type">
-                            <option>请选择</option>
-							<option value="芳香烃">芳香烃</option>
-							<option value="烷烃">烷烃</option>
-							<option value="烯烃">烯烃</option>
-							<option value="炔烃">炔烃</option>
+                            <option value="">请选择</option>
+                            <eq name="type" value="芳香烃">
+                                <option value="芳香烃" selected="selected">芳香烃</option>
+							    <else/><option value="芳香烃">芳香烃</option>
+                            </eq>
+                            <eq name="type" value="烷烃">
+                                <option value="烷烃" selected="selected">烷烃</option>
+                                <else/><option value="烷烃">烷烃</option>
+                            </eq>
+                            <eq name="type" value="烯烃">
+                                <option value="烯烃" selected="selected">烯烃</option>
+                                <else/><option value="烯烃">烯烃</option>
+                            </eq>
+                            <eq name="type" value="炔烃">
+                                <option value="炔烃" selected="selected">炔烃</option>
+                                <else/><option value="炔烃">炔烃</option>
+                            </eq>
 						</select>
 					</div>
 					<div class="searchCon-right">
 						<select id="sel"  v-model="proName" name="oil_name" >
-							<option>请选择类型</option>
+							<eq name="name" value="">
+                                <option>请选择类型</option>
+                            <else/>
+                                <foreach name="name" item="vo">
+                                    <eq name="vo" value="$oilName">
+                                        <option value="{$vo}" selected="selected">{$vo}</option>
+                                        <else/>
+                                        <option value="{$vo}">{$vo}</option>
+                                    </eq>
+                                </foreach>
+                            </eq>
 						</select>
 					</div>
 				</div>
@@ -112,8 +134,10 @@
 
 </div>
 </body>
-	<script type="text/javascript" src="/Public/js/home/vue.min.js"></script>
+	<script src="/Public/js/home/vue.min.js"></script>
 	<script src="/Public/js/home/jquery.min weui.js"></script>
     <script src="/Public/js/home/jquery-weui.min.js"></script>
+    <script src="/Public/js/dialog/layer.js"></script>
+    <script src="/Public/js/dialog.js"></script>
     <script src="/Public/js/home/index.js"></script>
 </html>

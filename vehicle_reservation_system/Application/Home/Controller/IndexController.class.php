@@ -16,10 +16,36 @@ class IndexController extends Controller {
             $this->display();
         }
     }
-    //获取油品信息
-    public function getOilName(){
-        $ret = D('Oil')->getNameByType($_POST['type']);
-        exit(json_encode($ret));
+    //通过油品类型查询排队信息
+    public function selectType($type){
+        $this->assign('type',$type);
+        //dump($type);
+        //获取油品名
+        $name=D('Oil')->getNameByType($type);
+        $this->assign('name',$name);
+        $firstName=$name[0];
+        //通过油品名获取排队信息
+        $order = D('Order')->getOrderByName($firstName);
+        $this->assign('order', $order);
+        $firstNotice=D('Notice')->getFirstNotice();
+        $content=$firstNotice['content'];
+        $this->assign('content',$content);
+        $this->display('index');
+    }
+    //通过油品名称查询排队信息
+    public function selectName($name,$type){
+        $this->assign('type',$type);
+        $this->assign('oilName',$name);
+        $order = D('Order')->getOrderByName($name);
+        $this->assign('order', $order);
+        $firstNotice=D('Notice')->getFirstNotice();
+        $content=$firstNotice['content'];
+        $this->assign('content',$content);
+        $name=D('Oil')->getNameByType($type);
+        $this->assign('name',$name);
+
+        //通过油品名获取排队信息
+        $this->display('index');
     }
 
 }
