@@ -16,9 +16,10 @@ $('select[name="oil_name"]').change(function () {
 });
 //搜索
 $('span.icon-search').click(function () {
-   alert("搜索");
+    var search=$.trim($('input[name="search"]').val());
+    window.location.href = "/index.php/Home/Index/search?search=" + search;
 });
 //刷新  span .icon-refresh错误，中间不能有空格
 $('span.icon-refresh').click(function () {
-    alert("刷新");
+    window.location.href = "/index.php/Home/Index";
 });

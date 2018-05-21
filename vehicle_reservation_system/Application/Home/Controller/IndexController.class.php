@@ -47,5 +47,15 @@ class IndexController extends Controller {
         //通过油品名获取排队信息
         $this->display('index');
     }
+    //搜索框搜索
+    public function search($search){
+        $this->assign('search',$search);
+        $order=D('Order')->search($search);
+        $this->assign('order',$order);
+        $firstNotice=D('Notice')->getFirstNotice();
+        $content=$firstNotice['content'];
+        $this->assign('content',$content);
+        $this->display('index');
+    }
 
 }

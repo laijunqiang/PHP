@@ -38,7 +38,7 @@
 				<div class="search">
 					<div class="searchCon">
 						<!-- <span class="sx" @click="sxBtn">筛选</span> -->
-						<input type="text" placeholder="请输入你想搜索的内容" class="weui-input">
+						<input type="text" placeholder="请输入你想搜索的内容" class="weui-input" name="search" value="<?php echo ($search); ?>">
 						<span class="icon-search"></span>
 						<div class="refresh">
 							<span class="icon-refresh" ></span>
@@ -116,7 +116,7 @@
 
 </div>
 </body>
-	<script src="/Public/js/home/vue.min.js"></script>
+	<!--<script src="/Public/js/home/vue.min.js"></script>-->
 	<script src="/Public/js/home/jquery.min weui.js"></script>
     <script src="/Public/js/home/jquery-weui.min.js"></script>
     <script src="/Public/js/dialog/layer.js"></script>

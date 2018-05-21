@@ -67,12 +67,18 @@
 					<div class="null">
 					</div>
 					<span class="Txt">车牌号</span>
-					<div class="lineC-left">
+					<div class="lineC-left" id="app">
 						<div v-if="chepai == ''">
 							<span class="pz" >粤</span>
+                            <span class="pz" >A</span>
 						</div>
 						<div v-else>
-							<span class="pz" >A</span>
+                            <select class="weui-select">
+                                <option v-for="option in options" v-bind:value="option">{{option}}</option>
+                            </select>
+                            <select class="weui-select">
+                                <option v-for="option in options" v-bind:value="option">{{option}}</option>
+                            </select>
 						</div>
 							<input type="text" class="weui-input" placeholder="请输入车牌号" >
 					</div>
@@ -118,7 +124,7 @@
 
 		</div>
 </body>
-	<script type="text/javascript" src="/Public/js/home/vue.min.js"></script>
+	<script src="/Public/js/home/vue.min.js"></script>
 	<script src="/Public/js/home/jquery.min weui.js"></script>
 	<script src="/Public/js/home/jquery-weui.min.js"></script>
 	<script src="/Public/js/home/order.js"></script>

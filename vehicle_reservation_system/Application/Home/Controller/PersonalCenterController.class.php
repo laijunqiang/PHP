@@ -12,6 +12,7 @@ class PersonalCenterController extends Controller {
     }
 
     public function record(){
+
         $this->display();
     }
     public function contact(){

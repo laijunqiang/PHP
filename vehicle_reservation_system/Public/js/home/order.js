@@ -117,30 +117,20 @@ $("#company").blur(function () {
     }
 });
 
-//油品类型
-$('select[name="oil_type"]').change(function () {
-    var type=$('select[name="oil_type"] option:selected').val();
-    //不需要重新渲染，直接AJAX操作
-    if (type=="") {
-        dialog.error("油品类型不能为空，请重新选择！")
-    }else{
-        //empty()是只移除了 指定元素中的所有子节点
-        $('select[name="oil_name"]').empty();
-        var url = "/index.php/Home/Order/getOilName";
-        // 发送给服务端的数据，相当于POST过去的数据
-        var data = {
-            'type':type
-        };//JSON格式
-        // 执行异步请求  $.post
-        $.post(url, data, function (result) {
-            //console.log(result);
-            $.each(result,function (key, val) {
-                //console.log(key);  0
-                //console.log(val);  二甲苯
-                //需要用到 +连接符（解析val）
-                $('select[name="oil_name"]').append("<option value="+val+">" + val + "</option>");
-            })
-            //dataType规定预期的服务器响应的数据类型。
-        }, 'JSON');
+var vm = new Vue({
+    el: '#app',
+    data:{
+        chepai:'gg',
+        options:[]
+    },
+    created: function () {
+        // `this` 指向 vm 实例
+        var province=['京', '津', '沪', '渝','冀', '豫','滇','辽','黑','湘','皖','鲁','新','苏','浙','赣','鄂','桂','甘','晋','蒙','陕','吉','闽','黔','粤','青','藏','蜀','宁','琼','台','港','澳'];
+        var city=['A','Z'];
+        for (var i=0;i<province.length;i++) {
+            console.log(province[i]);
+            this.options.push(province[i]);
+        }
+
     }
 });

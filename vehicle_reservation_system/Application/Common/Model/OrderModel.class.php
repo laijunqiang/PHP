@@ -112,4 +112,8 @@ class OrderModel extends Model {
     public function getOrderByName($name=''){
         return $this->_db->where("oil_name='$name' and status=0 and order_status!=0")->select();
     }
+    //通过搜索时间获取订单信息
+    public function search($search =''){
+        return $this->_db->where("(plate like '%$search%'or driver_company like '%$search%')and status=0 and order_status!=0")->select();
+    }
 }
