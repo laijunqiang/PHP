@@ -14,3 +14,11 @@ $('select[name="oil_name"]').change(function () {
     var type=$('select[name="oil_type"] option:selected').val();
     window.location.href = "/index.php/Home/Index/selectName?name=" + name+"&type="+type;
 });
+//搜索
+$('span.icon-search').click(function () {
+   alert("搜索");
+});
+//刷新  span .icon-refresh错误，中间不能有空格
+$('span.icon-refresh').click(function () {
+    alert("刷新");
+});

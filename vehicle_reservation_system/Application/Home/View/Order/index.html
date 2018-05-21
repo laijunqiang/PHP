@@ -44,16 +44,18 @@
 					</div>
 					<span class="Txt">油品类型</span>
 					<div class="selLine weui-cell__bd">
-						<select class="weui-select " >
-							<option>油品类</option>
-							<option>化工类</option>
+						<select class="weui-select " name="oil_type">
+							<option value="芳香烃">芳香烃</option>
+							<option value="烷烃">烷烃</option>
+							<option value="烯烃">烯烃</option>
+							<option value="炔烃">炔烃</option>
 						</select>
 					</div>
 					<div class="selLine weui-cell__bd">
-						<select  class="weui-select weui-cell__bd"  >
-						<option disabled="disabled">请选择类型</option>
-							<option >二甲苯</option>
-							<option >粗甲苯</option>
+						<select  class="weui-select weui-cell__bd" name="oil_name" >
+							<foreach name="name" item="vo">
+								<option value="{$vo}">{$vo}</option>
+							</foreach>
 						</select>
 					</div>
 				</div>
@@ -75,8 +77,6 @@
 							<span class="pz" >A</span>
 						</div>
 							<input type="text" class="weui-input" placeholder="请输入车牌号" >
-
-
 					</div>
 				</div>
 				<div class="line">
@@ -123,6 +123,6 @@
 	<script type="text/javascript" src="/Public/js/home/vue.min.js"></script>
 	<script src="/Public/js/home/jquery.min weui.js"></script>
 	<script src="/Public/js/home/jquery-weui.min.js"></script>
-
+	<script src="/Public/js/home/order.js"></script>
 
 </html>

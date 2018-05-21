@@ -79,6 +79,7 @@ input{
     line-height: 1.2rem;
 }
 .line .lineC-left{
+	/*隐藏溢出*/
 	overflow: hidden;
 }
 .lineC-left input{

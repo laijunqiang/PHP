@@ -32,14 +32,16 @@
 			</div>
 			<div id="top">
 				<img src="/Public/images/banner.png" class="topImg">
-				<p style="text-align: center;color: #333;height: 0.7rem;line-height: 0.7rem;font-size: .4rem; background-color: #fff;width: 90%;margin: 0 auto;padding: .1rem .2rem;"><?php echo ($name[0]); ?>装车排队情况</p>
+				<?php if(($oilName) != ""): ?><p style="text-align: center;color: #333;height: 0.7rem;line-height: 0.7rem;font-size: .4rem; background-color: #fff;width: 90%;margin: 0 auto;padding: .1rem .2rem;"><?php echo ($oilName); ?>装车排队情况</p>
+                    <?php else: ?>
+                    <p style="text-align: center;color: #333;height: 0.7rem;line-height: 0.7rem;font-size: .4rem; background-color: #fff;width: 90%;margin: 0 auto;padding: .1rem .2rem;"><?php echo ($name[0]); ?>装车排队情况</p><?php endif; ?>
 				<div class="search">
 					<div class="searchCon">
 						<!-- <span class="sx" @click="sxBtn">筛选</span> -->
 						<input type="text" placeholder="请输入你想搜索的内容" class="weui-input">
 						<span class="icon-search"></span>
 						<div class="refresh">
-							<span class="icon-refresh"></span>
+							<span class="icon-refresh" ></span>
 						</div>
 					</div>
 				</div>
