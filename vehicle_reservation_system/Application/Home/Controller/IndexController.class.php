@@ -105,13 +105,22 @@ class IndexController extends Controller
     }
 
     public function getJson($url){
+        /*      resource curl_init ([ string $url = NULL ] )
+                初始化新的会话，返回 cURL 句柄，供curl_setopt()、 curl_exec() 和 curl_close() 函数使用。*/
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_URL, $url);//CURLOPT_URL 指定请求的URL；
+//        FALSE 禁止 cURL 验证对等证书（peer's certificate）。
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+        /*        CURLOPT_SSL_VERIFYHOST的值
+                设为0表示不检查证书
+                设为1表示检查证书中是否有CN(common name)字段
+                设为2表示在1的基础上校验当前的域名是否与CN匹配*/
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+//        使用PHP curl获取页面内容或提交数据，有时候希望返回的内容作为变量储存，而不是直接输出。这个时候就必需设置curl的CURLOPT_RETURNTRANSFER选项为1或true。
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        $output = curl_exec($ch);
+        $output = curl_exec($ch);// 已经获取到内容，没有输出到页面上。
         curl_close($ch);
+//      json_decode — 对 JSON 格式的字符串进行解码，当该参数为 TRUE 时，将返回 array 而非 object 。
         return json_decode($output, true);
     }
 
