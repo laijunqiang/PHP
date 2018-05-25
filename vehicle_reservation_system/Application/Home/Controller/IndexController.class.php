@@ -17,6 +17,7 @@ class IndexController extends Controller
         //            ajax跳转时，有display的控制器的视图会被覆盖
                     $this->display();
                 }*/
+        //createMenu();
         $this->checkSignature();
         $this->getCode();
     }
@@ -84,26 +85,7 @@ class IndexController extends Controller
         }
     }
 
-    //创建菜单
-    public function createMenu($data)
-    {
-        $url = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=10_SeUm2vPn-COceshdis_2dMSn2RHBTgxSsUHgGR0lt229yDN8KRqeQjGLsLXq4arlrLFIDvuXDzUtgzQSOoejjr4EXhmqJ5zyqgALTtgQRW3AUjsWxqTd7Pl_It-xf8lWGMmDwpRLSIoNN8tcUQPbAAACYX"
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=10_SeUm2vPn-COceshdis_2dMSn2RHBTgxSsUHgGR0lt229yDN8KRqeQjGLsLXq4arlrLFIDvuXDzUtgzQSOoejjr4EXhmqJ5zyqgALTtgQRW3AUjsWxqTd7Pl_It-xf8lWGMmDwpRLSIoNN8tcUQPbAAACYX");
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
-        curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (compatible; MSIE 5.01; Windows NT 5.0)');
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-        curl_setopt($ch, CURLOPT_AUTOREFERER, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $tmpInfo = curl_exec($ch);
-        if (curl_errno($ch)) {
-            return curl_error($ch);
-        }
-    }
-
+    //取得微信返回的JSON数据
     public function getJson($url){
         /*      resource curl_init ([ string $url = NULL ] )
                 初始化新的会话，返回 cURL 句柄，供curl_setopt()、 curl_exec() 和 curl_close() 函数使用。*/
@@ -124,32 +106,6 @@ class IndexController extends Controller
         return json_decode($output, true);
     }
 
-    public function responseMsg()
-    {
-        //1.获取到微信推送过来的POST数据（xml格式）
-        $postArr = $GLOBALS["HTTP_RAW_POST_DATA"];
-
-        $postObj=simplexml_load_string($postArr,'SimpleXMLElement', LIBXML_NOCDATA);
-
-        if(strtolower($postObj->MsgType)=='event'){
-            if(strtolower($postObj->Event=='subscribe')){
-                $toUser=$postObj->FromUserName;
-                $fromUser=$postObj->ToUserName;
-                $time=time();
-                $msgType='text';
-                $content="欢迎关注".$postObj->FromUserName;
-                $template="<xml>
-                                <toUserName><![CDATA[%s]]></ToUserName>
-                                <FromUserName><![CDATA[%s]]></FromUserName>
-                                <CreateTime>%</CreateTime>
-                                <MsgType><![CDATA[%s]]></MsgType>
-                                <Content><![CDATA[%s]]></Content>
-                                </xml>";
-                $info=sprintf($template,$toUser,$fromUser,$time,$msgType,$content);
-                echo $info;
-            }
-        }
-    }
 
     //通过油品类型查询排队信息
     public function selectType($type){
