@@ -68,19 +68,19 @@
 					</div>
 					<span class="Txt">车牌号</span>
 					<div class="lineC-left" id="app">
-						<div v-if="chepai == ''">
+						<div v-if="chepai != ''">
 							<span class="pz" >粤</span>
                             <span class="pz" >A</span>
 						</div>
 						<div v-else>
-                            <select class="weui-select">
+                            <select class="weui-select" style="width: 0.5rem;">
                                 <option v-for="option in options" v-bind:value="option">{{option}}</option>
                             </select>
-                            <select class="weui-select">
+                            <select class="weui-select" style="width: 0.5rem;">
                                 <option v-for="option in options" v-bind:value="option">{{option}}</option>
                             </select>
 						</div>
-							<input type="text" class="weui-input" placeholder="请输入车牌号" >
+							<input type="text" class="weui-input" placeholder="请输入车牌号" v-model="car">
 					</div>
 				</div>
 				<div class="line">
