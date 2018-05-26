@@ -28,6 +28,8 @@ while(list($number,$name,$credit,$time)=$result->fetch_row()){
     <table align="center">
         <tr>
             <td>ID：</td>
+            <!--表单元素在使用了disabled后，当我们将表单以POST或GET的方式提交的话，这个元素的值不会被传递出去，
+            而readonly会将该值传递出去（这种情况出现在我们将某个表单中的textarea元素设置为disabled或readonly，但是submit button却是可以使用的）。-->
             <td><input type="text" name="id" <?php echo "value='$id'"?> readonly="readonly"/></td>
         </tr>
         <tr>

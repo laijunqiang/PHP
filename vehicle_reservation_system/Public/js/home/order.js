@@ -120,18 +120,25 @@ $("#company").blur(function () {
 var vm = new Vue({
     el: '#app',
     data:{
-        chepai:'gg',
-        options:[],
-        car:'粤ASE86',
+        chepai:'',
+        provinces:[],
+        citys:[],
+        plate:''
     },
     created: function () {
-        console.log(this.car);
         // `this` 指向 vm 实例
         var province=['京', '津', '沪', '渝','冀', '豫','滇','辽','黑','湘','皖','鲁','新','苏','浙','赣','鄂','桂','甘','晋','蒙','陕','吉','闽','黔','粤','青','藏','蜀','宁','琼','台','港','澳'];
-        var city=['A','Z'];
         for (var i=0;i<province.length;i++) {
-            this.options.push(province[i]);
+            this.provinces.push(province[i]);
         }
-
+        for (var i=0;i<26;i++){
+            var letter=String.fromCharCode(65+i);
+            this.citys.push(letter);
+        }
+    },
+    methods: {
+        commit: function () {
+            alert('提交');
+        }
     }
 });

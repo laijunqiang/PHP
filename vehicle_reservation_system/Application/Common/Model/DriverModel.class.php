@@ -87,4 +87,10 @@ class DriverModel extends Model {
         $res=$this->_db->where("status=0 && name='$name'")->find();
         return $res;
     }
+
+    //通过openid获取信息
+    public function getDriverByOpenid($openid){
+        $ret=$this->_db->where("status=0 && openid='$openid'")->find();
+        return $ret;
+    }
 }
