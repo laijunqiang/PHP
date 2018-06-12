@@ -17,13 +17,7 @@
         <tr>
             <td>请选择权限：</td>
             <td>
-                <input type="checkbox" name="role" value="order_manage"/>排队管理权限
-                <input type="checkbox" name="role" value="driver_manage"/>司机管理权限
-                <input type="checkbox" name="role" value="oil_manage"/>油品管理权限
-                <input type="checkbox" name="role" value="user_manage"/>用户管理权限
-                <input type="checkbox" name="role" value="role_manage"/>角色管理权限
-                <input type="checkbox" name="role" value="log_manage"/>日志管理权限
-                <input type="checkbox" name="role" value="notice_manage"/>公告管理权限
+                <?php if(is_array($ret)): $i = 0; $__LIST__ = $ret;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><input type="checkbox" name="role" value="<?php echo ($vo["id"]); ?>"/><?php echo ($vo["permission"]); endforeach; endif; else: echo "" ;endif; ?>
             </td>
         </tr>
         <tr align="center">
@@ -31,9 +25,9 @@
         </tr>
     </table>
 </div>
-<script src="/Public/js/jquery.js"></script>
-<script src="/Public/js/Admin/role.js"></script>
-<script src="/Public/js/dialog/layer.js"></script>
-<script src="/Public/js/dialog.js"></script>
+<script src="/laijunqiang/vehicle_reservation_system/Public/js/jquery.js"></script>
+<script src="/laijunqiang/vehicle_reservation_system/Public/js/Admin/role.js"></script>
+<script src="/laijunqiang/vehicle_reservation_system/Public/js/dialog/layer.js"></script>
+<script src="/laijunqiang/vehicle_reservation_system/Public/js/dialog.js"></script>
 </body>
 </html>

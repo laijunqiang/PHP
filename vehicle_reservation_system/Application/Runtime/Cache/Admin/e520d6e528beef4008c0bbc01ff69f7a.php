@@ -49,9 +49,9 @@
         </tr>
     </table>
 </div>
-<script src="/Public/js/jquery.js"></script>
-<script src="/Public/js/Admin/oil.js"></script>
-<script src="/Public/js/dialog/layer.js"></script>
-<script src="/Public/js/dialog.js"></script>
+<script src="/laijunqiang/vehicle_reservation_system/Public/js/jquery.js"></script>
+<script src="/laijunqiang/vehicle_reservation_system/Public/js/Admin/oil.js"></script>
+<script src="/laijunqiang/vehicle_reservation_system/Public/js/dialog/layer.js"></script>
+<script src="/laijunqiang/vehicle_reservation_system/Public/js/dialog.js"></script>
 </body>
 </html>

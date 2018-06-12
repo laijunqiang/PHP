@@ -30,6 +30,7 @@
         }
         //数据库查询
         function query($sql){
+            //可进行增删查改
             $this->result=$this->mysqli->query($sql);
             return $this->result;
         }

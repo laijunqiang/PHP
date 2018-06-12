@@ -12,7 +12,7 @@ var admin = {
             //在本文件中虽然没有调用，但是在index.html中将dialog.js和login.js加载在一起
             dialog.error('密码不能为空');
         }else {
-            var url = "/admin.php/Admin/update";
+            var url = "../Admin/update";
             var data = {'account': account, 'password': password};//JSON格式
             // 执行异步请求  $.post
             $.post(url, data, function (result) {
@@ -22,7 +22,7 @@ var admin = {
                     return dialog.error(result.message);
                 }
                 if (result.status == 1) {
-                    return dialog.success(result.message, '/admin.php/Order');
+                    return dialog.success(result.message, '../Order/index');
                 }
                 //dataType规定预期的服务器响应的数据类型。
             }, 'JSON');

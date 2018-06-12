@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>录入权限</title>
+    <title>录入角色</title>
 </head>
 <body>
 <div align="center">
-    <h4>录入权限功能</h4>
+    <h4>录入角色功能</h4>
     <table>
         <tr>
             <td>角色名：</td>
@@ -17,13 +17,9 @@
         <tr>
             <td>请选择权限：</td>
             <td>
-                <input type="checkbox" name="role" value="order_manage"/>排队管理权限
-                <input type="checkbox" name="role" value="driver_manage"/>司机管理权限
-                <input type="checkbox" name="role" value="oil_manage"/>油品管理权限
-                <input type="checkbox" name="role" value="user_manage"/>用户管理权限
-                <input type="checkbox" name="role" value="role_manage"/>角色管理权限
-                <input type="checkbox" name="role" value="log_manage"/>日志管理权限
-                <input type="checkbox" name="role" value="notice_manage"/>公告管理权限
+                <volist name="ret" id="vo">
+                <input type="checkbox" name="role" value="{$vo.id}"/>{$vo.permission}
+                </volist>
             </td>
         </tr>
         <tr align="center">
@@ -31,9 +27,9 @@
         </tr>
     </table>
 </div>
-<script src="/Public/js/jquery.js"></script>
-<script src="/Public/js/Admin/role.js"></script>
-<script src="/Public/js/dialog/layer.js"></script>
-<script src="/Public/js/dialog.js"></script>
+<script src="__PUBLIC__/js/jquery.js"></script>
+<script src="__PUBLIC__/js/Admin/role.js"></script>
+<script src="__PUBLIC__/js/dialog/layer.js"></script>
+<script src="__PUBLIC__/js/dialog.js"></script>
 </body>
 </html>

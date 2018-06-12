@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>公告内容管理</title>
-    <link rel="stylesheet" href="/Public/css/admin/align.css">
+    <link rel="stylesheet" href="/laijunqiang/vehicle_reservation_system/Public/css/admin/align.css">
 </head>
 <body>
 <div align="center">
     <h3>公告信息表</h3>
-    <button><a href="/admin.php/Notice/add">录入</a></button>
+    <button><a href="<?php echo U('Notice/add');?>">录入</a></button>
     <table border="1px">
         <tr>
             <td>公告ID</td>
@@ -32,15 +32,15 @@
                         <?php else: ?>
                         <button><a onclick="notice.untop('<?php echo ($vo["id"]); ?>')">取消置顶</a></button><?php endif; ?>
 
-                    <button><a href="/admin.php/Notice/update?id=<?php echo ($vo["id"]); ?>">修改</a></button>
+                    <button><a href="<?php echo U('Notice/update',array('id'=>$vo['id']));?>">修改</a></button>
                     <button><a onclick="dialog.confirmNotice('是否确定删除？','<?php echo ($vo["id"]); ?>')">删除</a></button>
                 </td>
             </tr><?php endforeach; endif; else: echo "" ;endif; ?>
     </table>
 </div>
-<script src="/Public/js/jquery.js"></script>
-<script src="/Public/js/dialog/layer.js"></script>
-<script src="/Public/js/dialog.js"></script>
-<script src="/Public/js/Admin/notice.js"></script>
+<script src="/laijunqiang/vehicle_reservation_system/Public/js/jquery.js"></script>
+<script src="/laijunqiang/vehicle_reservation_system/Public/js/dialog/layer.js"></script>
+<script src="/laijunqiang/vehicle_reservation_system/Public/js/dialog.js"></script>
+<script src="/laijunqiang/vehicle_reservation_system/Public/js/Admin/notice.js"></script>
 </body>
 </html>

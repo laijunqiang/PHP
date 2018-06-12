@@ -12,31 +12,34 @@
 <!--    　1、用a标签的target属性。
     2、跳转是用a标签的href传递参数，在含有iframe页面中用jquery接收判断传递过来的参数，然后获取iframe的id，根据参数设置iframe的src,显示指定的页面。-->
     <nav>
-        <button><a href="/admin.php/Order" target="iframe">排队信息管理</a></button>
-        <button><a href="/admin.php/Driver" target="iframe">司机信息管理</a></button>
-        <button><a href="/admin.php/Oil" target="iframe" >油品信息管理</a></button>
-        <button><a href="/admin.php/User" target="iframe" >用户信息管理</a></button>
-        <button><a href="/admin.php/Role" target="iframe">角色权限管理</a></button>
-        <button><a href="/admin.php/Log" target="iframe">操作日志管理</a></button>
-        <button><a href="/admin.php/Notice" target="iframe">公告内容管理</a></button>
-        <button><a href="/admin.php/Admin" target="iframe">修改密码</a></button>
-        <button><a href="/admin.php/Login/loginout">退出登陆</a></button>
+        <!--模板中的{}代表<?php ?>，:U代表使用U方法-->
+        <button><a href="<?php echo U('Order/index');?>" target="iframe">排队信息管理</a></button>
+        <button><a href="<?php echo U('Driver/index');?>" target="iframe">司机信息管理</a></button>
+        <button><a href="<?php echo U('Oil/index');?>" target="iframe" >油品信息管理</a></button>
+        <button><a href="<?php echo U('User/index');?>" target="iframe" >用户信息管理</a></button>
+        <button><a href="<?php echo U('Role/index');?>" target="iframe">角色信息管理</a></button>
+        <button><a href="<?php echo U('Permission/index');?>" target="iframe">权限信息管理</a></button>
+        <button><a href="<?php echo U('Log/index');?>" target="iframe">操作日志管理</a></button>
+        <button><a href="<?php echo U('Notice/index');?>" target="iframe">公告内容管理</a></button>
+        <button><a href="<?php echo U('Admin/index');?>" target="iframe">修改密码</a></button>
+        <button><a href="<?php echo U('Login/loginout');?>">退出登陆</a></button>
     </nav>
     </div>
-    <iframe src="/admin.php/Order" scrolling="auto" name="iframe" frameborder="0" width="100%" height="600">
+    <iframe src="<?php echo U('Order/index');?>" scrolling="auto" name="iframe" frameborder="0" width="100%" height="600">
     </iframe>
     <?php else: ?>
         <p>欢迎，<?php echo ($_SESSION['User']['name']); ?>！</p>
         <!--<?php if(is_array($_SESSION['adminUser'])): foreach($_SESSION['adminUser'] as $key=>$vo): echo ($key); ?>|<?php echo ($vo); ?><br><?php endforeach; endif; ?>-->
         <nav>
-            <?php if(($role["order_manage"]) == "1"): ?><button><a href="/admin.php/Order" target="iframe">排队信息管理</a></button><?php endif; ?>
-            <?php if(($role["driver_manage"]) == "1"): ?><button><a href="/admin.php/Driver" target="iframe">司机信息管理</a></button><?php endif; ?>
-            <?php if(($role["oil_manage"]) == "1"): ?><button><a href="/admin.php/Oil" target="iframe" >油品信息管理</a></button><?php endif; ?>
-            <?php if(($role["user_manage"]) == "1"): ?><button><a href="/admin.php/User" target="iframe" >用户信息管理</a></button><?php endif; ?>
-            <?php if(($role["role_manage"]) == "1"): ?><button><a href="/admin.php/Role" target="iframe">角色权限管理</a></button><?php endif; ?>
-            <?php if(($role["log_manage"]) == "1"): ?><button><a href="/admin.php/Log" target="iframe">操作日志管理</a></button><?php endif; ?>
-            <?php if(($role["notice_manage"]) == "1"): ?><button><a href="/admin.php/Notice" target="iframe">公告内容管理</a></button><?php endif; ?>
-            <button><a href="/admin.php/Login/loginout">退出登陆</a></button>
+            <?php if(is_array($permission)): foreach($permission as $key=>$vo): if(($vo) == "1"): ?><button><a href="<?php echo U('Order/index');?>" target="iframe">排队信息管理</a></button><?php endif; ?>
+                <?php if(($vo) == "2"): ?><button><a href="<?php echo U('Driver/index');?>" target="iframe">司机信息管理</a></button><?php endif; ?>
+                <?php if(($vo) == "3"): ?><button><a href="<?php echo U('Oil/index');?>" target="iframe" >油品信息管理</a></button><?php endif; ?>
+                <?php if(($vo) == "4"): ?><button><a href="<?php echo U('User/index');?>" target="iframe" >用户信息管理</a></button><?php endif; ?>
+                <?php if(($vo) == "5"): ?><button><a href="<?php echo U('Role/index');?>" target="iframe">角色信息管理</a></button><?php endif; ?>
+                <?php if(($vo) == "6"): ?><button><a href="<?php echo U('Permission/index');?>" target="iframe">权限信息管理</a></button><?php endif; ?>
+                <?php if(($vo) == "7"): ?><button><a href="<?php echo U('Log/index');?>" target="iframe">操作日志管理</a></button><?php endif; ?>
+                <?php if(($vo) == "8"): ?><button><a href="<?php echo U('Notice/index');?>" target="iframe">公告内容管理</a></button><?php endif; endforeach; endif; ?>
+            <button><a href="<?php echo U('Login/loginout');?>">退出登陆</a></button>
         </nav>
     </div>
     <iframe src="<?php echo ($src); ?>" scrolling="auto" name="iframe" frameborder="0" width="100%" height="600">

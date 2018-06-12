@@ -8,10 +8,10 @@ var login = {
         //jq的attr()获取并修改属性值
         if ($('#input').attr("type")== "password") {
             $('input[type="password"]').attr('type','text');
-            $('#img').attr('src','/Public/images/invisible.png');
+            $('#img').attr('src','../../Public/images/invisible.png');
         }else {
             $('#input').attr('type','password');
-            $('#img').attr('src','/Public/images/visible.png');
+            $('#img').attr('src','../../Public/images/visible.png');
         }
     },
     check : function() {
@@ -23,7 +23,7 @@ var login = {
             //在本文件中虽然没有调用，但是在index.html中将dialog.js和login.js加载在一起
             dialog.error('账号或密码不能为空，请重新输入！');
         }else {
-            var url = "/admin.php/Login/check";
+            var url = "../Login/check";
             var data = {'account': account, 'password': password};//JSON格式
             // 执行异步请求  $.post
             $.post(url, data, function (result) {
@@ -33,7 +33,7 @@ var login = {
                     return dialog.error(result.message);
                 }
                 if (result.status == 1) {
-                    return dialog.success(result.message, '/admin.php/Index');
+                    return dialog.success(result.message, '../Index');
                 }
                 //dataType规定预期的服务器响应的数据类型。
             }, 'JSON');

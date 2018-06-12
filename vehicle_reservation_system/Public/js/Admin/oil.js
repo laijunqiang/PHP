@@ -3,7 +3,7 @@
  */
 var oil = {
     back: function () {
-        window.location.href = "/admin.php/Oil";
+        window.location.href = "../Oil/index";
     },
     update: function () {
         // 获取修改订单页面中的信息
@@ -20,7 +20,7 @@ var oil = {
         } else if (type==""){
             dialog.error('油品类型不能为空，请重新选择！');
         } else {
-            var url = "/admin.php/Oil/updateOil";
+            var url = "../../../Oil/updateOil";
             // 发送给服务端的数据，相当于POST过去的数据
             var data = {
                 'id': id,
@@ -36,7 +36,7 @@ var oil = {
                     return dialog.error(result.message);
                 }
                 if (result.status == 1) {
-                    return dialog.success(result.message, '/admin.php/Oil');
+                    return dialog.success(result.message, '../../../Oil/index');
                 }
                 //dataType规定预期的服务器响应的数据类型。
             }, 'JSON');
@@ -55,7 +55,7 @@ var oil = {
         } else if (!type){
             dialog.error('油品类型不能为空，请重新选择！');
         } else {
-            var url = "/admin.php/Oil/addOil";
+            var url = "../Oil/addOil";
             // 发送给服务端的数据，相当于POST过去的数据
             var data = {
                 'name':name,
@@ -69,7 +69,7 @@ var oil = {
                     return dialog.error(result.message);
                 }
                 if (result.status == 1) {
-                    return dialog.success(result.message, '/admin.php/Oil');
+                    return dialog.success(result.message, '../Oil/index');
                 }
                 //dataType规定预期的服务器响应的数据类型。
             }, 'JSON');

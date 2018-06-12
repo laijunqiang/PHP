@@ -7,7 +7,7 @@
 <body>
 <div align="center">
     <h3>油品信息表</h3>
-    <button><a href="/admin.php/Oil/add">录入</a></button>
+    <button><a href="<?php echo U('Oil/add');?>">录入</a></button>
     <table border="1px">
         <tr>
             <td>油品ID</td>
@@ -29,14 +29,15 @@
                 <td>
                     <!--1.通过<a>标签   2.window.location.href="/admin.php/Driver";
                         才可以跳转到<iframe>页面-->
-                    <button><a href="/admin.php/Oil/update?id=<?php echo ($vo["id"]); ?>">修改</a></button>
+                    <!--模板中用U方法传参数，使用array-->
+                    <button><a href="<?php echo U('Oil/update',array('id'=>$vo['id']));?>">修改</a></button>
                     <button><a onclick="dialog.confirmOil('是否确定删除？','<?php echo ($vo["id"]); ?>')">删除</a></button>
                 </td>
             </tr><?php endforeach; endif; else: echo "" ;endif; ?>
     </table>
 </div>
-<script src="/Public/js/jquery.js"></script>
-<script src="/Public/js/dialog/layer.js"></script>
-<script src="/Public/js/dialog.js"></script>
+<script src="/laijunqiang/vehicle_reservation_system/Public/js/jquery.js"></script>
+<script src="/laijunqiang/vehicle_reservation_system/Public/js/dialog/layer.js"></script>
+<script src="/laijunqiang/vehicle_reservation_system/Public/js/dialog.js"></script>
 </body>
 </html>

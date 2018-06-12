@@ -8,12 +8,12 @@
 	<meta http-equiv="refresh" content="60">
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 	<title>车辆运货预约</title>
-	<script type="text/javascript" src="/laijunqiang/vehicle_reservation_system/Public/js/home/js/flexible.js"></script>
-	<link rel="stylesheet" type="text/css" href="/laijunqiang/vehicle_reservation_system/Public/css/home/index.css">
+	<script type="text/javascript" src="__PUBLIC__/js/home/js/flexible.js"></script>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/home/index.css" charset="UTF-8">
 
 
-	<link rel="stylesheet" type="text/css" href="/laijunqiang/vehicle_reservation_system/Public/css/home/jquery-weui.min.css">
-    <link rel="stylesheet" type="text/css" href="/laijunqiang/vehicle_reservation_system/Public/css/home/weui.min.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/home/jquery-weui.min.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/home/weui.min.css">
 
 </head>
 <!-- <style>
@@ -31,7 +31,7 @@
 			    </div>
 			</div>
 			<div id="top">
-				<img src="/laijunqiang/vehicle_reservation_system/Public/images/banner.png" class="topImg">
+				<img src="__PUBLIC__/images/banner.png" class="topImg">
 				<neq name="oilName" value="">
                     <p style="text-align: center;color: #333;height: 0.7rem;line-height: 0.7rem;font-size: .4rem; background-color: #fff;width: 90%;margin: 0 auto;padding: .1rem .2rem;">{$oilName}装车排队情况</p>
                     <else/>
@@ -90,29 +90,55 @@
 
 			</div>
 			<div class="list" style="height:6.5rem">
-				<volist name="order" id="vo">
-                    <eq name="vo.order_number" value="1">
-                        <div class="line">
-                            <span class="num numIng" >1</span>
+                <eq name="stop" value="0">
+				    <volist name="order" id="vo">
+                        <eq name="vo.order_number" value="1">
+                            <div class="line">
+                                <span class="num numIng" >1</span>
                                 <span class="chepai">{$vo.plate}</span>
                                 <span class="statu ing" >装车中</span>
-                        </div>
-                        <else/>
-                        <eq name="vo.order_number" value="2">
-                            <div class="line">
-                                <span class="num numCq" >2</span>
-                                    <span class="chepai">{$vo.plate}</span>
-                                    <span class="statu cq" >厂区待装</span>
                             </div>
                             <else/>
-                            <div class="line">
-                                <span class="num" >{$vo.order_number}</span>
+                            <eq name="vo.order_number" value="2">
+                                <div class="line">
+                                    <span class="num numCq" >2</span>
+                                    <span class="chepai">{$vo.plate}</span>
+                                    <span class="statu cq" >厂内待装</span>
+                                </div>
+                                <else/>
+                                <div class="line">
+                                    <span class="num" >{$vo.order_number}</span>
                                     <span class="chepai">{$vo.plate}</span>
                                     <span class="statu" >厂外待装</span>
-                            </div>
+                                </div>
+                            </eq>
                         </eq>
-                    </eq>
-                </volist>
+                    </volist>
+                    <else/>
+                    <volist name="order" id="vo">
+                        <eq name="vo.order_number" value="1">
+                            <div class="line">
+                                <span class="num numStop" >1</span>
+                                <span class="chepai">{$vo.plate}</span>
+                                <span class="statu stop">装车中</span>
+                            </div>
+                            <else/>
+                            <eq name="vo.order_number" value="2">
+                                <div class="line">
+                                    <span class="num numStop" >2</span>
+                                    <span class="chepai">{$vo.plate}</span>
+                                    <span class="statu stop" >厂内待装</span>
+                                </div>
+                                <else/>
+                                <div class="line">
+                                    <span class="num numStop" >{$vo.order_number}</span>
+                                    <span class="chepai">{$vo.plate}</span>
+                                    <span class="statu stop">厂外待装</span>
+                                </div>
+                            </eq>
+                        </eq>
+                    </volist>
+                </eq>
 
 
 			<!-- <div class="list" v-else>
@@ -122,16 +148,22 @@
 					</div>
 			</div> -->
 			<div id="footer">
-				<a href="/laijunqiang/vehicle_reservation_system/index.php/Home/Index" class="on">
-					<img src="/laijunqiang/vehicle_reservation_system/Public/images/paiduichaxun2.png" alt="">
+				<!--__ROOT__： 会替换成当前网站的地址（不含域名）
+				__APP__： 会替换成当前应用的URL地址 （不含域名）
+				__MODULE__：会替换成当前模块的URL地址 （不含域名）-->
+				<!--__ROOT__/index.php/Home/Index/orderIndex  => /laijunqiang/vehicle_reservation_system/index.php/Home/Index/orderIndex-->
+				<!--__APP__/index.php/Home/Order              => /laijunqiang/vehicle_reservation_system/index.php/index.php/Home/Order -->
+				<!--__MODULE__/index.php/Home/PersonalCenter  => /laijunqiang/vehicle_reservation_system/index.php/Home/index.php/Home/PersonalCenter-->
+				<a href="__ROOT__/index.php/Home/Index/orderIndex" class="on">
+					<img src="__PUBLIC__/images/paiduichaxun2.png" alt="">
 					<p>排队查询</p>
 				</a>
-				<a href="/laijunqiang/vehicle_reservation_system/index.php/Home/Order">
-					<img src="/laijunqiang/vehicle_reservation_system/Public/images/yuyue.png" alt="">
+				<a href="__ROOT__/index.php/Home/Order/index">
+					<img src="__PUBLIC__/images/yuyue.png" alt="">
 					<p>预约装车</p>
 				</a>
-				<a href="/laijunqiang/vehicle_reservation_system/index.php/Home/PersonalCenter">
-					<img src="/laijunqiang/vehicle_reservation_system/Public/images/gerenzhongxin.png" alt="">
+				<a href="__ROOT__/index.php/Home/PersonalCenter/index">
+					<img src="__PUBLIC__/images/gerenzhongxin.png" alt="">
 					<p>个人中心</p>
 				</a>
 			</div>
@@ -139,9 +171,9 @@
 </div>
 </body>
 	<!--<script src="/Public/js/home/vue.min.js"></script>-->
-	<script src="/Public/js/home/jquery.min weui.js"></script>
-    <script src="/Public/js/home/jquery-weui.min.js"></script>
-    <script src="/Public/js/dialog/layer.js"></script>
-    <script src="/Public/js/dialog.js"></script>
-    <script src="/Public/js/home/index.js"></script>
+	<script src="__PUBLIC__/js/home/jquery.min weui.js"></script>
+    <script src="__PUBLIC__/js/home/jquery-weui.min.js"></script>
+    <script src="__PUBLIC__/js/dialog/layer.js"></script>
+    <script src="__PUBLIC__/js/dialog.js"></script>
+    <script src="__PUBLIC__/js/home/index.js"></script>
 </html>

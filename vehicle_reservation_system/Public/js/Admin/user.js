@@ -3,7 +3,10 @@
  */
 var user = {
     back: function () {
-        window.location.href = "/admin.php/User";
+        window.location.href = "../User/index";
+    },
+    updateBack:function(){
+        window.location.href = "../../../User/index";
     },
     update: function () {
         var id=$('input[name="id"]').val();
@@ -21,7 +24,7 @@ var user = {
         } else if (name.length>20){
             dialog.error('用户名不能超过20位，请重新输入！');
         } else {
-            var url = "/admin.php/User/updateUser";
+            var url = "../../../User/updateUser";
             // 发送给服务端的数据，相当于POST过去的数据
             var data = {
                 'id': id,
@@ -38,7 +41,7 @@ var user = {
                     return dialog.error(result.message);
                 }
                 if (result.status == 1) {
-                    return dialog.success(result.message, '/admin.php/User');
+                    return dialog.success(result.message, '../../../User/index');
                 }
                 //dataType规定预期的服务器响应的数据类型。
             }, 'JSON');
@@ -59,7 +62,7 @@ var user = {
         } else if (name.length>20){
             dialog.error('用户名不能超过20位，请重新输入！');
         } else {
-            var url = "/admin.php/User/addUser";
+            var url = "../User/addUser";
             // 发送给服务端的数据，相当于POST过去的数据
             var data = {
                 'account':account,
@@ -75,7 +78,7 @@ var user = {
                     return dialog.error(result.message);
                 }
                 if (result.status == 1) {
-                    return dialog.success(result.message, '/admin.php/User');
+                    return dialog.success(result.message, '../User/index');
                 }
                 //dataType规定预期的服务器响应的数据类型。
             }, 'JSON');

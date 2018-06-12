@@ -36,7 +36,7 @@ class RoleModel extends Model {
     }
     //修改权限信息页面
     public function showRole($id=''){
-        return $this->_db->where("id='$id'")->find();
+        return $this->_db->where("id='$id'&& status=0")->find();
     }
     //修改权限信息
     public function updateRole($data = array()){

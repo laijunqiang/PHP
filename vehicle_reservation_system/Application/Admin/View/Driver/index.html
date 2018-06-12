@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>司机信息管理</title>
-    <link rel="stylesheet" href="/Public/css/admin/image.css">
-    <link rel="stylesheet" href="/Public/css/admin/align.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/admin/image.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/admin/align.css">
 </head>
 <body>
 <div align="center">
@@ -12,9 +12,10 @@
     <table border="1px">
         <tr>
             <td>司机ID</td>
-            <td>司机账号</td>
+            <td>openid</td>
             <!--司机密码没意义，不显示-->
             <!--<td>司机密码</td>-->
+            <td>联系方式</td>
             <td>姓名</td>
             <td>头像</td>
             <td>昵称</td>
@@ -27,7 +28,8 @@
         <volist name="ret" id="vo">
             <tr>
                 <td>{$vo.id}</td>
-                <td>{$vo.account}</td>
+                <td>{$vo.openid}</td>
+                <td>{$vo.phone}</td>
                 <td>{$vo.name}</td>
                 <td>
                     <neq  name="vo.image" value="">
@@ -43,8 +45,8 @@
         </volist>
     </table>
 </div>
-<script src="/Public/js/jquery.js"></script>
-<script src="/Public/js/dialog/layer.js"></script>
-<script src="/Public/js/dialog.js"></script>
+<script src="__PUBLIC__/js/jquery.js"></script>
+<script src="__PUBLIC__/js/dialog/layer.js"></script>
+<script src="__PUBLIC__/js/dialog.js"></script>
 </body>
 </html>

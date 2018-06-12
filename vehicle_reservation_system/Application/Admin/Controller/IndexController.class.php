@@ -8,25 +8,31 @@ class IndexController extends Controller {
             $this->redirect('Login/index');
         }else {
             if (session('User')!=null){
+                //所属角色
                 $role=D('Role')->getRoleById($_SESSION['User']['role_id']);
+                //通过角色查看权限
                 //dump($role);
-                $this->assign('role',$role);
+                $permission=explode("|", $role['permission']);
+                //dump($permission);
+                $this->assign('permission',$permission);
                 //第一个页面
                 $src='';
-                if ($role['order_manage']==1){
-                    $src='/admin.php/Order';
-                }elseif ($role['driver_manage']==1){
-                    $src='/admin.php/Driver';
-                }elseif ($role['car_manage']==1){
-                    $src='/admin.php/Car';
-                }elseif ($role['goods_manage']==1){
-                    $src='/admin.php/Oil';
-                }elseif ($role['user_manage']==1){
-                    $src='/admin.php/User';
-                }elseif ($role['role_manage']==1){
-                    $src='/admin.php/Role';
+                if ($permission[0]==1){
+                    $src=U('Order/index');
+                }elseif ($permission[0]==2){
+                    $src=U('Driver/index');
+                }elseif ($permission[0]==3){
+                    $src=U('Oil/index');
+                }elseif ($permission[0]==4){
+                    $src=U('User/index');
+                }elseif ($permission[0]==5){
+                    $src=U('Role/index');
+                }elseif ($permission[0]==6){
+                    $src=U('Permission/index');
+                }elseif($permission[0]==7){
+                    $src=U('Log/index');
                 }else{
-                    $src='/admin.php/Log';
+                    $src=U('Notice/index');
                 }
                 $this->assign('src',$src);
             }

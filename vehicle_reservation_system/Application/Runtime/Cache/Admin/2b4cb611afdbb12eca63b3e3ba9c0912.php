@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>操作日志信息管理</title>
-    <link rel="stylesheet" href="/Public/css/admin/page.css">
+    <link rel="stylesheet" href="/laijunqiang/vehicle_reservation_system/Public/css/admin/page.css">
 </head>
 <body>
 <div align="center">
@@ -38,9 +38,9 @@
     </ul>
     </div>
 </div>
-<script src="/Public/js/jquery.js"></script>
-<script src="/Public/js/dialog/layer.js"></script>
-<script src="/Public/js/dialog.js"></script>
-<script src="/Public/js/Admin/log.js"></script>
+<script src="/laijunqiang/vehicle_reservation_system/Public/js/jquery.js"></script>
+<script src="/laijunqiang/vehicle_reservation_system/Public/js/dialog/layer.js"></script>
+<script src="/laijunqiang/vehicle_reservation_system/Public/js/dialog.js"></script>
+<script src="/laijunqiang/vehicle_reservation_system/Public/js/Admin/log.js"></script>
 </body>
 </html>

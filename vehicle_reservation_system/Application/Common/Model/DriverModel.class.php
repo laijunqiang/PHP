@@ -14,22 +14,16 @@ class DriverModel extends Model {
         $this->_db = M('driver');
     }
 
-    public function getDriverByAccount($account='') {
-        $res = $this->_db->where("account='$account'")->find();
-        return $res;
-    }
     //获取司机信息
     public function getDriver(){
         $res=$this->_db->where('status=0')->order('create_time desc')->select();
         return $res;
     }
     //获取司机ID值
-    public function getIdByName($name){
-        return $this->_db->where("name='$name'")->getField('id');
+    public function getIdByOpenid($openid){
+        return $this->_db->where("openid='$openid'")->getField('id');
     }
-    public function getIdByNumber($number){
-        return $this->_db->where("number='$number'")->getField('id');
-    }
+
     //修改司机信息页面
     public function showDriver($id=''){
         return $this->_db->where("id='$id'")->find();
@@ -76,8 +70,14 @@ class DriverModel extends Model {
 
     //获得未排队的司机名
     public function getRestDriverName($name=array()){
-        $data['name']=array('not in',$name);
+        $data=array();
+        if (!empty($name)) {
+            $data['name'] = array(array('not in', $name),array('neq',''),'and');
+        }
         $data['status']=0;
+        $data['plate']=array('neq','');
+        $data['phone']=array('neq','');
+        $data['company']=array('neq','');
         $res=$this->_db->where($data)->order('create_time desc')->getField('name',true);
         return $res;
     }

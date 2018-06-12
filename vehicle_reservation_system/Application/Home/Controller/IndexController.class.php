@@ -6,9 +6,9 @@ class IndexController extends Controller
     public function index()
     {
         //createMenu();
-        //checkSignature();
+        checkSignature();
         //$this->sendTemplate();
-        getCode();
+        //getCode();
     }
     //获取用户信息
     //1.通过全局Access Token获取用户基本信息
@@ -21,9 +21,10 @@ class IndexController extends Controller
         $appID = C('appID');
         $appsecret = C('appsecret');
         $code = $_GET["code"];
-        //第一步:取access_token
+
+        /*//第一步:取access_token
         $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$appID&secret=$appsecret";
-        $token =getJson($url);
+        $token =getJson($url);*/
         //var_dump($token);die;
         //第二步:通过code换取网页授权access_token
         $oauth2Url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=$appID&secret=$appsecret&code=$code&grant_type=authorization_code";
@@ -48,12 +49,37 @@ class IndexController extends Controller
         $date['openid']=$userinfo['openid'];
         $date['image']=$userinfo['headimgurl'];
         $date['nickname']=$userinfo['nickname'];
+        date_default_timezone_set("Asia/Shanghai");
+        $date['create_time']=date("Y-m-d H:i:s");
         $ret=D('Driver')->addDriver($date);
         if ($ret) {
             $this->redirect('Order/index');
         }
     }
+    //排队查询首页
+    public function orderIndex(){
+        $firstNotice=D('Notice')->getFirstNotice();
+        $content=$firstNotice['content'];
+        $this->assign('content',$content);
+        $this->assign('type',"芳香烃");
+        $name=D('Oil')->getNameByType("芳香烃");
+        $this->assign('name',$name);
+        $firstName=$name[0];
+        $order = D('Order')->getOrderByName($firstName);
+        $this->assign('order', $order);
 
+        $fp = fopen($_SERVER['DOCUMENT_ROOT'].__ROOT__."/Public/1.txt",'r');//打开文件
+        if(file_exists($_SERVER['DOCUMENT_ROOT'].__ROOT__."/Public/1.txt")){//当文件存在时，才读取内容
+            $stop = fgetc($fp);//每执行一次fgetc()，文件指针就向后移动一位
+        }else{
+            echo "文件不存在！" ;
+        }
+        fclose($fp);
+        //dump($stop);
+        $this->assign('stop',$stop);
+
+        $this->display('index');
+    }
     //通过油品类型查询排队信息
     public function selectType($type){
         $this->assign('type',$type);
@@ -68,6 +94,15 @@ class IndexController extends Controller
         $firstNotice=D('Notice')->getFirstNotice();
         $content=$firstNotice['content'];
         $this->assign('content',$content);
+        $fp = fopen($_SERVER['DOCUMENT_ROOT'].__ROOT__."/Public/1.txt",'r');//打开文件
+        if(file_exists($_SERVER['DOCUMENT_ROOT'].__ROOT__."/Public/1.txt")){//当文件存在时，才读取内容
+            $stop = fgetc($fp);//每执行一次fgetc()，文件指针就向后移动一位
+        }else{
+            echo "文件不存在！" ;
+        }
+        fclose($fp);
+        dump($stop);
+        $this->assign('stop',$stop);
         $this->display('index');
     }
     //通过油品名称查询排队信息
@@ -81,7 +116,15 @@ class IndexController extends Controller
         $this->assign('content',$content);
         $name=D('Oil')->getNameByType($type);
         $this->assign('name',$name);
-
+        $fp = fopen($_SERVER['DOCUMENT_ROOT'].__ROOT__."/Public/1.txt",'r');//打开文件
+        if(file_exists($_SERVER['DOCUMENT_ROOT'].__ROOT__."/Public/1.txt")){//当文件存在时，才读取内容
+            $stop = fgetc($fp);//每执行一次fgetc()，文件指针就向后移动一位
+        }else{
+            echo "文件不存在！" ;
+        }
+        fclose($fp);
+        dump($stop);
+        $this->assign('stop',$stop);
         //通过油品名获取排队信息
         $this->display('index');
     }
@@ -93,6 +136,15 @@ class IndexController extends Controller
         $firstNotice=D('Notice')->getFirstNotice();
         $content=$firstNotice['content'];
         $this->assign('content',$content);
+        $fp = fopen($_SERVER['DOCUMENT_ROOT'].__ROOT__."/Public/1.txt",'r');//打开文件
+        if(file_exists($_SERVER['DOCUMENT_ROOT'].__ROOT__."/Public/1.txt")){//当文件存在时，才读取内容
+            $stop = fgetc($fp);//每执行一次fgetc()，文件指针就向后移动一位
+        }else{
+            echo "文件不存在！" ;
+        }
+        fclose($fp);
+        dump($stop);
+        $this->assign('stop',$stop);
         $this->display('index');
     }
 

@@ -7,7 +7,7 @@
 <body>
 <div align="center">
     <h3>用户信息表</h3>
-    <button><a href="/admin.php/User/add">录入</a></button>
+    <button><a href="<?php echo U('User/add');?>">录入</a></button>
     <table border="1px">
         <tr>
             <td>用户ID</td>
@@ -29,14 +29,14 @@
                 <td>
                     <!--1.通过<a>标签   2.window.location.href="/admin.php/Driver";
                         才可以跳转到<iframe>页面-->
-                    <button><a href="/admin.php/User/update?id=<?php echo ($vo["id"]); ?>">修改</a></button>
+                    <button><a href="<?php echo U('User/update',array('id'=>$vo['id']));?>">修改</a></button>
                     <button><a onclick="dialog.confirmUser('是否确定删除？','<?php echo ($vo["id"]); ?>')">删除</a></button>
                 </td>
             </tr><?php endforeach; endif; else: echo "" ;endif; ?>
     </table>
 </div>
-<script src="/Public/js/jquery.js"></script>
-<script src="/Public/js/dialog/layer.js"></script>
-<script src="/Public/js/dialog.js"></script>
+<script src="/laijunqiang/vehicle_reservation_system/Public/js/jquery.js"></script>
+<script src="/laijunqiang/vehicle_reservation_system/Public/js/dialog/layer.js"></script>
+<script src="/laijunqiang/vehicle_reservation_system/Public/js/dialog.js"></script>
 </body>
 </html>

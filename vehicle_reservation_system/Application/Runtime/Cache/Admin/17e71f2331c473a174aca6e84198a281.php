@@ -24,14 +24,14 @@
         <tr align="center">
             <td colspan="2">
                 <button onclick="notice.update()">修改</button>
-                <button onclick="notice.back()">返回</button>
+                <button onclick="notice.updateBack()">返回</button>
             </td>
         </tr>
     </table>
 </div>
-<script src="/Public/js/jquery.js"></script>
-<script src="/Public/js/Admin/notice.js"></script>
-<script src="/Public/js/dialog/layer.js"></script>
-<script src="/Public/js/dialog.js"></script>
+<script src="/laijunqiang/vehicle_reservation_system/Public/js/jquery.js"></script>
+<script src="/laijunqiang/vehicle_reservation_system/Public/js/Admin/notice.js"></script>
+<script src="/laijunqiang/vehicle_reservation_system/Public/js/dialog/layer.js"></script>
+<script src="/laijunqiang/vehicle_reservation_system/Public/js/dialog.js"></script>
 </body>
 </html>

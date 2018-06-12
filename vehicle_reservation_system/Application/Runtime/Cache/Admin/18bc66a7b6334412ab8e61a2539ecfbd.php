@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>排队信息管理</title>
-    <link rel="stylesheet" href="/Public/css/admin/align.css">
+    <link rel="stylesheet" href="/laijunqiang/vehicle_reservation_system/Public/css/admin/align.css">
 </head>
 <body>
 <div align="center">
     <h3>排队信息表</h3>
     <nav>
-        <button><a href="/admin.php/Order/add">添加车辆</a></button>
-        <?php if(($stop) == ""): ?><button id="stop">暂停全部车辆排队</button>
+        <button><a href="<?php echo U('Order/add');?>">添加车辆</a></button>
+        <?php if(($stop) == "0"): ?><button id="stop">暂停全部车辆排队</button>
             <?php else: ?>
-            <button id="stop"><?php echo ($stop); ?></button><?php endif; ?>
+            <button id="stop">恢复全部车辆排队</button><?php endif; ?>
         <button id="excel">生成excel文档</button>
     </nav>
     <br>
@@ -60,8 +60,8 @@
                 <td><?php echo ($vo["oil_name"]); ?></td>
                 <td><?php echo ($vo["oil_type"]); ?></td>
                 <td><?php echo ($vo["plate"]); ?></td>
-                <td><?php echo ($vo["driver_name"]); ?></td>
-                <td><?php echo ($vo["driver_company"]); ?></td>
+                <td><?php echo ($vo["name"]); ?></td>
+                <td><?php echo ($vo["company"]); ?></td>
                 <?php if(($vo["order_status"]) == "0"): ?><td>已装</td><?php endif; ?>
                 <?php if(($vo["order_status"]) == "1"): ?><td>装车中</td><?php endif; ?>
                 <?php if(($vo["order_status"]) == "2"): ?><td>厂内待装</td><?php endif; ?>
@@ -73,23 +73,20 @@
                     <?php if(($vo["order_status"]) == "0"): else: ?>
                         <?php if(($vo["order_number"]) == "1"): ?><button><a onclick="order.over('<?php echo ($vo["id"]); ?>')">装车完成</a></button>
                             <?php else: ?>
-                            <?php if(($vo["order_number"]) == "2"): ?><button><a onclick="order.down('<?php echo ($vo["id"]); ?>')">下移</a></button>
+                            <?php if(($vo["order_number"]) == "2"): ?><button><a href="<?php echo U('Order/update',array('id'=>$vo['id']));?>">修改</a></button>
                                 <?php if(($vo["order_number"]) <= $maxOrder-3): ?><button><a onclick="dialog.confirmOrder('是否确定删除？','<?php echo ($vo["id"]); ?>')">删除</a></button><?php endif; ?>
                                 <?php else: ?>
-                                <?php if(($vo["order_number"]) == $maxOrder): ?><button><a onclick="order.up('<?php echo ($vo["id"]); ?>')">上移</a></button>
-                                    <?php else: ?>
-                                    <button><a onclick="order.up('<?php echo ($vo["id"]); ?>')">上移</a></button>
-                                    <button><a onclick="order.down('<?php echo ($vo["id"]); ?>')">下移</a></button>
-                                    <?php if(($vo["order_number"]) <= $maxOrder-3): ?><button><a onclick="dialog.confirmOrder('是否确定删除？','<?php echo ($vo["id"]); ?>')">删除</a></button><?php endif; endif; endif; endif; endif; ?>
+                                    <button><a href="<?php echo U('Order/update',array('id'=>$vo['id']));?>">修改</a></button>
+                                    <?php if(($vo["order_number"]) <= $maxOrder-3): ?><button><a onclick="dialog.confirmOrder('是否确定删除？','<?php echo ($vo["id"]); ?>')">删除</a></button><?php endif; endif; endif; endif; ?>
                 </td>
             </tr><?php endforeach; endif; else: echo "" ;endif; ?>
     </table>
 </div>
-<script src="/Public/js/jquery.js"></script>
-<script src="/Public/js/dialog/layer.js"></script>
-<script src="/Public/js/dialog.js"></script>
-<script src="/Public/js/Admin/order.js"></script>
-<script src="/Public/laydate/laydate.js"></script>
+<script src="/laijunqiang/vehicle_reservation_system/Public/js/jquery.js"></script>
+<script src="/laijunqiang/vehicle_reservation_system/Public/js/dialog/layer.js"></script>
+<script src="/laijunqiang/vehicle_reservation_system/Public/js/dialog.js"></script>
+<script src="/laijunqiang/vehicle_reservation_system/Public/js/Admin/order.js"></script>
+<script src="/laijunqiang/vehicle_reservation_system/Public/laydate/laydate.js"></script>
 <!--不能直接使用layUI，"/Public/laydate/layui.css"有样式-->
 <script>
     //日期时间范围

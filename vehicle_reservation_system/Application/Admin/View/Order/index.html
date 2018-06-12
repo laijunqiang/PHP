@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>排队信息管理</title>
-    <link rel="stylesheet" href="/Public/css/admin/align.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/admin/align.css">
 </head>
 <body>
 <div align="center">
     <h3>排队信息表</h3>
     <nav>
-        <button><a href="/admin.php/Order/add">添加车辆</a></button>
-        <eq name="stop" value="">
+        <button><a href="{:U('Order/add')}">添加车辆</a></button>
+        <eq name="stop" value="0">
             <button id="stop">暂停全部车辆排队</button>
             <else/>
-            <button id="stop">{$stop}</button>
+            <button id="stop">恢复全部车辆排队</button>
         </eq>
         <button id="excel">生成excel文档</button>
     </nav>
@@ -71,8 +71,8 @@
                 <td>{$vo.oil_name}</td>
                 <td>{$vo.oil_type}</td>
                 <td>{$vo.plate}</td>
-                <td>{$vo.driver_name}</td>
-                <td>{$vo.driver_company}</td>
+                <td>{$vo.name}</td>
+                <td>{$vo.company}</td>
                 <eq name="vo.order_status" value="0">
                     <td>已装</td>
                 </eq>
@@ -95,20 +95,15 @@
                             <button><a onclick="order.over('{$vo.id}')">装车完成</a></button>
                             <else/>
                             <eq name="vo.order_number" value="2">
-                                <button><a onclick="order.down('{$vo.id}')">下移</a></button>
+                                <button><a href="{:U('Order/update',array('id'=>$vo['id']))}">修改</a></button>
                                 <elt name="vo.order_number" value="$maxOrder-3">
                                     <button><a onclick="dialog.confirmOrder('是否确定删除？','{$vo.id}')">删除</a></button>
                                 </elt>
                                 <else/>
-                                <eq name="vo.order_number" value="$maxOrder">
-                                    <button><a onclick="order.up('{$vo.id}')">上移</a></button>
-                                    <else/>
-                                    <button><a onclick="order.up('{$vo.id}')">上移</a></button>
-                                    <button><a onclick="order.down('{$vo.id}')">下移</a></button>
+                                    <button><a href="{:U('Order/update',array('id'=>$vo['id']))}">修改</a></button>
                                     <elt name="vo.order_number" value="$maxOrder-3">
                                         <button><a onclick="dialog.confirmOrder('是否确定删除？','{$vo.id}')">删除</a></button>
                                     </elt>
-                                </eq>
                             </eq>
                         </eq>
                     </eq>
@@ -117,11 +112,11 @@
         </volist>
     </table>
 </div>
-<script src="/Public/js/jquery.js"></script>
-<script src="/Public/js/dialog/layer.js"></script>
-<script src="/Public/js/dialog.js"></script>
-<script src="/Public/js/Admin/order.js"></script>
-<script src="/Public/laydate/laydate.js"></script>
+<script src="__PUBLIC__/js/jquery.js"></script>
+<script src="__PUBLIC__/js/dialog/layer.js"></script>
+<script src="__PUBLIC__/js/dialog.js"></script>
+<script src="__PUBLIC__/js/Admin/order.js"></script>
+<script src="__PUBLIC__/laydate/laydate.js"></script>
 <!--不能直接使用layUI，"/Public/laydate/layui.css"有样式-->
 <script>
     //日期时间范围

@@ -14,6 +14,6 @@ return array(
     'DB_PREFIX' =>'t_',
     'appID'     =>"wxd0fa0958e79f879c",
     'appsecret' =>"205004c6670b97f4684b97354885c10f",
-    'url' => '/laijunqiang/vehicle_reservation_system'
-
+    'url' => 'http://yijiangbangtest.wsandos.com',
+    'template_id'=>"lINr_tTc-0AePyil80rs5H_g2b4yM8pb1gQVZLUGzf0"
 );

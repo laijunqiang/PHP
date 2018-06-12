@@ -206,6 +206,9 @@ input{
 .line .cq{
 	color: rgb(250,205,23);
 }
+.line .stop{
+    color: rgb(250,0,0);
+}
 .line .numIng{
 	background-color: rgb(91,196,6);
 	color: #fff;
@@ -215,6 +218,11 @@ input{
 	background-color:rgb(250,205,23);
 	color: #fff;
 	border:1px solid rgb(250,205,23);
+}
+.line .numStop{
+    background-color:rgb(250,0,0);
+    color: #fff;
+    border:1px solid rgb(250,0,0);
 }
 #footer{
 	position: fixed;

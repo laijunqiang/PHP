@@ -11,16 +11,18 @@ class RoleController extends Controller
         $this->display();
     }
 
-    //录入权限页面
+    //录入角色页面
     public function add()
     {
+        $ret = D('Permission')->getPermission();
+        $this->assign("ret",$ret);
         $this->display();
     }
 
-    //录入权限处理
+    //录入角色处理
     public function addRole()
     {
-        //dump($_POST);
+        $_POST['permission']=implode("|",$_POST['permission']);
         $name = D('Role')->getName();
         foreach ($name as $v) {
             if ($v == $_POST['name'])
@@ -40,24 +42,28 @@ class RoleController extends Controller
             $index = A('Log');
             $name = $_POST['name'];
             if (session('adminUser.account') != null) {
-                $index->addLog("生成角色为：$name 的权限", session('adminUser.account'));
+                $index->addLog("生成角色为：$name 的角色", session('adminUser.account'));
             } else {
-                $index->addLog("生成角色为：$name 的权限", session('User.name'));
+                $index->addLog("生成角色为：$name 的角色", session('User.name'));
             }
             return show(1, '录入成功');
         }
     }
 
-    //修改权限页面
+    //修改角色页面
     public function update(){
         $id=$_GET['id'];
 //      如果查询出错，find方法返回false，如果查询结果为空返回NULL，查询成功则返回一个关联数组（键值是字段名或者别名）。
         $ret = D('Role')->showRole($id);
+        $permission = explode("|", $ret['permission']);
+        $this->assign('permission', $permission);
         //在视图层可以通过{$ret.id}访问
         $this->assign('ret', $ret);
+        $per = D('Permission')->getPermission();
+        $this->assign("per",$per);
         $this->display();
     }
-    //修改权限处理
+    //修改角色处理
     public function updateRole(){
         $name = D('Role')->getNameUpdate($_POST['id']);
         foreach ($name as $v) {
@@ -66,6 +72,7 @@ class RoleController extends Controller
         }
         date_default_timezone_set("Asia/Shanghai");
         $_POST['update_time']=date("Y-m-d H:i:s");
+        $_POST['permission']=implode("|",$_POST['permission']);
         //dump($_POST);
         /*D方法实例化模型类的时候通常是实例化某个具体的模型类
         当 \Admin\Model\AdminModel 类不存在的时候，D函数会尝试实例化公共模块下面的 \Common\Model\AdminModel类。
@@ -75,20 +82,20 @@ class RoleController extends Controller
 
 //        save方法的返回值是影响的记录数，如果返回false则表示更新出错
         if (!$return) {
-            return show(0, '修改权限失败');
+            return show(0, '修改失败');
         } else {
             $index = A('Log');
             $id=$_POST['id'];
             if (session('adminUser.account')!=null) {
-                $index->addLog("修改权限ID为：$id 的权限", session('adminUser.account'));
+                $index->addLog("修改角色ID为：$id 的角色", session('adminUser.account'));
             }else {
-                $index->addLog("修改权限ID为：$id 的权限", session('User.name'));
+                $index->addLog("修改角色ID为：$id 的角色", session('User.name'));
             }
-            return show(1, '修改权限成功');
+            return show(1, '修改成功');
         }
     }
 
-    //删除权限处理
+    //删除角色处理
     public function deleteRole(){
         //dump($_POST);
         /*D方法实例化模型类的时候通常是实例化某个具体的模型类
@@ -106,9 +113,9 @@ class RoleController extends Controller
             $index = A('Log');
             $id=$_POST['id'];
             if (session('adminUser.account')!=null) {
-                $index->addLog("删除权限ID为：$id 的权限", session('adminUser.account'));
+                $index->addLog("删除角色ID为：$id 的角色", session('adminUser.account'));
             }else {
-                $index->addLog("删除权限ID为：$id 的权限", session('User.name'));
+                $index->addLog("删除角色ID为：$id 的角色", session('User.name'));
             }
             return show(1, '删除成功');
         }

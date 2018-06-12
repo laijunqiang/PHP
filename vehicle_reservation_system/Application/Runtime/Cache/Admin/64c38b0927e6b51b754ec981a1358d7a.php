@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>司机信息管理</title>
-    <link rel="stylesheet" href="/Public/css/admin/image.css">
-    <link rel="stylesheet" href="/Public/css/admin/align.css">
+    <link rel="stylesheet" href="/laijunqiang/vehicle_reservation_system/Public/css/admin/image.css">
+    <link rel="stylesheet" href="/laijunqiang/vehicle_reservation_system/Public/css/admin/align.css">
 </head>
 <body>
 <div align="center">
@@ -12,9 +12,10 @@
     <table border="1px">
         <tr>
             <td>司机ID</td>
-            <td>司机账号</td>
+            <td>openid</td>
             <!--司机密码没意义，不显示-->
             <!--<td>司机密码</td>-->
+            <td>联系方式</td>
             <td>姓名</td>
             <td>头像</td>
             <td>昵称</td>
@@ -26,7 +27,8 @@
         <!--volist标签通常用于查询数据集（select方法）的结果输出，通常模型的select方法返回的结果是一个二维数组，可以直接使用volist标签进行输出。-->
         <?php if(is_array($ret)): $i = 0; $__LIST__ = $ret;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
                 <td><?php echo ($vo["id"]); ?></td>
-                <td><?php echo ($vo["account"]); ?></td>
+                <td><?php echo ($vo["openid"]); ?></td>
+                <td><?php echo ($vo["phone"]); ?></td>
                 <td><?php echo ($vo["name"]); ?></td>
                 <td>
                     <?php if(($vo["image"]) != ""): ?><img src="<?php echo ($vo["image"]); ?>"><?php endif; ?>
@@ -39,8 +41,8 @@
             </tr><?php endforeach; endif; else: echo "" ;endif; ?>
     </table>
 </div>
-<script src="/Public/js/jquery.js"></script>
-<script src="/Public/js/dialog/layer.js"></script>
-<script src="/Public/js/dialog.js"></script>
+<script src="/laijunqiang/vehicle_reservation_system/Public/js/jquery.js"></script>
+<script src="/laijunqiang/vehicle_reservation_system/Public/js/dialog/layer.js"></script>
+<script src="/laijunqiang/vehicle_reservation_system/Public/js/dialog.js"></script>
 </body>
 </html>

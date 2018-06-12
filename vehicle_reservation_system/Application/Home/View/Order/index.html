@@ -5,13 +5,14 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 	<title>预约装车</title>
-	<script type="text/javascript" src="/laijunqiang/vehicle_reservation_system/Public/js/home/js/flexible.js"></script>
-	<link rel="stylesheet" type="text/css" href="/laijunqiang/vehicle_reservation_system/Public/css/home/yuyuezhuangche.css">
+	<script type="text/javascript" src="__PUBLIC__/js/home/js/flexible.js"></script>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/home/yuyuezhuangche.css">
 
 
-	<link rel="stylesheet" type="text/css" href="/laijunqiang/vehicle_reservation_system/Public/css/home/jquery-weui.min.css">
-    <link rel="stylesheet" type="text/css" href="/laijunqiang/vehicle_reservation_system/Public/css/home/weui.min.css">
-
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/home/jquery-weui.min.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/home/weui.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="__PUBLIC__/js/home/vue.min.js"></script>
 </head>
 <style>
 	.weui-mask.weui-mask--visible{
@@ -27,13 +28,13 @@
 					</div>
 
 					<span class="Txt">真实姓名</span>
-					<input type="text" class="weui-input" placeholder="请输入真实姓名" value="{$driver.name}">
+					<input type="text" name="name" class="weui-input" placeholder="请输入真实姓名" value="{$driver.name}">
 				</div>
 				<div class="line">
 					<div class="null">
 					</div>
 					<span class="Txt">联系电话</span>
-					<input type="tel" class="weui-input" placeholder="请输入联系电话" value="{$driver.phone}">
+					<input type="tel" name="phone" class="weui-input" placeholder="请输入联系电话" value="{$driver.phone}">
 				</div>
 
 			</div>
@@ -70,29 +71,26 @@
 					</div>
 					<span class="Txt">车牌号</span>
 					<div class="lineC-left" id="app">
-						<div v-if="chepai == ''">
-							<span class="pz" >粤</span>
-                            <span class="pz" >A</span>
-						</div>
-						<div v-else>
-                            <select class="weui-select" style="width: 1rem;">
-                                <option v-for="province in provinces" v-bind:value="province">{{province}}</option>
+						<div>
+                            <select class="weui-select" style="width: 1rem;" name="province" v-model="selectProvince">
+                                <option v-for="province in provinces" :value="province" >{{province}}</option>
                             </select>
-                            <select class="weui-select" style="width: 1rem;">
-                                <option v-for="city in citys" v-bind:value="city">{{city}}</option>
+
+                            <select class="weui-select" style="width: 1rem;" name="city" v-model="selectCity">
+                                <option v-for="city in citys" :value="city">{{city}}</option>
                             </select>
 						</div>
-							<input type="text" class="weui-input" placeholder="请输入车牌号" v-model="plate">
+							<input type="text" class="weui-input" placeholder="请输入车牌号" name="plate" v-model="selectPlate">
 					</div>
 				</div>
 				<div class="line">
 					<div class="null">
 					</div>
 					<span class="Txt">公司名称</span>
-					<input type="text" class="weui-input" placeholder="请输入公司名称" value="{$driver.company}">
+					<input type="text" name="company" class="weui-input" placeholder="请输入公司名称" value="{$driver.company}">
 				</div>
 			</div>
-			<div class="subBtn"  @click="commit">提交预约</div>
+			<div class="subBtn"  onclick="order.commit()">提交预约</div>
 			<!-- <div class="boTxt" >
 				<div class="gou">
 					<span class="icon-ok"></span>
@@ -100,20 +98,20 @@
 				</div>
 				<p>您已提交预约信息，可在“排队查询”查看</p>
 			</div> -->
-				<div id="footer">
-				<a href="/laijunqiang/vehicle_reservation_system/index.php/Home/Index" >
-					<img src="/laijunqiang/vehicle_reservation_system/Public/images/paiduichaxun.png" alt="">
+            <div id="footer">
+				<a href="__ROOT__/index.php/Home/Index/orderIndex" >
+					<img src="__PUBLIC__/images/paiduichaxun.png" alt="">
 					<p>排队查询</p>
 				</a>
-				<a href="/laijunqiang/vehicle_reservation_system/index.php/Home/Order" class="on">
-					<img src="/laijunqiang/vehicle_reservation_system/Public/images/yuyue2.png" alt="">
+				<a href="__ROOT__/index.php/Home/Order/index" class="on">
+					<img src="__PUBLIC__/images/yuyue2.png" alt="">
 					<p>预约装车</p>
 				</a>
-				<a href="/laijunqiang/vehicle_reservation_system/index.php/Home/PersonalCenter">
-					<img src="/laijunqiang/vehicle_reservation_system/Public/images/gerenzhongxin.png" alt="">
+				<a href="__ROOT__/index.php/Home/PersonalCenter/index">
+					<img src="__PUBLIC__/images/gerenzhongxin.png" alt="">
 					<p>个人中心</p>
 				</a>
-			</div>
+            </div>
 			<!-- <div class="pzCon" :style="{display:pzConDp}">
 				<div class="pzCon-txt">
 					<span >{{item}}</span>
@@ -126,9 +124,10 @@
 
 		</div>
 </body>
-	<script src="/laijunqiang/vehicle_reservation_system/Public/js/home/vue.min.js"></script>
-	<script src="/laijunqiang/vehicle_reservation_system/Public/js/home/jquery.min weui.js"></script>
-	<script src="/laijunqiang/vehicle_reservation_system/Public/js/home/jquery-weui.min.js"></script>
-	<script src="/laijunqiang/vehicle_reservation_system/Public/js/home/order.js"></script>
+	<script src="__PUBLIC__/js/home/jquery.min weui.js"></script>
+	<script src="__PUBLIC__/js/home/jquery-weui.min.js"></script>
+    <script src="__PUBLIC__/js/dialog/layer.js"></script>
+    <script src="__PUBLIC__/js/dialog.js"></script>
+	<script src="__PUBLIC__/js/home/order.js"></script>
 
 </html>

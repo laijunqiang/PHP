@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<title>预约装车</title>
+	<script type="text/javascript" src="__PUBLIC__/js/home/js/flexible.js"></script>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/home/yuyuejilu.css">
+
+
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/home/jquery-weui.min.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/home/weui.min.css">
+
+
+</head>
+<body>
+	<div id="main">
+		<div class="line">
+			<div class="lineTop">
+				<span class="time">{$date}</span>
+                <eq name="ret.order_status" value="1">
+				    <span class="statu ing">装车中</span>
+                    <else/>
+                        <eq name="ret.order_status" value="2">
+                            <span class="statu cq">厂内待装</span>
+                            <else/>
+                            <span class="statu">厂外待装</span>
+                        </eq>
+                </eq>
+			</div>
+            <div class="lineCon">
+                <span class="lineCon-left">排队</span>
+                <span class="lineCon-right">{$ret.order_number}</span>
+            </div>
+			<div class="lineCon">
+				<span class="lineCon-left">油品类型</span>
+				<span class="lineCon-right">{$ret.oil_name}</span>
+			</div>
+			<div class="lineCon">
+				<span class="lineCon-left">车牌号码</span>
+				<span class="lineCon-right">{$ret.plate}</span>
+			</div>
+			<div class="lineCon">
+				<span class="lineCon-left">公司名称</span>
+				<span class="lineCon-right">{$ret.company}</span>
+			</div>
+			<div class="lineCon">
+				<span class="lineCon-left">真实姓名</span>
+				<span class="lineCon-right">{$ret.name}</span>
+			</div>
+			<div class="lineCon">
+				<span class="lineCon-left">联系电话</span>
+				<span class="lineCon-right">{$ret.phone}</span>
+			</div>
+		</div>
+		<div id="footer">
+			<a href="__ROOT__/index.php/Home/Index/orderIndex" >
+				<img src="__PUBLIC__/images/paiduichaxun.png" alt="">
+				<p>排队查询</p>
+			</a>
+			<a href="__ROOT__/index.php/Home/Order" class="on">
+				<img src="__PUBLIC__/images/yuyue2.png" alt="">
+				<p>预约装车</p>
+			</a>
+			<a href="__ROOT__/index.php/Home/PersonalCenter">
+				<img src="__PUBLIC__/images/gerenzhongxin.png" alt="">
+				<p>个人中心</p>
+			</a>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="__PUBLIC__/js/home/vue.min.js"></script>
+
+</html>

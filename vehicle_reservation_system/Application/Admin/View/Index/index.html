@@ -13,18 +13,20 @@
 <!--    　1、用a标签的target属性。
     2、跳转是用a标签的href传递参数，在含有iframe页面中用jquery接收判断传递过来的参数，然后获取iframe的id，根据参数设置iframe的src,显示指定的页面。-->
     <nav>
-        <button><a href="/admin.php/Order" target="iframe">排队信息管理</a></button>
-        <button><a href="/admin.php/Driver" target="iframe">司机信息管理</a></button>
-        <button><a href="/admin.php/Oil" target="iframe" >油品信息管理</a></button>
-        <button><a href="/admin.php/User" target="iframe" >用户信息管理</a></button>
-        <button><a href="/admin.php/Role" target="iframe">角色权限管理</a></button>
-        <button><a href="/admin.php/Log" target="iframe">操作日志管理</a></button>
-        <button><a href="/admin.php/Notice" target="iframe">公告内容管理</a></button>
-        <button><a href="/admin.php/Admin" target="iframe">修改密码</a></button>
-        <button><a href="/admin.php/Login/loginout">退出登陆</a></button>
+        <!--模板中的{}代表<?php ?>，:U代表使用U方法-->
+        <button><a href="{:U('Order/index')}" target="iframe">排队信息管理</a></button>
+        <button><a href="{:U('Driver/index')}" target="iframe">司机信息管理</a></button>
+        <button><a href="{:U('Oil/index')}" target="iframe" >油品信息管理</a></button>
+        <button><a href="{:U('User/index')}" target="iframe" >用户信息管理</a></button>
+        <button><a href="{:U('Role/index')}" target="iframe">角色信息管理</a></button>
+        <button><a href="{:U('Permission/index')}" target="iframe">权限信息管理</a></button>
+        <button><a href="{:U('Log/index')}" target="iframe">操作日志管理</a></button>
+        <button><a href="{:U('Notice/index')}" target="iframe">公告内容管理</a></button>
+        <button><a href="{:U('Admin/index')}" target="iframe">修改密码</a></button>
+        <button><a href="{:U('Login/loginout')}">退出登陆</a></button>
     </nav>
     </div>
-    <iframe src="/admin.php/Order" scrolling="auto" name="iframe" frameborder="0" width="100%" height="600">
+    <iframe src="{:U('Order/index')}" scrolling="auto" name="iframe" frameborder="0" width="100%" height="600">
     </iframe>
     <else/>
         <p>欢迎，{$Think.session.User.name}！</p>
@@ -32,28 +34,33 @@
             {$key}|{$vo}<br>
         </foreach>-->
         <nav>
-            <eq name="role.order_manage" value="1">
-            <button><a href="/admin.php/Order" target="iframe">排队信息管理</a></button>
-            </eq>
-            <eq name="role.driver_manage" value="1">
-            <button><a href="/admin.php/Driver" target="iframe">司机信息管理</a></button>
-            </eq>
-            <eq name="role.oil_manage" value="1">
-            <button><a href="/admin.php/Oil" target="iframe" >油品信息管理</a></button>
-            </eq>
-            <eq name="role.user_manage" value="1">
-            <button><a href="/admin.php/User" target="iframe" >用户信息管理</a></button>
-            </eq>
-            <eq name="role.role_manage" value="1">
-            <button><a href="/admin.php/Role" target="iframe">角色权限管理</a></button>
-            </eq>
-            <eq name="role.log_manage" value="1">
-            <button><a href="/admin.php/Log" target="iframe">操作日志管理</a></button>
-            </eq>
-            <eq name="role.notice_manage" value="1">
-                <button><a href="/admin.php/Notice" target="iframe">公告内容管理</a></button>
-            </eq>
-            <button><a href="/admin.php/Login/loginout">退出登陆</a></button>
+            <foreach name="permission" item="vo">
+                <eq name="vo" value="1">
+                <button><a href="{:U('Order/index')}" target="iframe">排队信息管理</a></button>
+                </eq>
+                <eq name="vo" value="2">
+                <button><a href="{:U('Driver/index')}" target="iframe">司机信息管理</a></button>
+                </eq>
+                <eq name="vo" value="3">
+                <button><a href="{:U('Oil/index')}" target="iframe" >油品信息管理</a></button>
+                </eq>
+                <eq name="vo" value="4">
+                <button><a href="{:U('User/index')}" target="iframe" >用户信息管理</a></button>
+                </eq>
+                <eq name="vo" value="5">
+                <button><a href="{:U('Role/index')}" target="iframe">角色信息管理</a></button>
+                </eq>
+                <eq name="vo" value="6">
+                <button><a href="{:U('Permission/index')}" target="iframe">权限信息管理</a></button>
+                </eq>
+                <eq name="vo" value="7">
+                <button><a href="{:U('Log/index')}" target="iframe">操作日志管理</a></button>
+                </eq>
+                <eq name="vo" value="8">
+                    <button><a href="{:U('Notice/index')}" target="iframe">公告内容管理</a></button>
+                </eq>
+            </foreach>
+            <button><a href="{:U('Login/loginout')}">退出登陆</a></button>
         </nav>
     </div>
     <iframe src="{$src}" scrolling="auto" name="iframe" frameborder="0" width="100%" height="600">

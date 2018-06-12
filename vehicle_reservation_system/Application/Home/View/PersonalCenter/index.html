@@ -5,84 +5,100 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 	<title>个人中心</title>
-	<script type="text/javascript" src="/Public/js/home/js/flexible.js"></script>
-	<link rel="stylesheet" type="text/css" href="/Public/css/home/myCenter.css">
+	<script type="text/javascript" src="__PUBLIC__/js/home/js/flexible.js"></script>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/home/myCenter.css">
 
 
-	<link rel="stylesheet" type="text/css" href="/Public/css/home/jquery-weui.min.css">
-    <link rel="stylesheet" type="text/css" href="/Public/css/home/weui.min.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/home/jquery-weui.min.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/home/weui.min.css">
 
 </head>
 <body>
 	<div id="main">
 		<div class="top">
 			<div class="userInfo">
-				<img src="/Public/images/head.png">
-				<span>测试者</span>
+				<img src="{$ret.image}">
+				<span>{$ret.nickname}</span>
 			</div>
-			<a href="/index.php/Home/PersonalCenter/record" class="l weui-cell__bd">我的预约记录</a>
+			<a href="__ROOT__/index.php/Home/PersonalCenter/record" class="l weui-cell__bd">我的预约记录</a>
 		</div>
-
-		<div class="carInfo">
-			<span class="num numIng" v-if="statu == 1">1</span>
-				<span class="chepai">粤AE86</span>
-			<span class="statu ing">正在装</span>
-
-		</div>
+		<neq name="order.order_status" value="">
+			<div class="carInfo">
+				<eq name="order.order_number" value="1">
+					<span class="num numIng">{$order.order_number}</span>
+					<else/>
+					<eq name="order.order_number" value="2">
+						<span class="num numCq">{$order.order_number}</span>
+						<else/>
+						<span class="num">{$order.order_number}</span>
+					</eq>
+				</eq>
+					<span class="chepai">{$order.plate}</span>
+				<eq name="order.order_status" value="1">
+					<span class="statu ing">装车中</span>
+					<else/>
+					<eq name="order.order_status" value="2">
+						<span class="statu cq">厂内待装</span>
+						<else/>
+						<span class="statu">厂外待装</span>
+					</eq>
+				</eq>
+			</div>
+		</neq>
 
 		<div class="myIfo">
-		<a href="/index.php/Home/PersonalCenter/edit" class="l m weui-cell__bd">
+		<a href="__ROOT__/index.php/Home/PersonalCenter/edit" class="l m weui-cell__bd">
 				<span>我的信息</span>
 				<span>去编辑</span>
 			</a>
 			<div class="line">
 				<div class="line-left">
 					<span>真实姓名</span>
-					<p>测试者</p>
+					<p>{$ret.name}</p>
 				</div>
 				<div class="line-right">
 					<span>联系电话</span>
-					<p>181026632132</p>
+					<p>{$ret.phone}</p>
 				</div>
 			</div>
 			<div class="line">
 				<div class="line-left">
 					<span>车牌号</span>
-					<p>粤AE86</p>
+					<p>{$ret.plate}</p>
 				</div>
 				<div class="line-right">
 					<span>公司名称</span>
-					<p>测试公司</p>
+					<p>{$ret.company}</p>
 				</div>
 			</div>
 		</div>
 
 		<div class="contact">
 
-			<a href="/index.php/Home/PersonalCenter/contact" class="weui-cell__bd">联系我们</a>
-			<a href="/index.php/Home/PersonalCenter/about" class="weui-cell__bd">关于我们</a>
+			<a href="__ROOT__/index.php/Home/PersonalCenter/contact" class="weui-cell__bd">联系我们</a>
+			<a href="__ROOT__/index.php/Home/PersonalCenter/about" class="weui-cell__bd">关于我们</a>
 
 		</div>
 
 		<div id="footer">
-				<a href="/index.php/Home/Index" >
-					<img src="/Public/images/paiduichaxun.png" alt="">
+				<a href="__ROOT__/index.php/Home/Index/orderIndex" >
+					<img src="__PUBLIC__/images/paiduichaxun.png" alt="">
 					<p>排队查询</p>
 				</a>
-				<a href="/index.php/Home/Order">
-					<img src="/Public/images/yuyue.png" alt="">
+				<a href="__ROOT__/index.php/Home/Order/index">
+					<img src="__PUBLIC__/images/yuyue.png" alt="">
 					<p>预约装车</p>
 				</a>
-				<a href="/index.php/Home/PersonalCenter" class="on">
-					<img src="/Public/images/gerenzhongxin2.png" alt="">
+				<a href="__ROOT__/index.php/Home/PersonalCenter/index" class="on">
+					<img src="__PUBLIC__/images/gerenzhongxin2.png" alt="">
 					<p>个人中心</p>
 				</a>
 		</div>
 
 	</div>
 </body>
-	<script type="text/javascript" src="/Public/js/home/vue.min.js"></script>
-	<script src="/Public/js/home/jquery.min weui.js"></script>
-	<script src="/Public/js/home/jquery-weui.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/home/vue.min.js"></script>
+	<script src="__PUBLIC__/js/home/jquery.min weui.js"></script>
+	<script src="__PUBLIC__/js/home/jquery-weui.min.js"></script>
 
 </html>

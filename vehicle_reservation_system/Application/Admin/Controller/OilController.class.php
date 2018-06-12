@@ -12,6 +12,7 @@ class OilController extends Controller {
     //修改油品页面
     public function update(){
         $id=$_GET['id'];
+        //dump($id);
 //      如果查询出错，find方法返回false，如果查询结果为空返回NULL，查询成功则返回一个关联数组（键值是字段名或者别名）。
         $ret = D('Oil')->showOil($id);
         $this->assign('ret', $ret);

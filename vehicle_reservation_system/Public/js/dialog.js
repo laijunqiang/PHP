@@ -29,7 +29,7 @@ var dialog = {
             icon:3,
             btn : ['是','否'],
             yes : function(){
-                var url = "/admin.php/Notice/deleteNotice";
+                var url = "../Notice/deleteNotice";
                 var data = {'id': id};//JSON格式
                 // 执行异步请求  $.post
                 $.post(url, data, function (result) {
@@ -39,7 +39,7 @@ var dialog = {
                         return dialog.error(result.message);
                     }
                     if (result.status == 1) {
-                        return dialog.success(result.message, '/admin.php/Notice');
+                        return dialog.success(result.message, '../Notice/index');
                     }
                     //dataType规定预期的服务器响应的数据类型。
                 }, 'JSON');
@@ -53,7 +53,7 @@ var dialog = {
             icon:3,
             btn : ['是','否'],
             yes : function(){
-                var url = "/admin.php/Oil/deleteOil";
+                var url = "../Oil/deleteOil";
                 var data = {'id': id};//JSON格式
                 // 执行异步请求  $.post
                 $.post(url, data, function (result) {
@@ -63,7 +63,7 @@ var dialog = {
                         return dialog.error(result.message);
                     }
                     if (result.status == 1) {
-                        return dialog.success(result.message, '/admin.php/Oil');
+                        return dialog.success(result.message, '../Oil/index');
                     }
                     //dataType规定预期的服务器响应的数据类型。
                 }, 'JSON');
@@ -77,7 +77,7 @@ var dialog = {
             icon:3,
             btn : ['是','否'],
             yes : function(){
-                var url = "/admin.php/User/deleteUser";
+                var url = "../User/deleteUser";
                 var data = {'id': id};//JSON格式
                 // 执行异步请求  $.post
                 $.post(url, data, function (result) {
@@ -87,7 +87,7 @@ var dialog = {
                         return dialog.error(result.message);
                     }
                     if (result.status == 1) {
-                        return dialog.success(result.message, '/admin.php/User');
+                        return dialog.success(result.message, '../User/index');
                     }
                     //dataType规定预期的服务器响应的数据类型。
                 }, 'JSON');
@@ -101,7 +101,7 @@ var dialog = {
             icon:3,
             btn : ['是','否'],
             yes : function(){
-                var url = "/admin.php/Order/deleteOrder";
+                var url = "../Order/deleteOrder";
                 var data = {'id': id};//JSON格式
                 // 执行异步请求  $.post
                 $.post(url, data, function (result) {
@@ -111,7 +111,7 @@ var dialog = {
                         return dialog.error(result.message);
                     }
                     if (result.status == 1) {
-                        return dialog.success(result.message, '/admin.php/Order');
+                        return dialog.success(result.message, '../Order/index');
                     }
                     //dataType规定预期的服务器响应的数据类型。
                 }, 'JSON');
@@ -160,7 +160,7 @@ var dialog = {
             icon:3,
             btn : ['是','否'],
             yes : function(){
-                var url = "/admin.php/Role/deleteRole";
+                var url = "../Role/deleteRole";
                 var data = {'id': id};//JSON格式
                 // 执行异步请求  $.post
                 $.post(url, data, function (result) {
@@ -170,7 +170,7 @@ var dialog = {
                         return dialog.error(result.message);
                     }
                     if (result.status == 1) {
-                        return dialog.success(result.message, '/admin.php/Role');
+                        return dialog.success(result.message, '../Role/index');
                     }
                     //dataType规定预期的服务器响应的数据类型。
                 }, 'JSON');
@@ -183,7 +183,7 @@ var dialog = {
             icon:3,
             btn : ['是','否'],
             yes : function(){
-                var url = "/admin.php/Log/deleteLog";
+                var url = "../Log/deleteLog";
                 var data = {'id': id};//JSON格式
                 // 执行异步请求  $.post
                 $.post(url, data, function (result) {
@@ -193,7 +193,7 @@ var dialog = {
                         return dialog.error(result.message);
                     }
                     if (result.status == 1) {
-                        return dialog.success(result.message, '/admin.php/Log');
+                        return dialog.success(result.message, '../Log/index');
                     }
                     //dataType规定预期的服务器响应的数据类型。
                 }, 'JSON');
@@ -215,7 +215,7 @@ var dialog = {
                 icon:3,
                 btn : ['是','否'],
                 yes : function(){
-                    var url = "/admin.php/Log/deleteAllLog";
+                    var url = "../Log/deleteAllLog";
                     var data = {'arr': arr};//JSON格式
                     // 执行异步请求  $.post
                     $.post(url, data, function (result) {
@@ -225,7 +225,7 @@ var dialog = {
                             return dialog.error(result.message);
                         }
                         if (result.status == 1) {
-                            return dialog.success(result.message, '/admin.php/Log');
+                            return dialog.success(result.message, '../Log/index');
                         }
                         //dataType规定预期的服务器响应的数据类型。
                     }, 'JSON');
